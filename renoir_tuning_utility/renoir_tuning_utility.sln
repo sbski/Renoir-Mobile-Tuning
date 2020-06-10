@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "renoir_tuning_utility", "renoir_tuning_utility\renoir_tuning_utility.csproj", "{FCB15803-E7FB-456A-9509-0E73AD868173}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCB15803-E7FB-456A-9509-0E73AD868173}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCB15803-E7FB-456A-9509-0E73AD868173}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCB15803-E7FB-456A-9509-0E73AD868173}.Debug|x64.ActiveCfg = Debug|x64
+		{FCB15803-E7FB-456A-9509-0E73AD868173}.Debug|x64.Build.0 = Debug|x64
+		{FCB15803-E7FB-456A-9509-0E73AD868173}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCB15803-E7FB-456A-9509-0E73AD868173}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCB15803-E7FB-456A-9509-0E73AD868173}.Release|x64.ActiveCfg = Release|x64
+		{FCB15803-E7FB-456A-9509-0E73AD868173}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C5E96D53-43BF-4F76-95E3-E8349F24F462}
+	EndGlobalSection
+EndGlobal
