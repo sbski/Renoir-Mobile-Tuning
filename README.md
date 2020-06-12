@@ -5,7 +5,7 @@ Idea for it was as a temperary hold over untill my bigger app is done being fixe
 ## Installation
 - Go to the releases tab found [here](https://github.com/sbski/Renoir-Mobile-Tuning/releases) and download the latest release
 - Extract the files and place them were you would like to.
-- The program is a portable so that's all you need.
+- You are good to go.
 ## Keeping settings Applied
 - Try to change your power profile that your OEM suplies to the highest perfomance mode
   - This is known to help on HP's and Asus Laptops for sure
