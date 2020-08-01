@@ -1670,9 +1670,6 @@
         ED5/yCCgIHyO+b9A0wC4Q/2OyQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>356, 300</value>
   </data>
