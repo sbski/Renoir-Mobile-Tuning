@@ -65,6 +65,7 @@
             this.checkFastLimit = new System.Windows.Forms.CheckBox();
             this.ApplySettings = new System.Windows.Forms.Button();
             this.notifyIconRMT = new System.Windows.Forms.NotifyIcon(this.components);
+            this.labelRenoirMobileTuning = new System.Windows.Forms.Label();
             this.panel9.SuspendLayout();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).BeginInit();
@@ -96,6 +97,7 @@
             // 
             resources.ApplyResources(this.panel9, "panel9");
             this.panel9.BackColor = System.Drawing.Color.Transparent;
+            this.panel9.Controls.Add(this.labelRenoirMobileTuning);
             this.panel9.Controls.Add(this.panel16);
             this.panel9.Controls.Add(this.panel14);
             this.panel9.Controls.Add(this.panel10);
@@ -159,7 +161,7 @@
             // 
             resources.ApplyResources(this.upDownCurrentLimit, "upDownCurrentLimit");
             this.upDownCurrentLimit.Maximum = new decimal(new int[] {
-            105,
+            115,
             0,
             0,
             0});
@@ -200,7 +202,7 @@
             // 
             resources.ApplyResources(this.upDownTctlTemp, "upDownTctlTemp");
             this.upDownTctlTemp.Maximum = new decimal(new int[] {
-            97,
+            105,
             0,
             0,
             0});
@@ -285,11 +287,6 @@
             // upDownSlowTime
             // 
             resources.ApplyResources(this.upDownSlowTime, "upDownSlowTime");
-            this.upDownSlowTime.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
             this.upDownSlowTime.Minimum = new decimal(new int[] {
             1,
             0,
@@ -427,9 +424,12 @@
             // 
             // ApplySettings
             // 
+            this.ApplySettings.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ApplySettings.Cursor = System.Windows.Forms.Cursors.Arrow;
             resources.ApplyResources(this.ApplySettings, "ApplySettings");
+            this.ApplySettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ApplySettings.Name = "ApplySettings";
-            this.ApplySettings.UseVisualStyleBackColor = true;
+            this.ApplySettings.UseVisualStyleBackColor = false;
             this.ApplySettings.Click += new System.EventHandler(this.ApplySettings_Click);
             // 
             // notifyIconRMT
@@ -437,10 +437,17 @@
             resources.ApplyResources(this.notifyIconRMT, "notifyIconRMT");
             this.notifyIconRMT.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIconRMT_MouseDoubleClick);
             // 
+            // labelRenoirMobileTuning
+            // 
+            resources.ApplyResources(this.labelRenoirMobileTuning, "labelRenoirMobileTuning");
+            this.labelRenoirMobileTuning.ForeColor = System.Drawing.Color.Gray;
+            this.labelRenoirMobileTuning.Name = "labelRenoirMobileTuning";
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.CausesValidation = false;
             this.Controls.Add(this.panel9);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -516,6 +523,7 @@
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.CheckBox checkMaxCurrentLimit;
         internal System.Windows.Forms.NotifyIcon notifyIconRMT;
+        private System.Windows.Forms.Label labelRenoirMobileTuning;
     }
 }
 
