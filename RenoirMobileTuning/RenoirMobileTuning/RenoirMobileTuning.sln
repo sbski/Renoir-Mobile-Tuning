@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenoirMobileTuning", "RenoirMobileTuning\RenoirMobileTuning.csproj", "{2E182E59-7E4D-45A0-8FB2-FDEF8FA140A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E182E59-7E4D-45A0-8FB2-FDEF8FA140A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E182E59-7E4D-45A0-8FB2-FDEF8FA140A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E182E59-7E4D-45A0-8FB2-FDEF8FA140A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E182E59-7E4D-45A0-8FB2-FDEF8FA140A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2DA5D554-9C09-48DC-8C1D-547FC99DB7AD}
+	EndGlobalSection
+EndGlobal
