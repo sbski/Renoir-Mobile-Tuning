@@ -9,13 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RyzenSmu;
 
 namespace renoir_tuning_utility
 {
-    public partial class Form1 : Form
+    public partial class RMT : Form
     {
+        uint Msg;
+        uint[] Args;
+        RyzenSmu.RyzenSmu RyzenAccess;
+
         private float fastLimit, slowLimit, stapmLimit, slowTime, stapmTime, currentLimit;
-        public Form1()
+        public RMT()
         {
             InitializeComponent();
             fastLimit = -1;
@@ -32,7 +37,6 @@ namespace renoir_tuning_utility
             upDownSlowLimit.Enabled = false;
             upDownFastLimit.Enabled = false;
             upDownMaxCurrentLimit.Enabled = false;
-
 
         }
 
@@ -75,55 +79,117 @@ namespace renoir_tuning_utility
 
         private void ApplySettings_Click(object sender, EventArgs e)
         {
-            String args;
+            RyzenAccess = new RyzenSmu.RyzenSmu();
+
+            RyzenAccess.Initialize();
+
             String exe = Directory.GetCurrentDirectory() + "\\smu-tool\\smu-tool.exe";
+            
+            int i = 0;
+            RyzenSmu.RyzenSmu.Status[] Statuses = new RyzenSmu.RyzenSmu.Status[8];
+            Args = new uint[6];
 
             if (checkStapmLimit.Checked)
             {
-                args = String.Format("--message=0x14 --arg0={0:0}000", upDownStapmLimit.Value);
+                //Set Msg and Args
+                Msg = 0x14;
+                Args[0] = (uint)Convert.ToInt32(upDownStapmLimit.Value * 1000);
 
-                var proc = System.Diagnostics.Process.Start(exe, args);
+                //Send msg
+                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                //args = String.Format("--message=0x14 --arg0={0:0}000", upDownStapmLimit.Value);
+                //var proc = System.Diagnostics.Process.Start(exe, args);
             }
 
             if (checkFastLimit.Checked)
             {
-                args = String.Format("--message=0x15 --arg0={0:0}000", upDownFastLimit.Value);
-                var proc = System.Diagnostics.Process.Start(exe, args);
+                //Set Msg and Args
+                Msg = 0x15;
+                Args[0] = (uint)Convert.ToInt32(upDownFastLimit.Value * 1000);
+
+                //Send msg
+                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                //args = String.Format("--message=0x15 --arg0={0:0}000", upDownFastLimit.Value);
+                //var proc = System.Diagnostics.Process.Start(exe, args);
             }
 
             if (checkSlowLimit.Checked)
             {
-                args = String.Format("--message=0x16 --arg0={0:0}000", upDownSlowLimit.Value);
-                var proc = System.Diagnostics.Process.Start(exe, args);
+                //Set Msg and Args
+                Msg = 0x16;
+                Args[0] = (uint)Convert.ToInt32(upDownSlowLimit.Value * 1000);
+
+                //Send msg
+                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                //args = String.Format("--message=0x16 --arg0={0:0}000", upDownSlowLimit.Value);
+                //var proc = System.Diagnostics.Process.Start(exe, args);
             }
 
             if (checkSlowTime.Checked)
             {
-                args = String.Format("--message=0x17 --arg0={0:0}", upDownSlowTime.Value);
-                var proc = System.Diagnostics.Process.Start(exe, args);
+                //Set Msg and Args
+                Msg = 0x17;
+                Args[0] = (uint)Convert.ToInt32(upDownSlowTime.Value);
+
+                //Send msg
+                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                //args = String.Format("--message=0x17 --arg0={0:0}", upDownSlowTime.Value);
+                //var proc = System.Diagnostics.Process.Start(exe, args);
             }
 
             if (checkStapmTime.Checked)
             {
-                args = String.Format("--message=0x18 --arg0={0:0}", upDownStapmTime.Value);
-                var proc = System.Diagnostics.Process.Start(exe, args);
+                //Set Msg and Args
+                Msg = 0x18;
+                Args[0] = (uint)Convert.ToInt32(upDownStapmTime.Value);
+
+                //Send msg
+                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                //args = String.Format("--message=0x18 --arg0={0:0}", upDownStapmTime.Value);
+                //var proc = System.Diagnostics.Process.Start(exe, args);
             }
 
             if (checkTctlTemp.Checked)
             {
-                args = String.Format("--message=0x19 --arg0={0:0}", upDownTctlTemp.Value);
-                var proc = System.Diagnostics.Process.Start(exe, args);
+                //Set Msg and Args
+                Msg = 0x19;
+                Args[0] = (uint)Convert.ToInt32(upDownTctlTemp.Value);
+
+                //Send msg
+                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                //args = String.Format("--message=0x19 --arg0={0:0}", upDownTctlTemp.Value);
+                //var proc = System.Diagnostics.Process.Start(exe, args);
             }
 
             if (checkCurrentLimit.Checked)
             {
-                args = String.Format("--message=0x1A --arg0={0:0}000", upDownCurrentLimit.Value);
-                var proc = System.Diagnostics.Process.Start(exe, args);
+                //Set Msg and Args
+                Msg = 0x1A;
+                Args[0] = (uint)Convert.ToInt32(upDownCurrentLimit.Value * 1000);
+
+                //Send msg
+                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                //args = String.Format("--message=0x1A --arg0={0:0}000", upDownCurrentLimit.Value);
+                //var proc = System.Diagnostics.Process.Start(exe, args);
             }
             if (checkMaxCurrentLimit.Checked)
             {
-                args = String.Format("--message=0x1C --arg0={0:0}000", upDownMaxCurrentLimit.Value);
-                var proc = System.Diagnostics.Process.Start(exe, args);
+                //Set Msg and Args
+                Msg = 0x1C;
+                Args[0] = (uint)Convert.ToInt32(upDownMaxCurrentLimit.Value * 1000);
+
+                //Send msg
+                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                //args = String.Format("--message=0x1C --arg0={0:0}000", upDownMaxCurrentLimit.Value);
+                //var proc = System.Diagnostics.Process.Start(exe, args);
             }
             /*
              * IF "%Stapm%" NEQ "" smu-tool.exe -m --message=0x14 --arg0=%Stapm%000
@@ -136,7 +202,15 @@ namespace renoir_tuning_utility
              * IF "%MaxCurrent%" NEQ "" smu-tool.exe -m --message=0x1C --arg0=%MaxCurrent%000
              */
 
+            for(int j = 0; j < i; j++)
+            {/*
+                if (Statuses[j] != RyzenSmu.RyzenSmu.Status.OK)
+                {
+                    throw new ApplicationException($"{j:D}-Status: " + Statuses[j].ToString());
+                }*/
+            }
 
+            RyzenAccess.Deinitialize();
 
         }
 

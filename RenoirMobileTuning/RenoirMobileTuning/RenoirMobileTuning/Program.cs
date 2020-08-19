@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace RenoirMobileTuning
 {
     static class Program
@@ -18,7 +17,7 @@ namespace RenoirMobileTuning
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new rmtForm());
+            Application.Run(new RenoirMobileTuning());
         }
     }
 }

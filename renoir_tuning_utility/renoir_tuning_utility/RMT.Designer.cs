@@ -1,6 +1,6 @@
 ﻿namespace renoir_tuning_utility
 {
-    partial class Form1
+    partial class RMT
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RMT));
             this.panel9 = new System.Windows.Forms.Panel();
+            this.labelRenoirMobileTuning = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
             this.upDownMaxCurrentLimit = new System.Windows.Forms.NumericUpDown();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -65,7 +66,6 @@
             this.checkFastLimit = new System.Windows.Forms.CheckBox();
             this.ApplySettings = new System.Windows.Forms.Button();
             this.notifyIconRMT = new System.Windows.Forms.NotifyIcon(this.components);
-            this.labelRenoirMobileTuning = new System.Windows.Forms.Label();
             this.panel9.SuspendLayout();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).BeginInit();
@@ -108,6 +108,12 @@
             this.panel9.Controls.Add(this.panel1);
             this.panel9.Controls.Add(this.ApplySettings);
             this.panel9.Name = "panel9";
+            // 
+            // labelRenoirMobileTuning
+            // 
+            resources.ApplyResources(this.labelRenoirMobileTuning, "labelRenoirMobileTuning");
+            this.labelRenoirMobileTuning.ForeColor = System.Drawing.Color.Gray;
+            this.labelRenoirMobileTuning.Name = "labelRenoirMobileTuning";
             // 
             // panel16
             // 
@@ -437,13 +443,7 @@
             resources.ApplyResources(this.notifyIconRMT, "notifyIconRMT");
             this.notifyIconRMT.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIconRMT_MouseDoubleClick);
             // 
-            // labelRenoirMobileTuning
-            // 
-            resources.ApplyResources(this.labelRenoirMobileTuning, "labelRenoirMobileTuning");
-            this.labelRenoirMobileTuning.ForeColor = System.Drawing.Color.Gray;
-            this.labelRenoirMobileTuning.Name = "labelRenoirMobileTuning";
-            // 
-            // Form1
+            // RMT
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -451,7 +451,7 @@
             this.CausesValidation = false;
             this.Controls.Add(this.panel9);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Name = "Form1";
+            this.Name = "RMT";
             this.Opacity = 0.95D;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Load += new System.EventHandler(this.Form1_Load);
