@@ -137,7 +137,7 @@
             0});
             this.upDownMaxCurrentLimit.Name = "upDownMaxCurrentLimit";
             this.upDownMaxCurrentLimit.Value = new decimal(new int[] {
-            90,
+            55,
             0,
             0,
             0});
@@ -178,7 +178,7 @@
             0});
             this.upDownCurrentLimit.Name = "upDownCurrentLimit";
             this.upDownCurrentLimit.Value = new decimal(new int[] {
-            51,
+            30,
             0,
             0,
             0});
@@ -219,7 +219,7 @@
             0});
             this.upDownTctlTemp.Name = "upDownTctlTemp";
             this.upDownTctlTemp.Value = new decimal(new int[] {
-            96,
+            85,
             0,
             0,
             0});
@@ -336,7 +336,7 @@
             0});
             this.upDownStapmLimit.Name = "upDownStapmLimit";
             this.upDownStapmLimit.Value = new decimal(new int[] {
-            35,
+            15,
             0,
             0,
             0});
@@ -372,7 +372,7 @@
             0});
             this.upDownSlowLimit.Name = "upDownSlowLimit";
             this.upDownSlowLimit.Value = new decimal(new int[] {
-            54,
+            20,
             0,
             0,
             0});
@@ -408,7 +408,7 @@
             0});
             this.upDownFastLimit.Name = "upDownFastLimit";
             this.upDownFastLimit.Value = new decimal(new int[] {
-            65,
+            25,
             0,
             0,
             0});

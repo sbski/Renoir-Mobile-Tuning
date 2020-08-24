@@ -17,7 +17,22 @@ namespace RyzenSmu
 {
     class RyzenSmu
     {
+        [DllImport("inpoutx64.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool GetPhysLong(UIntPtr memAddress, out uint Data);
 
+        public float ReadFloat(uint Address, uint Offset)
+        {
+            uint Data = 0;
+            GetPhysLong((UIntPtr)(Address + Offset * 4), out Data);
+
+            byte[] bytes = new byte[4];
+            bytes = BitConverter.GetBytes(Data);
+
+            float PmData = BitConverter.ToSingle(bytes, 0);
+            //Console.WriteLine($"0x{Address + Offset * 4,8:X8} | {PmData:F}");
+            return PmData;
+        }
 
 
         public enum Status : int

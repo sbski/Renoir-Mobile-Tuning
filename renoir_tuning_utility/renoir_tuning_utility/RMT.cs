@@ -17,6 +17,7 @@ namespace renoir_tuning_utility
     {
         uint Msg;
         uint[] Args;
+        uint Address;
         RyzenSmu.RyzenSmu RyzenAccess;
 
         private float fastLimit, slowLimit, stapmLimit, slowTime, stapmTime, currentLimit;
@@ -37,6 +38,38 @@ namespace renoir_tuning_utility
             upDownSlowLimit.Enabled = false;
             upDownFastLimit.Enabled = false;
             upDownMaxCurrentLimit.Enabled = false;
+
+            if(true)
+            {
+                Args = new uint[6];
+                RyzenAccess = new RyzenSmu.RyzenSmu();
+                RyzenAccess.Initialize();
+                if(RyzenAccess.SendPsmu(0x66, ref Args) == RyzenSmu.RyzenSmu.Status.OK)
+                {
+                    Address = Args[0];
+                    Args[0] = 0;
+                    if (RyzenAccess.SendPsmu(0x65, ref Args) == RyzenSmu.RyzenSmu.Status.OK)
+                    {
+                        upDownStapmLimit.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0x0));
+                        upDownFastLimit.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0x2));
+                        upDownSlowLimit.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0x4));
+
+                        upDownSlowTime.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0x221));
+                        upDownStapmTime.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0x220));
+
+                        upDownTctlTemp.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0x10));
+                        upDownCurrentLimit.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0x8));
+                        upDownMaxCurrentLimit.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0xC));
+
+                        //upDownSocCurrentLimit.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0xA));
+                        //upDownSocMaxCurrentLimit.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0xE));
+
+                    }
+                }
+
+            }
+            
+
 
         }
 
