@@ -17,6 +17,8 @@ namespace RyzenSmu
 {
     class RyzenSmu
     {
+        
+
         [DllImport("inpoutx64.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool GetPhysLong(UIntPtr memAddress, out uint Data);
@@ -222,5 +224,87 @@ namespace RyzenSmu
 
             return res;
         }
+
+
+        //Code by I.nfraR.ed to get the CpuID
+        private string GetStringPart(uint val)
+        {
+            return val != 0 ? Convert.ToChar(val).ToString() : "";
+        }
+
+        private string IntToStr(uint val)
+        {
+            uint part1 = val & 0xff;
+            uint part2 = val >> 8 & 0xff;
+            uint part3 = val >> 16 & 0xff;
+            uint part4 = val >> 24 & 0xff;
+
+            return string.Format("{0}{1}{2}{3}", GetStringPart(part1), GetStringPart(part2), GetStringPart(part3), GetStringPart(part4));
+        }
+
+        public string GetCpuName()
+        {
+            string model = "";
+            uint eax = 0, ebx = 0, ecx = 0, edx = 0;
+
+            if (RyzenAccesss.Cpuid(0x80000002, ref eax, ref ebx, ref ecx, ref edx) == 1)
+                model = model + IntToStr(eax) + IntToStr(ebx) + IntToStr(ecx) + IntToStr(edx);
+
+            if (RyzenAccesss.Cpuid(0x80000003, ref eax, ref ebx, ref ecx, ref edx) == 1)
+                model = model + IntToStr(eax) + IntToStr(ebx) + IntToStr(ecx) + IntToStr(edx);
+
+            if (RyzenAccesss.Cpuid(0x80000004, ref eax, ref ebx, ref ecx, ref edx) == 1)
+                model = model + IntToStr(eax) + IntToStr(ebx) + IntToStr(ecx) + IntToStr(edx);
+
+            return model.Trim();
+        }
+
+        [Serializable]
+        [StructLayout(LayoutKind.Explicit)]
+        private struct RenoirMobilePT
+        {
+            [FieldOffset(0x000)] public float stapm_limit;
+            [FieldOffset(0x001)] public float stapm_power;
+            [FieldOffset(0x002)] public float fast_limit;
+            [FieldOffset(0x003)] public float current_power;
+            [FieldOffset(0x004)] public float slow_limit;
+            [FieldOffset(0x005)] public float slow_power;
+            [FieldOffset(0x008)] public float edc_limit;
+            [FieldOffset(0x009)] public float edc_used;
+            [FieldOffset(0x00A)] public float soc_edc_limit;
+            [FieldOffset(0x00B)] public float soc_edc_used;
+            [FieldOffset(0x00C)] public float tdc_limit;
+            [FieldOffset(0x00D)] public float tdc_used;
+            [FieldOffset(0x00E)] public float soc_tdc_limit;
+            [FieldOffset(0x00F)] public float soc_tdc_used;
+            [FieldOffset(0x010)] public float thermal_junction;
+            [FieldOffset(0x011)] public float current_temp;
+            [FieldOffset(0x012)] public float thermal_junction_2;
+            [FieldOffset(0x013)] public float core_temp;
+            [FieldOffset(0x014)] public float thermal_junction_3;
+            [FieldOffset(0x015)] public float core_temp_2;
+            [FieldOffset(0x01C)] public float svi_peak_core;
+            [FieldOffset(0x01D)] public float svi_core;
+            [FieldOffset(0x051)] public float if_frequency;
+            [FieldOffset(0x052)] public float if_frequency_2;
+            [FieldOffset(0x055)] public float uncore_frequency;
+            [FieldOffset(0x056)] public float uncore_frequency_2;
+            [FieldOffset(0x059)] public float mclk_frequency;
+            [FieldOffset(0x05A)] public float mclk_frequency_2;
+            [FieldOffset(0x05D)] public float svi_soc;
+            [FieldOffset(0x05E)] public float cldo_vddg;
+            [FieldOffset(0x120)] public float max_core_clk;
+            [FieldOffset(0x128)] public float min_core_clk;
+            [FieldOffset(0x138)] public float c_states;
+            [FieldOffset(0x148)] public float gated_clock;
+            [FieldOffset(0x16D)] public float igpu_frequency;
+            [FieldOffset(0x173)] public float if_frequency_3;
+            [FieldOffset(0x174)] public float uncore_frequency_3;
+            [FieldOffset(0x175)] public float mclk_frequency_3;
+            [FieldOffset(0x17D)] public float if_frequency_4;
+            [FieldOffset(0x17E)] public float uncore_frequency_4;
+            [FieldOffset(0x17F)] public float mclk_frequency_4;
+            [FieldOffset(0x197)] public float gpu_soc_clock;
+        };
     }
 }
