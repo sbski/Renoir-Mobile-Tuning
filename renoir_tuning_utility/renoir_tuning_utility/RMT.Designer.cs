@@ -66,6 +66,9 @@
             this.checkFastLimit = new System.Windows.Forms.CheckBox();
             this.ApplySettings = new System.Windows.Forms.Button();
             this.notifyIconRMT = new System.Windows.Forms.NotifyIcon(this.components);
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.monitoringTextBox = new System.Windows.Forms.TextBox();
+            this.updateButton = new System.Windows.Forms.Button();
             this.panel9.SuspendLayout();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).BeginInit();
@@ -91,6 +94,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownFastLimit)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel9
@@ -443,12 +447,32 @@
             resources.ApplyResources(this.notifyIconRMT, "notifyIconRMT");
             this.notifyIconRMT.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIconRMT_MouseDoubleClick);
             // 
+            // panel18
+            // 
+            this.panel18.Controls.Add(this.updateButton);
+            this.panel18.Controls.Add(this.monitoringTextBox);
+            resources.ApplyResources(this.panel18, "panel18");
+            this.panel18.Name = "panel18";
+            // 
+            // monitoringTextBox
+            // 
+            resources.ApplyResources(this.monitoringTextBox, "monitoringTextBox");
+            this.monitoringTextBox.Name = "monitoringTextBox";
+            // 
+            // updateButton
+            // 
+            resources.ApplyResources(this.updateButton, "updateButton");
+            this.updateButton.Name = "updateButton";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
             // RMT
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.CausesValidation = false;
+            this.Controls.Add(this.panel18);
             this.Controls.Add(this.panel9);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Name = "RMT";
@@ -481,6 +505,8 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.upDownFastLimit)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -524,6 +550,9 @@
         private System.Windows.Forms.CheckBox checkMaxCurrentLimit;
         internal System.Windows.Forms.NotifyIcon notifyIconRMT;
         private System.Windows.Forms.Label labelRenoirMobileTuning;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.TextBox monitoringTextBox;
+        private System.Windows.Forms.Button updateButton;
     }
 }
 

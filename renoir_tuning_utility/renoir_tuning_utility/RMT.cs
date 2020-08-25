@@ -342,6 +342,32 @@ namespace renoir_tuning_utility
             upDownSlowLimit.Enabled = checkSlowLimit.Checked;
         }
 
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            Args = new uint[6];
+            RyzenAccess = new RyzenSmu.RyzenSmu();
+            RyzenAccess.Initialize();
+            if (RyzenAccess.SendPsmu(0x66, ref Args) == RyzenSmu.RyzenSmu.Status.OK)
+            {
+                Address = Args[0];
+                Args[0] = 0;
+                if (RyzenAccess.SendPsmu(0x65, ref Args) == RyzenSmu.RyzenSmu.Status.OK)
+                {
+                    String MonitoringText = "";
+
+                    for (int i = 0; i < 410; i++)
+                    {
+                        RyzenSmu.RyzenSmu.CounterIndex CurrentOffset = (RyzenSmu.RyzenSmu.CounterIndex)(i * 4);
+                        if (CurrentOffset.ToString() != "")
+                        {
+                            MonitoringText += CurrentOffset.ToString() + ": " + (RyzenAccess.ReadFloat(Address, 0x0)).ToString() + "\n";
+                        }
+                    }
+                    monitoringTextBox.Text = MonitoringText;
+                }
+            }
+        }
+
         private void checkFastLimit_CheckedChanged(object sender, EventArgs e)
         {
             upDownFastLimit.Enabled = checkFastLimit.Checked;
@@ -364,6 +390,11 @@ namespace renoir_tuning_utility
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        private void desc
+        private bool updatePmTable(object sender, PaintEventArgs e)
+        {
+            
         }
     }
 }

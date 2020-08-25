@@ -259,52 +259,148 @@ namespace RyzenSmu
             return model.Trim();
         }
 
+        /*
         [Serializable]
         [StructLayout(LayoutKind.Explicit)]
         private struct RenoirMobilePT
         {
             [FieldOffset(0x000)] public float stapm_limit;
-            [FieldOffset(0x001)] public float stapm_power;
-            [FieldOffset(0x002)] public float fast_limit;
-            [FieldOffset(0x003)] public float current_power;
-            [FieldOffset(0x004)] public float slow_limit;
-            [FieldOffset(0x005)] public float slow_power;
-            [FieldOffset(0x008)] public float edc_limit;
-            [FieldOffset(0x009)] public float edc_used;
-            [FieldOffset(0x00A)] public float soc_edc_limit;
-            [FieldOffset(0x00B)] public float soc_edc_used;
-            [FieldOffset(0x00C)] public float tdc_limit;
-            [FieldOffset(0x00D)] public float tdc_used;
-            [FieldOffset(0x00E)] public float soc_tdc_limit;
-            [FieldOffset(0x00F)] public float soc_tdc_used;
-            [FieldOffset(0x010)] public float thermal_junction;
-            [FieldOffset(0x011)] public float current_temp;
-            [FieldOffset(0x012)] public float thermal_junction_2;
-            [FieldOffset(0x013)] public float core_temp;
-            [FieldOffset(0x014)] public float thermal_junction_3;
-            [FieldOffset(0x015)] public float core_temp_2;
-            [FieldOffset(0x01C)] public float svi_peak_core;
-            [FieldOffset(0x01D)] public float svi_core;
-            [FieldOffset(0x051)] public float if_frequency;
-            [FieldOffset(0x052)] public float if_frequency_2;
-            [FieldOffset(0x055)] public float uncore_frequency;
-            [FieldOffset(0x056)] public float uncore_frequency_2;
-            [FieldOffset(0x059)] public float mclk_frequency;
-            [FieldOffset(0x05A)] public float mclk_frequency_2;
-            [FieldOffset(0x05D)] public float svi_soc;
-            [FieldOffset(0x05E)] public float cldo_vddg;
-            [FieldOffset(0x120)] public float max_core_clk;
-            [FieldOffset(0x128)] public float min_core_clk;
-            [FieldOffset(0x138)] public float c_states;
-            [FieldOffset(0x148)] public float gated_clock;
-            [FieldOffset(0x16D)] public float igpu_frequency;
-            [FieldOffset(0x173)] public float if_frequency_3;
-            [FieldOffset(0x174)] public float uncore_frequency_3;
-            [FieldOffset(0x175)] public float mclk_frequency_3;
-            [FieldOffset(0x17D)] public float if_frequency_4;
-            [FieldOffset(0x17E)] public float uncore_frequency_4;
-            [FieldOffset(0x17F)] public float mclk_frequency_4;
-            [FieldOffset(0x197)] public float gpu_soc_clock;
+            [FieldOffset(0x004)] public float stapm_power;
+            [FieldOffset(0x008)] public float fast_limit;
+            [FieldOffset(0x00C)] public float current_power;
+            [FieldOffset(0x010)] public float slow_limit;
+            [FieldOffset(0x014)] public float slow_power;
+            [FieldOffset(0x020)] public float edc_limit;
+            [FieldOffset(0x024)] public float edc_used;
+            [FieldOffset(0x028)] public float soc_edc_limit;
+            [FieldOffset(0x02C)] public float soc_edc_used;
+            [FieldOffset(0x030)] public float tdc_limit;
+            [FieldOffset(0x034)] public float tdc_used;
+            [FieldOffset(0x038)] public float soc_tdc_limit;
+            [FieldOffset(0x03C)] public float soc_tdc_used;
+            [FieldOffset(0x040)] public float thermal_junction;
+            [FieldOffset(0x044)] public float current_temp;
+            [FieldOffset(0x048)] public float thermal_junction_2;
+            [FieldOffset(0x04C)] public float core_temp;
+            [FieldOffset(0x050)] public float thermal_junction_3;
+            [FieldOffset(0x054)] public float core_temp_2;
+            [FieldOffset(0x070)] public float svi_peak_core;
+            [FieldOffset(0x074)] public float svi_core;
+            [FieldOffset(0x144)] public float if_frequency;
+            [FieldOffset(0x148)] public float if_frequency_2;
+            [FieldOffset(0x154)] public float uncore_frequency;
+            [FieldOffset(0x158)] public float uncore_frequency_2;
+            [FieldOffset(0x164)] public float mclk_frequency;
+            [FieldOffset(0x168)] public float mclk_frequency_2;
+            [FieldOffset(0x174)] public float svi_soc;
+            [FieldOffset(0x178)] public float cldo_vddg;
+            [FieldOffset(0x480)] public float max_core_clk;
+            [FieldOffset(0x4A0)] public float min_core_clk;
+            [FieldOffset(0x4E0)] public float c_states;
+            [FieldOffset(0x520)] public float gated_clock;
+            [FieldOffset(0x5B4)] public float igpu_frequency;
+            [FieldOffset(0x5CC)] public float if_frequenc_3;
+            [FieldOffset(0x5D0)] public float uncore_frequency_3;
+            [FieldOffset(0x5D4)] public float mclk_frequency_3;
+            [FieldOffset(0x5F4)] public float if_frequency_4;
+            [FieldOffset(0x5F8)] public float uncore_frequency_4;
+            [FieldOffset(0x5FC)] public float mclk_frequency_4;
+            [FieldOffset(0x65C)] public float gpu_soc_clock;
+        };
+        */
+
+        public enum CounterIndex : uint
+        {
+            STAPM_LIMIT = 0x000,
+            STAPM_POWER = 0x004,
+            FAST_LIMIT = 0x008,
+            CURRENT_POWER = 0x00C,
+            SLOW_LIMIT = 0x010,
+            SLOW_POWER = 0x014,
+            EDC_LIMIT = 0x020,
+            EDC_USED = 0x024,
+            SOC_EDC_LIMIT = 0x028,
+            SOC_EDC_USED = 0x02C,
+            TDC_LIMIT = 0x030,
+            TDC_USED = 0x034,
+            SOC_TDC_LIMIT = 0x038,
+            SOC_TDC_USED = 0x03C,
+            THERMAL_JUNCTION = 0x040,
+            CURRENT_TEMP = 0x044,
+            THERMAL_JUNCTION_2 = 0x048,
+            CORE_TEMP = 0x04C,
+            THERMAL_JUNCTION_3 = 0x050,
+            CORE_TEMP_2 = 0x054,
+            SVI_PEAK_CORE = 0x070,
+            SVI_CORE = 0x074,
+            IF_FREQUENCY = 0x144,
+            IF_FREQUENCY_2 = 0x148,
+            UNCORE_FREQUENCY = 0x154,
+            UNCORE_FREQUENCY_2 = 0x158,
+            MCLK_FREQUENCY = 0x164,
+            MCLK_FREQUENCY_2 = 0x168,
+            SVI_SOC = 0x174,
+            CLDO_VDDG = 0x178,
+            MAX_CORE_CLK = 0x480,
+            MIN_CORE_CLK = 0x4A0,
+            C_STATES = 0x4E0,
+            GATED_CLOCK = 0x520,
+            IGPU_FREQUENCY = 0x5B4,
+            IF_FREQUENCY_3 = 0x5CC,
+            UNCORE_FREQUENCY_3 = 0x5D0,
+            MCLK_FREQUENCY_3 = 0x5D4,
+            IF_FREQUENCY_4 = 0x5F4,
+            UNCORE_FREQUENCY_4 = 0x5F8,
+            MCLK_FREQUENCY_4    = 0x5FC,
+            GPU_SOC_CLOCK = 0x65C,
+            BAD
+        }
+
+        private static readonly Dictionary<RyzenSmu.CounterIndex, String> CounterName = new Dictionary<RyzenSmu.CounterIndex, string>()
+        {
+            { RyzenSmu.CounterIndex.STAPM_LIMIT, "stapm_limit" },
+            { RyzenSmu.CounterIndex.STAPM_POWER, "stapm_power" },
+            { RyzenSmu.CounterIndex.FAST_LIMIT, "fast_limit" },
+            { RyzenSmu.CounterIndex.CURRENT_POWER, "current_power" },
+            { RyzenSmu.CounterIndex.SLOW_LIMIT, "slow_limit" },
+            { RyzenSmu.CounterIndex.SLOW_POWER, "slow_power" },
+            { RyzenSmu.CounterIndex.EDC_LIMIT, "edc_limit" },
+            { RyzenSmu.CounterIndex.EDC_USED, "edc_used" },
+            { RyzenSmu.CounterIndex.SOC_EDC_LIMIT, "soc_edc_limit" },
+            { RyzenSmu.CounterIndex.SOC_EDC_USED, "soc_edc_used" },
+            { RyzenSmu.CounterIndex.TDC_LIMIT, "tdc_limit" },
+            { RyzenSmu.CounterIndex.TDC_USED, "tdc_used" },
+            { RyzenSmu.CounterIndex.SOC_TDC_LIMIT, "soc_tdc_limit" },
+            { RyzenSmu.CounterIndex.SOC_TDC_USED, "soc_tdc_used" },
+            { RyzenSmu.CounterIndex.THERMAL_JUNCTION, "thermal_junction" },
+            { RyzenSmu.CounterIndex.CURRENT_TEMP, "current_temp" },
+            { RyzenSmu.CounterIndex.THERMAL_JUNCTION_2, "thermal_junction_2" },
+            { RyzenSmu.CounterIndex.CORE_TEMP, "core_temp" },
+            { RyzenSmu.CounterIndex.THERMAL_JUNCTION_3, "thermal_junction_3" },
+            { RyzenSmu.CounterIndex.CORE_TEMP_2, "core_temp_2" },
+            { RyzenSmu.CounterIndex.SVI_PEAK_CORE, "svi_peak_core" },
+            { RyzenSmu.CounterIndex.SVI_CORE, "svi_core" },
+            { RyzenSmu.CounterIndex.IF_FREQUENCY, "if_frequency" },
+            { RyzenSmu.CounterIndex.IF_FREQUENCY_2, "if_frequency_2" },
+            { RyzenSmu.CounterIndex.UNCORE_FREQUENCY, "uncore_frequency" },
+            { RyzenSmu.CounterIndex.UNCORE_FREQUENCY_2, "uncore_frequency_2" },
+            { RyzenSmu.CounterIndex.MCLK_FREQUENCY, "mclk_frequency" },
+            { RyzenSmu.CounterIndex.MCLK_FREQUENCY_2, "mclk_frequency_2" },
+            { RyzenSmu.CounterIndex.SVI_SOC, "svi_soc" },
+            { RyzenSmu.CounterIndex.CLDO_VDDG, "cldo_vddg" },
+            { RyzenSmu.CounterIndex.MAX_CORE_CLK, "max_core_clk" },
+            { RyzenSmu.CounterIndex.MIN_CORE_CLK, "min_core_clk" },
+            { RyzenSmu.CounterIndex.C_STATES, "c_states" },
+            { RyzenSmu.CounterIndex.GATED_CLOCK, "gated_clock" },
+            { RyzenSmu.CounterIndex.IGPU_FREQUENCY, "igpu_frequency" },
+            { RyzenSmu.CounterIndex.IF_FREQUENCY_3, "if_frequency_3" },
+            { RyzenSmu.CounterIndex.UNCORE_FREQUENCY_3, "uncore_frequency_3" },
+            { RyzenSmu.CounterIndex.MCLK_FREQUENCY_3, "mclk_frequency_3" },
+            { RyzenSmu.CounterIndex.IF_FREQUENCY_4, "if_frequency_4" },
+            { RyzenSmu.CounterIndex.UNCORE_FREQUENCY_4, "uncore_frequency_4" },
+            { RyzenSmu.CounterIndex.MCLK_FREQUENCY_4, "mclk_frequency_4" },
+            { RyzenSmu.CounterIndex.GPU_SOC_CLOCK, "gpu_soc_clock" },
+            { RyzenSmu.CounterIndex.BAD, "" }
         };
     }
 }
