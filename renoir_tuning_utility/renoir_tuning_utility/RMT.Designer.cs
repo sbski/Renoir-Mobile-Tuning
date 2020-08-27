@@ -67,8 +67,8 @@
             this.ApplySettings = new System.Windows.Forms.Button();
             this.notifyIconRMT = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel18 = new System.Windows.Forms.Panel();
-            this.monitoringTextBox = new System.Windows.Forms.TextBox();
             this.updateButton = new System.Windows.Forms.Button();
+            this.monitoringTextBox = new System.Windows.Forms.TextBox();
             this.panel9.SuspendLayout();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).BeginInit();
@@ -454,17 +454,17 @@
             resources.ApplyResources(this.panel18, "panel18");
             this.panel18.Name = "panel18";
             // 
-            // monitoringTextBox
-            // 
-            resources.ApplyResources(this.monitoringTextBox, "monitoringTextBox");
-            this.monitoringTextBox.Name = "monitoringTextBox";
-            // 
             // updateButton
             // 
             resources.ApplyResources(this.updateButton, "updateButton");
             this.updateButton.Name = "updateButton";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
+            // monitoringTextBox
+            // 
+            resources.ApplyResources(this.monitoringTextBox, "monitoringTextBox");
+            this.monitoringTextBox.Name = "monitoringTextBox";
             // 
             // RMT
             // 

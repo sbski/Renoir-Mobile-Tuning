@@ -18,7 +18,7 @@ namespace renoir_tuning_utility
         uint Msg;
         uint[] Args;
         uint Address;
-        RyzenSmu.RyzenSmu RyzenAccess;
+        Smu RyzenAccess;
 
         private float fastLimit, slowLimit, stapmLimit, slowTime, stapmTime, currentLimit;
         public RMT()
@@ -39,30 +39,34 @@ namespace renoir_tuning_utility
             upDownFastLimit.Enabled = false;
             upDownMaxCurrentLimit.Enabled = false;
 
-            if(true)
+            labelRenoirMobileTuning.Text = "RMT v0.3.0";
+
+            if (true)
             {
                 Args = new uint[6];
-                RyzenAccess = new RyzenSmu.RyzenSmu();
+                RyzenAccess = new Smu();
                 RyzenAccess.Initialize();
-                if(RyzenAccess.SendPsmu(0x66, ref Args) == RyzenSmu.RyzenSmu.Status.OK)
+                labelRenoirMobileTuning.Text += RyzenAccess.GetCpuName();
+                
+                if (RyzenAccess.SendPsmu(0x66, ref Args) == Smu.Status.OK)
                 {
                     Address = Args[0];
                     Args[0] = 0;
-                    if (RyzenAccess.SendPsmu(0x65, ref Args) == RyzenSmu.RyzenSmu.Status.OK)
+                    if (RyzenAccess.SendPsmu(0x65, ref Args) == Smu.Status.OK)
                     {
-                        upDownStapmLimit.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0x0));
-                        upDownFastLimit.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0x2));
-                        upDownSlowLimit.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0x4));
+                        upDownStapmLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x0));
+                        upDownFastLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x2));
+                        upDownSlowLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x4));
 
-                        upDownSlowTime.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0x221));
-                        upDownStapmTime.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0x220));
+                        upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x221));
+                        upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x220));
 
-                        upDownTctlTemp.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0x10));
-                        upDownCurrentLimit.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0x8));
-                        upDownMaxCurrentLimit.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0xC));
+                        upDownTctlTemp.Value = (decimal)(Smu.ReadFloat(Address, 0x10));
+                        upDownCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x8));
+                        upDownMaxCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xC));
 
-                        //upDownSocCurrentLimit.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0xA));
-                        //upDownSocMaxCurrentLimit.Value = (decimal)(RyzenAccess.ReadFloat(Address, 0xE));
+                        //upDownSocCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xA));
+                        //upDownSocMaxCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xE));
 
                     }
                 }
@@ -112,14 +116,14 @@ namespace renoir_tuning_utility
 
         private void ApplySettings_Click(object sender, EventArgs e)
         {
-            RyzenAccess = new RyzenSmu.RyzenSmu();
+            RyzenAccess = new Smu();
 
             RyzenAccess.Initialize();
 
             String exe = Directory.GetCurrentDirectory() + "\\smu-tool\\smu-tool.exe";
             
             int i = 0;
-            RyzenSmu.RyzenSmu.Status[] Statuses = new RyzenSmu.RyzenSmu.Status[8];
+            Smu.Status[] Statuses = new Smu.Status[8];
             Args = new uint[6];
 
             if (checkStapmLimit.Checked)
@@ -237,7 +241,7 @@ namespace renoir_tuning_utility
 
             for(int j = 0; j < i; j++)
             {/*
-                if (Statuses[j] != RyzenSmu.RyzenSmu.Status.OK)
+                if (Statuses[j] != Smu.Status.OK)
                 {
                     throw new ApplicationException($"{j:D}-Status: " + Statuses[j].ToString());
                 }*/
@@ -345,24 +349,34 @@ namespace renoir_tuning_utility
         private void updateButton_Click(object sender, EventArgs e)
         {
             Args = new uint[6];
-            RyzenAccess = new RyzenSmu.RyzenSmu();
+            RyzenAccess = new Smu();
             RyzenAccess.Initialize();
-            if (RyzenAccess.SendPsmu(0x66, ref Args) == RyzenSmu.RyzenSmu.Status.OK)
+            if (RyzenAccess.SendPsmu(0x66, ref Args) == Smu.Status.OK)
             {
                 Address = Args[0];
                 Args[0] = 0;
-                if (RyzenAccess.SendPsmu(0x65, ref Args) == RyzenSmu.RyzenSmu.Status.OK)
+                if (RyzenAccess.SendPsmu(0x65, ref Args) == Smu.Status.OK)
                 {
                     String MonitoringText = "";
 
-                    for (int i = 0; i < 410; i++)
-                    {
-                        RyzenSmu.RyzenSmu.CounterIndex CurrentOffset = (RyzenSmu.RyzenSmu.CounterIndex)(i * 4);
-                        if (CurrentOffset.ToString() != "")
-                        {
-                            MonitoringText += CurrentOffset.ToString() + ": " + (RyzenAccess.ReadFloat(Address, 0x0)).ToString() + "\n";
-                        }
-                    }
+                    MonitoringText += $"STAPM Limit: {Smu.ReadFloat(Address, 0x00000000 / 4):F}" + Environment.NewLine;
+                    MonitoringText += $"STAPM Power: {Smu.ReadFloat(Address, 0x00000004 / 4):F}" + Environment.NewLine;
+                    MonitoringText += $"Fast Limit: {Smu.ReadFloat(Address, 0x00000008 / 4):F}" + Environment.NewLine;
+                    MonitoringText += $"Current Power: {Smu.ReadFloat(Address, 0x0000000C / 4):F}" + Environment.NewLine;
+                    MonitoringText += $"Slow Limit: {Smu.ReadFloat(Address, 0x00000010 / 4):F}" + Environment.NewLine;
+                    MonitoringText += $"Slow Power: {Smu.ReadFloat(Address, 0x00000014 / 4):F}" + Environment.NewLine;
+                    MonitoringText += $"EDC Limit: {Smu.ReadFloat(Address, 0x00000020 / 4):F}" + Environment.NewLine;
+                    MonitoringText += $"EDC Used: {Smu.ReadFloat(Address, 0x00000024 / 4):F}" + Environment.NewLine;
+                    MonitoringText += $"Soc EDC Limit: {Smu.ReadFloat(Address, 0x00000028 / 4):F}" + Environment.NewLine;
+                    MonitoringText += $"Soc EDC Used: {Smu.ReadFloat(Address, 0x0000002C / 4):F}" + Environment.NewLine;
+                    MonitoringText += $"TDC Limit: {Smu.ReadFloat(Address, 0x00000030 / 4):F}" + Environment.NewLine;
+                    MonitoringText += $"TDC Used: {Smu.ReadFloat(Address, 0x00000034 / 4):F}" + Environment.NewLine;
+                    MonitoringText += $"Soc TDC Limit: {Smu.ReadFloat(Address, 0x00000038 / 4):F}" + Environment.NewLine;
+                    MonitoringText += $"Soc TDC Used: {Smu.ReadFloat(Address, 0x0000003C / 4):F}" + Environment.NewLine;
+                    MonitoringText += $"Core Temperature: {Smu.ReadFloat(Address, 0x00000044 / 4):F}" + Environment.NewLine;
+                    MonitoringText += $"Gfx Temperature: {Smu.ReadFloat(Address, 0x0000004C / 4):F}" + Environment.NewLine;
+                    MonitoringText += $"Soc Temperature: {Smu.ReadFloat(Address, 0x00000054 / 4):F}" + Environment.NewLine;
+                    MonitoringText += $"GPU  Frequency: {Smu.ReadFloat(Address, 0x000005B4 / 4):F}" + Environment.NewLine;
                     monitoringTextBox.Text = MonitoringText;
                 }
             }
@@ -390,11 +404,6 @@ namespace renoir_tuning_utility
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-        private void desc
-        private bool updatePmTable(object sender, PaintEventArgs e)
-        {
-            
         }
     }
 }
