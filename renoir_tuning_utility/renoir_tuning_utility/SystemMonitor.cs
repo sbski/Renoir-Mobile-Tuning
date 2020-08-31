@@ -148,10 +148,11 @@ namespace renoir_tuning_utility
             int Index = 0;
             foreach(var item in Sensors)
             {
-                item.Value = $"{ReadFloat(Address, OffsetTable[Index]):F6}";
+                Sensors[Index].Value = $"{ReadFloat(Address, OffsetTable[Index]):F6}";
                 Index++;
             }
             CpuData.Refresh();
+            MessageBox.Show("I am alive still");
 
         }
 

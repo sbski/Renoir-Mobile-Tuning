@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.CpuData = new System.Windows.Forms.DataGridView();
-            this.Offset = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sensor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelRefreshInterval = new System.Windows.Forms.Label();
             this.buttonApply = new System.Windows.Forms.Button();
             this.numericUpDownInterval = new System.Windows.Forms.NumericUpDown();
+            this.Offset = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sensor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.CpuData)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInterval)).BeginInit();
@@ -68,42 +68,9 @@
             this.CpuData.ShowCellToolTips = false;
             this.CpuData.ShowEditingIcon = false;
             this.CpuData.ShowRowErrors = false;
-            this.CpuData.Size = new System.Drawing.Size(227, 430);
+            this.CpuData.Size = new System.Drawing.Size(258, 427);
             this.CpuData.TabIndex = 0;
             this.CpuData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cpuData_CellContentClick);
-            // 
-            // Offset
-            // 
-            this.Offset.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Offset.DataPropertyName = "Offset";
-            this.Offset.HeaderText = "Offset";
-            this.Offset.Name = "Offset";
-            this.Offset.ReadOnly = true;
-            this.Offset.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Offset.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Offset.Width = 41;
-            // 
-            // Sensor
-            // 
-            this.Sensor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Sensor.DataPropertyName = "Sensor";
-            this.Sensor.HeaderText = "Sensor";
-            this.Sensor.Name = "Sensor";
-            this.Sensor.ReadOnly = true;
-            this.Sensor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Sensor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Sensor.Width = 46;
-            // 
-            // Value
-            // 
-            this.Value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Value.DataPropertyName = "Value";
-            this.Value.HeaderText = "Value";
-            this.Value.Name = "Value";
-            this.Value.ReadOnly = true;
-            this.Value.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Value.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Value.Width = 40;
             // 
             // tableLayoutPanel1
             // 
@@ -123,14 +90,14 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(233, 465);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(264, 462);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // labelRefreshInterval
             // 
             this.labelRefreshInterval.AutoSize = true;
             this.labelRefreshInterval.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelRefreshInterval.Location = new System.Drawing.Point(3, 436);
+            this.labelRefreshInterval.Location = new System.Drawing.Point(3, 433);
             this.labelRefreshInterval.Name = "labelRefreshInterval";
             this.labelRefreshInterval.Size = new System.Drawing.Size(82, 29);
             this.labelRefreshInterval.TabIndex = 0;
@@ -140,7 +107,7 @@
             // buttonApply
             // 
             this.buttonApply.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonApply.Location = new System.Drawing.Point(150, 439);
+            this.buttonApply.Location = new System.Drawing.Point(150, 436);
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Size = new System.Drawing.Size(75, 23);
             this.buttonApply.TabIndex = 1;
@@ -157,7 +124,7 @@
             0,
             0,
             0});
-            this.numericUpDownInterval.Location = new System.Drawing.Point(91, 441);
+            this.numericUpDownInterval.Location = new System.Drawing.Point(91, 438);
             this.numericUpDownInterval.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.numericUpDownInterval.Maximum = new decimal(new int[] {
             20000,
@@ -179,12 +146,46 @@
             0});
             this.numericUpDownInterval.ValueChanged += new System.EventHandler(this.numericUpDownInterval_ValueChanged);
             // 
+            // Offset
+            // 
+            this.Offset.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Offset.DataPropertyName = "Offset";
+            this.Offset.HeaderText = "Offset";
+            this.Offset.Name = "Offset";
+            this.Offset.ReadOnly = true;
+            this.Offset.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Offset.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Offset.Width = 41;
+            // 
+            // Sensor
+            // 
+            this.Sensor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Sensor.DataPropertyName = "Sensor";
+            this.Sensor.HeaderText = "Sensor";
+            this.Sensor.MinimumWidth = 100;
+            this.Sensor.Name = "Sensor";
+            this.Sensor.ReadOnly = true;
+            this.Sensor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Sensor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Value
+            // 
+            this.Value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Value.DataPropertyName = "Value";
+            this.Value.HeaderText = "Value";
+            this.Value.MinimumWidth = 100;
+            this.Value.Name = "Value";
+            this.Value.ReadOnly = true;
+            this.Value.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Value.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // SystemMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(233, 465);
+            this.ClientSize = new System.Drawing.Size(264, 462);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MinimumSize = new System.Drawing.Size(280, 0);
             this.Name = "SystemMonitor";
             this.Text = "SystemMonitor";
             ((System.ComponentModel.ISupportInitialize)(this.CpuData)).EndInit();
