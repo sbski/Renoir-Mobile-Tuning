@@ -465,6 +465,7 @@
             // 
             resources.ApplyResources(this.monitoringTextBox, "monitoringTextBox");
             this.monitoringTextBox.Name = "monitoringTextBox";
+            this.monitoringTextBox.TextChanged += new System.EventHandler(this.monitoringTextBox_TextChanged);
             // 
             // RMT
             // 

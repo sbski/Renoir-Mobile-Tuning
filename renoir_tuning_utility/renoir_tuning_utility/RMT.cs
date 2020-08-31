@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using RyzenSmu;
@@ -23,6 +24,7 @@ namespace renoir_tuning_utility
         private float fastLimit, slowLimit, stapmLimit, slowTime, stapmTime, currentLimit;
         public RMT()
         {
+            
             InitializeComponent();
             fastLimit = -1;
             slowLimit = -1;
@@ -72,7 +74,7 @@ namespace renoir_tuning_utility
                 }
 
             }
-            
+            new Thread(() => new SystemMonitor().ShowDialog()).Start();
 
 
         }
@@ -339,6 +341,11 @@ namespace renoir_tuning_utility
             Show();
             this.WindowState = FormWindowState.Normal;
             notifyIconRMT.Visible = false;
+        }
+
+        private void monitoringTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void checkSlowLimit_CheckedChanged(object sender, EventArgs e)
