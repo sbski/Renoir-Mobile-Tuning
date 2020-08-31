@@ -74,7 +74,7 @@ namespace renoir_tuning_utility
                 }
 
             }
-            new Thread(() => new SystemMonitor().ShowDialog()).Start();
+            
 
 
         }
@@ -348,46 +348,17 @@ namespace renoir_tuning_utility
 
         }
 
+        private void ShowSensors_Click(object sender, EventArgs e)
+        {
+            new Thread(() => new SystemMonitor().ShowDialog()).Start();
+        }
+
         private void checkSlowLimit_CheckedChanged(object sender, EventArgs e)
         {
             upDownSlowLimit.Enabled = checkSlowLimit.Checked;
         }
 
-        private void updateButton_Click(object sender, EventArgs e)
-        {
-            Args = new uint[6];
-            RyzenAccess = new Smu();
-            RyzenAccess.Initialize();
-            if (RyzenAccess.SendPsmu(0x66, ref Args) == Smu.Status.OK)
-            {
-                Address = Args[0];
-                Args[0] = 0;
-                if (RyzenAccess.SendPsmu(0x65, ref Args) == Smu.Status.OK)
-                {
-                    String MonitoringText = "";
-
-                    MonitoringText += $"STAPM Limit: {Smu.ReadFloat(Address, 0x00000000 / 4):F}" + Environment.NewLine;
-                    MonitoringText += $"STAPM Power: {Smu.ReadFloat(Address, 0x00000004 / 4):F}" + Environment.NewLine;
-                    MonitoringText += $"Fast Limit: {Smu.ReadFloat(Address, 0x00000008 / 4):F}" + Environment.NewLine;
-                    MonitoringText += $"Current Power: {Smu.ReadFloat(Address, 0x0000000C / 4):F}" + Environment.NewLine;
-                    MonitoringText += $"Slow Limit: {Smu.ReadFloat(Address, 0x00000010 / 4):F}" + Environment.NewLine;
-                    MonitoringText += $"Slow Power: {Smu.ReadFloat(Address, 0x00000014 / 4):F}" + Environment.NewLine;
-                    MonitoringText += $"EDC Limit: {Smu.ReadFloat(Address, 0x00000020 / 4):F}" + Environment.NewLine;
-                    MonitoringText += $"EDC Used: {Smu.ReadFloat(Address, 0x00000024 / 4):F}" + Environment.NewLine;
-                    MonitoringText += $"Soc EDC Limit: {Smu.ReadFloat(Address, 0x00000028 / 4):F}" + Environment.NewLine;
-                    MonitoringText += $"Soc EDC Used: {Smu.ReadFloat(Address, 0x0000002C / 4):F}" + Environment.NewLine;
-                    MonitoringText += $"TDC Limit: {Smu.ReadFloat(Address, 0x00000030 / 4):F}" + Environment.NewLine;
-                    MonitoringText += $"TDC Used: {Smu.ReadFloat(Address, 0x00000034 / 4):F}" + Environment.NewLine;
-                    MonitoringText += $"Soc TDC Limit: {Smu.ReadFloat(Address, 0x00000038 / 4):F}" + Environment.NewLine;
-                    MonitoringText += $"Soc TDC Used: {Smu.ReadFloat(Address, 0x0000003C / 4):F}" + Environment.NewLine;
-                    MonitoringText += $"Core Temperature: {Smu.ReadFloat(Address, 0x00000044 / 4):F}" + Environment.NewLine;
-                    MonitoringText += $"Gfx Temperature: {Smu.ReadFloat(Address, 0x0000004C / 4):F}" + Environment.NewLine;
-                    MonitoringText += $"Soc Temperature: {Smu.ReadFloat(Address, 0x00000054 / 4):F}" + Environment.NewLine;
-                    MonitoringText += $"GPU  Frequency: {Smu.ReadFloat(Address, 0x000005B4 / 4):F}" + Environment.NewLine;
-                    monitoringTextBox.Text = MonitoringText;
-                }
-            }
-        }
+        
 
         private void checkFastLimit_CheckedChanged(object sender, EventArgs e)
         {

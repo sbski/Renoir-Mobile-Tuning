@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.cpuData = new System.Windows.Forms.DataGridView();
+            this.CpuData = new System.Windows.Forms.DataGridView();
             this.Offset = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sensor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,42 +36,41 @@
             this.labelRefreshInterval = new System.Windows.Forms.Label();
             this.buttonApply = new System.Windows.Forms.Button();
             this.numericUpDownInterval = new System.Windows.Forms.NumericUpDown();
-            this.sampleTimer = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.cpuData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CpuData)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInterval)).BeginInit();
             this.SuspendLayout();
             // 
-            // cpuData
+            // CpuData
             // 
-            this.cpuData.AllowUserToAddRows = false;
-            this.cpuData.AllowUserToDeleteRows = false;
-            this.cpuData.AllowUserToResizeRows = false;
-            this.cpuData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.cpuData.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.cpuData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cpuData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CpuData.AllowUserToAddRows = false;
+            this.CpuData.AllowUserToDeleteRows = false;
+            this.CpuData.AllowUserToResizeRows = false;
+            this.CpuData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CpuData.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CpuData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CpuData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Offset,
             this.Sensor,
             this.Value});
-            this.tableLayoutPanel1.SetColumnSpan(this.cpuData, 4);
-            this.cpuData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cpuData.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.cpuData.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.cpuData.Location = new System.Drawing.Point(3, 3);
-            this.cpuData.MultiSelect = false;
-            this.cpuData.Name = "cpuData";
-            this.cpuData.ReadOnly = true;
-            this.cpuData.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.cpuData.RowHeadersVisible = false;
-            this.cpuData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.cpuData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.cpuData.ShowCellToolTips = false;
-            this.cpuData.ShowEditingIcon = false;
-            this.cpuData.ShowRowErrors = false;
-            this.cpuData.Size = new System.Drawing.Size(227, 430);
-            this.cpuData.TabIndex = 0;
-            this.cpuData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cpuData_CellContentClick);
+            this.tableLayoutPanel1.SetColumnSpan(this.CpuData, 4);
+            this.CpuData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CpuData.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.CpuData.GridColor = System.Drawing.SystemColors.ControlLight;
+            this.CpuData.Location = new System.Drawing.Point(3, 3);
+            this.CpuData.MultiSelect = false;
+            this.CpuData.Name = "CpuData";
+            this.CpuData.ReadOnly = true;
+            this.CpuData.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.CpuData.RowHeadersVisible = false;
+            this.CpuData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.CpuData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.CpuData.ShowCellToolTips = false;
+            this.CpuData.ShowEditingIcon = false;
+            this.CpuData.ShowRowErrors = false;
+            this.CpuData.Size = new System.Drawing.Size(227, 430);
+            this.CpuData.TabIndex = 0;
+            this.CpuData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cpuData_CellContentClick);
             // 
             // Offset
             // 
@@ -116,7 +114,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.labelRefreshInterval, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.cpuData, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.CpuData, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.buttonApply, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.numericUpDownInterval, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -181,10 +179,6 @@
             0});
             this.numericUpDownInterval.ValueChanged += new System.EventHandler(this.numericUpDownInterval_ValueChanged);
             // 
-            // sampleTimer
-            // 
-            this.sampleTimer.Tick += new System.EventHandler(this.sampleTimer_Tick);
-            // 
             // SystemMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,7 +187,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "SystemMonitor";
             this.Text = "SystemMonitor";
-            ((System.ComponentModel.ISupportInitialize)(this.cpuData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CpuData)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInterval)).EndInit();
@@ -204,12 +198,11 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView cpuData;
+        private System.Windows.Forms.DataGridView CpuData;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label labelRefreshInterval;
         private System.Windows.Forms.Button buttonApply;
         private System.Windows.Forms.NumericUpDown numericUpDownInterval;
-        private System.Windows.Forms.Timer sampleTimer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Offset;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sensor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
