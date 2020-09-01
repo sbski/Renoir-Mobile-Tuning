@@ -133,10 +133,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ShowSensors.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 365</value>
+    <value>10, 189</value>
   </data>
   <data name="ShowSensors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 23</value>
+    <value>330, 23</value>
   </data>
   <data name="ShowSensors.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -163,7 +163,7 @@
     <value>Bottom</value>
   </data>
   <data name="labelRenoirMobileTuning.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 388</value>
+    <value>10, 212</value>
   </data>
   <data name="labelRenoirMobileTuning.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 13</value>
@@ -196,519 +196,6 @@
   <data name="panel16.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="&gt;&gt;upDownMaxCurrentLimit.Name" xml:space="preserve">
-    <value>upDownMaxCurrentLimit</value>
-  </data>
-  <data name="&gt;&gt;upDownMaxCurrentLimit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;upDownMaxCurrentLimit.Parent" xml:space="preserve">
-    <value>panel16</value>
-  </data>
-  <data name="&gt;&gt;upDownMaxCurrentLimit.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panel17.Name" xml:space="preserve">
-    <value>panel17</value>
-  </data>
-  <data name="&gt;&gt;panel17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel17.Parent" xml:space="preserve">
-    <value>panel16</value>
-  </data>
-  <data name="&gt;&gt;panel17.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panel16.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panel16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 150</value>
-  </data>
-  <data name="panel16.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>0, 20</value>
-  </data>
-  <data name="panel16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 20</value>
-  </data>
-  <data name="panel16.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;panel16.Name" xml:space="preserve">
-    <value>panel16</value>
-  </data>
-  <data name="&gt;&gt;panel16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel16.Parent" xml:space="preserve">
-    <value>panel9</value>
-  </data>
-  <data name="&gt;&gt;panel16.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="panel14.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="panel14.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;upDownCurrentLimit.Name" xml:space="preserve">
-    <value>upDownCurrentLimit</value>
-  </data>
-  <data name="&gt;&gt;upDownCurrentLimit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;upDownCurrentLimit.Parent" xml:space="preserve">
-    <value>panel14</value>
-  </data>
-  <data name="&gt;&gt;upDownCurrentLimit.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panel15.Name" xml:space="preserve">
-    <value>panel15</value>
-  </data>
-  <data name="&gt;&gt;panel15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel15.Parent" xml:space="preserve">
-    <value>panel14</value>
-  </data>
-  <data name="&gt;&gt;panel15.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panel14.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panel14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 130</value>
-  </data>
-  <data name="panel14.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>0, 20</value>
-  </data>
-  <data name="panel14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 20</value>
-  </data>
-  <data name="panel14.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;panel14.Name" xml:space="preserve">
-    <value>panel14</value>
-  </data>
-  <data name="&gt;&gt;panel14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel14.Parent" xml:space="preserve">
-    <value>panel9</value>
-  </data>
-  <data name="&gt;&gt;panel14.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="panel10.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="panel10.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;upDownTctlTemp.Name" xml:space="preserve">
-    <value>upDownTctlTemp</value>
-  </data>
-  <data name="&gt;&gt;upDownTctlTemp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;upDownTctlTemp.Parent" xml:space="preserve">
-    <value>panel10</value>
-  </data>
-  <data name="&gt;&gt;upDownTctlTemp.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panel11.Name" xml:space="preserve">
-    <value>panel11</value>
-  </data>
-  <data name="&gt;&gt;panel11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel11.Parent" xml:space="preserve">
-    <value>panel10</value>
-  </data>
-  <data name="&gt;&gt;panel11.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panel10.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panel10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 110</value>
-  </data>
-  <data name="panel10.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>0, 20</value>
-  </data>
-  <data name="panel10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 20</value>
-  </data>
-  <data name="panel10.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="&gt;&gt;panel10.Name" xml:space="preserve">
-    <value>panel10</value>
-  </data>
-  <data name="&gt;&gt;panel10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel10.Parent" xml:space="preserve">
-    <value>panel9</value>
-  </data>
-  <data name="&gt;&gt;panel10.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="panel12.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="panel12.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;upDownStapmTime.Name" xml:space="preserve">
-    <value>upDownStapmTime</value>
-  </data>
-  <data name="&gt;&gt;upDownStapmTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;upDownStapmTime.Parent" xml:space="preserve">
-    <value>panel12</value>
-  </data>
-  <data name="&gt;&gt;upDownStapmTime.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panel13.Name" xml:space="preserve">
-    <value>panel13</value>
-  </data>
-  <data name="&gt;&gt;panel13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel13.Parent" xml:space="preserve">
-    <value>panel12</value>
-  </data>
-  <data name="&gt;&gt;panel13.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panel12.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panel12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 90</value>
-  </data>
-  <data name="panel12.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>0, 20</value>
-  </data>
-  <data name="panel12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 20</value>
-  </data>
-  <data name="panel12.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="&gt;&gt;panel12.Name" xml:space="preserve">
-    <value>panel12</value>
-  </data>
-  <data name="&gt;&gt;panel12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel12.Parent" xml:space="preserve">
-    <value>panel9</value>
-  </data>
-  <data name="&gt;&gt;panel12.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="panel5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="panel5.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;upDownSlowTime.Name" xml:space="preserve">
-    <value>upDownSlowTime</value>
-  </data>
-  <data name="&gt;&gt;upDownSlowTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;upDownSlowTime.Parent" xml:space="preserve">
-    <value>panel5</value>
-  </data>
-  <data name="&gt;&gt;upDownSlowTime.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panel6.Name" xml:space="preserve">
-    <value>panel6</value>
-  </data>
-  <data name="&gt;&gt;panel6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel6.Parent" xml:space="preserve">
-    <value>panel5</value>
-  </data>
-  <data name="&gt;&gt;panel6.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 70</value>
-  </data>
-  <data name="panel5.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>0, 20</value>
-  </data>
-  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 20</value>
-  </data>
-  <data name="panel5.TabIndex" type="System.Int32, mscorlib">
-    <value>27</value>
-  </data>
-  <data name="&gt;&gt;panel5.Name" xml:space="preserve">
-    <value>panel5</value>
-  </data>
-  <data name="&gt;&gt;panel5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel5.Parent" xml:space="preserve">
-    <value>panel9</value>
-  </data>
-  <data name="&gt;&gt;panel5.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="panel7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="panel7.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;upDownStapmLimit.Name" xml:space="preserve">
-    <value>upDownStapmLimit</value>
-  </data>
-  <data name="&gt;&gt;upDownStapmLimit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;upDownStapmLimit.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;upDownStapmLimit.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panel8.Name" xml:space="preserve">
-    <value>panel8</value>
-  </data>
-  <data name="&gt;&gt;panel8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel8.Parent" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;panel8.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 50</value>
-  </data>
-  <data name="panel7.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>0, 20</value>
-  </data>
-  <data name="panel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 20</value>
-  </data>
-  <data name="panel7.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="&gt;&gt;panel7.Name" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;panel7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel7.Parent" xml:space="preserve">
-    <value>panel9</value>
-  </data>
-  <data name="&gt;&gt;panel7.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="panel3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="panel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;upDownSlowLimit.Name" xml:space="preserve">
-    <value>upDownSlowLimit</value>
-  </data>
-  <data name="&gt;&gt;upDownSlowLimit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;upDownSlowLimit.Parent" xml:space="preserve">
-    <value>panel3</value>
-  </data>
-  <data name="&gt;&gt;upDownSlowLimit.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panel4.Name" xml:space="preserve">
-    <value>panel4</value>
-  </data>
-  <data name="&gt;&gt;panel4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel4.Parent" xml:space="preserve">
-    <value>panel3</value>
-  </data>
-  <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 30</value>
-  </data>
-  <data name="panel3.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>0, 20</value>
-  </data>
-  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 20</value>
-  </data>
-  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
-    <value>panel3</value>
-  </data>
-  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
-    <value>panel9</value>
-  </data>
-  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="panel1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="panel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;upDownFastLimit.Name" xml:space="preserve">
-    <value>upDownFastLimit</value>
-  </data>
-  <data name="&gt;&gt;upDownFastLimit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;upDownFastLimit.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;upDownFastLimit.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 10</value>
-  </data>
-  <data name="panel1.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>0, 20</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 20</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>panel9</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="ApplySettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="ApplySettings.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="ApplySettings.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ApplySettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 401</value>
-  </data>
-  <data name="ApplySettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>305, 26</value>
-  </data>
-  <data name="ApplySettings.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="ApplySettings.Text" xml:space="preserve">
-    <value>Apply Settings</value>
-  </data>
-  <data name="&gt;&gt;ApplySettings.Name" xml:space="preserve">
-    <value>ApplySettings</value>
-  </data>
-  <data name="&gt;&gt;ApplySettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ApplySettings.Parent" xml:space="preserve">
-    <value>panel9</value>
-  </data>
-  <data name="&gt;&gt;ApplySettings.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="panel9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="panel9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panel9.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>325, 0</value>
-  </data>
-  <data name="panel9.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 10, 10, 10</value>
-  </data>
-  <data name="panel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 437</value>
-  </data>
-  <data name="panel9.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;panel9.Name" xml:space="preserve">
-    <value>panel9</value>
-  </data>
-  <data name="&gt;&gt;panel9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel9.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panel9.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="upDownMaxCurrentLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
   </data>
@@ -735,6 +222,24 @@
   </data>
   <data name="&gt;&gt;upDownMaxCurrentLimit.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="checkMaxCurrentLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="checkMaxCurrentLimit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkMaxCurrentLimit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="checkMaxCurrentLimit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 20</value>
+  </data>
+  <data name="checkMaxCurrentLimit.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkMaxCurrentLimit.Text" xml:space="preserve">
+    <value>EDC / MaxCurrent Limit (A)</value>
   </data>
   <data name="&gt;&gt;checkMaxCurrentLimit.Name" xml:space="preserve">
     <value>checkMaxCurrentLimit</value>
@@ -772,35 +277,38 @@
   <data name="&gt;&gt;panel17.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="checkMaxCurrentLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
+  <data name="panel16.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="checkMaxCurrentLimit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="panel16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 150</value>
   </data>
-  <data name="checkMaxCurrentLimit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="panel16.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 20</value>
   </data>
-  <data name="checkMaxCurrentLimit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 20</value>
+  <data name="panel16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 20</value>
   </data>
-  <data name="checkMaxCurrentLimit.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="panel16.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
   </data>
-  <data name="checkMaxCurrentLimit.Text" xml:space="preserve">
-    <value>EDC / MaxCurrent Limit (A)</value>
+  <data name="&gt;&gt;panel16.Name" xml:space="preserve">
+    <value>panel16</value>
   </data>
-  <data name="&gt;&gt;checkMaxCurrentLimit.Name" xml:space="preserve">
-    <value>checkMaxCurrentLimit</value>
+  <data name="&gt;&gt;panel16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkMaxCurrentLimit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;panel16.Parent" xml:space="preserve">
+    <value>panel9</value>
   </data>
-  <data name="&gt;&gt;checkMaxCurrentLimit.Parent" xml:space="preserve">
-    <value>panel17</value>
+  <data name="&gt;&gt;panel16.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;checkMaxCurrentLimit.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="panel14.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="panel14.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="upDownCurrentLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -828,6 +336,24 @@
   </data>
   <data name="&gt;&gt;upDownCurrentLimit.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="checkCurrentLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="checkCurrentLimit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkCurrentLimit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="checkCurrentLimit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 20</value>
+  </data>
+  <data name="checkCurrentLimit.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkCurrentLimit.Text" xml:space="preserve">
+    <value>TDC / Current Limit (A)</value>
   </data>
   <data name="&gt;&gt;checkCurrentLimit.Name" xml:space="preserve">
     <value>checkCurrentLimit</value>
@@ -865,35 +391,38 @@
   <data name="&gt;&gt;panel15.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="checkCurrentLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
+  <data name="panel14.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="checkCurrentLimit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="panel14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 130</value>
   </data>
-  <data name="checkCurrentLimit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="panel14.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 20</value>
   </data>
-  <data name="checkCurrentLimit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 20</value>
+  <data name="panel14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 20</value>
   </data>
-  <data name="checkCurrentLimit.TabIndex" type="System.Int32, mscorlib">
+  <data name="panel14.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;panel14.Name" xml:space="preserve">
+    <value>panel14</value>
+  </data>
+  <data name="&gt;&gt;panel14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel14.Parent" xml:space="preserve">
+    <value>panel9</value>
+  </data>
+  <data name="&gt;&gt;panel14.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="checkCurrentLimit.Text" xml:space="preserve">
-    <value>TDC / Current Limit (A)</value>
+  <data name="panel10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;checkCurrentLimit.Name" xml:space="preserve">
-    <value>checkCurrentLimit</value>
-  </data>
-  <data name="&gt;&gt;checkCurrentLimit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkCurrentLimit.Parent" xml:space="preserve">
-    <value>panel15</value>
-  </data>
-  <data name="&gt;&gt;checkCurrentLimit.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="panel10.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="upDownTctlTemp.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -921,6 +450,24 @@
   </data>
   <data name="&gt;&gt;upDownTctlTemp.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="checkTctlTemp.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="checkTctlTemp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkTctlTemp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="checkTctlTemp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 20</value>
+  </data>
+  <data name="checkTctlTemp.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkTctlTemp.Text" xml:space="preserve">
+    <value>TCTL Temperature Limit (°C)</value>
   </data>
   <data name="&gt;&gt;checkTctlTemp.Name" xml:space="preserve">
     <value>checkTctlTemp</value>
@@ -958,35 +505,38 @@
   <data name="&gt;&gt;panel11.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="checkTctlTemp.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
+  <data name="panel10.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="checkTctlTemp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="panel10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 110</value>
   </data>
-  <data name="checkTctlTemp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="panel10.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 20</value>
   </data>
-  <data name="checkTctlTemp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 20</value>
+  <data name="panel10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 20</value>
   </data>
-  <data name="checkTctlTemp.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="panel10.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
   </data>
-  <data name="checkTctlTemp.Text" xml:space="preserve">
-    <value>TCTL Temperature Limit (°C)</value>
+  <data name="&gt;&gt;panel10.Name" xml:space="preserve">
+    <value>panel10</value>
   </data>
-  <data name="&gt;&gt;checkTctlTemp.Name" xml:space="preserve">
-    <value>checkTctlTemp</value>
+  <data name="&gt;&gt;panel10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkTctlTemp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;panel10.Parent" xml:space="preserve">
+    <value>panel9</value>
   </data>
-  <data name="&gt;&gt;checkTctlTemp.Parent" xml:space="preserve">
-    <value>panel11</value>
+  <data name="&gt;&gt;panel10.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;checkTctlTemp.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="panel12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="panel12.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="upDownStapmTime.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -1014,6 +564,24 @@
   </data>
   <data name="&gt;&gt;upDownStapmTime.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="checkStapmTime.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="checkStapmTime.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkStapmTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="checkStapmTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 20</value>
+  </data>
+  <data name="checkStapmTime.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="checkStapmTime.Text" xml:space="preserve">
+    <value>PL1 / Slow Boost Duration (s)</value>
   </data>
   <data name="&gt;&gt;checkStapmTime.Name" xml:space="preserve">
     <value>checkStapmTime</value>
@@ -1051,35 +619,38 @@
   <data name="&gt;&gt;panel13.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="checkStapmTime.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
+  <data name="panel12.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="checkStapmTime.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="panel12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 90</value>
   </data>
-  <data name="checkStapmTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="panel12.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 20</value>
   </data>
-  <data name="checkStapmTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 20</value>
+  <data name="panel12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 20</value>
   </data>
-  <data name="checkStapmTime.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="panel12.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
   </data>
-  <data name="checkStapmTime.Text" xml:space="preserve">
-    <value>PL1 / Slow Boost Duration (s)</value>
+  <data name="&gt;&gt;panel12.Name" xml:space="preserve">
+    <value>panel12</value>
   </data>
-  <data name="&gt;&gt;checkStapmTime.Name" xml:space="preserve">
-    <value>checkStapmTime</value>
+  <data name="&gt;&gt;panel12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkStapmTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;panel12.Parent" xml:space="preserve">
+    <value>panel9</value>
   </data>
-  <data name="&gt;&gt;checkStapmTime.Parent" xml:space="preserve">
-    <value>panel13</value>
+  <data name="&gt;&gt;panel12.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;checkStapmTime.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="panel5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="panel5.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="upDownSlowTime.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -1107,6 +678,24 @@
   </data>
   <data name="&gt;&gt;upDownSlowTime.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="checkSlowTime.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="checkSlowTime.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkSlowTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="checkSlowTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 20</value>
+  </data>
+  <data name="checkSlowTime.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkSlowTime.Text" xml:space="preserve">
+    <value>PL2 / Fast Boost Duration (s)</value>
   </data>
   <data name="&gt;&gt;checkSlowTime.Name" xml:space="preserve">
     <value>checkSlowTime</value>
@@ -1144,35 +733,38 @@
   <data name="&gt;&gt;panel6.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="checkSlowTime.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
+  <data name="panel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="checkSlowTime.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 70</value>
   </data>
-  <data name="checkSlowTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="panel5.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 20</value>
   </data>
-  <data name="checkSlowTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 20</value>
+  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 20</value>
   </data>
-  <data name="checkSlowTime.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="panel5.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
   </data>
-  <data name="checkSlowTime.Text" xml:space="preserve">
-    <value>PL2 / Fast Boost Duration (s)</value>
+  <data name="&gt;&gt;panel5.Name" xml:space="preserve">
+    <value>panel5</value>
   </data>
-  <data name="&gt;&gt;checkSlowTime.Name" xml:space="preserve">
-    <value>checkSlowTime</value>
+  <data name="&gt;&gt;panel5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkSlowTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;panel5.Parent" xml:space="preserve">
+    <value>panel9</value>
   </data>
-  <data name="&gt;&gt;checkSlowTime.Parent" xml:space="preserve">
-    <value>panel6</value>
+  <data name="&gt;&gt;panel5.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
-  <data name="&gt;&gt;checkSlowTime.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="panel7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="panel7.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="upDownStapmLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -1200,6 +792,24 @@
   </data>
   <data name="&gt;&gt;upDownStapmLimit.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="checkStapmLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="checkStapmLimit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkStapmLimit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="checkStapmLimit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 20</value>
+  </data>
+  <data name="checkStapmLimit.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="checkStapmLimit.Text" xml:space="preserve">
+    <value>PL0 / STAPM Limit (W)</value>
   </data>
   <data name="&gt;&gt;checkStapmLimit.Name" xml:space="preserve">
     <value>checkStapmLimit</value>
@@ -1237,35 +847,38 @@
   <data name="&gt;&gt;panel8.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="checkStapmLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
+  <data name="panel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="checkStapmLimit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="panel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 50</value>
   </data>
-  <data name="checkStapmLimit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="panel7.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 20</value>
   </data>
-  <data name="checkStapmLimit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 20</value>
+  <data name="panel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 20</value>
   </data>
-  <data name="checkStapmLimit.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="panel7.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
   </data>
-  <data name="checkStapmLimit.Text" xml:space="preserve">
-    <value>PL0 / STAPM Limit (W)</value>
+  <data name="&gt;&gt;panel7.Name" xml:space="preserve">
+    <value>panel7</value>
   </data>
-  <data name="&gt;&gt;checkStapmLimit.Name" xml:space="preserve">
-    <value>checkStapmLimit</value>
+  <data name="&gt;&gt;panel7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkStapmLimit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;panel7.Parent" xml:space="preserve">
+    <value>panel9</value>
   </data>
-  <data name="&gt;&gt;checkStapmLimit.Parent" xml:space="preserve">
-    <value>panel8</value>
+  <data name="&gt;&gt;panel7.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
-  <data name="&gt;&gt;checkStapmLimit.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="panel3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="panel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="upDownSlowLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -1293,6 +906,24 @@
   </data>
   <data name="&gt;&gt;upDownSlowLimit.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="checkSlowLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="checkSlowLimit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkSlowLimit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="checkSlowLimit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 20</value>
+  </data>
+  <data name="checkSlowLimit.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkSlowLimit.Text" xml:space="preserve">
+    <value>PL1 / Slow Limit (W)</value>
   </data>
   <data name="&gt;&gt;checkSlowLimit.Name" xml:space="preserve">
     <value>checkSlowLimit</value>
@@ -1330,35 +961,38 @@
   <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="checkSlowLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
+  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="checkSlowLimit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 30</value>
   </data>
-  <data name="checkSlowLimit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="panel3.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 20</value>
   </data>
-  <data name="checkSlowLimit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 20</value>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 20</value>
   </data>
-  <data name="checkSlowLimit.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
   </data>
-  <data name="checkSlowLimit.Text" xml:space="preserve">
-    <value>PL1 / Slow Limit (W)</value>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+    <value>panel3</value>
   </data>
-  <data name="&gt;&gt;checkSlowLimit.Name" xml:space="preserve">
-    <value>checkSlowLimit</value>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkSlowLimit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>panel9</value>
   </data>
-  <data name="&gt;&gt;checkSlowLimit.Parent" xml:space="preserve">
-    <value>panel4</value>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
-  <data name="&gt;&gt;checkSlowLimit.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="panel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="panel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="upDownFastLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -1386,6 +1020,24 @@
   </data>
   <data name="&gt;&gt;upDownFastLimit.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="checkFastLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="checkFastLimit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkFastLimit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="checkFastLimit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 20</value>
+  </data>
+  <data name="checkFastLimit.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="checkFastLimit.Text" xml:space="preserve">
+    <value>PL2 / Fast Limit (W)</value>
   </data>
   <data name="&gt;&gt;checkFastLimit.Name" xml:space="preserve">
     <value>checkFastLimit</value>
@@ -1423,34 +1075,94 @@
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="checkFastLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="checkFastLimit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 10</value>
+  </data>
+  <data name="panel1.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 20</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 20</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>panel9</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="ApplySettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="ApplySettings.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="ApplySettings.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkFastLimit.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="ApplySettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 225</value>
+  </data>
+  <data name="ApplySettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 26</value>
+  </data>
+  <data name="ApplySettings.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="ApplySettings.Text" xml:space="preserve">
+    <value>Apply Settings</value>
+  </data>
+  <data name="&gt;&gt;ApplySettings.Name" xml:space="preserve">
+    <value>ApplySettings</value>
+  </data>
+  <data name="&gt;&gt;ApplySettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ApplySettings.Parent" xml:space="preserve">
+    <value>panel9</value>
+  </data>
+  <data name="&gt;&gt;ApplySettings.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="panel9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="panel9.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="checkFastLimit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 20</value>
+  <data name="panel9.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>350, 0</value>
   </data>
-  <data name="checkFastLimit.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="panel9.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 10, 10, 10</value>
   </data>
-  <data name="checkFastLimit.Text" xml:space="preserve">
-    <value>PL2 / Fast Limit (W)</value>
+  <data name="panel9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>350, 261</value>
   </data>
-  <data name="&gt;&gt;checkFastLimit.Name" xml:space="preserve">
-    <value>checkFastLimit</value>
+  <data name="panel9.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
   </data>
-  <data name="&gt;&gt;checkFastLimit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;panel9.Name" xml:space="preserve">
+    <value>panel9</value>
   </data>
-  <data name="&gt;&gt;checkFastLimit.Parent" xml:space="preserve">
-    <value>panel2</value>
+  <data name="&gt;&gt;panel9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkFastLimit.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panel9.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel9.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="notifyIconRMT.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -1749,7 +1461,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>325, 437</value>
+    <value>350, 261</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2032,7 +1744,7 @@
 </value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>341, 266</value>
+    <value>366, 300</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Renoir Mobile Tuning</value>

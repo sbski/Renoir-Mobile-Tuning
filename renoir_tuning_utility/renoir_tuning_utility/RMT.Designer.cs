@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RMT));
             this.panel9 = new System.Windows.Forms.Panel();
+            this.ShowSensors = new System.Windows.Forms.Button();
             this.labelRenoirMobileTuning = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
             this.upDownMaxCurrentLimit = new System.Windows.Forms.NumericUpDown();
@@ -66,7 +67,6 @@
             this.checkFastLimit = new System.Windows.Forms.CheckBox();
             this.ApplySettings = new System.Windows.Forms.Button();
             this.notifyIconRMT = new System.Windows.Forms.NotifyIcon(this.components);
-            this.ShowSensors = new System.Windows.Forms.Button();
             this.panel9.SuspendLayout();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).BeginInit();
@@ -110,6 +110,13 @@
             this.panel9.Controls.Add(this.panel1);
             this.panel9.Controls.Add(this.ApplySettings);
             this.panel9.Name = "panel9";
+            // 
+            // ShowSensors
+            // 
+            resources.ApplyResources(this.ShowSensors, "ShowSensors");
+            this.ShowSensors.Name = "ShowSensors";
+            this.ShowSensors.UseVisualStyleBackColor = true;
+            this.ShowSensors.Click += new System.EventHandler(this.ShowSensors_Click);
             // 
             // labelRenoirMobileTuning
             // 
@@ -444,13 +451,6 @@
             // 
             resources.ApplyResources(this.notifyIconRMT, "notifyIconRMT");
             this.notifyIconRMT.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIconRMT_MouseDoubleClick);
-            // 
-            // ShowSensors
-            // 
-            resources.ApplyResources(this.ShowSensors, "ShowSensors");
-            this.ShowSensors.Name = "ShowSensors";
-            this.ShowSensors.UseVisualStyleBackColor = true;
-            this.ShowSensors.Click += new System.EventHandler(this.ShowSensors_Click);
             // 
             // RMT
             // 

@@ -48,7 +48,7 @@ namespace renoir_tuning_utility
                 Args = new uint[6];
                 RyzenAccess = new Smu();
                 RyzenAccess.Initialize();
-                labelRenoirMobileTuning.Text += RyzenAccess.GetCpuName();
+                labelRenoirMobileTuning.Text += " - " + RyzenAccess.GetCpuName();
                 
                 if (RyzenAccess.SendPsmu(0x66, ref Args) == Smu.Status.OK)
                 {

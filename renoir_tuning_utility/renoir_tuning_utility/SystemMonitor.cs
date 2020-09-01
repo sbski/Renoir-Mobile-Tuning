@@ -127,14 +127,14 @@ namespace renoir_tuning_utility
             Sensors.Add(CreatePowerMonitoringItem("Current Power", (uint)0x00C));
             Sensors.Add(CreatePowerMonitoringItem("Slow Limit", (uint)0x010));
             Sensors.Add(CreatePowerMonitoringItem("Slow Power", (uint)0x014));
-            Sensors.Add(CreatePowerMonitoringItem("EDC Limit", (uint)0x020));
-            Sensors.Add(CreatePowerMonitoringItem("EDC Used", (uint)0x024));
-            Sensors.Add(CreatePowerMonitoringItem("Soc EDC Limit", (uint)0x028));
-            Sensors.Add(CreatePowerMonitoringItem("Soc EDC Used", (uint)0x02C));
-            Sensors.Add(CreatePowerMonitoringItem("TDC Limit", (uint)0x030));
-            Sensors.Add(CreatePowerMonitoringItem("TDC Used", (uint)0x034));
-            Sensors.Add(CreatePowerMonitoringItem("Soc TDC Limit", (uint)0x038));
-            Sensors.Add(CreatePowerMonitoringItem("Soc TDC Used", (uint)0x03C));
+            Sensors.Add(CreatePowerMonitoringItem("TDC Limit", (uint)0x020));
+            Sensors.Add(CreatePowerMonitoringItem("TDC Used", (uint)0x024));
+            Sensors.Add(CreatePowerMonitoringItem("Soc TDC Limit", (uint)0x028));
+            Sensors.Add(CreatePowerMonitoringItem("Soc TDC Used", (uint)0x02C));
+            Sensors.Add(CreatePowerMonitoringItem("EDC Limit", (uint)0x030));
+            Sensors.Add(CreatePowerMonitoringItem("EDC Used", (uint)0x034));
+            Sensors.Add(CreatePowerMonitoringItem("Soc EDC Limit", (uint)0x038));
+            Sensors.Add(CreatePowerMonitoringItem("Soc EDC Used", (uint)0x03C));
             Sensors.Add(CreatePowerMonitoringItem("Core Temperature", (uint)0x044));
             Sensors.Add(CreatePowerMonitoringItem("Gfx Temperature", (uint)0x04C));
             Sensors.Add(CreatePowerMonitoringItem("Soc Temperature", (uint)0x054));
@@ -145,14 +145,21 @@ namespace renoir_tuning_utility
         
         private void RefreshData()
         {
+            RyzenAccess.Initialize();
+            Args = new uint[] { 0, 0, 0, 0, 0, 0 };
+            RyzenAccess.SendPsmu(0x65, ref Args);
             int Index = 0;
-            foreach(var item in Sensors)
+            //string TestPrint = "";
+            foreach (var item in Sensors)
             {
-                Sensors[Index].Value = $"{ReadFloat(Address, OffsetTable[Index]):F6}";
+                Sensors[Index].Value = $"{ReadFloat(Address, OffsetTable[Index]):F4}";
+                //Thread.Sleep(10);
+                //TestPrint += (Sensors[Index].Value + Environment.NewLine);
                 Index++;
             }
             CpuData.Refresh();
-            MessageBox.Show("I am alive still");
+            RyzenAccess.Deinitialize();
+            //MessageBox.Show(TestPrint);
 
         }
 
