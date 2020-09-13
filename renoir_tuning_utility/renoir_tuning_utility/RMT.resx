@@ -156,40 +156,6 @@
   <data name="&gt;&gt;ShowSensors.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="labelRenoirMobileTuning.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelRenoirMobileTuning.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="labelRenoirMobileTuning.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 212</value>
-  </data>
-  <data name="labelRenoirMobileTuning.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
-  </data>
-  <data name="labelRenoirMobileTuning.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="labelRenoirMobileTuning.Text" xml:space="preserve">
-    <value>RMT v0.2.1
-</value>
-  </data>
-  <data name="labelRenoirMobileTuning.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;labelRenoirMobileTuning.Name" xml:space="preserve">
-    <value>labelRenoirMobileTuning</value>
-  </data>
-  <data name="&gt;&gt;labelRenoirMobileTuning.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelRenoirMobileTuning.Parent" xml:space="preserve">
-    <value>panel9</value>
-  </data>
-  <data name="&gt;&gt;labelRenoirMobileTuning.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="panel16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -302,7 +268,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel16.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="panel14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -416,7 +382,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel14.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="panel10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -530,7 +496,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel10.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="panel12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -644,7 +610,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel12.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="panel5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -758,7 +724,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel5.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="panel7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -872,7 +838,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel7.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="panel3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -986,7 +952,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="panel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1100,7 +1066,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="ApplySettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -1112,7 +1078,7 @@
     <value>NoControl</value>
   </data>
   <data name="ApplySettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 225</value>
+    <value>10, 212</value>
   </data>
   <data name="ApplySettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>330, 26</value>
@@ -1133,6 +1099,40 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;ApplySettings.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="labelRenoirMobileTuning.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelRenoirMobileTuning.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="labelRenoirMobileTuning.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 238</value>
+  </data>
+  <data name="labelRenoirMobileTuning.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 13</value>
+  </data>
+  <data name="labelRenoirMobileTuning.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="labelRenoirMobileTuning.Text" xml:space="preserve">
+    <value>RMT v0.2.1
+</value>
+  </data>
+  <data name="labelRenoirMobileTuning.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;labelRenoirMobileTuning.Name" xml:space="preserve">
+    <value>labelRenoirMobileTuning</value>
+  </data>
+  <data name="&gt;&gt;labelRenoirMobileTuning.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelRenoirMobileTuning.Parent" xml:space="preserve">
+    <value>panel9</value>
+  </data>
+  <data name="&gt;&gt;labelRenoirMobileTuning.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
   <data name="panel9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">

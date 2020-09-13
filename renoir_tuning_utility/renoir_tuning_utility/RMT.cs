@@ -21,17 +21,10 @@ namespace renoir_tuning_utility
         uint Address;
         Smu RyzenAccess;
 
-        private float fastLimit, slowLimit, stapmLimit, slowTime, stapmTime, currentLimit;
         public RMT()
         {
             
             InitializeComponent();
-            fastLimit = -1;
-            slowLimit = -1;
-            stapmLimit = -1;
-            slowTime = -1;
-            stapmTime = -1;
-            currentLimit = -1;
             upDownTctlTemp.Enabled = false;
             upDownStapmLimit.Enabled = false;
             upDownSlowTime.Enabled = false;
@@ -41,7 +34,7 @@ namespace renoir_tuning_utility
             upDownFastLimit.Enabled = false;
             upDownMaxCurrentLimit.Enabled = false;
 
-            labelRenoirMobileTuning.Text = "RMT v0.3.0";
+            labelRenoirMobileTuning.Text = "RMT v0.3.0-A";
 
             if (true)
             {
@@ -77,6 +70,27 @@ namespace renoir_tuning_utility
             
 
 
+        }
+
+        public bool CheckSettings(float FastLimit, float SlowLimit, float StapmLimit, float SlowTime, float StapmTime, float TctlTemp, float CurrentLimit, float MaxCurrentLimit, object sender, EventArgs e)
+        {
+            bool fl = FastLimit != (float)upDownFastLimit.Value && checkFastLimit.Checked;
+            bool sl = SlowLimit != (float)upDownSlowLimit.Value && checkSlowLimit.Checked;
+            bool stl = StapmLimit != (float)upDownStapmLimit.Value && checkStapmLimit.Checked;
+            bool st = SlowTime != (float)upDownSlowTime.Value && checkSlowTime.Checked;
+            bool stt = StapmTime != (float)upDownStapmTime.Value && checkStapmTime.Checked;
+            bool tctl = TctlTemp != (float)upDownTctlTemp.Value && checkTctlTemp.Checked;
+            bool cl = CurrentLimit != (float)upDownCurrentLimit.Value && checkCurrentLimit.Checked;
+            bool mcl = MaxCurrentLimit != (float)upDownMaxCurrentLimit.Value && checkMaxCurrentLimit.Checked;
+
+
+            if (fl || sl || stl || st || stt || tctl || cl || mcl)
+            {
+                ApplySettings_Click(sender, e);
+                return true;
+            }
+
+            return false;
         }
 
         private void Form1_Load(object sender, EventArgs e)

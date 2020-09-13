@@ -99,7 +99,6 @@
             resources.ApplyResources(this.panel9, "panel9");
             this.panel9.BackColor = System.Drawing.Color.Transparent;
             this.panel9.Controls.Add(this.ShowSensors);
-            this.panel9.Controls.Add(this.labelRenoirMobileTuning);
             this.panel9.Controls.Add(this.panel16);
             this.panel9.Controls.Add(this.panel14);
             this.panel9.Controls.Add(this.panel10);
@@ -109,6 +108,7 @@
             this.panel9.Controls.Add(this.panel3);
             this.panel9.Controls.Add(this.panel1);
             this.panel9.Controls.Add(this.ApplySettings);
+            this.panel9.Controls.Add(this.labelRenoirMobileTuning);
             this.panel9.Name = "panel9";
             // 
             // ShowSensors

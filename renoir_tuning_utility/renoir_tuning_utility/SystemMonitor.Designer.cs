@@ -187,6 +187,8 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(280, 39);
             this.Name = "SystemMonitor";
+            this.Opacity = 0.95D;
+            this.ShowIcon = false;
             this.Text = "SystemMonitor";
             ((System.ComponentModel.ISupportInitialize)(this.CpuData)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
