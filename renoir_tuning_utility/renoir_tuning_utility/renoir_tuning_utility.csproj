@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>D:\</PublishUrl>
+    <PublishUrl>C:\Users\Keato\Desktop\RMT\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -75,10 +75,10 @@
     <ApplicationIcon>Renoir Mobile Tuning Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>26104181082AA97113BEDEAD29AD80F0C6D58CFE</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>2E365B0508E3965AA50A3C2CCD67CEDB796B0573</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>renoir_tuning_utility_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>renoir_tuning_utility_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>false</GenerateManifests>
@@ -95,6 +95,15 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>renoir_tuning_utility.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>renoir_tuning_utility_1_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -154,6 +163,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="renoir_tuning_utility_1_TemporaryKey.pfx" />
+    <None Include="renoir_tuning_utility_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
