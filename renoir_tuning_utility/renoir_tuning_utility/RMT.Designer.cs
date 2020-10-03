@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RMT));
             this.panel9 = new System.Windows.Forms.Panel();
             this.ShowSensors = new System.Windows.Forms.Button();
-            this.labelRenoirMobileTuning = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
             this.upDownMaxCurrentLimit = new System.Windows.Forms.NumericUpDown();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -66,6 +65,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.checkFastLimit = new System.Windows.Forms.CheckBox();
             this.ApplySettings = new System.Windows.Forms.Button();
+            this.labelRenoirMobileTuning = new System.Windows.Forms.Label();
             this.notifyIconRMT = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel9.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -117,12 +117,6 @@
             this.ShowSensors.Name = "ShowSensors";
             this.ShowSensors.UseVisualStyleBackColor = true;
             this.ShowSensors.Click += new System.EventHandler(this.ShowSensors_Click);
-            // 
-            // labelRenoirMobileTuning
-            // 
-            resources.ApplyResources(this.labelRenoirMobileTuning, "labelRenoirMobileTuning");
-            this.labelRenoirMobileTuning.ForeColor = System.Drawing.Color.Gray;
-            this.labelRenoirMobileTuning.Name = "labelRenoirMobileTuning";
             // 
             // panel16
             // 
@@ -446,6 +440,12 @@
             this.ApplySettings.Name = "ApplySettings";
             this.ApplySettings.UseVisualStyleBackColor = false;
             this.ApplySettings.Click += new System.EventHandler(this.ApplySettings_Click);
+            // 
+            // labelRenoirMobileTuning
+            // 
+            resources.ApplyResources(this.labelRenoirMobileTuning, "labelRenoirMobileTuning");
+            this.labelRenoirMobileTuning.ForeColor = System.Drawing.Color.Gray;
+            this.labelRenoirMobileTuning.Name = "labelRenoirMobileTuning";
             // 
             // notifyIconRMT
             // 
