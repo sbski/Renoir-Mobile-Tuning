@@ -9,12 +9,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using OpenLibSys;
 using System.Reflection;
+using System.Windows.Forms;
 
 [assembly: CLSCompliant(false)]
 
 
 namespace RyzenSmu
 {
+
+
     public class PerfomanceCounter
     {
         public String Description { get; protected set; }
@@ -223,8 +226,11 @@ namespace RyzenSmu
 
         
         Ols RyzenAccesss;
-        public Smu()
+        
+
+        public Smu(bool EnableDebug)
         {
+            ShowDebug = EnableDebug;
             RyzenAccesss = new Ols();
             //RyzenAccesss.InitializeOls();
 
@@ -239,23 +245,40 @@ namespace RyzenSmu
             PSMU_ADDR_MSG = 0x03B10A20;
             PSMU_ADDR_RSP = 0x03B10A80;
             PSMU_ADDR_ARG = 0x03B10A88;
+            
+            
 
             // Check WinRing0 status
             switch (RyzenAccesss.GetDllStatus())
             {
                 case (uint)Ols.OlsDllStatus.OLS_DLL_NO_ERROR:
+                    if (ShowDebug)
+                    {
+                        MessageBox.Show("Ols Dll is OK.", "Ols.OlsDllStatus:");
+                    }
                     break;
                 case (uint)Ols.OlsDllStatus.OLS_DLL_DRIVER_NOT_LOADED:
+                    MessageBox.Show("WinRing OLS_DRIVER_NOT_LOADED", "Ols.OlsDllStatus:");
                     throw new ApplicationException("WinRing OLS_DRIVER_NOT_LOADED");
+
                 case (uint)Ols.OlsDllStatus.OLS_DLL_UNSUPPORTED_PLATFORM:
+                    MessageBox.Show("WinRing OLS_UNSUPPORTED_PLATFORM", "Ols.OlsDllStatus:");
                     throw new ApplicationException("WinRing OLS_UNSUPPORTED_PLATFORM");
+
                 case (uint)Ols.OlsDllStatus.OLS_DLL_DRIVER_NOT_FOUND:
+                    MessageBox.Show("WinRing OLS_DLL_DRIVER_NOT_FOUND", "Ols.OlsDllStatus:");
                     throw new ApplicationException("WinRing OLS_DLL_DRIVER_NOT_FOUND");
+
                 case (uint)Ols.OlsDllStatus.OLS_DLL_DRIVER_UNLOADED:
+                    MessageBox.Show("WinRing OLS_DLL_DRIVER_UNLOADED", "Ols.OlsDllStatus:");
                     throw new ApplicationException("WinRing OLS_DLL_DRIVER_UNLOADED");
+
                 case (uint)Ols.OlsDllStatus.OLS_DLL_DRIVER_NOT_LOADED_ON_NETWORK:
+                    MessageBox.Show("WinRing DRIVER_NOT_LOADED_ON_NETWORK", "Ols.OlsDllStatus:");
                     throw new ApplicationException("WinRing DRIVER_NOT_LOADED_ON_NETWORK");
+
                 case (uint)Ols.OlsDllStatus.OLS_DLL_UNKNOWN_ERROR:
+                    MessageBox.Show("WinRing OLS_DLL_UNKNOWN_ERROR", "Ols.OlsDllStatus:");
                     throw new ApplicationException("WinRing OLS_DLL_UNKNOWN_ERROR");
             }
             WriteReg(PSMU_ADDR_RSP, 0x1);
@@ -263,7 +286,36 @@ namespace RyzenSmu
 
         public void Initialize()
         {
+            
             RyzenAccesss.InitializeOls();
+
+            // Check WinRing0 status
+            switch (RyzenAccesss.GetStatus())
+            {
+                case (uint)Ols.Status.NO_ERROR:
+                    if (ShowDebug)
+                    {
+                        MessageBox.Show("Ols is OK.", "Ols.Status:");
+                        ShowDebug = false;
+                    }
+                    break;
+                case (uint)Ols.Status.DLL_NOT_FOUND:
+                    MessageBox.Show("WinRing Status: DLL_NOT_FOUND", "Ols.Status:");
+                    throw new ApplicationException("WinRing DLL_NOT_FOUND");
+                    break;
+                case (uint)Ols.Status.DLL_INCORRECT_VERSION:
+                    MessageBox.Show("WinRing Status: DLL_INCORRECT_VERSION", "Ols.Status:");
+                    throw new ApplicationException("WinRing DLL_INCORRECT_VERSION");
+                    break;
+                case (uint)Ols.Status.DLL_INITIALIZE_ERROR:
+                    MessageBox.Show("WinRing Status: DLL_INITIALIZE_ERROR", "Ols.Status:");
+                    throw new ApplicationException("WinRing DLL_INITIALIZE_ERROR");
+                    break;
+                default:
+                    break;
+
+
+            }
         }
 
         public void Deinitialize()
@@ -285,6 +337,8 @@ namespace RyzenSmu
         public uint PSMU_ADDR_RSP { get; protected set; }
         public uint PSMU_ADDR_ARG { get; protected set; }
         public uint[] Args { get; set; }
+
+        public bool ShowDebug { get; set; }
 
         public Status SendMp1(uint message, ref uint[] arguments)
         {
@@ -428,98 +482,6 @@ namespace RyzenSmu
         
         */
 
-        public enum CounterIndex : uint
-        {
-            STAPM_LIMIT = 0x000,
-            STAPM_POWER = 0x004,
-            FAST_LIMIT = 0x008,
-            CURRENT_POWER = 0x00C,
-            SLOW_LIMIT = 0x010,
-            SLOW_POWER = 0x014,
-            EDC_LIMIT = 0x020,
-            EDC_USED = 0x024,
-            SOC_EDC_LIMIT = 0x028,
-            SOC_EDC_USED = 0x02C,
-            TDC_LIMIT = 0x030,
-            TDC_USED = 0x034,
-            SOC_TDC_LIMIT = 0x038,
-            SOC_TDC_USED = 0x03C,
-            THERMAL_JUNCTION = 0x040,
-            CURRENT_TEMP = 0x044,
-            THERMAL_JUNCTION_2 = 0x048,
-            CORE_TEMP = 0x04C,
-            THERMAL_JUNCTION_3 = 0x050,
-            CORE_TEMP_2 = 0x054,
-            SVI_PEAK_CORE = 0x070,
-            SVI_CORE = 0x074,
-            IF_FREQUENCY = 0x144,
-            IF_FREQUENCY_2 = 0x148,
-            UNCORE_FREQUENCY = 0x154,
-            UNCORE_FREQUENCY_2 = 0x158,
-            MCLK_FREQUENCY = 0x164,
-            MCLK_FREQUENCY_2 = 0x168,
-            SVI_SOC = 0x174,
-            CLDO_VDDG = 0x178,
-            MAX_CORE_CLK = 0x480,
-            MIN_CORE_CLK = 0x4A0,
-            C_STATES = 0x4E0,
-            GATED_CLOCK = 0x520,
-            IGPU_FREQUENCY = 0x5B4,
-            IF_FREQUENCY_3 = 0x5CC,
-            UNCORE_FREQUENCY_3 = 0x5D0,
-            MCLK_FREQUENCY_3 = 0x5D4,
-            IF_FREQUENCY_4 = 0x5F4,
-            UNCORE_FREQUENCY_4 = 0x5F8,
-            MCLK_FREQUENCY_4    = 0x5FC,
-            GPU_SOC_CLOCK = 0x65C,
-            BAD
-        }
-
-        private static readonly Dictionary<Smu.CounterIndex, String> CounterName = new Dictionary<Smu.CounterIndex, string>()
-        {
-            { Smu.CounterIndex.STAPM_LIMIT, "stapm_limit" },
-            { Smu.CounterIndex.STAPM_POWER, "stapm_power" },
-            { Smu.CounterIndex.FAST_LIMIT, "fast_limit" },
-            { Smu.CounterIndex.CURRENT_POWER, "current_power" },
-            { Smu.CounterIndex.SLOW_LIMIT, "slow_limit" },
-            { Smu.CounterIndex.SLOW_POWER, "slow_power" },
-            { Smu.CounterIndex.EDC_LIMIT, "edc_limit" },
-            { Smu.CounterIndex.EDC_USED, "edc_used" },
-            { Smu.CounterIndex.SOC_EDC_LIMIT, "soc_edc_limit" },
-            { Smu.CounterIndex.SOC_EDC_USED, "soc_edc_used" },
-            { Smu.CounterIndex.TDC_LIMIT, "tdc_limit" },
-            { Smu.CounterIndex.TDC_USED, "tdc_used" },
-            { Smu.CounterIndex.SOC_TDC_LIMIT, "soc_tdc_limit" },
-            { Smu.CounterIndex.SOC_TDC_USED, "soc_tdc_used" },
-            { Smu.CounterIndex.THERMAL_JUNCTION, "thermal_junction" },
-            { Smu.CounterIndex.CURRENT_TEMP, "current_temp" },
-            { Smu.CounterIndex.THERMAL_JUNCTION_2, "thermal_junction_2" },
-            { Smu.CounterIndex.CORE_TEMP, "core_temp" },
-            { Smu.CounterIndex.THERMAL_JUNCTION_3, "thermal_junction_3" },
-            { Smu.CounterIndex.CORE_TEMP_2, "core_temp_2" },
-            { Smu.CounterIndex.SVI_PEAK_CORE, "svi_peak_core" },
-            { Smu.CounterIndex.SVI_CORE, "svi_core" },
-            { Smu.CounterIndex.IF_FREQUENCY, "if_frequency" },
-            { Smu.CounterIndex.IF_FREQUENCY_2, "if_frequency_2" },
-            { Smu.CounterIndex.UNCORE_FREQUENCY, "uncore_frequency" },
-            { Smu.CounterIndex.UNCORE_FREQUENCY_2, "uncore_frequency_2" },
-            { Smu.CounterIndex.MCLK_FREQUENCY, "mclk_frequency" },
-            { Smu.CounterIndex.MCLK_FREQUENCY_2, "mclk_frequency_2" },
-            { Smu.CounterIndex.SVI_SOC, "svi_soc" },
-            { Smu.CounterIndex.CLDO_VDDG, "cldo_vddg" },
-            { Smu.CounterIndex.MAX_CORE_CLK, "max_core_clk" },
-            { Smu.CounterIndex.MIN_CORE_CLK, "min_core_clk" },
-            { Smu.CounterIndex.C_STATES, "c_states" },
-            { Smu.CounterIndex.GATED_CLOCK, "gated_clock" },
-            { Smu.CounterIndex.IGPU_FREQUENCY, "igpu_frequency" },
-            { Smu.CounterIndex.IF_FREQUENCY_3, "if_frequency_3" },
-            { Smu.CounterIndex.UNCORE_FREQUENCY_3, "uncore_frequency_3" },
-            { Smu.CounterIndex.MCLK_FREQUENCY_3, "mclk_frequency_3" },
-            { Smu.CounterIndex.IF_FREQUENCY_4, "if_frequency_4" },
-            { Smu.CounterIndex.UNCORE_FREQUENCY_4, "uncore_frequency_4" },
-            { Smu.CounterIndex.MCLK_FREQUENCY_4, "mclk_frequency_4" },
-            { Smu.CounterIndex.GPU_SOC_CLOCK, "gpu_soc_clock" },
-            { Smu.CounterIndex.BAD, "" }
-        };
+        
     }
 }

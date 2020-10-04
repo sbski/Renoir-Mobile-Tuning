@@ -519,6 +519,9 @@
   <data name="upDownStapmTime.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="upDownStapmTime.ThousandsSeparator" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="&gt;&gt;upDownStapmTime.Name" xml:space="preserve">
     <value>upDownStapmTime</value>
   </data>

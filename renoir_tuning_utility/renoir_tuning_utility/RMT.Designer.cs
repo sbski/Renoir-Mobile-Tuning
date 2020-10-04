@@ -250,18 +250,8 @@
             // upDownStapmTime
             // 
             resources.ApplyResources(this.upDownStapmTime, "upDownStapmTime");
-            this.upDownStapmTime.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
             this.upDownStapmTime.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.upDownStapmTime.Minimum = new decimal(new int[] {
-            10,
+            100000,
             0,
             0,
             0});
@@ -303,7 +293,7 @@
             0});
             this.upDownSlowTime.Name = "upDownSlowTime";
             this.upDownSlowTime.Value = new decimal(new int[] {
-            4,
+            5,
             0,
             0,
             0});

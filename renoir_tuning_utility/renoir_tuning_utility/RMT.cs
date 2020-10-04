@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,16 +15,37 @@ using RyzenSmu;
 
 namespace renoir_tuning_utility
 {
+
     public partial class RMT : Form
     {
+        [DllImport("inpoutx64.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool GetPhysLong(UIntPtr memAddress, out uint Data);
+
+        private static float ReadFloat(uint Address, uint Offset)
+        {
+            uint Data = 0;
+            GetPhysLong((UIntPtr)(Address + Offset), out Data);
+
+            byte[] bytes = new byte[4];
+            bytes = BitConverter.GetBytes(Data);
+
+            float PmData = BitConverter.ToSingle(bytes, 0);
+            //Console.WriteLine($"0x{Address + Offset * 4,8:X8} | {PmData:F}");
+            return PmData;
+        }
+
         uint Msg;
         uint[] Args;
         uint Address;
         Smu RyzenAccess;
-
+        bool EnableDebug;
+        bool LoadValues;
+        UInt32 PMTableVersion;
         public RMT()
         {
-            
+            EnableDebug = false;
+            LoadValues = true;
             InitializeComponent();
             upDownTctlTemp.Enabled = false;
             upDownStapmLimit.Enabled = false;
@@ -34,36 +56,122 @@ namespace renoir_tuning_utility
             upDownFastLimit.Enabled = false;
             upDownMaxCurrentLimit.Enabled = false;
 
-            labelRenoirMobileTuning.Text = "RMT v0.3.0-A";
 
-            if (true)
+            labelRenoirMobileTuning.Text = "RMT v1.0.4";
+            
+            
+
+            if (LoadValues)
             {
                 Args = new uint[6];
-                RyzenAccess = new Smu();
+                RyzenAccess = new Smu(EnableDebug);
                 RyzenAccess.Initialize();
                 labelRenoirMobileTuning.Text += " - " + RyzenAccess.GetCpuName();
                 
                 if (RyzenAccess.SendPsmu(0x66, ref Args) == Smu.Status.OK)
                 {
+                    
                     Address = Args[0];
                     Args[0] = 0;
-                    if (RyzenAccess.SendPsmu(0x65, ref Args) == Smu.Status.OK)
+                    RyzenAccess.SendPsmu(0x65, ref Args);
+                    float TestValue = ReadFloat(Address, (uint)768);
+                    if (TestValue == 0.0)
                     {
-                        upDownStapmLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x0));
-                        upDownFastLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x2));
-                        upDownSlowLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x4));
 
-                        upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x221));
-                        upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x220));
+                        PMTableVersion = 0x00370005;
+                        if (RyzenAccess.SendPsmu(0x65, ref Args) == Smu.Status.OK)
+                        {
+                            if(EnableDebug)
+                                MessageBox.Show($"Address: 0x{Address:X8} -> {TestValue:F}", "Version 0x00370005");
+                            upDownStapmLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x0));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded STAPM Limit", "1/8");
 
-                        upDownTctlTemp.Value = (decimal)(Smu.ReadFloat(Address, 0x10));
-                        upDownCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x8));
-                        upDownMaxCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xC));
+                            upDownFastLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x2));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded Fast Limit", "2/8");
 
+                            upDownSlowLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x4));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded Slow Limit", "3/8");
+
+                            upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x228));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded Slow PPT Time", "4/8");
+
+                            upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x227));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded STAPM Time", "5/8");
+
+
+                            upDownTctlTemp.Value = (decimal)(Smu.ReadFloat(Address, 0x10));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded Tctl Temp", "6/8");
+
+                            upDownCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x8));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded Current Limit", "7/8");
+
+                            upDownMaxCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xC));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded Max Current Limit Time", "8/8");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to communicate with SMU");
+                        }
+                    }
+                    else
+                    {
+                        PMTableVersion = 0x00370004;
+                        if (RyzenAccess.SendPsmu(0x65, ref Args) == Smu.Status.OK)
+                        {
+
+                            if (EnableDebug)
+                                MessageBox.Show($"Address: 0x{Address:X8} -> {TestValue:F}", "Version 0x00370005");
+                            upDownStapmLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x0));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded STAPM Limit", "1/8");
+
+                            upDownFastLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x2));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded Fast Limit", "2/8");
+
+                            upDownSlowLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x4));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded Slow Limit", "3/8");
+
+                            upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x221));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded Slow PPT Time", "4/8");
+
+                            upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x220));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded STAPM Time", "5/8");
+
+
+                            upDownTctlTemp.Value = (decimal)(Smu.ReadFloat(Address, 0x10));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded Tctl Temp", "6/8");
+
+                            upDownCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x8));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded Current Limit", "7/8");
+
+                            upDownMaxCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xC));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded Max Current Limit Time", "8/8");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to communicate with SMU");
+                        }
+
+
+                    }
                         //upDownSocCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xA));
                         //upDownSocMaxCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xE));
 
-                    }
                 }
 
             }
@@ -132,11 +240,11 @@ namespace renoir_tuning_utility
 
         private void ApplySettings_Click(object sender, EventArgs e)
         {
-            RyzenAccess = new Smu();
+            RyzenAccess = new Smu(false);
 
             RyzenAccess.Initialize();
 
-            String exe = Directory.GetCurrentDirectory() + "\\smu-tool\\smu-tool.exe";
+            //String exe = Directory.GetCurrentDirectory() + "\\smu-tool\\smu-tool.exe";
             
             int i = 0;
             Smu.Status[] Statuses = new Smu.Status[8];
