@@ -1357,6 +1357,36 @@
   <data name="notifyIconRMT.Text" xml:space="preserve">
     <value>Renoir Mobile Tuning</value>
   </data>
+  <data name="buttonLoadSettings.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="buttonLoadSettings.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonLoadSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 50</value>
+  </data>
+  <data name="buttonLoadSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 25</value>
+  </data>
+  <data name="buttonLoadSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="buttonLoadSettings.Text" xml:space="preserve">
+    <value>Load Settings</value>
+  </data>
+  <data name="&gt;&gt;buttonLoadSettings.Name" xml:space="preserve">
+    <value>buttonLoadSettings</value>
+  </data>
+  <data name="&gt;&gt;buttonLoadSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonLoadSettings.Parent" xml:space="preserve">
+    <value>panelBottomDock</value>
+  </data>
+  <data name="&gt;&gt;buttonLoadSettings.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="buttonSaveSettings.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
@@ -1385,7 +1415,7 @@
     <value>panelBottomDock</value>
   </data>
   <data name="&gt;&gt;buttonSaveSettings.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="labelRenoirMobileTuning.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1419,7 +1449,7 @@
     <value>panelBottomDock</value>
   </data>
   <data name="&gt;&gt;labelRenoirMobileTuning.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="ShowSensors.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1446,7 +1476,7 @@
     <value>panelBottomDock</value>
   </data>
   <data name="&gt;&gt;ShowSensors.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="ApplySettings.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -1476,7 +1506,7 @@
     <value>panelBottomDock</value>
   </data>
   <data name="&gt;&gt;ApplySettings.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="panelBottomDock.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>

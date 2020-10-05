@@ -65,10 +65,11 @@
             this.checkFastLimit = new System.Windows.Forms.CheckBox();
             this.notifyIconRMT = new System.Windows.Forms.NotifyIcon(this.components);
             this.panelBottomDock = new System.Windows.Forms.Panel();
+            this.buttonSaveSettings = new System.Windows.Forms.Button();
             this.labelRenoirMobileTuning = new System.Windows.Forms.Label();
             this.ShowSensors = new System.Windows.Forms.Button();
             this.ApplySettings = new System.Windows.Forms.Button();
-            this.buttonSaveSettings = new System.Windows.Forms.Button();
+            this.buttonLoadSettings = new System.Windows.Forms.Button();
             this.panel9.SuspendLayout();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).BeginInit();
@@ -421,12 +422,23 @@
             // 
             // panelBottomDock
             // 
+            this.panelBottomDock.Controls.Add(this.buttonLoadSettings);
             this.panelBottomDock.Controls.Add(this.buttonSaveSettings);
             this.panelBottomDock.Controls.Add(this.labelRenoirMobileTuning);
             this.panelBottomDock.Controls.Add(this.ShowSensors);
             this.panelBottomDock.Controls.Add(this.ApplySettings);
             resources.ApplyResources(this.panelBottomDock, "panelBottomDock");
             this.panelBottomDock.Name = "panelBottomDock";
+            // 
+            // buttonSaveSettings
+            // 
+            this.buttonSaveSettings.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSaveSettings.Cursor = System.Windows.Forms.Cursors.Arrow;
+            resources.ApplyResources(this.buttonSaveSettings, "buttonSaveSettings");
+            this.buttonSaveSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.buttonSaveSettings.Name = "buttonSaveSettings";
+            this.buttonSaveSettings.UseVisualStyleBackColor = false;
+            this.buttonSaveSettings.Click += new System.EventHandler(this.buttonSaveSettings_Click);
             // 
             // labelRenoirMobileTuning
             // 
@@ -450,15 +462,15 @@
             this.ApplySettings.UseVisualStyleBackColor = false;
             this.ApplySettings.Click += new System.EventHandler(this.ApplySettings_Click_1);
             // 
-            // buttonSaveSettings
+            // buttonLoadSettings
             // 
-            this.buttonSaveSettings.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonSaveSettings.Cursor = System.Windows.Forms.Cursors.Arrow;
-            resources.ApplyResources(this.buttonSaveSettings, "buttonSaveSettings");
-            this.buttonSaveSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.buttonSaveSettings.Name = "buttonSaveSettings";
-            this.buttonSaveSettings.UseVisualStyleBackColor = false;
-            this.buttonSaveSettings.Click += new System.EventHandler(this.buttonSaveSettings_Click);
+            this.buttonLoadSettings.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonLoadSettings.Cursor = System.Windows.Forms.Cursors.Arrow;
+            resources.ApplyResources(this.buttonLoadSettings, "buttonLoadSettings");
+            this.buttonLoadSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.buttonLoadSettings.Name = "buttonLoadSettings";
+            this.buttonLoadSettings.UseVisualStyleBackColor = false;
+            this.buttonLoadSettings.Click += new System.EventHandler(this.buttonLoadSettings_Click);
             // 
             // RMT
             // 
@@ -547,6 +559,7 @@
         private System.Windows.Forms.Button ShowSensors;
         private System.Windows.Forms.Button ApplySettings;
         private System.Windows.Forms.Button buttonSaveSettings;
+        private System.Windows.Forms.Button buttonLoadSettings;
     }
 }
 

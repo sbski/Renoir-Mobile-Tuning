@@ -58,7 +58,7 @@ namespace renoir_tuning_utility
             upDownMaxCurrentLimit.Enabled = false;
 
             PowerSetting CurrentSetting;
-            labelRenoirMobileTuning.Text = "RMT v1.0.4";
+            labelRenoirMobileTuning.Text = "RMT v1.0.5";
             
             
 
@@ -516,19 +516,31 @@ namespace renoir_tuning_utility
         {
             PowerSetting CurrentSetting = new PowerSetting();
             CurrentSetting.Name = "Test";
-            CurrentSetting.FastLimit = Convert.ToUInt32(upDownFastLimit.Value * 1000);
             CurrentSetting.StapmLimit = Convert.ToUInt32(upDownStapmLimit.Value * 1000);
-            CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownFastLimit.Value * 1000);
-            CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownSlowLimit.Value * 1000);
-            CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownSlowTime.Value);
-            CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownStapmTime.Value);
-            CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownTctlTemp.Value);
+            CurrentSetting.FastLimit = Convert.ToUInt32(upDownFastLimit.Value * 1000);
+            CurrentSetting.SlowLimit = Convert.ToUInt32(upDownSlowLimit.Value * 1000);
+            CurrentSetting.SlowTime = Convert.ToUInt32(upDownSlowTime.Value);
+            CurrentSetting.StapmTime = Convert.ToUInt32(upDownStapmTime.Value);
+            CurrentSetting.TctlTemp = Convert.ToUInt32(upDownTctlTemp.Value);
             CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
             CurrentSetting.MaxCurrentLimit = Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
 
             File.WriteAllText("test.json", JsonConvert.SerializeObject(CurrentSetting));
             
 
+        }
+
+        private void buttonLoadSettings_Click(object sender, EventArgs e)
+        {
+            PowerSetting CurrentSetting = JsonConvert.DeserializeObject<PowerSetting>(File.ReadLines("test.json").First());
+            upDownFastLimit.Value = CurrentSetting.FastLimit / 1000;
+            upDownSlowLimit.Value = CurrentSetting.SlowLimit / 1000;
+            upDownStapmLimit.Value = CurrentSetting.StapmLimit / 1000;
+            upDownSlowTime.Value = CurrentSetting.SlowTime;
+            upDownStapmTime.Value = CurrentSetting.StapmTime;
+            upDownTctlTemp.Value = CurrentSetting.TctlTemp;
+            upDownCurrentLimit.Value = CurrentSetting.CurrentLimit / 1000;
+            upDownMaxCurrentLimit.Value = CurrentSetting.MaxCurrentLimit / 1000;
         }
     }
 }
