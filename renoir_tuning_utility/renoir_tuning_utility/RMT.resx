@@ -125,37 +125,6 @@
   <data name="panel9.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="ShowSensors.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="ShowSensors.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="ShowSensors.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 189</value>
-  </data>
-  <data name="ShowSensors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 23</value>
-  </data>
-  <data name="ShowSensors.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
-  <data name="ShowSensors.Text" xml:space="preserve">
-    <value>Show Sensors</value>
-  </data>
-  <data name="&gt;&gt;ShowSensors.Name" xml:space="preserve">
-    <value>ShowSensors</value>
-  </data>
-  <data name="&gt;&gt;ShowSensors.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ShowSensors.Parent" xml:space="preserve">
-    <value>panel9</value>
-  </data>
-  <data name="&gt;&gt;ShowSensors.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="panel16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -165,6 +134,7 @@
   <data name="upDownMaxCurrentLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="upDownMaxCurrentLimit.Location" type="System.Drawing.Point, System.Drawing">
     <value>200, 0</value>
   </data>
@@ -268,7 +238,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel16.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="panel14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -382,7 +352,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel14.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="panel10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -496,7 +466,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel10.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="panel12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -613,7 +583,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel12.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="panel5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -727,7 +697,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel5.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="panel7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -841,7 +811,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel7.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="panel3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -955,7 +925,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="panel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1069,74 +1039,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="ApplySettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="ApplySettings.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="ApplySettings.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ApplySettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 212</value>
-  </data>
-  <data name="ApplySettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 26</value>
-  </data>
-  <data name="ApplySettings.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="ApplySettings.Text" xml:space="preserve">
-    <value>Apply Settings</value>
-  </data>
-  <data name="&gt;&gt;ApplySettings.Name" xml:space="preserve">
-    <value>ApplySettings</value>
-  </data>
-  <data name="&gt;&gt;ApplySettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ApplySettings.Parent" xml:space="preserve">
-    <value>panel9</value>
-  </data>
-  <data name="&gt;&gt;ApplySettings.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="labelRenoirMobileTuning.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelRenoirMobileTuning.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="labelRenoirMobileTuning.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 238</value>
-  </data>
-  <data name="labelRenoirMobileTuning.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
-  </data>
-  <data name="labelRenoirMobileTuning.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="labelRenoirMobileTuning.Text" xml:space="preserve">
-    <value>RMT v0.2.1
-</value>
-  </data>
-  <data name="labelRenoirMobileTuning.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="&gt;&gt;labelRenoirMobileTuning.Name" xml:space="preserve">
-    <value>labelRenoirMobileTuning</value>
-  </data>
-  <data name="&gt;&gt;labelRenoirMobileTuning.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelRenoirMobileTuning.Parent" xml:space="preserve">
-    <value>panel9</value>
-  </data>
-  <data name="&gt;&gt;labelRenoirMobileTuning.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>7</value>
   </data>
   <data name="panel9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -1151,7 +1054,7 @@
     <value>10, 10, 10, 10</value>
   </data>
   <data name="panel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 261</value>
+    <value>350, 234</value>
   </data>
   <data name="panel9.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -1454,6 +1357,151 @@
   <data name="notifyIconRMT.Text" xml:space="preserve">
     <value>Renoir Mobile Tuning</value>
   </data>
+  <data name="buttonSaveSettings.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="buttonSaveSettings.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonSaveSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 19</value>
+  </data>
+  <data name="buttonSaveSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 25</value>
+  </data>
+  <data name="buttonSaveSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="buttonSaveSettings.Text" xml:space="preserve">
+    <value>Save Settings</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveSettings.Name" xml:space="preserve">
+    <value>buttonSaveSettings</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveSettings.Parent" xml:space="preserve">
+    <value>panelBottomDock</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveSettings.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelRenoirMobileTuning.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelRenoirMobileTuning.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelRenoirMobileTuning.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 3</value>
+  </data>
+  <data name="labelRenoirMobileTuning.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 13</value>
+  </data>
+  <data name="labelRenoirMobileTuning.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="labelRenoirMobileTuning.Text" xml:space="preserve">
+    <value>RMT v0.2.1
+</value>
+  </data>
+  <data name="labelRenoirMobileTuning.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;labelRenoirMobileTuning.Name" xml:space="preserve">
+    <value>labelRenoirMobileTuning</value>
+  </data>
+  <data name="&gt;&gt;labelRenoirMobileTuning.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelRenoirMobileTuning.Parent" xml:space="preserve">
+    <value>panelBottomDock</value>
+  </data>
+  <data name="&gt;&gt;labelRenoirMobileTuning.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ShowSensors.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ShowSensors.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 50</value>
+  </data>
+  <data name="ShowSensors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 25</value>
+  </data>
+  <data name="ShowSensors.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="ShowSensors.Text" xml:space="preserve">
+    <value>Show Sensors</value>
+  </data>
+  <data name="&gt;&gt;ShowSensors.Name" xml:space="preserve">
+    <value>ShowSensors</value>
+  </data>
+  <data name="&gt;&gt;ShowSensors.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ShowSensors.Parent" xml:space="preserve">
+    <value>panelBottomDock</value>
+  </data>
+  <data name="&gt;&gt;ShowSensors.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ApplySettings.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="ApplySettings.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ApplySettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 19</value>
+  </data>
+  <data name="ApplySettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 25</value>
+  </data>
+  <data name="ApplySettings.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="ApplySettings.Text" xml:space="preserve">
+    <value>Apply Settings</value>
+  </data>
+  <data name="&gt;&gt;ApplySettings.Name" xml:space="preserve">
+    <value>ApplySettings</value>
+  </data>
+  <data name="&gt;&gt;ApplySettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ApplySettings.Parent" xml:space="preserve">
+    <value>panelBottomDock</value>
+  </data>
+  <data name="&gt;&gt;ApplySettings.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="panelBottomDock.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="panelBottomDock.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 234</value>
+  </data>
+  <data name="panelBottomDock.Size" type="System.Drawing.Size, System.Drawing">
+    <value>580, 85</value>
+  </data>
+  <data name="panelBottomDock.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="&gt;&gt;panelBottomDock.Name" xml:space="preserve">
+    <value>panelBottomDock</value>
+  </data>
+  <data name="&gt;&gt;panelBottomDock.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panelBottomDock.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panelBottomDock.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -1464,7 +1512,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>350, 261</value>
+    <value>580, 319</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

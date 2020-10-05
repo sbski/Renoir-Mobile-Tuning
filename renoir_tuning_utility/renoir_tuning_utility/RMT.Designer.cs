@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RMT));
             this.panel9 = new System.Windows.Forms.Panel();
-            this.ShowSensors = new System.Windows.Forms.Button();
             this.panel16 = new System.Windows.Forms.Panel();
             this.upDownMaxCurrentLimit = new System.Windows.Forms.NumericUpDown();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -64,9 +63,12 @@
             this.upDownFastLimit = new System.Windows.Forms.NumericUpDown();
             this.panel2 = new System.Windows.Forms.Panel();
             this.checkFastLimit = new System.Windows.Forms.CheckBox();
-            this.ApplySettings = new System.Windows.Forms.Button();
-            this.labelRenoirMobileTuning = new System.Windows.Forms.Label();
             this.notifyIconRMT = new System.Windows.Forms.NotifyIcon(this.components);
+            this.panelBottomDock = new System.Windows.Forms.Panel();
+            this.labelRenoirMobileTuning = new System.Windows.Forms.Label();
+            this.ShowSensors = new System.Windows.Forms.Button();
+            this.ApplySettings = new System.Windows.Forms.Button();
+            this.buttonSaveSettings = new System.Windows.Forms.Button();
             this.panel9.SuspendLayout();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).BeginInit();
@@ -92,13 +94,13 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownFastLimit)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panelBottomDock.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel9
             // 
             resources.ApplyResources(this.panel9, "panel9");
             this.panel9.BackColor = System.Drawing.Color.Transparent;
-            this.panel9.Controls.Add(this.ShowSensors);
             this.panel9.Controls.Add(this.panel16);
             this.panel9.Controls.Add(this.panel14);
             this.panel9.Controls.Add(this.panel10);
@@ -107,16 +109,7 @@
             this.panel9.Controls.Add(this.panel7);
             this.panel9.Controls.Add(this.panel3);
             this.panel9.Controls.Add(this.panel1);
-            this.panel9.Controls.Add(this.ApplySettings);
-            this.panel9.Controls.Add(this.labelRenoirMobileTuning);
             this.panel9.Name = "panel9";
-            // 
-            // ShowSensors
-            // 
-            resources.ApplyResources(this.ShowSensors, "ShowSensors");
-            this.ShowSensors.Name = "ShowSensors";
-            this.ShowSensors.UseVisualStyleBackColor = true;
-            this.ShowSensors.Click += new System.EventHandler(this.ShowSensors_Click);
             // 
             // panel16
             // 
@@ -421,6 +414,32 @@
             this.checkFastLimit.UseVisualStyleBackColor = true;
             this.checkFastLimit.CheckedChanged += new System.EventHandler(this.checkFastLimit_CheckedChanged);
             // 
+            // notifyIconRMT
+            // 
+            resources.ApplyResources(this.notifyIconRMT, "notifyIconRMT");
+            this.notifyIconRMT.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIconRMT_MouseDoubleClick);
+            // 
+            // panelBottomDock
+            // 
+            this.panelBottomDock.Controls.Add(this.buttonSaveSettings);
+            this.panelBottomDock.Controls.Add(this.labelRenoirMobileTuning);
+            this.panelBottomDock.Controls.Add(this.ShowSensors);
+            this.panelBottomDock.Controls.Add(this.ApplySettings);
+            resources.ApplyResources(this.panelBottomDock, "panelBottomDock");
+            this.panelBottomDock.Name = "panelBottomDock";
+            // 
+            // labelRenoirMobileTuning
+            // 
+            resources.ApplyResources(this.labelRenoirMobileTuning, "labelRenoirMobileTuning");
+            this.labelRenoirMobileTuning.ForeColor = System.Drawing.Color.Gray;
+            this.labelRenoirMobileTuning.Name = "labelRenoirMobileTuning";
+            // 
+            // ShowSensors
+            // 
+            resources.ApplyResources(this.ShowSensors, "ShowSensors");
+            this.ShowSensors.Name = "ShowSensors";
+            this.ShowSensors.UseVisualStyleBackColor = true;
+            // 
             // ApplySettings
             // 
             this.ApplySettings.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -429,18 +448,17 @@
             this.ApplySettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ApplySettings.Name = "ApplySettings";
             this.ApplySettings.UseVisualStyleBackColor = false;
-            this.ApplySettings.Click += new System.EventHandler(this.ApplySettings_Click);
+            this.ApplySettings.Click += new System.EventHandler(this.ApplySettings_Click_1);
             // 
-            // labelRenoirMobileTuning
+            // buttonSaveSettings
             // 
-            resources.ApplyResources(this.labelRenoirMobileTuning, "labelRenoirMobileTuning");
-            this.labelRenoirMobileTuning.ForeColor = System.Drawing.Color.Gray;
-            this.labelRenoirMobileTuning.Name = "labelRenoirMobileTuning";
-            // 
-            // notifyIconRMT
-            // 
-            resources.ApplyResources(this.notifyIconRMT, "notifyIconRMT");
-            this.notifyIconRMT.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIconRMT_MouseDoubleClick);
+            this.buttonSaveSettings.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSaveSettings.Cursor = System.Windows.Forms.Cursors.Arrow;
+            resources.ApplyResources(this.buttonSaveSettings, "buttonSaveSettings");
+            this.buttonSaveSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.buttonSaveSettings.Name = "buttonSaveSettings";
+            this.buttonSaveSettings.UseVisualStyleBackColor = false;
+            this.buttonSaveSettings.Click += new System.EventHandler(this.buttonSaveSettings_Click);
             // 
             // RMT
             // 
@@ -449,6 +467,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.CausesValidation = false;
             this.Controls.Add(this.panel9);
+            this.Controls.Add(this.panelBottomDock);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Name = "RMT";
             this.Opacity = 0.95D;
@@ -480,6 +499,8 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.upDownFastLimit)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panelBottomDock.ResumeLayout(false);
+            this.panelBottomDock.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,15 +509,11 @@
         #endregion
 
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button ApplySettings;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.NumericUpDown upDownFastLimit;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.NumericUpDown upDownSlowLimit;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.CheckBox checkSlowLimit;
-        private System.Windows.Forms.CheckBox checkFastLimit;
+        internal System.Windows.Forms.NotifyIcon notifyIconRMT;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.NumericUpDown upDownMaxCurrentLimit;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.CheckBox checkMaxCurrentLimit;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.NumericUpDown upDownCurrentLimit;
         private System.Windows.Forms.Panel panel15;
@@ -517,13 +534,19 @@
         private System.Windows.Forms.NumericUpDown upDownStapmLimit;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.CheckBox checkStapmLimit;
-        private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.NumericUpDown upDownMaxCurrentLimit;
-        private System.Windows.Forms.Panel panel17;
-        private System.Windows.Forms.CheckBox checkMaxCurrentLimit;
-        internal System.Windows.Forms.NotifyIcon notifyIconRMT;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.NumericUpDown upDownSlowLimit;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.CheckBox checkSlowLimit;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.NumericUpDown upDownFastLimit;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.CheckBox checkFastLimit;
+        private System.Windows.Forms.Panel panelBottomDock;
         private System.Windows.Forms.Label labelRenoirMobileTuning;
         private System.Windows.Forms.Button ShowSensors;
+        private System.Windows.Forms.Button ApplySettings;
+        private System.Windows.Forms.Button buttonSaveSettings;
     }
 }
 

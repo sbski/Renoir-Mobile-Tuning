@@ -11,11 +11,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using RyzenSmu;
+using PowerSettings;
 
 namespace renoir_tuning_utility
 {
-
     public partial class RMT : Form
     {
         [DllImport("inpoutx64.dll")]
@@ -56,7 +57,7 @@ namespace renoir_tuning_utility
             upDownFastLimit.Enabled = false;
             upDownMaxCurrentLimit.Enabled = false;
 
-
+            PowerSetting CurrentSetting;
             labelRenoirMobileTuning.Text = "RMT v1.0.4";
             
             
@@ -254,7 +255,7 @@ namespace renoir_tuning_utility
             {
                 //Set Msg and Args
                 Msg = 0x14;
-                Args[0] = (uint)Convert.ToInt32(upDownStapmLimit.Value * 1000);
+                Args[0] = (uint)Convert.ToUInt32(upDownStapmLimit.Value * 1000);
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
@@ -267,7 +268,7 @@ namespace renoir_tuning_utility
             {
                 //Set Msg and Args
                 Msg = 0x15;
-                Args[0] = (uint)Convert.ToInt32(upDownFastLimit.Value * 1000);
+                Args[0] = (uint)Convert.ToUInt32(upDownFastLimit.Value * 1000);
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
@@ -280,7 +281,7 @@ namespace renoir_tuning_utility
             {
                 //Set Msg and Args
                 Msg = 0x16;
-                Args[0] = (uint)Convert.ToInt32(upDownSlowLimit.Value * 1000);
+                Args[0] = (uint)Convert.ToUInt32(upDownSlowLimit.Value * 1000);
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
@@ -293,7 +294,7 @@ namespace renoir_tuning_utility
             {
                 //Set Msg and Args
                 Msg = 0x17;
-                Args[0] = (uint)Convert.ToInt32(upDownSlowTime.Value);
+                Args[0] = (uint)Convert.ToUInt32(upDownSlowTime.Value);
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
@@ -306,7 +307,7 @@ namespace renoir_tuning_utility
             {
                 //Set Msg and Args
                 Msg = 0x18;
-                Args[0] = (uint)Convert.ToInt32(upDownStapmTime.Value);
+                Args[0] = (uint)Convert.ToUInt32(upDownStapmTime.Value);
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
@@ -319,7 +320,7 @@ namespace renoir_tuning_utility
             {
                 //Set Msg and Args
                 Msg = 0x19;
-                Args[0] = (uint)Convert.ToInt32(upDownTctlTemp.Value);
+                Args[0] = (uint)Convert.ToUInt32(upDownTctlTemp.Value);
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
@@ -332,7 +333,7 @@ namespace renoir_tuning_utility
             {
                 //Set Msg and Args
                 Msg = 0x1A;
-                Args[0] = (uint)Convert.ToInt32(upDownCurrentLimit.Value * 1000);
+                Args[0] = (uint)Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
@@ -344,7 +345,7 @@ namespace renoir_tuning_utility
             {
                 //Set Msg and Args
                 Msg = 0x1C;
-                Args[0] = (uint)Convert.ToInt32(upDownMaxCurrentLimit.Value * 1000);
+                Args[0] = (uint)Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
@@ -503,6 +504,30 @@ namespace renoir_tuning_utility
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void ApplySettings_Click_1(object sender, EventArgs e)
+        {
+            ApplySettings_Click(sender, e);
+        }
+
+        private void buttonSaveSettings_Click(object sender, EventArgs e)
+        {
+            PowerSetting CurrentSetting = new PowerSetting();
+            CurrentSetting.Name = "Test";
+            CurrentSetting.FastLimit = Convert.ToUInt32(upDownFastLimit.Value * 1000);
+            CurrentSetting.StapmLimit = Convert.ToUInt32(upDownStapmLimit.Value * 1000);
+            CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownFastLimit.Value * 1000);
+            CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownSlowLimit.Value * 1000);
+            CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownSlowTime.Value);
+            CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownStapmTime.Value);
+            CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownTctlTemp.Value);
+            CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
+            CurrentSetting.MaxCurrentLimit = Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
+
+            File.WriteAllText("test.json", JsonConvert.SerializeObject(CurrentSetting));
+            
 
         }
     }
