@@ -126,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PowerMonitoringItem.cs" />
+    <Compile Include="PowerSettings.cs" />
     <Compile Include="RMT.cs">
       <SubType>Form</SubType>
     </Compile>
