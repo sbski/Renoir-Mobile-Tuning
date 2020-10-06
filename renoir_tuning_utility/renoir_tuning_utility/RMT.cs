@@ -196,7 +196,7 @@ namespace renoir_tuning_utility
 
             if (fl || sl || stl || st || stt || tctl || cl || mcl)
             {
-                ApplySettings_Click(sender, e);
+                ApplySettings_Click_1(sender, e);
                 return true;
             }
 
@@ -240,7 +240,7 @@ namespace renoir_tuning_utility
             upDownCurrentLimit.Enabled = checkCurrentLimit.Checked;
         }
 
-        private void ApplySettings_Click(object sender, EventArgs e)
+        private void ApplySettings_Click_1(object sender, EventArgs e)
         {
             RyzenAccess = new Smu(false);
 
@@ -506,11 +506,6 @@ namespace renoir_tuning_utility
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        private void ApplySettings_Click_1(object sender, EventArgs e)
-        {
-            ApplySettings_Click(sender, e);
         }
 
         private void buttonSaveSettings_Click(object sender, EventArgs e)
