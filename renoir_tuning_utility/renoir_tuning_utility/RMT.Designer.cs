@@ -74,6 +74,7 @@
             this.Tuning = new System.Windows.Forms.TabPage();
             this.Presets = new System.Windows.Forms.TabPage();
             this.About = new System.Windows.Forms.TabPage();
+            this.checkSmartReapply = new System.Windows.Forms.CheckBox();
             this.panel9.SuspendLayout();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).BeginInit();
@@ -428,6 +429,7 @@
             // 
             // panelBottomDock
             // 
+            this.panelBottomDock.Controls.Add(this.checkSmartReapply);
             this.panelBottomDock.Controls.Add(this.checkShowSensors);
             this.panelBottomDock.Controls.Add(this.buttonLoadSettings);
             this.panelBottomDock.Controls.Add(this.buttonSaveSettings);
@@ -506,6 +508,13 @@
             resources.ApplyResources(this.About, "About");
             this.About.Name = "About";
             this.About.UseVisualStyleBackColor = true;
+            // 
+            // checkSmartReapply
+            // 
+            resources.ApplyResources(this.checkSmartReapply, "checkSmartReapply");
+            this.checkSmartReapply.Name = "checkSmartReapply";
+            this.checkSmartReapply.UseVisualStyleBackColor = true;
+            this.checkSmartReapply.CheckedChanged += new System.EventHandler(this.checkSmartReapply_CheckedChanged);
             // 
             // RMT
             // 
@@ -601,6 +610,7 @@
         private System.Windows.Forms.TabPage Tuning;
         private System.Windows.Forms.TabPage Presets;
         private System.Windows.Forms.TabPage About;
+        private System.Windows.Forms.CheckBox checkSmartReapply;
     }
 }
 

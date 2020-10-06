@@ -1,4 +1,6 @@
 ﻿using Microsoft.Win32;
+using Newtonsoft.Json;
+using PowerSettings;
 using RyzenSmu;
 using System;
 using System.Collections.Generic;
@@ -6,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.PerformanceData;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
@@ -669,7 +672,8 @@ namespace renoir_tuning_utility
         public void UptateTimer_Tick(object sender, EventArgs e)
         {
             RefreshData();
-            
+            PowerSetting CurrentSetting = JsonConvert.DeserializeObject<PowerSetting>(File.ReadLines("CurrentSettings.json").First());
+            CurrentSetting.CheckAndReapply(Address);
         }
 
         private void FillInTable()

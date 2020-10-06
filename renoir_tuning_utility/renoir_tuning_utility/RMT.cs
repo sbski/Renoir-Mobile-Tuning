@@ -49,14 +49,16 @@ namespace renoir_tuning_utility
             EnableDebug = false;
             LoadValues = true;
             InitializeComponent();
-            upDownTctlTemp.Enabled = false;
-            upDownStapmLimit.Enabled = false;
-            upDownSlowTime.Enabled = false;
-            upDownStapmTime.Enabled = false;
-            upDownCurrentLimit.Enabled = false;
-            upDownSlowLimit.Enabled = false;
-            upDownFastLimit.Enabled = false;
-            upDownMaxCurrentLimit.Enabled = false;
+            checkFastLimit.Checked = true;
+            checkSlowLimit.Checked = true;
+            checkStapmLimit.Checked = true;
+            checkSlowTime.Checked = true;
+            checkStapmTime.Checked = true;
+            checkTctlTemp.Checked = true;
+            checkCurrentLimit.Checked = true;
+            checkMaxCurrentLimit.Checked = true;
+
+
 
             PowerSetting CurrentSetting;
             labelRenoirMobileTuning.Text = "RMT v1.0.5";
@@ -117,6 +119,7 @@ namespace renoir_tuning_utility
                             upDownMaxCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xC));
                             if (EnableDebug)
                                 MessageBox.Show("Loaded Max Current Limit Time", "8/8");
+                            UpdateCurrentSettings();
                         }
                         else
                         {
@@ -163,6 +166,7 @@ namespace renoir_tuning_utility
                             upDownMaxCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xC));
                             if (EnableDebug)
                                 MessageBox.Show("Loaded Max Current Limit Time", "8/8");
+                            UpdateCurrentSettings();
                         }
                         else
                         {
@@ -377,6 +381,23 @@ namespace renoir_tuning_utility
 
         }
 
+        private void UpdateCurrentSettings()
+        {
+            PowerSetting CurrentSetting = new PowerSetting(PMTableVersion);
+            CurrentSetting.Name = "Current Settings";
+            CurrentSetting.SmartReapply = checkSmartReapply.Checked;
+            CurrentSetting.StapmLimit = Convert.ToUInt32(upDownStapmLimit.Value * 1000);
+            CurrentSetting.FastLimit = Convert.ToUInt32(upDownFastLimit.Value * 1000);
+            CurrentSetting.SlowLimit = Convert.ToUInt32(upDownSlowLimit.Value * 1000);
+            CurrentSetting.SlowTime = Convert.ToUInt32(upDownSlowTime.Value);
+            CurrentSetting.StapmTime = Convert.ToUInt32(upDownStapmTime.Value);
+            CurrentSetting.TctlTemp = Convert.ToUInt32(upDownTctlTemp.Value);
+            CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
+            CurrentSetting.MaxCurrentLimit = Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
+
+            File.WriteAllText("CurrentSettings.json", JsonConvert.SerializeObject(CurrentSetting));
+        }
+
         private void checkMaxCurrentLimit_CheckedChanged(object sender, EventArgs e)
         {
             upDownMaxCurrentLimit.Enabled = checkMaxCurrentLimit.Checked;
@@ -510,7 +531,7 @@ namespace renoir_tuning_utility
 
         private void buttonSaveSettings_Click(object sender, EventArgs e)
         {
-            PowerSetting CurrentSetting = new PowerSetting();
+            PowerSetting CurrentSetting = new PowerSetting(PMTableVersion);
             CurrentSetting.Name = "Test";
             CurrentSetting.StapmLimit = Convert.ToUInt32(upDownStapmLimit.Value * 1000);
             CurrentSetting.FastLimit = Convert.ToUInt32(upDownFastLimit.Value * 1000);
@@ -552,6 +573,26 @@ namespace renoir_tuning_utility
                 MonitoringThread.Abort();
             }
                 
+        }
+
+        private void checkSmartReapply_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateCurrentSettings();
+            if (checkSmartReapply.Checked)
+            {
+                if (checkShowSensors.Checked)
+                    checkShowSensors.Enabled = false;
+                else
+                {
+                    checkShowSensors.Checked = true;
+                    checkShowSensors.Enabled = false;
+                }
+            }
+            else
+            {
+                checkShowSensors.Enabled = true;
+            }
+
         }
     }
 }

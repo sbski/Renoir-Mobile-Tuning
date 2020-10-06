@@ -1354,6 +1354,33 @@
   <data name="notifyIconRMT.Text" xml:space="preserve">
     <value>Renoir Mobile Tuning</value>
   </data>
+  <data name="checkSmartReapply.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkSmartReapply.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 50</value>
+  </data>
+  <data name="checkSmartReapply.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 17</value>
+  </data>
+  <data name="checkSmartReapply.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="checkSmartReapply.Text" xml:space="preserve">
+    <value>Smart Reapply</value>
+  </data>
+  <data name="&gt;&gt;checkSmartReapply.Name" xml:space="preserve">
+    <value>checkSmartReapply</value>
+  </data>
+  <data name="&gt;&gt;checkSmartReapply.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkSmartReapply.Parent" xml:space="preserve">
+    <value>panelBottomDock</value>
+  </data>
+  <data name="&gt;&gt;checkSmartReapply.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="checkShowSensors.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1379,7 +1406,7 @@
     <value>panelBottomDock</value>
   </data>
   <data name="&gt;&gt;checkShowSensors.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="buttonLoadSettings.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -1388,7 +1415,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonLoadSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 50</value>
+    <value>364, 19</value>
   </data>
   <data name="buttonLoadSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 25</value>
@@ -1409,7 +1436,7 @@
     <value>panelBottomDock</value>
   </data>
   <data name="&gt;&gt;buttonLoadSettings.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="buttonSaveSettings.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -1439,7 +1466,7 @@
     <value>panelBottomDock</value>
   </data>
   <data name="&gt;&gt;buttonSaveSettings.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="labelRenoirMobileTuning.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1473,7 +1500,7 @@
     <value>panelBottomDock</value>
   </data>
   <data name="&gt;&gt;labelRenoirMobileTuning.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="ApplySettings.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -1503,7 +1530,7 @@
     <value>panelBottomDock</value>
   </data>
   <data name="&gt;&gt;ApplySettings.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="panelBottomDock.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
