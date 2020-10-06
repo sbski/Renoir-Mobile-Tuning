@@ -125,6 +125,121 @@
   <data name="panel9.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="panel18.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="panel18.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="upDownGfxClk.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="upDownGfxClk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 0</value>
+  </data>
+  <data name="upDownGfxClk.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="upDownGfxClk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 20</value>
+  </data>
+  <data name="upDownGfxClk.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;upDownGfxClk.Name" xml:space="preserve">
+    <value>upDownGfxClk</value>
+  </data>
+  <data name="&gt;&gt;upDownGfxClk.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;upDownGfxClk.Parent" xml:space="preserve">
+    <value>panel18</value>
+  </data>
+  <data name="&gt;&gt;upDownGfxClk.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkGfxClk.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="checkGfxClk.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkGfxClk.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="checkGfxClk.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 20</value>
+  </data>
+  <data name="checkGfxClk.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="checkGfxClk.Text" xml:space="preserve">
+    <value>Gfx Clk (Mhz)</value>
+  </data>
+  <data name="&gt;&gt;checkGfxClk.Name" xml:space="preserve">
+    <value>checkGfxClk</value>
+  </data>
+  <data name="&gt;&gt;checkGfxClk.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkGfxClk.Parent" xml:space="preserve">
+    <value>panel19</value>
+  </data>
+  <data name="&gt;&gt;checkGfxClk.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel19.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="panel19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panel19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 20</value>
+  </data>
+  <data name="panel19.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel19.Name" xml:space="preserve">
+    <value>panel19</value>
+  </data>
+  <data name="&gt;&gt;panel19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel19.Parent" xml:space="preserve">
+    <value>panel18</value>
+  </data>
+  <data name="&gt;&gt;panel19.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel18.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 170</value>
+  </data>
+  <data name="panel18.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>0, 20</value>
+  </data>
+  <data name="panel18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 20</value>
+  </data>
+  <data name="panel18.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="&gt;&gt;panel18.Name" xml:space="preserve">
+    <value>panel18</value>
+  </data>
+  <data name="&gt;&gt;panel18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel18.Parent" xml:space="preserve">
+    <value>panel9</value>
+  </data>
+  <data name="&gt;&gt;panel18.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="panel16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -134,7 +249,6 @@
   <data name="upDownMaxCurrentLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="upDownMaxCurrentLimit.Location" type="System.Drawing.Point, System.Drawing">
     <value>200, 0</value>
   </data>
@@ -238,7 +352,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel16.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="panel14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -352,7 +466,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel14.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="panel10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -466,7 +580,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel10.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="panel12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -583,7 +697,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel12.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="panel5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -697,7 +811,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel5.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="panel7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -811,7 +925,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel7.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="panel3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -925,7 +1039,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="panel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1039,7 +1153,7 @@
     <value>panel9</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="panel9.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 6</value>
@@ -1051,7 +1165,7 @@
     <value>10, 10, 10, 10</value>
   </data>
   <data name="panel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 180</value>
+    <value>350, 200</value>
   </data>
   <data name="panel9.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -1536,10 +1650,10 @@
     <value>Bottom</value>
   </data>
   <data name="panelBottomDock.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 224</value>
+    <value>0, 297</value>
   </data>
   <data name="panelBottomDock.Size" type="System.Drawing.Size, System.Drawing">
-    <value>575, 85</value>
+    <value>596, 85</value>
   </data>
   <data name="panelBottomDock.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
@@ -1563,7 +1677,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="Tuning.Size" type="System.Drawing.Size, System.Drawing">
-    <value>567, 198</value>
+    <value>588, 271</value>
   </data>
   <data name="Tuning.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1647,7 +1761,7 @@
     <value>0, 218</value>
   </data>
   <data name="menuBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>575, 224</value>
+    <value>596, 297</value>
   </data>
   <data name="menuBar.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
@@ -1674,7 +1788,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>575, 309</value>
+    <value>596, 382</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

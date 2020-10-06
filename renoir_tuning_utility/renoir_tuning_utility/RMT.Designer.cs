@@ -65,6 +65,7 @@
             this.checkFastLimit = new System.Windows.Forms.CheckBox();
             this.notifyIconRMT = new System.Windows.Forms.NotifyIcon(this.components);
             this.panelBottomDock = new System.Windows.Forms.Panel();
+            this.checkSmartReapply = new System.Windows.Forms.CheckBox();
             this.checkShowSensors = new System.Windows.Forms.CheckBox();
             this.buttonLoadSettings = new System.Windows.Forms.Button();
             this.buttonSaveSettings = new System.Windows.Forms.Button();
@@ -74,7 +75,10 @@
             this.Tuning = new System.Windows.Forms.TabPage();
             this.Presets = new System.Windows.Forms.TabPage();
             this.About = new System.Windows.Forms.TabPage();
-            this.checkSmartReapply = new System.Windows.Forms.CheckBox();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.upDownGfxClk = new System.Windows.Forms.NumericUpDown();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.checkGfxClk = new System.Windows.Forms.CheckBox();
             this.panel9.SuspendLayout();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).BeginInit();
@@ -103,12 +107,16 @@
             this.panelBottomDock.SuspendLayout();
             this.menuBar.SuspendLayout();
             this.Tuning.SuspendLayout();
+            this.panel18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.upDownGfxClk)).BeginInit();
+            this.panel19.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel9
             // 
             resources.ApplyResources(this.panel9, "panel9");
             this.panel9.BackColor = System.Drawing.Color.Transparent;
+            this.panel9.Controls.Add(this.panel18);
             this.panel9.Controls.Add(this.panel16);
             this.panel9.Controls.Add(this.panel14);
             this.panel9.Controls.Add(this.panel10);
@@ -438,6 +446,13 @@
             resources.ApplyResources(this.panelBottomDock, "panelBottomDock");
             this.panelBottomDock.Name = "panelBottomDock";
             // 
+            // checkSmartReapply
+            // 
+            resources.ApplyResources(this.checkSmartReapply, "checkSmartReapply");
+            this.checkSmartReapply.Name = "checkSmartReapply";
+            this.checkSmartReapply.UseVisualStyleBackColor = true;
+            this.checkSmartReapply.CheckedChanged += new System.EventHandler(this.checkSmartReapply_CheckedChanged);
+            // 
             // checkShowSensors
             // 
             resources.ApplyResources(this.checkShowSensors, "checkShowSensors");
@@ -509,12 +524,44 @@
             this.About.Name = "About";
             this.About.UseVisualStyleBackColor = true;
             // 
-            // checkSmartReapply
+            // panel18
             // 
-            resources.ApplyResources(this.checkSmartReapply, "checkSmartReapply");
-            this.checkSmartReapply.Name = "checkSmartReapply";
-            this.checkSmartReapply.UseVisualStyleBackColor = true;
-            this.checkSmartReapply.CheckedChanged += new System.EventHandler(this.checkSmartReapply_CheckedChanged);
+            resources.ApplyResources(this.panel18, "panel18");
+            this.panel18.Controls.Add(this.upDownGfxClk);
+            this.panel18.Controls.Add(this.panel19);
+            this.panel18.Name = "panel18";
+            // 
+            // upDownGfxClk
+            // 
+            resources.ApplyResources(this.upDownGfxClk, "upDownGfxClk");
+            this.upDownGfxClk.Maximum = new decimal(new int[] {
+            2500,
+            0,
+            0,
+            0});
+            this.upDownGfxClk.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.upDownGfxClk.Name = "upDownGfxClk";
+            this.upDownGfxClk.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // panel19
+            // 
+            this.panel19.Controls.Add(this.checkGfxClk);
+            resources.ApplyResources(this.panel19, "panel19");
+            this.panel19.Name = "panel19";
+            // 
+            // checkGfxClk
+            // 
+            resources.ApplyResources(this.checkGfxClk, "checkGfxClk");
+            this.checkGfxClk.Name = "checkGfxClk";
+            this.checkGfxClk.UseVisualStyleBackColor = true;
             // 
             // RMT
             // 
@@ -560,6 +607,9 @@
             this.menuBar.ResumeLayout(false);
             this.Tuning.ResumeLayout(false);
             this.Tuning.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.upDownGfxClk)).EndInit();
+            this.panel19.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -611,6 +661,10 @@
         private System.Windows.Forms.TabPage Presets;
         private System.Windows.Forms.TabPage About;
         private System.Windows.Forms.CheckBox checkSmartReapply;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.NumericUpDown upDownGfxClk;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.CheckBox checkGfxClk;
     }
 }
 

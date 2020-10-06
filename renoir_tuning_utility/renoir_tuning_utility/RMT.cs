@@ -119,12 +119,19 @@ namespace renoir_tuning_utility
                             upDownMaxCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xC));
                             if (EnableDebug)
                                 MessageBox.Show("Loaded Max Current Limit Time", "8/8");
+
+                            upDownGfxClk.Value = (decimal)(Smu.ReadFloat(Address, 0x174));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded Max Current Limit Time", "9/9");
+
                             UpdateCurrentSettings();
+                            
                         }
                         else
                         {
                             MessageBox.Show("Failed to communicate with SMU");
                         }
+
                     }
                     else
                     {
@@ -136,36 +143,41 @@ namespace renoir_tuning_utility
                                 MessageBox.Show($"Address: 0x{Address:X8} -> {TestValue:F}", "Version 0x00370005");
                             upDownStapmLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x0));
                             if (EnableDebug)
-                                MessageBox.Show("Loaded STAPM Limit", "1/8");
+                                MessageBox.Show("Loaded STAPM Limit", "1/9");
 
                             upDownFastLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x2));
                             if (EnableDebug)
-                                MessageBox.Show("Loaded Fast Limit", "2/8");
+                                MessageBox.Show("Loaded Fast Limit", "2/9");
 
                             upDownSlowLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x4));
                             if (EnableDebug)
-                                MessageBox.Show("Loaded Slow Limit", "3/8");
+                                MessageBox.Show("Loaded Slow Limit", "3/9");
 
                             upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x221));
                             if (EnableDebug)
-                                MessageBox.Show("Loaded Slow PPT Time", "4/8");
+                                MessageBox.Show("Loaded Slow PPT Time", "4/9");
 
                             upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x220));
                             if (EnableDebug)
-                                MessageBox.Show("Loaded STAPM Time", "5/8");
+                                MessageBox.Show("Loaded STAPM Time", "5/9");
 
 
                             upDownTctlTemp.Value = (decimal)(Smu.ReadFloat(Address, 0x10));
                             if (EnableDebug)
-                                MessageBox.Show("Loaded Tctl Temp", "6/8");
+                                MessageBox.Show("Loaded Tctl Temp", "6/9");
 
                             upDownCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x8));
                             if (EnableDebug)
-                                MessageBox.Show("Loaded Current Limit", "7/8");
+                                MessageBox.Show("Loaded Current Limit", "7/9");
 
                             upDownMaxCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xC));
                             if (EnableDebug)
-                                MessageBox.Show("Loaded Max Current Limit Time", "8/8");
+                                MessageBox.Show("Loaded Max Current Limit Time", "8/9");
+                            UpdateCurrentSettings();
+                            
+                            upDownGfxClk.Value = (decimal)(Smu.ReadFloat(Address, 0x16D));
+                            if (EnableDebug)
+                                MessageBox.Show("Loaded Max Current Limit Time", "9/9");
                             UpdateCurrentSettings();
                         }
                         else
@@ -358,6 +370,13 @@ namespace renoir_tuning_utility
                 //args = String.Format("--message=0x1C --arg0={0:0}000", upDownMaxCurrentLimit.Value);
                 //var proc = System.Diagnostics.Process.Start(exe, args);
             }
+            if(checkGfxClk.Checked)
+            {
+                Msg = 0xB9;
+                Args[0] = (uint)Convert.ToUInt32(upDownGfxClk.Value);
+                //Send msg
+                Statuses[i++] = RyzenAccess.SendPsmu(Msg, ref Args);
+            }
             /*
              * IF "%Stapm%" NEQ "" smu-tool.exe -m --message=0x14 --arg0=%Stapm%000
              * IF "%Fast%" NEQ "" smu-tool.exe -m --message=0x15 --arg0=%Fast%000
@@ -541,7 +560,7 @@ namespace renoir_tuning_utility
             CurrentSetting.TctlTemp = Convert.ToUInt32(upDownTctlTemp.Value);
             CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
             CurrentSetting.MaxCurrentLimit = Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
-
+            CurrentSetting.GfxClk = Convert.ToUInt32(upDownGfxClk.Value);
             File.WriteAllText("test.json", JsonConvert.SerializeObject(CurrentSetting));
             
 
@@ -558,6 +577,7 @@ namespace renoir_tuning_utility
             upDownTctlTemp.Value = CurrentSetting.TctlTemp;
             upDownCurrentLimit.Value = CurrentSetting.CurrentLimit / 1000;
             upDownMaxCurrentLimit.Value = CurrentSetting.MaxCurrentLimit / 1000;
+            upDownGfxClk.Value = CurrentSetting.GfxClk;
         }
 
         private void checkShowSensors_CheckedChanged(object sender, EventArgs e)
