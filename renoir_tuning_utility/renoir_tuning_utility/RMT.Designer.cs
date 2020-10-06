@@ -65,15 +65,15 @@
             this.checkFastLimit = new System.Windows.Forms.CheckBox();
             this.notifyIconRMT = new System.Windows.Forms.NotifyIcon(this.components);
             this.panelBottomDock = new System.Windows.Forms.Panel();
+            this.checkShowSensors = new System.Windows.Forms.CheckBox();
             this.buttonLoadSettings = new System.Windows.Forms.Button();
             this.buttonSaveSettings = new System.Windows.Forms.Button();
             this.labelRenoirMobileTuning = new System.Windows.Forms.Label();
-            this.ShowSensors = new System.Windows.Forms.Button();
             this.ApplySettings = new System.Windows.Forms.Button();
-            this.checkShowSensors = new System.Windows.Forms.CheckBox();
             this.menuBar = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Tuning = new System.Windows.Forms.TabPage();
+            this.Presets = new System.Windows.Forms.TabPage();
+            this.About = new System.Windows.Forms.TabPage();
             this.panel9.SuspendLayout();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).BeginInit();
@@ -101,7 +101,7 @@
             this.panel2.SuspendLayout();
             this.panelBottomDock.SuspendLayout();
             this.menuBar.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.Tuning.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel9
@@ -432,10 +432,16 @@
             this.panelBottomDock.Controls.Add(this.buttonLoadSettings);
             this.panelBottomDock.Controls.Add(this.buttonSaveSettings);
             this.panelBottomDock.Controls.Add(this.labelRenoirMobileTuning);
-            this.panelBottomDock.Controls.Add(this.ShowSensors);
             this.panelBottomDock.Controls.Add(this.ApplySettings);
             resources.ApplyResources(this.panelBottomDock, "panelBottomDock");
             this.panelBottomDock.Name = "panelBottomDock";
+            // 
+            // checkShowSensors
+            // 
+            resources.ApplyResources(this.checkShowSensors, "checkShowSensors");
+            this.checkShowSensors.Name = "checkShowSensors";
+            this.checkShowSensors.UseVisualStyleBackColor = true;
+            this.checkShowSensors.CheckedChanged += new System.EventHandler(this.checkShowSensors_CheckedChanged);
             // 
             // buttonLoadSettings
             // 
@@ -463,13 +469,6 @@
             this.labelRenoirMobileTuning.ForeColor = System.Drawing.Color.Gray;
             this.labelRenoirMobileTuning.Name = "labelRenoirMobileTuning";
             // 
-            // ShowSensors
-            // 
-            resources.ApplyResources(this.ShowSensors, "ShowSensors");
-            this.ShowSensors.Name = "ShowSensors";
-            this.ShowSensors.UseVisualStyleBackColor = true;
-            this.ShowSensors.Click += new System.EventHandler(this.ShowSensors_Click_1);
-            // 
             // ApplySettings
             // 
             this.ApplySettings.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -480,33 +479,33 @@
             this.ApplySettings.UseVisualStyleBackColor = false;
             this.ApplySettings.Click += new System.EventHandler(this.ApplySettings_Click_1);
             // 
-            // checkShowSensors
-            // 
-            resources.ApplyResources(this.checkShowSensors, "checkShowSensors");
-            this.checkShowSensors.Name = "checkShowSensors";
-            this.checkShowSensors.UseVisualStyleBackColor = true;
-            this.checkShowSensors.CheckedChanged += new System.EventHandler(this.checkShowSensors_CheckedChanged);
-            // 
             // menuBar
             // 
-            this.menuBar.Controls.Add(this.tabPage1);
-            this.menuBar.Controls.Add(this.tabPage2);
+            this.menuBar.Controls.Add(this.Tuning);
+            this.menuBar.Controls.Add(this.Presets);
+            this.menuBar.Controls.Add(this.About);
             resources.ApplyResources(this.menuBar, "menuBar");
             this.menuBar.Name = "menuBar";
             this.menuBar.SelectedIndex = 0;
             // 
-            // tabPage1
+            // Tuning
             // 
-            this.tabPage1.Controls.Add(this.panel9);
-            resources.ApplyResources(this.tabPage1, "tabPage1");
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.Tuning.Controls.Add(this.panel9);
+            resources.ApplyResources(this.Tuning, "Tuning");
+            this.Tuning.Name = "Tuning";
+            this.Tuning.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // Presets
             // 
-            resources.ApplyResources(this.tabPage2, "tabPage2");
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.Presets, "Presets");
+            this.Presets.Name = "Presets";
+            this.Presets.UseVisualStyleBackColor = true;
+            // 
+            // About
+            // 
+            resources.ApplyResources(this.About, "About");
+            this.About.Name = "About";
+            this.About.UseVisualStyleBackColor = true;
             // 
             // RMT
             // 
@@ -550,8 +549,8 @@
             this.panelBottomDock.ResumeLayout(false);
             this.panelBottomDock.PerformLayout();
             this.menuBar.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.Tuning.ResumeLayout(false);
+            this.Tuning.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -594,14 +593,14 @@
         private System.Windows.Forms.CheckBox checkFastLimit;
         private System.Windows.Forms.Panel panelBottomDock;
         private System.Windows.Forms.Label labelRenoirMobileTuning;
-        private System.Windows.Forms.Button ShowSensors;
         private System.Windows.Forms.Button ApplySettings;
         private System.Windows.Forms.Button buttonSaveSettings;
         private System.Windows.Forms.Button buttonLoadSettings;
         private System.Windows.Forms.CheckBox checkShowSensors;
         private System.Windows.Forms.TabControl menuBar;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage Tuning;
+        private System.Windows.Forms.TabPage Presets;
+        private System.Windows.Forms.TabPage About;
     }
 }
 
