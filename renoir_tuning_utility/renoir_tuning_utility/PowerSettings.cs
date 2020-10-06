@@ -33,6 +33,7 @@ namespace PowerSettings
         public UInt32 SlowLimit { get; set; }
         public UInt32 FastLimit { get; set; }
         public UInt32 MaxCurrentLimit { get; set; }
+        public bool SmartReapply { get; set; }
 
         public PmTableVersion TableInfo;
 
