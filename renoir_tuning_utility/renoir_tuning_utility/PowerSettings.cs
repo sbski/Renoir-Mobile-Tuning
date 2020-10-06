@@ -18,6 +18,8 @@ namespace PowerSettings
         public UInt32 SlowTimeOffset { get; set; }
         public UInt32 FastLimitOffset { get; set; }
         public UInt32 MaxCurrentLimitOffset { get; set; }
+        public UInt32 GfxClkOffset { get; set; }
+
     }
 
     public class PowerSetting
@@ -33,6 +35,7 @@ namespace PowerSettings
         public UInt32 SlowLimit { get; set; }
         public UInt32 FastLimit { get; set; }
         public UInt32 MaxCurrentLimit { get; set; }
+        public UInt32 GfxClk { get; set; }
         public bool SmartReapply { get; set; }
 
         public PmTableVersion TableInfo;
@@ -186,7 +189,16 @@ namespace PowerSettings
              * IF "%Current%" NEQ "" smu-tool.exe -m --message=0x1A --arg0=%Current%000
              * IF "%MaxCurrent%" NEQ "" smu-tool.exe -m --message=0x1C --arg0=%MaxCurrent%000
              */
+            if (i != 0)
+            {
 
+                //Set Msg and Args
+                Msg = 0xB9;
+                Args[0] = GfxClk;
+
+                //Send msg
+                Statuses[i++] = RyzenAccess.SendPsmu(Msg, ref Args);
+            }
             for (int j = 0; j < i; j++)
             {
                 if (Statuses[j] != Smu.Status.OK)
