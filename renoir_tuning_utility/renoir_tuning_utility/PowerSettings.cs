@@ -51,6 +51,7 @@ namespace PowerSettings
             CurrentLimit = 0;
             MaxCurrentLimit = 0;
 
+            TableInfo = new PmTableVersion();
             TableInfo.TableVersion = TableVersion;
             if(!Init())
             {
