@@ -569,7 +569,16 @@ namespace renoir_tuning_utility
 
         private void buttonLoadSettings_Click(object sender, EventArgs e)
         {
-            PowerSetting CurrentSetting = JsonConvert.DeserializeObject<PowerSetting>(File.ReadLines("test.json").First());
+            PowerSetting CurrentSetting;
+            try
+            {
+                CurrentSetting = JsonConvert.DeserializeObject<PowerSetting>(File.ReadLines("test.json").First());
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
             upDownFastLimit.Value = CurrentSetting.FastLimit / 1000;
             upDownSlowLimit.Value = CurrentSetting.SlowLimit / 1000;
             upDownStapmLimit.Value = CurrentSetting.StapmLimit / 1000;
