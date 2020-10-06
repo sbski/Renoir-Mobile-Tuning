@@ -608,31 +608,31 @@
   <data name="&gt;&gt;panelBottomDock.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="About.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="Presets.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="About.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="Presets.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="About.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="Presets.Size" type="System.Drawing.Size, System.Drawing">
     <value>476, 212</value>
   </data>
-  <data name="About.TabIndex" type="System.Int32, mscorlib">
+  <data name="Presets.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="About.Text" xml:space="preserve">
-    <value>About</value>
+  <data name="Presets.Text" xml:space="preserve">
+    <value>Presets</value>
   </data>
-  <data name="&gt;&gt;About.Name" xml:space="preserve">
-    <value>About</value>
+  <data name="&gt;&gt;Presets.Name" xml:space="preserve">
+    <value>Presets</value>
   </data>
-  <data name="&gt;&gt;About.Type" xml:space="preserve">
+  <data name="&gt;&gt;Presets.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;About.Parent" xml:space="preserve">
-    <value>menuBar</value>
+  <data name="&gt;&gt;Presets.Parent" xml:space="preserve">
+    <value>About</value>
   </data>
-  <data name="&gt;&gt;About.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Presets.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="panel9.AutoSize" type="System.Boolean, mscorlib">
@@ -1722,36 +1722,63 @@
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Tuning.Parent" xml:space="preserve">
-    <value>menuBar</value>
+    <value>About</value>
   </data>
   <data name="&gt;&gt;Tuning.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="menuBar.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>476, 212</value>
+  </data>
+  <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="About.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="menuBar.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="About.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="menuBar.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="About.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>0, 218</value>
   </data>
-  <data name="menuBar.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="About.Size" type="System.Drawing.Size, System.Drawing">
     <value>484, 238</value>
   </data>
-  <data name="menuBar.TabIndex" type="System.Int32, mscorlib">
+  <data name="About.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
   </data>
-  <data name="&gt;&gt;menuBar.Name" xml:space="preserve">
-    <value>menuBar</value>
+  <data name="&gt;&gt;About.Name" xml:space="preserve">
+    <value>About</value>
   </data>
-  <data name="&gt;&gt;menuBar.Type" xml:space="preserve">
+  <data name="&gt;&gt;About.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;menuBar.Parent" xml:space="preserve">
+  <data name="&gt;&gt;About.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;menuBar.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;About.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
