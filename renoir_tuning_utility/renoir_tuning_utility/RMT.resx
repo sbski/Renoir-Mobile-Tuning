@@ -228,6 +228,9 @@
   <data name="panel18.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
   </data>
+  <data name="panel18.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;panel18.Name" xml:space="preserve">
     <value>panel18</value>
   </data>

@@ -119,11 +119,11 @@ namespace renoir_tuning_utility
                             upDownMaxCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xC));
                             if (EnableDebug)
                                 MessageBox.Show("Loaded Max Current Limit Time", "8/8");
-
+                            /*
                             upDownGfxClk.Value = (decimal)(Smu.ReadFloat(Address, 0x174));
                             if (EnableDebug)
                                 MessageBox.Show("Loaded Max Current Limit Time", "9/9");
-
+                            */
                             UpdateCurrentSettings();
                             
                         }
@@ -174,10 +174,10 @@ namespace renoir_tuning_utility
                             if (EnableDebug)
                                 MessageBox.Show("Loaded Max Current Limit Time", "8/9");
                             UpdateCurrentSettings();
-                            
+                            /*
                             upDownGfxClk.Value = (decimal)(Smu.ReadFloat(Address, 0x16D));
                             if (EnableDebug)
-                                MessageBox.Show("Loaded Max Current Limit Time", "9/9");
+                                MessageBox.Show("Loaded Max Current Limit Time", "9/9");*/
                             UpdateCurrentSettings();
                         }
                         else
@@ -370,13 +370,14 @@ namespace renoir_tuning_utility
                 //args = String.Format("--message=0x1C --arg0={0:0}000", upDownMaxCurrentLimit.Value);
                 //var proc = System.Diagnostics.Process.Start(exe, args);
             }
+            /*
             if(checkGfxClk.Checked)
             {
                 Msg = 0xB9;
                 Args[0] = (uint)Convert.ToUInt32(upDownGfxClk.Value);
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendPsmu(Msg, ref Args);
-            }
+            }*/
             /*
              * IF "%Stapm%" NEQ "" smu-tool.exe -m --message=0x14 --arg0=%Stapm%000
              * IF "%Fast%" NEQ "" smu-tool.exe -m --message=0x15 --arg0=%Fast%000
@@ -560,7 +561,7 @@ namespace renoir_tuning_utility
             CurrentSetting.TctlTemp = Convert.ToUInt32(upDownTctlTemp.Value);
             CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
             CurrentSetting.MaxCurrentLimit = Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
-            CurrentSetting.GfxClk = Convert.ToUInt32(upDownGfxClk.Value);
+            //CurrentSetting.GfxClk = Convert.ToUInt32(upDownGfxClk.Value);
             File.WriteAllText("test.json", JsonConvert.SerializeObject(CurrentSetting));
             
 
@@ -577,7 +578,7 @@ namespace renoir_tuning_utility
             upDownTctlTemp.Value = CurrentSetting.TctlTemp;
             upDownCurrentLimit.Value = CurrentSetting.CurrentLimit / 1000;
             upDownMaxCurrentLimit.Value = CurrentSetting.MaxCurrentLimit / 1000;
-            upDownGfxClk.Value = CurrentSetting.GfxClk;
+            //upDownGfxClk.Value = CurrentSetting.GfxClk;
         }
 
         private void checkShowSensors_CheckedChanged(object sender, EventArgs e)
