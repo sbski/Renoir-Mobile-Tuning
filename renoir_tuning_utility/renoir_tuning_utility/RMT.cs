@@ -510,7 +510,7 @@ namespace renoir_tuning_utility
 
         private void buttonSaveSettings_Click(object sender, EventArgs e)
         {
-            PowerSetting CurrentSetting = new PowerSetting();
+            PowerSetting CurrentSetting = new PowerSetting(PMTableVersion);
             CurrentSetting.Name = "Test";
             CurrentSetting.StapmLimit = Convert.ToUInt32(upDownStapmLimit.Value * 1000);
             CurrentSetting.FastLimit = Convert.ToUInt32(upDownFastLimit.Value * 1000);
