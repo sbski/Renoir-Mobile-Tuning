@@ -43,6 +43,7 @@ namespace renoir_tuning_utility
         bool EnableDebug;
         bool LoadValues;
         UInt32 PMTableVersion;
+        Thread MonitoringThread;
         public RMT()
         {
             EnableDebug = false;
@@ -471,7 +472,7 @@ namespace renoir_tuning_utility
 
         }
 
-        private void ShowSensors_Click(object sender, EventArgs e)
+        private void ShowSensors_Click_1(object sender, EventArgs e)
         {
             new Thread(() => new SystemMonitor().ShowDialog()).Start();
         }
@@ -541,6 +542,21 @@ namespace renoir_tuning_utility
             upDownTctlTemp.Value = CurrentSetting.TctlTemp;
             upDownCurrentLimit.Value = CurrentSetting.CurrentLimit / 1000;
             upDownMaxCurrentLimit.Value = CurrentSetting.MaxCurrentLimit / 1000;
+        }
+
+        private void checkShowSensors_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkShowSensors.Checked)
+            {
+
+                new Thread(MonitoringThread => new SystemMonitor().ShowDialog());
+                MonitoringThread.Start();
+            }
+            else
+            {
+                MonitoringThread.Abort();
+            }
+                
         }
     }
 }

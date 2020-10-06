@@ -65,11 +65,15 @@
             this.checkFastLimit = new System.Windows.Forms.CheckBox();
             this.notifyIconRMT = new System.Windows.Forms.NotifyIcon(this.components);
             this.panelBottomDock = new System.Windows.Forms.Panel();
+            this.buttonLoadSettings = new System.Windows.Forms.Button();
             this.buttonSaveSettings = new System.Windows.Forms.Button();
             this.labelRenoirMobileTuning = new System.Windows.Forms.Label();
             this.ShowSensors = new System.Windows.Forms.Button();
             this.ApplySettings = new System.Windows.Forms.Button();
-            this.buttonLoadSettings = new System.Windows.Forms.Button();
+            this.checkShowSensors = new System.Windows.Forms.CheckBox();
+            this.menuBar = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel9.SuspendLayout();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).BeginInit();
@@ -96,6 +100,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.upDownFastLimit)).BeginInit();
             this.panel2.SuspendLayout();
             this.panelBottomDock.SuspendLayout();
+            this.menuBar.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel9
@@ -422,6 +428,7 @@
             // 
             // panelBottomDock
             // 
+            this.panelBottomDock.Controls.Add(this.checkShowSensors);
             this.panelBottomDock.Controls.Add(this.buttonLoadSettings);
             this.panelBottomDock.Controls.Add(this.buttonSaveSettings);
             this.panelBottomDock.Controls.Add(this.labelRenoirMobileTuning);
@@ -429,6 +436,16 @@
             this.panelBottomDock.Controls.Add(this.ApplySettings);
             resources.ApplyResources(this.panelBottomDock, "panelBottomDock");
             this.panelBottomDock.Name = "panelBottomDock";
+            // 
+            // buttonLoadSettings
+            // 
+            this.buttonLoadSettings.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonLoadSettings.Cursor = System.Windows.Forms.Cursors.Arrow;
+            resources.ApplyResources(this.buttonLoadSettings, "buttonLoadSettings");
+            this.buttonLoadSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.buttonLoadSettings.Name = "buttonLoadSettings";
+            this.buttonLoadSettings.UseVisualStyleBackColor = false;
+            this.buttonLoadSettings.Click += new System.EventHandler(this.buttonLoadSettings_Click);
             // 
             // buttonSaveSettings
             // 
@@ -451,6 +468,7 @@
             resources.ApplyResources(this.ShowSensors, "ShowSensors");
             this.ShowSensors.Name = "ShowSensors";
             this.ShowSensors.UseVisualStyleBackColor = true;
+            this.ShowSensors.Click += new System.EventHandler(this.ShowSensors_Click_1);
             // 
             // ApplySettings
             // 
@@ -462,15 +480,33 @@
             this.ApplySettings.UseVisualStyleBackColor = false;
             this.ApplySettings.Click += new System.EventHandler(this.ApplySettings_Click_1);
             // 
-            // buttonLoadSettings
+            // checkShowSensors
             // 
-            this.buttonLoadSettings.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonLoadSettings.Cursor = System.Windows.Forms.Cursors.Arrow;
-            resources.ApplyResources(this.buttonLoadSettings, "buttonLoadSettings");
-            this.buttonLoadSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.buttonLoadSettings.Name = "buttonLoadSettings";
-            this.buttonLoadSettings.UseVisualStyleBackColor = false;
-            this.buttonLoadSettings.Click += new System.EventHandler(this.buttonLoadSettings_Click);
+            resources.ApplyResources(this.checkShowSensors, "checkShowSensors");
+            this.checkShowSensors.Name = "checkShowSensors";
+            this.checkShowSensors.UseVisualStyleBackColor = true;
+            this.checkShowSensors.CheckedChanged += new System.EventHandler(this.checkShowSensors_CheckedChanged);
+            // 
+            // menuBar
+            // 
+            this.menuBar.Controls.Add(this.tabPage1);
+            this.menuBar.Controls.Add(this.tabPage2);
+            resources.ApplyResources(this.menuBar, "menuBar");
+            this.menuBar.Name = "menuBar";
+            this.menuBar.SelectedIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.panel9);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            resources.ApplyResources(this.tabPage2, "tabPage2");
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // RMT
             // 
@@ -478,7 +514,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.CausesValidation = false;
-            this.Controls.Add(this.panel9);
+            this.Controls.Add(this.menuBar);
             this.Controls.Add(this.panelBottomDock);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Name = "RMT";
@@ -513,8 +549,10 @@
             this.panel2.ResumeLayout(false);
             this.panelBottomDock.ResumeLayout(false);
             this.panelBottomDock.PerformLayout();
+            this.menuBar.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -560,6 +598,10 @@
         private System.Windows.Forms.Button ApplySettings;
         private System.Windows.Forms.Button buttonSaveSettings;
         private System.Windows.Forms.Button buttonLoadSettings;
+        private System.Windows.Forms.CheckBox checkShowSensors;
+        private System.Windows.Forms.TabControl menuBar;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
 
