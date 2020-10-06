@@ -49,14 +49,16 @@ namespace renoir_tuning_utility
             EnableDebug = false;
             LoadValues = true;
             InitializeComponent();
-            upDownTctlTemp.Enabled = false;
-            upDownStapmLimit.Enabled = false;
-            upDownSlowTime.Enabled = false;
-            upDownStapmTime.Enabled = false;
-            upDownCurrentLimit.Enabled = false;
-            upDownSlowLimit.Enabled = false;
-            upDownFastLimit.Enabled = false;
-            upDownMaxCurrentLimit.Enabled = false;
+            checkFastLimit.Checked = true;
+            checkSlowLimit.Checked = true;
+            checkStapmLimit.Checked = true;
+            checkSlowTime.Checked = true;
+            checkStapmTime.Checked = true;
+            checkTctlTemp.Checked = true;
+            checkCurrentLimit.Checked = true;
+            checkMaxCurrentLimit.Checked = true;
+
+
 
             PowerSetting CurrentSetting;
             labelRenoirMobileTuning.Text = "RMT v1.0.5";
