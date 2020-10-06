@@ -549,7 +549,7 @@ namespace renoir_tuning_utility
             if(checkShowSensors.Checked)
             {
 
-                new Thread(MonitoringThread => new SystemMonitor().ShowDialog());
+                MonitoringThread = new Thread(() => new SystemMonitor().ShowDialog());
                 MonitoringThread.Start();
             }
             else
