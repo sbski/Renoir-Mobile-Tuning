@@ -61,7 +61,7 @@ namespace renoir_tuning_utility
 
 
             PowerSetting CurrentSetting;
-            labelRenoirMobileTuning.Text = "RMT v1.0.5";
+            labelRenoirMobileTuning.Text = "RMT v1.0.6";
             
             
 
@@ -178,7 +178,8 @@ namespace renoir_tuning_utility
                             upDownGfxClk.Value = (decimal)(Smu.ReadFloat(Address, 0x16D));
                             if (EnableDebug)
                                 MessageBox.Show("Loaded Max Current Limit Time", "9/9");*/
-                            UpdateCurrentSettings();
+                           
+
                         }
                         else
                         {
@@ -414,7 +415,10 @@ namespace renoir_tuning_utility
             CurrentSetting.TctlTemp = Convert.ToUInt32(upDownTctlTemp.Value);
             CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
             CurrentSetting.MaxCurrentLimit = Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
-
+            //File.Create("CurrentSettings.json");
+            if(File.s)
+            File.Delete("CurrentSettings.json");
+            Thread.Sleep(10);
             File.WriteAllText("CurrentSettings.json", JsonConvert.SerializeObject(CurrentSetting));
         }
 
