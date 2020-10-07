@@ -300,12 +300,12 @@ namespace PowerSettings
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
             }
-
+            
             for (int j = 0; j < i; j++)
             {
                 if (Statuses[j] != Smu.Status.OK)
                 {
-                    MessageBox.Show($"{j:D}-Status: " + Statuses[j].ToString());
+                    //MessageBox.Show($"{j:D}-Status: " + Statuses[j].ToString());
                     return false;
                 }
             }

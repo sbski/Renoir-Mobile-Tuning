@@ -628,5 +628,35 @@ namespace renoir_tuning_utility
             }
 
         }
+
+        private void linkDiscord_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ProcessStartInfo sInfo = new ProcessStartInfo("https://discord.gg/EBC3zRg");
+            Process.Start(sInfo);
+        }
+
+        private void linkPayPal_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ProcessStartInfo sInfo = new ProcessStartInfo("https://www.paypal.me/KeatonBlomquist");
+            Process.Start(sInfo);
+        }
+
+        private void linkGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ProcessStartInfo sInfo = new ProcessStartInfo("https://github.com/sbski/Renoir-Mobile-Tuning");
+            Process.Start(sInfo);
+        }
+
+        private void linkTwitter_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ProcessStartInfo sInfo = new ProcessStartInfo("https://twitter.com/KeatonBlomquist");
+            Process.Start(sInfo);
+        }
+
+        private void linkCtr_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ProcessStartInfo sInfo = new ProcessStartInfo("https://www.guru3d.com/files-details/clocktuner-for-ryzen-download.html");
+            Process.Start(sInfo);
+        }
     }
 }

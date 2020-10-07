@@ -79,6 +79,13 @@
             this.checkFastLimit = new System.Windows.Forms.CheckBox();
             this.About = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.linkDiscord = new System.Windows.Forms.LinkLabel();
+            this.linkPayPal = new System.Windows.Forms.LinkLabel();
+            this.linkGitHub = new System.Windows.Forms.LinkLabel();
+            this.linkTwitter = new System.Windows.Forms.LinkLabel();
+            this.linkCtr = new System.Windows.Forms.LinkLabel();
             this.panelBottomDock.SuspendLayout();
             this.Tuning.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -110,6 +117,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.upDownFastLimit)).BeginInit();
             this.panel2.SuspendLayout();
             this.About.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // notifyIconRMT
@@ -559,9 +567,71 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.linkCtr);
+            this.tabPage1.Controls.Add(this.linkTwitter);
+            this.tabPage1.Controls.Add(this.linkGitHub);
+            this.tabPage1.Controls.Add(this.linkPayPal);
+            this.tabPage1.Controls.Add(this.linkDiscord);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.label1);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // linkDiscord
+            // 
+            resources.ApplyResources(this.linkDiscord, "linkDiscord");
+            this.linkDiscord.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkDiscord.Name = "linkDiscord";
+            this.linkDiscord.TabStop = true;
+            this.linkDiscord.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkDiscord.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDiscord_LinkClicked);
+            // 
+            // linkPayPal
+            // 
+            resources.ApplyResources(this.linkPayPal, "linkPayPal");
+            this.linkPayPal.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkPayPal.Name = "linkPayPal";
+            this.linkPayPal.TabStop = true;
+            this.linkPayPal.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkPayPal.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkPayPal_LinkClicked);
+            // 
+            // linkGitHub
+            // 
+            resources.ApplyResources(this.linkGitHub, "linkGitHub");
+            this.linkGitHub.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkGitHub.Name = "linkGitHub";
+            this.linkGitHub.TabStop = true;
+            this.linkGitHub.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkGitHub_LinkClicked);
+            // 
+            // linkTwitter
+            // 
+            resources.ApplyResources(this.linkTwitter, "linkTwitter");
+            this.linkTwitter.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkTwitter.Name = "linkTwitter";
+            this.linkTwitter.TabStop = true;
+            this.linkTwitter.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkTwitter.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkTwitter_LinkClicked);
+            // 
+            // linkCtr
+            // 
+            resources.ApplyResources(this.linkCtr, "linkCtr");
+            this.linkCtr.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkCtr.Name = "linkCtr";
+            this.linkCtr.TabStop = true;
+            this.linkCtr.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkCtr.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkCtr_LinkClicked);
             // 
             // RMT
             // 
@@ -610,6 +680,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.upDownFastLimit)).EndInit();
             this.panel2.ResumeLayout(false);
             this.About.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -664,6 +736,13 @@
         private System.Windows.Forms.CheckBox checkFastLimit;
         private System.Windows.Forms.TabControl About;
         private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.LinkLabel linkCtr;
+        private System.Windows.Forms.LinkLabel linkTwitter;
+        private System.Windows.Forms.LinkLabel linkGitHub;
+        private System.Windows.Forms.LinkLabel linkPayPal;
+        private System.Windows.Forms.LinkLabel linkDiscord;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
     }
 }
 

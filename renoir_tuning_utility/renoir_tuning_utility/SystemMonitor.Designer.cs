@@ -68,7 +68,7 @@
             this.CpuData.ShowCellToolTips = false;
             this.CpuData.ShowEditingIcon = false;
             this.CpuData.ShowRowErrors = false;
-            this.CpuData.Size = new System.Drawing.Size(258, 427);
+            this.CpuData.Size = new System.Drawing.Size(278, 363);
             this.CpuData.TabIndex = 0;
             this.CpuData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cpuData_CellContentClick);
             // 
@@ -123,14 +123,14 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(264, 462);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(284, 398);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // labelRefreshInterval
             // 
             this.labelRefreshInterval.AutoSize = true;
             this.labelRefreshInterval.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelRefreshInterval.Location = new System.Drawing.Point(3, 433);
+            this.labelRefreshInterval.Location = new System.Drawing.Point(3, 369);
             this.labelRefreshInterval.Name = "labelRefreshInterval";
             this.labelRefreshInterval.Size = new System.Drawing.Size(82, 29);
             this.labelRefreshInterval.TabIndex = 0;
@@ -140,7 +140,7 @@
             // buttonApply
             // 
             this.buttonApply.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonApply.Location = new System.Drawing.Point(150, 436);
+            this.buttonApply.Location = new System.Drawing.Point(150, 372);
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Size = new System.Drawing.Size(75, 23);
             this.buttonApply.TabIndex = 1;
@@ -157,7 +157,7 @@
             0,
             0,
             0});
-            this.numericUpDownInterval.Location = new System.Drawing.Point(91, 438);
+            this.numericUpDownInterval.Location = new System.Drawing.Point(91, 374);
             this.numericUpDownInterval.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
             this.numericUpDownInterval.Maximum = new decimal(new int[] {
             20000,
@@ -183,9 +183,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 462);
+            this.ClientSize = new System.Drawing.Size(284, 398);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(280, 39);
+            this.MinimumSize = new System.Drawing.Size(300, 437);
             this.Name = "SystemMonitor";
             this.Opacity = 0.95D;
             this.ShowIcon = false;
