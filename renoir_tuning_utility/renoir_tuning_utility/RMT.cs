@@ -61,7 +61,7 @@ namespace renoir_tuning_utility
 
 
             PowerSetting CurrentSetting;
-            labelRenoirMobileTuning.Text = "RMT v1.0.6";
+            labelRenoirMobileTuning.Text = "RMT v1.0.0";
             
             
 
@@ -647,6 +647,11 @@ namespace renoir_tuning_utility
         {
             ProcessStartInfo sInfo = new ProcessStartInfo("https://www.guru3d.com/files-details/clocktuner-for-ryzen-download.html");
             Process.Start(sInfo);
+        }
+
+        private void Presets_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

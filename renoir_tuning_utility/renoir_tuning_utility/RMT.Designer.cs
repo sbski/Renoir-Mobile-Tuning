@@ -38,7 +38,6 @@
             this.buttonSaveSettings = new System.Windows.Forms.Button();
             this.labelRenoirMobileTuning = new System.Windows.Forms.Label();
             this.ApplySettings = new System.Windows.Forms.Button();
-            this.Presets = new System.Windows.Forms.TabPage();
             this.Tuning = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel18 = new System.Windows.Forms.Panel();
@@ -79,13 +78,13 @@
             this.checkFastLimit = new System.Windows.Forms.CheckBox();
             this.About = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.linkDiscord = new System.Windows.Forms.LinkLabel();
-            this.linkPayPal = new System.Windows.Forms.LinkLabel();
-            this.linkGitHub = new System.Windows.Forms.LinkLabel();
-            this.linkTwitter = new System.Windows.Forms.LinkLabel();
             this.linkCtr = new System.Windows.Forms.LinkLabel();
+            this.linkTwitter = new System.Windows.Forms.LinkLabel();
+            this.linkGitHub = new System.Windows.Forms.LinkLabel();
+            this.linkPayPal = new System.Windows.Forms.LinkLabel();
+            this.linkDiscord = new System.Windows.Forms.LinkLabel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelBottomDock.SuspendLayout();
             this.Tuning.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -185,12 +184,6 @@
             this.ApplySettings.Name = "ApplySettings";
             this.ApplySettings.UseVisualStyleBackColor = false;
             this.ApplySettings.Click += new System.EventHandler(this.ApplySettings_Click_1);
-            // 
-            // Presets
-            // 
-            resources.ApplyResources(this.Presets, "Presets");
-            this.Presets.Name = "Presets";
-            this.Presets.UseVisualStyleBackColor = true;
             // 
             // Tuning
             // 
@@ -559,7 +552,6 @@
             // About
             // 
             this.About.Controls.Add(this.Tuning);
-            this.About.Controls.Add(this.Presets);
             this.About.Controls.Add(this.tabPage1);
             resources.ApplyResources(this.About, "About");
             this.About.Name = "About";
@@ -567,6 +559,7 @@
             // 
             // tabPage1
             // 
+            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Controls.Add(this.linkCtr);
             this.tabPage1.Controls.Add(this.linkTwitter);
             this.tabPage1.Controls.Add(this.linkGitHub);
@@ -574,46 +567,17 @@
             this.tabPage1.Controls.Add(this.linkDiscord);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label1);
-            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // linkCtr
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // linkDiscord
-            // 
-            resources.ApplyResources(this.linkDiscord, "linkDiscord");
-            this.linkDiscord.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.linkDiscord.Name = "linkDiscord";
-            this.linkDiscord.TabStop = true;
-            this.linkDiscord.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.linkDiscord.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDiscord_LinkClicked);
-            // 
-            // linkPayPal
-            // 
-            resources.ApplyResources(this.linkPayPal, "linkPayPal");
-            this.linkPayPal.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.linkPayPal.Name = "linkPayPal";
-            this.linkPayPal.TabStop = true;
-            this.linkPayPal.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.linkPayPal.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkPayPal_LinkClicked);
-            // 
-            // linkGitHub
-            // 
-            resources.ApplyResources(this.linkGitHub, "linkGitHub");
-            this.linkGitHub.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.linkGitHub.Name = "linkGitHub";
-            this.linkGitHub.TabStop = true;
-            this.linkGitHub.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.linkGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkGitHub_LinkClicked);
+            resources.ApplyResources(this.linkCtr, "linkCtr");
+            this.linkCtr.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkCtr.Name = "linkCtr";
+            this.linkCtr.TabStop = true;
+            this.linkCtr.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkCtr.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkCtr_LinkClicked);
             // 
             // linkTwitter
             // 
@@ -624,14 +588,42 @@
             this.linkTwitter.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.linkTwitter.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkTwitter_LinkClicked);
             // 
-            // linkCtr
+            // linkGitHub
             // 
-            resources.ApplyResources(this.linkCtr, "linkCtr");
-            this.linkCtr.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.linkCtr.Name = "linkCtr";
-            this.linkCtr.TabStop = true;
-            this.linkCtr.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.linkCtr.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkCtr_LinkClicked);
+            resources.ApplyResources(this.linkGitHub, "linkGitHub");
+            this.linkGitHub.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkGitHub.Name = "linkGitHub";
+            this.linkGitHub.TabStop = true;
+            this.linkGitHub.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkGitHub_LinkClicked);
+            // 
+            // linkPayPal
+            // 
+            resources.ApplyResources(this.linkPayPal, "linkPayPal");
+            this.linkPayPal.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkPayPal.Name = "linkPayPal";
+            this.linkPayPal.TabStop = true;
+            this.linkPayPal.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkPayPal.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkPayPal_LinkClicked);
+            // 
+            // linkDiscord
+            // 
+            resources.ApplyResources(this.linkDiscord, "linkDiscord");
+            this.linkDiscord.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkDiscord.Name = "linkDiscord";
+            this.linkDiscord.TabStop = true;
+            this.linkDiscord.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkDiscord.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDiscord_LinkClicked);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // RMT
             // 
@@ -695,7 +687,6 @@
         private System.Windows.Forms.Button buttonLoadSettings;
         private System.Windows.Forms.CheckBox checkShowSensors;
         private System.Windows.Forms.CheckBox checkSmartReapply;
-        private System.Windows.Forms.TabPage Presets;
         private System.Windows.Forms.TabPage Tuning;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel18;
