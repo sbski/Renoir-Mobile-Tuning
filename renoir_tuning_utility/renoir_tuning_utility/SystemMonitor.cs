@@ -673,7 +673,10 @@ namespace renoir_tuning_utility
         {
             RefreshData();
             PowerSetting CurrentSetting = JsonConvert.DeserializeObject<PowerSetting>(File.ReadLines("CurrentSettings.json").First());
-            CurrentSetting.CheckAndReapply(Address);
+            if(CurrentSetting.SmartReapply)
+            {
+                CurrentSetting.CheckAndReapply(Address);
+            }
         }
 
         private void FillInTable()

@@ -30,7 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RMT));
+            this.notifyIconRMT = new System.Windows.Forms.NotifyIcon(this.components);
+            this.panelBottomDock = new System.Windows.Forms.Panel();
+            this.checkSmartReapply = new System.Windows.Forms.CheckBox();
+            this.checkShowSensors = new System.Windows.Forms.CheckBox();
+            this.buttonLoadSettings = new System.Windows.Forms.Button();
+            this.buttonSaveSettings = new System.Windows.Forms.Button();
+            this.labelRenoirMobileTuning = new System.Windows.Forms.Label();
+            this.ApplySettings = new System.Windows.Forms.Button();
+            this.Tuning = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.upDownGfxClk = new System.Windows.Forms.NumericUpDown();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.checkGfxClk = new System.Windows.Forms.CheckBox();
             this.panel16 = new System.Windows.Forms.Panel();
             this.upDownMaxCurrentLimit = new System.Windows.Forms.NumericUpDown();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -63,19 +76,21 @@
             this.upDownFastLimit = new System.Windows.Forms.NumericUpDown();
             this.panel2 = new System.Windows.Forms.Panel();
             this.checkFastLimit = new System.Windows.Forms.CheckBox();
-            this.notifyIconRMT = new System.Windows.Forms.NotifyIcon(this.components);
-            this.panelBottomDock = new System.Windows.Forms.Panel();
-            this.checkShowSensors = new System.Windows.Forms.CheckBox();
-            this.buttonLoadSettings = new System.Windows.Forms.Button();
-            this.buttonSaveSettings = new System.Windows.Forms.Button();
-            this.labelRenoirMobileTuning = new System.Windows.Forms.Label();
-            this.ApplySettings = new System.Windows.Forms.Button();
-            this.menuBar = new System.Windows.Forms.TabControl();
-            this.Tuning = new System.Windows.Forms.TabPage();
-            this.Presets = new System.Windows.Forms.TabPage();
-            this.About = new System.Windows.Forms.TabPage();
-            this.checkSmartReapply = new System.Windows.Forms.CheckBox();
+            this.About = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.linkCtr = new System.Windows.Forms.LinkLabel();
+            this.linkTwitter = new System.Windows.Forms.LinkLabel();
+            this.linkGitHub = new System.Windows.Forms.LinkLabel();
+            this.linkPayPal = new System.Windows.Forms.LinkLabel();
+            this.linkDiscord = new System.Windows.Forms.LinkLabel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panelBottomDock.SuspendLayout();
+            this.Tuning.SuspendLayout();
             this.panel9.SuspendLayout();
+            this.panel18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.upDownGfxClk)).BeginInit();
+            this.panel19.SuspendLayout();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).BeginInit();
             this.panel17.SuspendLayout();
@@ -100,15 +115,88 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownFastLimit)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panelBottomDock.SuspendLayout();
-            this.menuBar.SuspendLayout();
-            this.Tuning.SuspendLayout();
+            this.About.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // notifyIconRMT
+            // 
+            resources.ApplyResources(this.notifyIconRMT, "notifyIconRMT");
+            this.notifyIconRMT.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIconRMT_MouseDoubleClick);
+            // 
+            // panelBottomDock
+            // 
+            this.panelBottomDock.Controls.Add(this.checkSmartReapply);
+            this.panelBottomDock.Controls.Add(this.checkShowSensors);
+            this.panelBottomDock.Controls.Add(this.buttonLoadSettings);
+            this.panelBottomDock.Controls.Add(this.buttonSaveSettings);
+            this.panelBottomDock.Controls.Add(this.labelRenoirMobileTuning);
+            this.panelBottomDock.Controls.Add(this.ApplySettings);
+            resources.ApplyResources(this.panelBottomDock, "panelBottomDock");
+            this.panelBottomDock.Name = "panelBottomDock";
+            // 
+            // checkSmartReapply
+            // 
+            resources.ApplyResources(this.checkSmartReapply, "checkSmartReapply");
+            this.checkSmartReapply.Name = "checkSmartReapply";
+            this.checkSmartReapply.UseVisualStyleBackColor = true;
+            this.checkSmartReapply.CheckedChanged += new System.EventHandler(this.checkSmartReapply_CheckedChanged);
+            // 
+            // checkShowSensors
+            // 
+            resources.ApplyResources(this.checkShowSensors, "checkShowSensors");
+            this.checkShowSensors.Name = "checkShowSensors";
+            this.checkShowSensors.UseVisualStyleBackColor = true;
+            this.checkShowSensors.CheckedChanged += new System.EventHandler(this.checkShowSensors_CheckedChanged);
+            // 
+            // buttonLoadSettings
+            // 
+            this.buttonLoadSettings.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonLoadSettings.Cursor = System.Windows.Forms.Cursors.Arrow;
+            resources.ApplyResources(this.buttonLoadSettings, "buttonLoadSettings");
+            this.buttonLoadSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.buttonLoadSettings.Name = "buttonLoadSettings";
+            this.buttonLoadSettings.UseVisualStyleBackColor = false;
+            this.buttonLoadSettings.Click += new System.EventHandler(this.buttonLoadSettings_Click);
+            // 
+            // buttonSaveSettings
+            // 
+            this.buttonSaveSettings.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSaveSettings.Cursor = System.Windows.Forms.Cursors.Arrow;
+            resources.ApplyResources(this.buttonSaveSettings, "buttonSaveSettings");
+            this.buttonSaveSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.buttonSaveSettings.Name = "buttonSaveSettings";
+            this.buttonSaveSettings.UseVisualStyleBackColor = false;
+            this.buttonSaveSettings.Click += new System.EventHandler(this.buttonSaveSettings_Click);
+            // 
+            // labelRenoirMobileTuning
+            // 
+            resources.ApplyResources(this.labelRenoirMobileTuning, "labelRenoirMobileTuning");
+            this.labelRenoirMobileTuning.ForeColor = System.Drawing.Color.Gray;
+            this.labelRenoirMobileTuning.Name = "labelRenoirMobileTuning";
+            // 
+            // ApplySettings
+            // 
+            this.ApplySettings.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ApplySettings.Cursor = System.Windows.Forms.Cursors.Arrow;
+            resources.ApplyResources(this.ApplySettings, "ApplySettings");
+            this.ApplySettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.ApplySettings.Name = "ApplySettings";
+            this.ApplySettings.UseVisualStyleBackColor = false;
+            this.ApplySettings.Click += new System.EventHandler(this.ApplySettings_Click_1);
+            // 
+            // Tuning
+            // 
+            this.Tuning.Controls.Add(this.panel9);
+            resources.ApplyResources(this.Tuning, "Tuning");
+            this.Tuning.Name = "Tuning";
+            this.Tuning.UseVisualStyleBackColor = true;
             // 
             // panel9
             // 
             resources.ApplyResources(this.panel9, "panel9");
             this.panel9.BackColor = System.Drawing.Color.Transparent;
+            this.panel9.Controls.Add(this.panel18);
             this.panel9.Controls.Add(this.panel16);
             this.panel9.Controls.Add(this.panel14);
             this.panel9.Controls.Add(this.panel10);
@@ -118,6 +206,45 @@
             this.panel9.Controls.Add(this.panel3);
             this.panel9.Controls.Add(this.panel1);
             this.panel9.Name = "panel9";
+            // 
+            // panel18
+            // 
+            resources.ApplyResources(this.panel18, "panel18");
+            this.panel18.Controls.Add(this.upDownGfxClk);
+            this.panel18.Controls.Add(this.panel19);
+            this.panel18.Name = "panel18";
+            // 
+            // upDownGfxClk
+            // 
+            resources.ApplyResources(this.upDownGfxClk, "upDownGfxClk");
+            this.upDownGfxClk.Maximum = new decimal(new int[] {
+            2500,
+            0,
+            0,
+            0});
+            this.upDownGfxClk.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.upDownGfxClk.Name = "upDownGfxClk";
+            this.upDownGfxClk.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // panel19
+            // 
+            this.panel19.Controls.Add(this.checkGfxClk);
+            resources.ApplyResources(this.panel19, "panel19");
+            this.panel19.Name = "panel19";
+            // 
+            // checkGfxClk
+            // 
+            resources.ApplyResources(this.checkGfxClk, "checkGfxClk");
+            this.checkGfxClk.Name = "checkGfxClk";
+            this.checkGfxClk.UseVisualStyleBackColor = true;
             // 
             // panel16
             // 
@@ -422,99 +549,81 @@
             this.checkFastLimit.UseVisualStyleBackColor = true;
             this.checkFastLimit.CheckedChanged += new System.EventHandler(this.checkFastLimit_CheckedChanged);
             // 
-            // notifyIconRMT
-            // 
-            resources.ApplyResources(this.notifyIconRMT, "notifyIconRMT");
-            this.notifyIconRMT.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIconRMT_MouseDoubleClick);
-            // 
-            // panelBottomDock
-            // 
-            this.panelBottomDock.Controls.Add(this.checkSmartReapply);
-            this.panelBottomDock.Controls.Add(this.checkShowSensors);
-            this.panelBottomDock.Controls.Add(this.buttonLoadSettings);
-            this.panelBottomDock.Controls.Add(this.buttonSaveSettings);
-            this.panelBottomDock.Controls.Add(this.labelRenoirMobileTuning);
-            this.panelBottomDock.Controls.Add(this.ApplySettings);
-            resources.ApplyResources(this.panelBottomDock, "panelBottomDock");
-            this.panelBottomDock.Name = "panelBottomDock";
-            // 
-            // checkShowSensors
-            // 
-            resources.ApplyResources(this.checkShowSensors, "checkShowSensors");
-            this.checkShowSensors.Name = "checkShowSensors";
-            this.checkShowSensors.UseVisualStyleBackColor = true;
-            this.checkShowSensors.CheckedChanged += new System.EventHandler(this.checkShowSensors_CheckedChanged);
-            // 
-            // buttonLoadSettings
-            // 
-            this.buttonLoadSettings.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonLoadSettings.Cursor = System.Windows.Forms.Cursors.Arrow;
-            resources.ApplyResources(this.buttonLoadSettings, "buttonLoadSettings");
-            this.buttonLoadSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.buttonLoadSettings.Name = "buttonLoadSettings";
-            this.buttonLoadSettings.UseVisualStyleBackColor = false;
-            this.buttonLoadSettings.Click += new System.EventHandler(this.buttonLoadSettings_Click);
-            // 
-            // buttonSaveSettings
-            // 
-            this.buttonSaveSettings.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonSaveSettings.Cursor = System.Windows.Forms.Cursors.Arrow;
-            resources.ApplyResources(this.buttonSaveSettings, "buttonSaveSettings");
-            this.buttonSaveSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.buttonSaveSettings.Name = "buttonSaveSettings";
-            this.buttonSaveSettings.UseVisualStyleBackColor = false;
-            this.buttonSaveSettings.Click += new System.EventHandler(this.buttonSaveSettings_Click);
-            // 
-            // labelRenoirMobileTuning
-            // 
-            resources.ApplyResources(this.labelRenoirMobileTuning, "labelRenoirMobileTuning");
-            this.labelRenoirMobileTuning.ForeColor = System.Drawing.Color.Gray;
-            this.labelRenoirMobileTuning.Name = "labelRenoirMobileTuning";
-            // 
-            // ApplySettings
-            // 
-            this.ApplySettings.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ApplySettings.Cursor = System.Windows.Forms.Cursors.Arrow;
-            resources.ApplyResources(this.ApplySettings, "ApplySettings");
-            this.ApplySettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.ApplySettings.Name = "ApplySettings";
-            this.ApplySettings.UseVisualStyleBackColor = false;
-            this.ApplySettings.Click += new System.EventHandler(this.ApplySettings_Click_1);
-            // 
-            // menuBar
-            // 
-            this.menuBar.Controls.Add(this.Tuning);
-            this.menuBar.Controls.Add(this.Presets);
-            this.menuBar.Controls.Add(this.About);
-            resources.ApplyResources(this.menuBar, "menuBar");
-            this.menuBar.Name = "menuBar";
-            this.menuBar.SelectedIndex = 0;
-            // 
-            // Tuning
-            // 
-            this.Tuning.Controls.Add(this.panel9);
-            resources.ApplyResources(this.Tuning, "Tuning");
-            this.Tuning.Name = "Tuning";
-            this.Tuning.UseVisualStyleBackColor = true;
-            // 
-            // Presets
-            // 
-            resources.ApplyResources(this.Presets, "Presets");
-            this.Presets.Name = "Presets";
-            this.Presets.UseVisualStyleBackColor = true;
-            // 
             // About
             // 
+            this.About.Controls.Add(this.Tuning);
+            this.About.Controls.Add(this.tabPage1);
             resources.ApplyResources(this.About, "About");
             this.About.Name = "About";
-            this.About.UseVisualStyleBackColor = true;
+            this.About.SelectedIndex = 0;
             // 
-            // checkSmartReapply
+            // tabPage1
             // 
-            resources.ApplyResources(this.checkSmartReapply, "checkSmartReapply");
-            this.checkSmartReapply.Name = "checkSmartReapply";
-            this.checkSmartReapply.UseVisualStyleBackColor = true;
-            this.checkSmartReapply.CheckedChanged += new System.EventHandler(this.checkSmartReapply_CheckedChanged);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Controls.Add(this.linkCtr);
+            this.tabPage1.Controls.Add(this.linkTwitter);
+            this.tabPage1.Controls.Add(this.linkGitHub);
+            this.tabPage1.Controls.Add(this.linkPayPal);
+            this.tabPage1.Controls.Add(this.linkDiscord);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // linkCtr
+            // 
+            resources.ApplyResources(this.linkCtr, "linkCtr");
+            this.linkCtr.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkCtr.Name = "linkCtr";
+            this.linkCtr.TabStop = true;
+            this.linkCtr.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkCtr.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkCtr_LinkClicked);
+            // 
+            // linkTwitter
+            // 
+            resources.ApplyResources(this.linkTwitter, "linkTwitter");
+            this.linkTwitter.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkTwitter.Name = "linkTwitter";
+            this.linkTwitter.TabStop = true;
+            this.linkTwitter.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkTwitter.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkTwitter_LinkClicked);
+            // 
+            // linkGitHub
+            // 
+            resources.ApplyResources(this.linkGitHub, "linkGitHub");
+            this.linkGitHub.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkGitHub.Name = "linkGitHub";
+            this.linkGitHub.TabStop = true;
+            this.linkGitHub.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkGitHub_LinkClicked);
+            // 
+            // linkPayPal
+            // 
+            resources.ApplyResources(this.linkPayPal, "linkPayPal");
+            this.linkPayPal.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkPayPal.Name = "linkPayPal";
+            this.linkPayPal.TabStop = true;
+            this.linkPayPal.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkPayPal.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkPayPal_LinkClicked);
+            // 
+            // linkDiscord
+            // 
+            resources.ApplyResources(this.linkDiscord, "linkDiscord");
+            this.linkDiscord.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkDiscord.Name = "linkDiscord";
+            this.linkDiscord.TabStop = true;
+            this.linkDiscord.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkDiscord.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDiscord_LinkClicked);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // RMT
             // 
@@ -522,15 +631,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.CausesValidation = false;
-            this.Controls.Add(this.menuBar);
+            this.Controls.Add(this.About);
             this.Controls.Add(this.panelBottomDock);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Name = "RMT";
             this.Opacity = 0.95D;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.panelBottomDock.ResumeLayout(false);
+            this.panelBottomDock.PerformLayout();
+            this.Tuning.ResumeLayout(false);
+            this.Tuning.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.upDownGfxClk)).EndInit();
+            this.panel19.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).EndInit();
             this.panel17.ResumeLayout(false);
@@ -555,19 +671,28 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.upDownFastLimit)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panelBottomDock.ResumeLayout(false);
-            this.panelBottomDock.PerformLayout();
-            this.menuBar.ResumeLayout(false);
-            this.Tuning.ResumeLayout(false);
-            this.Tuning.PerformLayout();
+            this.About.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel9;
         internal System.Windows.Forms.NotifyIcon notifyIconRMT;
+        private System.Windows.Forms.Panel panelBottomDock;
+        private System.Windows.Forms.Label labelRenoirMobileTuning;
+        private System.Windows.Forms.Button ApplySettings;
+        private System.Windows.Forms.Button buttonSaveSettings;
+        private System.Windows.Forms.Button buttonLoadSettings;
+        private System.Windows.Forms.CheckBox checkShowSensors;
+        private System.Windows.Forms.CheckBox checkSmartReapply;
+        private System.Windows.Forms.TabPage Tuning;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.NumericUpDown upDownGfxClk;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.CheckBox checkGfxClk;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.NumericUpDown upDownMaxCurrentLimit;
         private System.Windows.Forms.Panel panel17;
@@ -600,17 +725,15 @@
         private System.Windows.Forms.NumericUpDown upDownFastLimit;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.CheckBox checkFastLimit;
-        private System.Windows.Forms.Panel panelBottomDock;
-        private System.Windows.Forms.Label labelRenoirMobileTuning;
-        private System.Windows.Forms.Button ApplySettings;
-        private System.Windows.Forms.Button buttonSaveSettings;
-        private System.Windows.Forms.Button buttonLoadSettings;
-        private System.Windows.Forms.CheckBox checkShowSensors;
-        private System.Windows.Forms.TabControl menuBar;
-        private System.Windows.Forms.TabPage Tuning;
-        private System.Windows.Forms.TabPage Presets;
-        private System.Windows.Forms.TabPage About;
-        private System.Windows.Forms.CheckBox checkSmartReapply;
+        private System.Windows.Forms.TabControl About;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.LinkLabel linkCtr;
+        private System.Windows.Forms.LinkLabel linkTwitter;
+        private System.Windows.Forms.LinkLabel linkGitHub;
+        private System.Windows.Forms.LinkLabel linkPayPal;
+        private System.Windows.Forms.LinkLabel linkDiscord;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
     }
 }
 
