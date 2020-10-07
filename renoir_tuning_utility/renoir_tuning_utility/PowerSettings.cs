@@ -191,7 +191,7 @@ namespace PowerSettings
             {
                 if (Statuses[j] != Smu.Status.OK)
                 {
-                    MessageBox.Show($"{j:D}-Status: " + Statuses[j].ToString());
+                    //MessageBox.Show($"{j:D}-Status: " + Statuses[j].ToString());
                 }
             }
             return true;
