@@ -415,10 +415,7 @@ namespace renoir_tuning_utility
             CurrentSetting.TctlTemp = Convert.ToUInt32(upDownTctlTemp.Value);
             CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
             CurrentSetting.MaxCurrentLimit = Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
-            //File.Create("CurrentSettings.json");
-            if(File.s)
-            File.Delete("CurrentSettings.json");
-            Thread.Sleep(10);
+            //File.Create("CurrentSettings.json
             File.WriteAllText("CurrentSettings.json", JsonConvert.SerializeObject(CurrentSetting));
         }
 
@@ -573,15 +570,8 @@ namespace renoir_tuning_utility
 
         private void buttonLoadSettings_Click(object sender, EventArgs e)
         {
-            PowerSetting CurrentSetting;
-            try
-            {
-                CurrentSetting = JsonConvert.DeserializeObject<PowerSetting>(File.ReadLines("test.json").First());
-            }
-            catch (FileNotFoundException ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            PowerSetting CurrentSetting = JsonConvert.DeserializeObject<PowerSetting>(File.ReadLines("test.json").First());
+            
             
             upDownFastLimit.Value = CurrentSetting.FastLimit / 1000;
             upDownSlowLimit.Value = CurrentSetting.SlowLimit / 1000;
