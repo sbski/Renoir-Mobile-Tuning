@@ -379,7 +379,12 @@
             // 
             resources.ApplyResources(this.upDownStapmTime, "upDownStapmTime");
             this.upDownStapmTime.Maximum = new decimal(new int[] {
-            100000,
+            1200,
+            0,
+            0,
+            0});
+            this.upDownStapmTime.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
@@ -414,6 +419,11 @@
             // upDownSlowTime
             // 
             resources.ApplyResources(this.upDownSlowTime, "upDownSlowTime");
+            this.upDownSlowTime.Maximum = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
             this.upDownSlowTime.Minimum = new decimal(new int[] {
             1,
             0,
