@@ -192,7 +192,15 @@ namespace RyzenSmu
         public static float ReadFloat(uint Address, uint Offset)
         {
             uint Data = 0;
-            GetPhysLong((UIntPtr)(Address + Offset * 4), out Data);
+            try
+            {
+                GetPhysLong((UIntPtr)(Address + Offset * 4), out Data);
+            }
+            catch(Exception e)
+            {
+                String ExeptionMSG = $"Error Reading Address 0x{Address:X8} + 0x{Offset * 4:X4}";
+                MessageBox.Show(ExeptionMSG);
+            }
 
             byte[] bytes = new byte[4];
             bytes = BitConverter.GetBytes(Data);

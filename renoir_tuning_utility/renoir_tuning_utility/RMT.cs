@@ -42,12 +42,15 @@ namespace renoir_tuning_utility
         Smu RyzenAccess;
         bool EnableDebug;
         bool LoadValues;
+        bool DumpTable;
         UInt32 PMTableVersion;
         Thread MonitoringThread;
         public RMT()
         {
             EnableDebug = false;
             LoadValues = true;
+            DumpTable = true;
+
             InitializeComponent();
             checkFastLimit.Checked = true;
             checkSlowLimit.Checked = true;
@@ -78,6 +81,29 @@ namespace renoir_tuning_utility
                     Address = Args[0];
                     Args[0] = 0;
                     RyzenAccess.SendPsmu(0x65, ref Args);
+                    Thread.Sleep(1);
+
+                    if (DumpTable)
+                    {
+                        string[] TableDump = { };
+                        Args[0] = 0;
+                        RyzenAccess.SendMp1(0x2, ref Args);
+                        Thread.Sleep(1);
+
+
+                        TableDump.Initialize();
+                        TableDump.Append(labelRenoirMobileTuning.Text);
+                        TableDump.Append($"SMU Version: {Args[0]:X8}");
+                        
+                        for (UInt32 i = 0; i < 600; i++)
+                        {
+                            TableDump.Append($"{i:X}\t{ReadFloat(Address, i):F4}");
+                        }
+                        File.WriteAllLines("PMTableDump.log", TableDump);
+                        MessageBox.Show("Dumped the PM Table. Check PMTableDump.log");
+                    }
+                    
+                    
                     float TestValue = ReadFloat(Address, (uint)768);
                     if (TestValue == 0.0)
                     {
@@ -85,40 +111,27 @@ namespace renoir_tuning_utility
                         PMTableVersion = 0x00370005;
                         if (RyzenAccess.SendPsmu(0x65, ref Args) == Smu.Status.OK)
                         {
-                            if(EnableDebug)
-                                MessageBox.Show($"Address: 0x{Address:X8} -> {TestValue:F}", "Version 0x00370005");
                             upDownStapmLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x0));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded STAPM Limit", "1/8");
+
 
                             upDownFastLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x2));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded Fast Limit", "2/8");
+                            
 
                             upDownSlowLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x4));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded Slow Limit", "3/8");
+                            
 
                             upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x228));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded Slow PPT Time", "4/8");
 
                             upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x227));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded STAPM Time", "5/8");
-
 
                             upDownTctlTemp.Value = (decimal)(Smu.ReadFloat(Address, 0x10));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded Tctl Temp", "6/8");
+                            
 
                             upDownCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x8));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded Current Limit", "7/8");
+                            
 
                             upDownMaxCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xC));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded Max Current Limit Time", "8/8");
+                           
                             /*
                             upDownGfxClk.Value = (decimal)(Smu.ReadFloat(Address, 0x174));
                             if (EnableDebug)
