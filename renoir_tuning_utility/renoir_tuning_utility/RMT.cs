@@ -87,7 +87,7 @@ namespace renoir_tuning_utility
 
                     if (DumpTable)
                     {
-                        string[] TableDump = new string[604];
+                        string[] TableDump = new string[605];
                         Args[0] = 0;
                         RyzenAccess.SendMp1(0x2, ref Args);
                         Thread.Sleep(1);
@@ -99,7 +99,7 @@ namespace renoir_tuning_utility
                         SmuVersion += $"{Args[0]:X8}".Substring(2, 2) + ".";
                         SmuVersion += $"{Args[0]:X8}".Substring(4, 2) + ".";
                         SmuVersion += $"{Args[0]:X8}".Substring(6, 2);
-
+                        TableDump[1] = ($"SMU Version: {Args[0]:X8}");
                         TableDump[1] = ($"SMU Version: " + SmuVersion);
                         TableDump[2] = ($"PMTableBaseAddress: 0x{Address:X8}");
                         
@@ -181,8 +181,8 @@ namespace renoir_tuning_utility
 
 
                     //Dynamic Offset Loading
-                    float TestValue = ReadFloat(Address, (uint)768);
-                    if (TestValue == 0.0)
+                    float TestValue = ReadFloat(Address, (uint)0x230);
+                    if (TestValue != 0.0)
                     {
                         //A15 at time of testing
                         PMTableVersion = 0x00370005;
@@ -525,18 +525,18 @@ namespace renoir_tuning_utility
 
         private void upDownSlowTime_ValueChanged(object sender, EventArgs e)
         {
-            if(Math.Round(upDownSlowTime.Value * 2) > upDownStapmTime.Value)
+            /*if(Math.Round(upDownSlowTime.Value * 2) > upDownStapmTime.Value)
             {
                 upDownStapmTime.Value = upDownSlowTime.Value * 2;
-            }
+            }*/
         }
 
         private void upDownStapmTime_ValueChanged(object sender, EventArgs e)
         {
-            if (Math.Round(upDownSlowTime.Value * 2) > upDownStapmTime.Value)
+            /*if (Math.Round(upDownSlowTime.Value * 2) > upDownStapmTime.Value)
             {
                 upDownSlowTime.Value = Math.Round(upDownStapmTime.Value / 2);
-            }
+            }*/
         }
 
         private void upDownCurrentLimit_ValueChanged(object sender, EventArgs e)
