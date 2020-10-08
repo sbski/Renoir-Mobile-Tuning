@@ -83,7 +83,7 @@ namespace renoir_tuning_utility
 
                     //Dump the Power Monitoring Table
                     RyzenAccess.SendPsmu(0x65, ref Args);
-                    Thread.Sleep(1);
+                    Thread.Sleep(100);
 
                     if (DumpTable)
                     {
