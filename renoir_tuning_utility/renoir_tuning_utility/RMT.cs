@@ -96,6 +96,10 @@ namespace renoir_tuning_utility
                         TableDump.Initialize();
                         TableDump[0] = (labelRenoirMobileTuning.Text);
                         String SmuVersion = $"{Args[0]:X8}".Substring(0,2);
+                        SmuVersion += $".{Args[0]:X8}".Substring(2, 2);
+                        SmuVersion += $".{Args[0]:X8}".Substring(4, 2);
+                        SmuVersion += $".{Args[0]:X8}".Substring(6, 2);
+
                         TableDump[1] = ($"SMU Version: " + SmuVersion);
                         TableDump[2] = ($"PMTableBaseAddress: 0x{Address:X8}");
                         
