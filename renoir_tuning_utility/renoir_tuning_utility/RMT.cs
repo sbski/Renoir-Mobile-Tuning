@@ -102,13 +102,28 @@ namespace renoir_tuning_utility
                         TableDump[1] = ($"SMU Version: {Args[0]:X8}");
                         TableDump[2] = ($"SMU Version: " + SmuVersion);
                         TableDump[3] = ($"PMTableBaseAddress: 0x{Address:X8}");
-                        
+                        float CurrentValue = 0.0F;
+                        bool OnlyZero = true;
                         for (UInt32 i = 0; i <= 600; i++)
                         {
-                            TableDump[4+i] = $"0x{i:X4}\t{Smu.ReadFloat(Address, i):F4}";
+                            CurrentValue = Smu.ReadFloat(Address, i);
+                            if (OnlyZero && CurrentValue != 0.0F )
+                            {
+                                OnlyZero = false;
+                            }
+                            TableDump[4+i] = $"0x{i:X4}\t{CurrentValue:F4}";
                         }
                         File.WriteAllLines("PMTableDump.log", TableDump);
-                        MessageBox.Show("Successfully Dumped the PM Table", "Power Monitoring Table Dump:");
+                        if (OnlyZero)
+                        {
+                            MessageBox.Show("Error Dumping the PM Table\nThe PM Table only contains zeros!", "Power Monitoring Table Dump:");
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Successfully Dumped the PM Table", "Power Monitoring Table Dump:");
+
+                        }
                     }
 
                     //Loading of table info with static offsets
