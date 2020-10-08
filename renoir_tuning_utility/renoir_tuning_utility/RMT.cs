@@ -77,66 +77,144 @@ namespace renoir_tuning_utility
                 
                 if (RyzenAccess.SendPsmu(0x66, ref Args) == Smu.Status.OK)
                 {
-                    
+                    //Set Address and reset Args[]
                     Address = Args[0];
                     Args[0] = 0;
+
+                    //Dump the Power Monitoring Table
                     RyzenAccess.SendPsmu(0x65, ref Args);
-                    Thread.Sleep(1);
+                    Thread.Sleep(100);
 
                     if (DumpTable)
                     {
-                        string[] TableDump = { };
+                        string[] TableDump = new string[604];
                         Args[0] = 0;
                         RyzenAccess.SendMp1(0x2, ref Args);
                         Thread.Sleep(1);
 
 
                         TableDump.Initialize();
-                        TableDump.Append(labelRenoirMobileTuning.Text);
-                        TableDump.Append($"SMU Version: {Args[0]:X8}");
+                        TableDump[0] = (labelRenoirMobileTuning.Text);
+                        String SmuVersion = $"{Args[0]:X8}".Substring(0,2) + ".";
+                        SmuVersion += $"{Args[0]:X8}".Substring(2, 2) + ".";
+                        SmuVersion += $"{Args[0]:X8}".Substring(4, 2) + ".";
+                        SmuVersion += $"{Args[0]:X8}".Substring(6, 2);
+
+                        TableDump[1] = ($"SMU Version: " + SmuVersion);
+                        TableDump[2] = ($"PMTableBaseAddress: 0x{Address:X8}");
                         
-                        for (UInt32 i = 0; i < 600; i++)
+                        for (UInt32 i = 0; i <= 600; i++)
                         {
-                            TableDump.Append($"{i:X}\t{ReadFloat(Address, i):F4}");
+                            TableDump[3+i] = $"0x{i:X4}\t{Smu.ReadFloat(Address, i):F4}";
                         }
                         File.WriteAllLines("PMTableDump.log", TableDump);
-                        MessageBox.Show("Dumped the PM Table. Check PMTableDump.log");
+                        MessageBox.Show("Successfully Dumped the PM Table", "Power Monitoring Table Dump:");
                     }
-                    
-                    
+
+                    //Loading of table info with static offsets
+
+                    //Stapm Limit
+                    try
+                    {
+                        upDownStapmLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x0));
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "StapmLimit Load Error");
+                        upDownStapmLimit.Value = 15;
+                    }
+
+                    //Fast Limit
+                    try
+                    {
+                        upDownFastLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x2));
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "FastLimit Load Error");
+                        upDownFastLimit.Value = 21;
+                    }
+
+                    //Slow Limit
+                    try
+                    {
+                        upDownSlowLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x4));
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "SlowLimit Load Error");
+                        upDownSlowLimit.Value = 18;
+                    }
+
+                    //Current Limit
+                    try
+                    {
+                        upDownCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x8));
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "CurrentLimit Load Error");
+                        upDownCurrentLimit.Value = 25;
+                    }
+
+                    //TctlTemp
+                    try
+                    {
+                        upDownTctlTemp.Value = (decimal)(Smu.ReadFloat(Address, 0x10));
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "TctlTemp Load Error");
+                        upDownTctlTemp.Value = 80;
+                    }
+
+                    //Max Current Limit
+                    try
+                    {
+                        upDownMaxCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xC));
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "MaxCurrentLimit Load Error");
+                        upDownMaxCurrentLimit.Value = 50;
+                    }
+
+
+                    //Dynamic Offset Loading
                     float TestValue = ReadFloat(Address, (uint)768);
                     if (TestValue == 0.0)
                     {
-
+                        //A15 at time of testing
                         PMTableVersion = 0x00370005;
+                        
+                        //Dump the Power Monitoring Table
                         if (RyzenAccess.SendPsmu(0x65, ref Args) == Smu.Status.OK)
                         {
-                            upDownStapmLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x0));
+                            //Stapm Time
+                            try
+                            {
+                                upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x227));
+                            }
+                            catch (Exception e)
+                            {
+                                MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "StapmTime Load Error");
+                                upDownStapmTime.Value = 300;
+                            }
 
+                            //Slow Time
+                            try
+                            {
+                                upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x228));
+                            }
+                            catch(Exception e)
+                            {
+                                MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "SlowTime Load Error");
+                                upDownSlowTime.Value = 3;
+                            }
 
-                            upDownFastLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x2));
                             
 
-                            upDownSlowLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x4));
-                            
-
-                            upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x228));
-
-                            upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x227));
-
-                            upDownTctlTemp.Value = (decimal)(Smu.ReadFloat(Address, 0x10));
-                            
-
-                            upDownCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x8));
-                            
-
-                            upDownMaxCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xC));
-                           
-                            /*
-                            upDownGfxClk.Value = (decimal)(Smu.ReadFloat(Address, 0x174));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded Max Current Limit Time", "9/9");
-                            */
+                            //Update Current Settings if user just wants those settings re-applied
                             UpdateCurrentSettings();
                             
                         }
@@ -144,72 +222,47 @@ namespace renoir_tuning_utility
                         {
                             MessageBox.Show("Failed to communicate with SMU");
                         }
-
                     }
                     else
                     {
+                        //G14 At time of testing
                         PMTableVersion = 0x00370004;
+
+                        //Dump the Power Monitoring Table
                         if (RyzenAccess.SendPsmu(0x65, ref Args) == Smu.Status.OK)
                         {
+                            //Stapm Time
+                            try
+                            {
+                                upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x220));
+                            }
+                            catch (Exception e)
+                            {
+                                MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "StapmTime Load Error");
+                                upDownStapmTime.Value = 300;
+                            }
 
-                            if (EnableDebug)
-                                MessageBox.Show($"Address: 0x{Address:X8} -> {TestValue:F}", "Version 0x00370005");
-                            upDownStapmLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x0));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded STAPM Limit", "1/9");
+                            //Slow Time
+                            try
+                            {
+                                upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x221));
+                            }
+                            catch (Exception e)
+                            {
+                                MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "SlowTime Load Error");
+                                upDownSlowTime.Value = 3;
+                            }
 
-                            upDownFastLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x2));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded Fast Limit", "2/9");
-
-                            upDownSlowLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x4));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded Slow Limit", "3/9");
-
-                            upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x221));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded Slow PPT Time", "4/9");
-
-                            upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x220));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded STAPM Time", "5/9");
-
-
-                            upDownTctlTemp.Value = (decimal)(Smu.ReadFloat(Address, 0x10));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded Tctl Temp", "6/9");
-
-                            upDownCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x8));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded Current Limit", "7/9");
-
-                            upDownMaxCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xC));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded Max Current Limit Time", "8/9");
+                            //Update Current Settings if user just wants those settings re-applied
                             UpdateCurrentSettings();
-                            /*
-                            upDownGfxClk.Value = (decimal)(Smu.ReadFloat(Address, 0x16D));
-                            if (EnableDebug)
-                                MessageBox.Show("Loaded Max Current Limit Time", "9/9");*/
-                           
-
                         }
                         else
                         {
                             MessageBox.Show("Failed to communicate with SMU");
                         }
-
-
                     }
-                        //upDownSocCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xA));
-                        //upDownSocMaxCurrentLimit.Value = (decimal)(Smu.ReadFloat(Address, 0xE));
-
                 }
-
             }
-            
-
-
         }
 
         public bool CheckSettings(float FastLimit, float SlowLimit, float StapmLimit, float SlowTime, float StapmTime, float TctlTemp, float CurrentLimit, float MaxCurrentLimit, object sender, EventArgs e)
