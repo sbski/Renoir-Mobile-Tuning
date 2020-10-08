@@ -98,9 +98,9 @@ namespace renoir_tuning_utility
                         TableDump[1] = ($"SMU Version: {Args[0]:X8}");
                         TableDump[2] = ($"PMTableBaseAddress: 0x{Address:X8}");
                         
-                        for (UInt32 i = 0; i < 2400; i += 4)
+                        for (UInt32 i = 0; i <= 2400; i += 4)
                         {
-                            TableDump[3+i/4] = $"8x{i:X4}\t{Smu.ReadFloat(Address, i):F4}";
+                            TableDump[3+i/4] = $"0x{i:X4}\t{Smu.ReadFloat(Address, i):F4}";
                         }
                         File.WriteAllLines("PMTableDump.log", TableDump);
                         MessageBox.Show("Successfully Dumped the PM Table", "Power Monitoring Table Dump:");
