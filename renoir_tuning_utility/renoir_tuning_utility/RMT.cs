@@ -187,79 +187,65 @@ namespace renoir_tuning_utility
                         //A15 at time of testing
                         PMTableVersion = 0x00370005;
                         
-                        //Dump the Power Monitoring Table
-                        if (RyzenAccess.SendPsmu(0x65, ref Args) == Smu.Status.OK)
+                        //Stapm Time
+                        try
                         {
-                            //Stapm Time
-                            try
-                            {
-                                upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x227));
-                            }
-                            catch (Exception e)
-                            {
-                                MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "StapmTime Load Error");
-                                upDownStapmTime.Value = 300;
-                            }
+                            upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x227));
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "StapmTime Load Error");
+                            upDownStapmTime.Value = 300;
+                        }
 
-                            //Slow Time
-                            try
-                            {
-                                upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x228));
-                            }
-                            catch(Exception e)
-                            {
-                                MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "SlowTime Load Error");
-                                upDownSlowTime.Value = 3;
-                            }
+                        //Slow Time
+                        try
+                        {
+                            upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x228));
+                        }
+                        catch(Exception e)
+                        {
+                            MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "SlowTime Load Error");
+                            upDownSlowTime.Value = 3;
+                        }
 
                             
 
-                            //Update Current Settings if user just wants those settings re-applied
-                            UpdateCurrentSettings();
+                        //Update Current Settings if user just wants those settings re-applied
+                        UpdateCurrentSettings();
                             
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to communicate with SMU");
-                        }
+                        
                     }
                     else
                     {
                         //G14 At time of testing
                         PMTableVersion = 0x00370004;
-
-                        //Dump the Power Monitoring Table
-                        if (RyzenAccess.SendPsmu(0x65, ref Args) == Smu.Status.OK)
+                        
+                        //Stapm Time
+                        try
                         {
-                            //Stapm Time
-                            try
-                            {
-                                upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x220));
-                            }
-                            catch (Exception e)
-                            {
-                                MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "StapmTime Load Error");
-                                upDownStapmTime.Value = 300;
-                            }
-
-                            //Slow Time
-                            try
-                            {
-                                upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x221));
-                            }
-                            catch (Exception e)
-                            {
-                                MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "SlowTime Load Error");
-                                upDownSlowTime.Value = 3;
-                            }
-
-                            //Update Current Settings if user just wants those settings re-applied
-                            UpdateCurrentSettings();
+                            upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x220));
                         }
-                        else
+                        catch (Exception e)
                         {
-                            MessageBox.Show("Failed to communicate with SMU");
+                            MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "StapmTime Load Error");
+                            upDownStapmTime.Value = 300;
                         }
+
+                        //Slow Time
+                        try
+                        {
+                            upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x221));
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "SlowTime Load Error");
+                            upDownSlowTime.Value = 3;
+                        }
+
+                        //Update Current Settings if user just wants those settings re-applied
+                        UpdateCurrentSettings();
+                        
                     }
                 }
             }
