@@ -100,7 +100,7 @@ namespace renoir_tuning_utility
                         
                         for (UInt32 i = 0; i < 2400; i += 4)
                         {
-                            TableDump[3+i/4] = $"{i:X}\t{Smu.ReadFloat(Address, i):F4}";
+                            TableDump[3+i/4] = $"8x{i:X4}\t{Smu.ReadFloat(Address, i):F4}";
                         }
                         File.WriteAllLines("PMTableDump.log", TableDump);
                         MessageBox.Show("Successfully Dumped the PM Table", "Power Monitoring Table Dump:");
