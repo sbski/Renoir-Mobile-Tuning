@@ -69,7 +69,7 @@
             this.CpuData.ShowCellToolTips = false;
             this.CpuData.ShowEditingIcon = false;
             this.CpuData.ShowRowErrors = false;
-            this.CpuData.Size = new System.Drawing.Size(440, 446);
+            this.CpuData.Size = new System.Drawing.Size(278, 446);
             this.CpuData.TabIndex = 0;
             this.CpuData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cpuData_CellContentClick);
             // 
@@ -125,7 +125,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(446, 490);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(284, 490);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // labelRefreshInterval
@@ -186,7 +186,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 490);
+            this.ClientSize = new System.Drawing.Size(284, 490);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Gill Sans MT", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
