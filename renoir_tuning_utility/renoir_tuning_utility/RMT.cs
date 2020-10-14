@@ -344,9 +344,6 @@ namespace renoir_tuning_utility
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
-
-                //args = String.Format("--message=0x14 --arg0={0:0}000", upDownStapmLimit.Value);
-                //var proc = System.Diagnostics.Process.Start(exe, args);
             }
 
             if (checkFastLimit.Checked)
@@ -357,9 +354,6 @@ namespace renoir_tuning_utility
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
-
-                //args = String.Format("--message=0x15 --arg0={0:0}000", upDownFastLimit.Value);
-                //var proc = System.Diagnostics.Process.Start(exe, args);
             }
 
             if (checkSlowLimit.Checked)
@@ -370,9 +364,6 @@ namespace renoir_tuning_utility
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
-
-                //args = String.Format("--message=0x16 --arg0={0:0}000", upDownSlowLimit.Value);
-                //var proc = System.Diagnostics.Process.Start(exe, args);
             }
 
             if (checkSlowTime.Checked)
@@ -383,9 +374,6 @@ namespace renoir_tuning_utility
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
-
-                //args = String.Format("--message=0x17 --arg0={0:0}", upDownSlowTime.Value);
-                //var proc = System.Diagnostics.Process.Start(exe, args);
             }
 
             if (checkStapmTime.Checked)
@@ -396,9 +384,6 @@ namespace renoir_tuning_utility
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
-
-                //args = String.Format("--message=0x18 --arg0={0:0}", upDownStapmTime.Value);
-                //var proc = System.Diagnostics.Process.Start(exe, args);
             }
 
             if (checkTctlTemp.Checked)
@@ -409,9 +394,6 @@ namespace renoir_tuning_utility
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
-
-                //args = String.Format("--message=0x19 --arg0={0:0}", upDownTctlTemp.Value);
-                //var proc = System.Diagnostics.Process.Start(exe, args);
             }
 
             if (checkCurrentLimit.Checked)
@@ -422,9 +404,6 @@ namespace renoir_tuning_utility
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
-
-                //args = String.Format("--message=0x1A --arg0={0:0}000", upDownCurrentLimit.Value);
-                //var proc = System.Diagnostics.Process.Start(exe, args);
             }
             if (checkMaxCurrentLimit.Checked)
             {
@@ -434,41 +413,25 @@ namespace renoir_tuning_utility
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
-
-                //args = String.Format("--message=0x1C --arg0={0:0}000", upDownMaxCurrentLimit.Value);
-                //var proc = System.Diagnostics.Process.Start(exe, args);
             }
-            /*
-            if(checkGfxClk.Checked)
-            {
-                Msg = 0xB9;
-                Args[0] = (uint)Convert.ToUInt32(upDownGfxClk.Value);
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendPsmu(Msg, ref Args);
-            }*/
-            /*
-             * IF "%Stapm%" NEQ "" smu-tool.exe -m --message=0x14 --arg0=%Stapm%000
-             * IF "%Fast%" NEQ "" smu-tool.exe -m --message=0x15 --arg0=%Fast%000
-             * IF "%Slow%" NEQ "" smu-tool.exe -m --message=0x16 --arg0=%Slow%000
-             * IF "%SlowTime%" NEQ "" smu-tool.exe -m --message=0x17 --arg0=%SlowTime%
-             * IF "%StapmTime%" NEQ "" smu-tool.exe -m --message=0x18 --arg0=%StapmTime%
-             * IF "%Tctl%" NEQ "" smu-tool.exe -m --message=0x19 --arg0=%Tctl%
-             * IF "%Current%" NEQ "" smu-tool.exe -m --message=0x1A --arg0=%Current%000
-             * IF "%MaxCurrent%" NEQ "" smu-tool.exe -m --message=0x1C --arg0=%MaxCurrent%000
-             */
+            
 
             for(int j = 0; j < i; j++)
-            {/*
+            {
+                //Error checking
+                /*
                 if (Statuses[j] != Smu.Status.OK)
                 {
                     throw new ApplicationException($"{j:D}-Status: " + Statuses[j].ToString());
                 }*/
             }
 
+            //Kill off our access to the SMU so that other parts of the program may use it.
             RyzenAccess.Deinitialize();
 
         }
 
+        //Updates the CurrentSettings so that changes will change when smart re-apply is being used
         private void UpdateCurrentSettings()
         {
             PowerSetting CurrentSetting = new PowerSetting(PMTableVersion);
@@ -619,31 +582,38 @@ namespace renoir_tuning_utility
 
         private void buttonSaveSettings_Click(object sender, EventArgs e)
         {
-            PowerSetting CurrentSetting = new PowerSetting(PMTableVersion);
-            CurrentSetting.Name = "Test";
-            CurrentSetting.StapmLimit = Convert.ToUInt32(upDownStapmLimit.Value * 1000);
-            CurrentSetting.FastLimit = Convert.ToUInt32(upDownFastLimit.Value * 1000);
-            CurrentSetting.SlowLimit = Convert.ToUInt32(upDownSlowLimit.Value * 1000);
-            CurrentSetting.SlowTime = Convert.ToUInt32(upDownSlowTime.Value);
-            CurrentSetting.StapmTime = Convert.ToUInt32(upDownStapmTime.Value);
-            CurrentSetting.TctlTemp = Convert.ToUInt32(upDownTctlTemp.Value);
-            CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
-            CurrentSetting.MaxCurrentLimit = Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
+            
             //CurrentSetting.GfxClk = Convert.ToUInt32(upDownGfxClk.Value);
             Stream myStream;
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
-            saveFileDialog1.Filter = "json files (*.json)|*.json | All files (*.*)|*.*";
+            saveFileDialog1.Filter = "JSON files (*.json)|*.json | All files (*.*)|*.*";
             saveFileDialog1.FilterIndex = 2;
-            saveFileDialog1.RestoreDirectory = true;
+            saveFileDialog1.RestoreDirectory = false;
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 if ((myStream = saveFileDialog1.OpenFile()) != null)
                 {
+                    //Create new PowerSetting
+                    PowerSetting CurrentSetting = new PowerSetting(PMTableVersion);
+                    
+                    //Set PowerSetting variabes
+                    CurrentSetting.Name = "Custom Preset";
+                    CurrentSetting.StapmLimit = Convert.ToUInt32(upDownStapmLimit.Value * 1000);
+                    CurrentSetting.FastLimit = Convert.ToUInt32(upDownFastLimit.Value * 1000);
+                    CurrentSetting.SlowLimit = Convert.ToUInt32(upDownSlowLimit.Value * 1000);
+                    CurrentSetting.SlowTime = Convert.ToUInt32(upDownSlowTime.Value);
+                    CurrentSetting.StapmTime = Convert.ToUInt32(upDownStapmTime.Value);
+                    CurrentSetting.TctlTemp = Convert.ToUInt32(upDownTctlTemp.Value);
+                    CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
+                    CurrentSetting.MaxCurrentLimit = Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
+
+                    //Convert to string
                     string JsonString = JsonConvert.SerializeObject(CurrentSetting);
-                    // Code to write the stream goes here.
-                    myStream.Write(Encoding.UTF8.GetBytes(JsonString), 0, 1);
+                    
+                    //Write and Close 
+                    myStream.Write(Encoding.UTF8.GetBytes(JsonString), 0, JsonString.Length);
                     myStream.Close();
                 }
             }
@@ -660,10 +630,10 @@ namespace renoir_tuning_utility
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
+                //openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "JSON files (*.json)|*.txt|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = false;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -677,21 +647,23 @@ namespace renoir_tuning_utility
                     {
                         FileContent = reader.ReadToEnd();
                     }
+
+                    PowerSetting CurrentSetting = JsonConvert.DeserializeObject<PowerSetting>(FileContent);
+
+
+                    upDownFastLimit.Value = (decimal)((float)CurrentSetting.FastLimit / 1000F);
+                    upDownSlowLimit.Value = (decimal)((float)CurrentSetting.SlowLimit / 1000F);
+                    upDownStapmLimit.Value = (decimal)((float)CurrentSetting.StapmLimit / 1000F);
+                    upDownSlowTime.Value = CurrentSetting.SlowTime;
+                    upDownStapmTime.Value = CurrentSetting.StapmTime;
+                    upDownTctlTemp.Value = CurrentSetting.TctlTemp;
+                    upDownCurrentLimit.Value = (decimal)((float)CurrentSetting.CurrentLimit / 1000F);
+                    upDownMaxCurrentLimit.Value = (decimal)((float)CurrentSetting.MaxCurrentLimit / 1000F);
                 }
             }
 
 
-            PowerSetting CurrentSetting = JsonConvert.DeserializeObject<PowerSetting>(FileContent);
             
-            
-            upDownFastLimit.Value = CurrentSetting.FastLimit / 1000;
-            upDownSlowLimit.Value = CurrentSetting.SlowLimit / 1000;
-            upDownStapmLimit.Value = CurrentSetting.StapmLimit / 1000;
-            upDownSlowTime.Value = CurrentSetting.SlowTime;
-            upDownStapmTime.Value = CurrentSetting.StapmTime;
-            upDownTctlTemp.Value = CurrentSetting.TctlTemp;
-            upDownCurrentLimit.Value = CurrentSetting.CurrentLimit / 1000;
-            upDownMaxCurrentLimit.Value = CurrentSetting.MaxCurrentLimit / 1000;
             //upDownGfxClk.Value = CurrentSetting.GfxClk;
         }
 

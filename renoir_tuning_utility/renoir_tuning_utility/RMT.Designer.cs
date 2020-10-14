@@ -459,9 +459,15 @@
             // 
             // upDownStapmLimit
             // 
+            this.upDownStapmLimit.DecimalPlaces = 1;
             resources.ApplyResources(this.upDownStapmLimit, "upDownStapmLimit");
+            this.upDownStapmLimit.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.upDownStapmLimit.Minimum = new decimal(new int[] {
-            5,
+            1,
             0,
             0,
             0});
@@ -495,9 +501,15 @@
             // 
             // upDownSlowLimit
             // 
+            this.upDownSlowLimit.DecimalPlaces = 1;
             resources.ApplyResources(this.upDownSlowLimit, "upDownSlowLimit");
+            this.upDownSlowLimit.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.upDownSlowLimit.Minimum = new decimal(new int[] {
-            5,
+            1,
             0,
             0,
             0});
@@ -531,9 +543,15 @@
             // 
             // upDownFastLimit
             // 
+            this.upDownFastLimit.DecimalPlaces = 1;
             resources.ApplyResources(this.upDownFastLimit, "upDownFastLimit");
+            this.upDownFastLimit.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.upDownFastLimit.Minimum = new decimal(new int[] {
-            5,
+            1,
             0,
             0,
             0});
