@@ -630,14 +630,58 @@ namespace renoir_tuning_utility
             CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
             CurrentSetting.MaxCurrentLimit = Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
             //CurrentSetting.GfxClk = Convert.ToUInt32(upDownGfxClk.Value);
-            File.WriteAllText("test.json", JsonConvert.SerializeObject(CurrentSetting));
+            Stream myStream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "json files (*.json)|*.json | All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                {
+                    string JsonString = JsonConvert.SerializeObject(CurrentSetting);
+                    // Code to write the stream goes here.
+                    myStream.Write(Encoding.UTF8.GetBytes(JsonString), 0, 1);
+                    myStream.Close();
+                }
+            }
+            //File.WriteAllText("test.json", JsonConvert.SerializeObject(CurrentSetting));
             
 
         }
 
         private void buttonLoadSettings_Click(object sender, EventArgs e)
         {
-            PowerSetting CurrentSetting = JsonConvert.DeserializeObject<PowerSetting>(File.ReadLines("test.json").First());
+
+            var FileContent = string.Empty;
+            var FilePath = string.Empty;
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    FilePath = openFileDialog.FileName;
+
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
+                        FileContent = reader.ReadToEnd();
+                    }
+                }
+            }
+
+
+            PowerSetting CurrentSetting = JsonConvert.DeserializeObject<PowerSetting>(FileContent);
             
             
             upDownFastLimit.Value = CurrentSetting.FastLimit / 1000;
