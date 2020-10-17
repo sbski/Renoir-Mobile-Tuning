@@ -23,6 +23,10 @@ namespace renoir_tuning_utility
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool GetPhysLong(UIntPtr memAddress, out uint Data);
 
+        [DllImport("inpoutx64.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool IsInpOutDriverOpen();
+
         private static float ReadFloat(uint Address, uint Offset)
         {
             uint Data = 0;
@@ -35,6 +39,20 @@ namespace renoir_tuning_utility
             //Console.WriteLine($"0x{Address + Offset * 4,8:X8} | {PmData:F}");
             return PmData;
         }
+
+        private static UInt32 ReadUInt32(uint Address, uint Offset)
+        {
+            uint Data = 0;
+            GetPhysLong((UIntPtr)(Address + Offset), out Data);
+
+            byte[] bytes = new byte[4];
+            bytes = BitConverter.GetBytes(Data);
+
+            UInt32 PmData = BitConverter.ToUInt32(bytes, 0);
+            //Console.WriteLine($"0x{Address + Offset * 4,8:X8} | {PmData:F}");
+            return PmData;
+        }
+
 
         uint Msg;
         uint[] Args;
@@ -65,8 +83,18 @@ namespace renoir_tuning_utility
 
             PowerSetting CurrentSetting;
             labelRenoirMobileTuning.Text = "RMT v1.0.0";
-            
-            
+
+            int time = 0;
+            while(!IsInpOutDriverOpen() && time < 100)
+            {
+                time++;
+                Thread.Sleep(1);
+            }
+            if (time == 100)
+            {
+                MessageBox.Show("Failed to load InpOutx64 driver.\nPlease check that the application is running with the right privledges");
+            }
+
 
             if (LoadValues)
             {
@@ -121,7 +149,7 @@ namespace renoir_tuning_utility
                         }
                         else
                         {
-                            MessageBox.Show("Successfully Dumped the PM Table", "Power Monitoring Table Dump:");
+                            //MessageBox.Show("Successfully Dumped the PM Table", "Power Monitoring Table Dump:");
 
                         }
                     }
@@ -194,74 +222,88 @@ namespace renoir_tuning_utility
                         upDownMaxCurrentLimit.Value = 50;
                     }
 
-
-                    //Dynamic Offset Loading
-                    float TestValue = ReadFloat(Address, (uint)0x230);
-                    if (TestValue != 0.0)
+                    
+                    float TestValue = ReadFloat(Address, 0x300);
+                    if (TestValue == 0.0)
                     {
-                        //A15 at time of testing
                         PMTableVersion = 0x00370005;
-                        
-                        //Stapm Time
-                        try
-                        {
-                            upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x227));
-                        }
-                        catch (Exception e)
-                        {
-                            MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "StapmTime Load Error");
-                            upDownStapmTime.Value = 300;
-                        }
-
-                        //Slow Time
-                        try
-                        {
-                            upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x228));
-                        }
-                        catch(Exception e)
-                        {
-                            MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "SlowTime Load Error");
-                            upDownSlowTime.Value = 3;
-                        }
-
-                            
-
-                        //Update Current Settings if user just wants those settings re-applied
-                        UpdateCurrentSettings();
-                            
-                        
                     }
                     else
                     {
-                        //G14 At time of testing
                         PMTableVersion = 0x00370004;
-                        
-                        //Stapm Time
-                        try
-                        {
-                            upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x220));
-                        }
-                        catch (Exception e)
-                        {
-                            MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "StapmTime Load Error");
-                            upDownStapmTime.Value = 300;
-                        }
-
-                        //Slow Time
-                        try
-                        {
-                            upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x221));
-                        }
-                        catch (Exception e)
-                        {
-                            MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "SlowTime Load Error");
-                            upDownSlowTime.Value = 3;
-                        }
-
-                        //Update Current Settings if user just wants those settings re-applied
-                        UpdateCurrentSettings();
-                        
                     }
+
+                    switch (PMTableVersion)
+                    {
+                        case 0x00370005:
+                            //A15 at time of testing
+                            PMTableVersion = 0x00370005;
+
+                            //Stapm Time
+                            try
+                            {
+                                upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x227));
+                            }
+                            catch (Exception e)
+                            {
+                                MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "StapmTime Load Error");
+                                upDownStapmTime.Value = 300;
+                            }
+
+                            //Slow Time
+                            try
+                            {
+
+                                upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x228));
+                            }
+                            catch (Exception e)
+                            {
+                                MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "SlowTime Load Error");
+                                upDownSlowTime.Value = 3;
+                            }
+                            break;
+
+                        case 0x00370004:
+
+
+
+                            //Update Current Settings if user just wants those settings re-applied
+                            UpdateCurrentSettings();
+
+                            //G14 At time of testing
+                            PMTableVersion = 0x00370004;
+
+                            //Stapm Time
+                            try
+                            {
+                                upDownStapmTime.Value = (decimal)(Smu.ReadFloat(Address, 0x220));
+                            }
+                            catch (Exception e)
+                            {
+                                MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "StapmTime Load Error");
+                                upDownStapmTime.Value = 300;
+                            }
+
+                            //Slow Time
+                            try
+                            {
+                                upDownSlowTime.Value = (decimal)(Smu.ReadFloat(Address, 0x221));
+                            }
+                            catch (Exception e)
+                            {
+                                MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "SlowTime Load Error");
+                                upDownSlowTime.Value = 3;
+                            }
+
+                            //Update Current Settings if user just wants those settings re-applied
+                            UpdateCurrentSettings();
+                            break;
+
+                        default:
+                            MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/ unsupported Power Monitoring Table version", "Table Version Error");
+                            break;
+                    }
+                    
                 }
             }
         }
@@ -587,19 +629,24 @@ namespace renoir_tuning_utility
             Stream myStream;
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
-            saveFileDialog1.Filter = "JSON files (*.json)|*.json | All files (*.*)|*.*";
-            saveFileDialog1.FilterIndex = 2;
-            saveFileDialog1.RestoreDirectory = false;
+            saveFileDialog1.Filter = "Renoir Mobile Tuning Setting files (*.rmts)|*.rmts| All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.RestoreDirectory = true;
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 if ((myStream = saveFileDialog1.OpenFile()) != null)
                 {
+                    
                     //Create new PowerSetting
                     PowerSetting CurrentSetting = new PowerSetting(PMTableVersion);
+
+                    string FileName = saveFileDialog1.FileName;
+                    int NameStartIndex = FileName.LastIndexOf('\\') + 1;
                     
+                    CurrentSetting.Name = FileName.Substring(NameStartIndex, FileName.Length - NameStartIndex - 5);
+
                     //Set PowerSetting variabes
-                    CurrentSetting.Name = "Custom Preset";
                     CurrentSetting.StapmLimit = Convert.ToUInt32(upDownStapmLimit.Value * 1000);
                     CurrentSetting.FastLimit = Convert.ToUInt32(upDownFastLimit.Value * 1000);
                     CurrentSetting.SlowLimit = Convert.ToUInt32(upDownSlowLimit.Value * 1000);
@@ -631,9 +678,9 @@ namespace renoir_tuning_utility
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 //openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "JSON files (*.json)|*.txt|All files (*.*)|*.*";
+                openFileDialog.Filter = "Renoir Mobile Tuning Setting files (*.rmts)|*.rmts| All files (*.*)|*.*";
                 openFileDialog.FilterIndex = 1;
-                openFileDialog.RestoreDirectory = false;
+                openFileDialog.RestoreDirectory = true;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {

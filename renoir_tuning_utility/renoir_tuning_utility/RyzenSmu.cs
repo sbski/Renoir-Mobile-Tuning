@@ -198,7 +198,7 @@ namespace RyzenSmu
             }
             catch(Exception e)
             {
-                String ExeptionMSG = $"Error Reading Address 0x{Address:X8} + 0x{Offset * 4:X4}";
+                String ExeptionMSG = $"Error Reading Address 0x{Address:X8} + 0x{Offset:X4}";
                 MessageBox.Show(ExeptionMSG);
             }
 

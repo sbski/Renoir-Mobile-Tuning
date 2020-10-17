@@ -614,7 +614,7 @@ namespace renoir_tuning_utility
             RyzenAccess.SendPsmu(0x66, ref Args);
             Address = Args[0];
             RyzenAccess.Deinitialize();
-            float TestValue = ReadFloat(Address, (uint)768);
+            float TestValue = ReadFloat(Address, (uint)0x300);
             if (TestValue == 0.0)
             {
                 PMTableVersion = 0x00370005;
