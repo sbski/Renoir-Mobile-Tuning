@@ -632,70 +632,70 @@
   <data name="panel9.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="panel18.AutoSize" type="System.Boolean, mscorlib">
+  <data name="panelSstLimit.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="panel18.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="panelSstLimit.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="upDownGfxClk.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="upDownSstLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="upDownGfxClk.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="upDownSstLimit.Location" type="System.Drawing.Point, System.Drawing">
     <value>200, 0</value>
   </data>
-  <data name="upDownGfxClk.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="upDownSstLimit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 9, 6, 9</value>
   </data>
-  <data name="upDownGfxClk.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="upDownSstLimit.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 21</value>
   </data>
-  <data name="upDownGfxClk.TabIndex" type="System.Int32, mscorlib">
+  <data name="upDownSstLimit.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;upDownGfxClk.Name" xml:space="preserve">
-    <value>upDownGfxClk</value>
+  <data name="&gt;&gt;upDownSstLimit.Name" xml:space="preserve">
+    <value>upDownSstLimit</value>
   </data>
-  <data name="&gt;&gt;upDownGfxClk.Type" xml:space="preserve">
+  <data name="&gt;&gt;upDownSstLimit.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;upDownGfxClk.Parent" xml:space="preserve">
-    <value>panel18</value>
+  <data name="&gt;&gt;upDownSstLimit.Parent" xml:space="preserve">
+    <value>panelSstLimit</value>
   </data>
-  <data name="&gt;&gt;upDownGfxClk.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;upDownSstLimit.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="checkGfxClk.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="checkSstLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
   </data>
-  <data name="checkGfxClk.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="checkSstLimit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkGfxClk.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="checkSstLimit.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="checkGfxClk.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="checkSstLimit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
-  <data name="checkGfxClk.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="checkSstLimit.Size" type="System.Drawing.Size, System.Drawing">
     <value>176, 23</value>
   </data>
-  <data name="checkGfxClk.TabIndex" type="System.Int32, mscorlib">
+  <data name="checkSstLimit.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="checkGfxClk.Text" xml:space="preserve">
-    <value>Gfx Clk (Mhz)</value>
+  <data name="checkSstLimit.Text" xml:space="preserve">
+    <value>Skin Temp Power Limit (W)</value>
   </data>
-  <data name="&gt;&gt;checkGfxClk.Name" xml:space="preserve">
-    <value>checkGfxClk</value>
+  <data name="&gt;&gt;checkSstLimit.Name" xml:space="preserve">
+    <value>checkSstLimit</value>
   </data>
-  <data name="&gt;&gt;checkGfxClk.Type" xml:space="preserve">
+  <data name="&gt;&gt;checkSstLimit.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkGfxClk.Parent" xml:space="preserve">
+  <data name="&gt;&gt;checkSstLimit.Parent" xml:space="preserve">
     <value>panel19</value>
   </data>
-  <data name="&gt;&gt;checkGfxClk.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;checkSstLimit.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="panel19.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -720,42 +720,39 @@
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel19.Parent" xml:space="preserve">
-    <value>panel18</value>
+    <value>panelSstLimit</value>
   </data>
   <data name="&gt;&gt;panel19.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="panel18.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="panelSstLimit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="panel18.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="panelSstLimit.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 196</value>
   </data>
-  <data name="panel18.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="panelSstLimit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
-  <data name="panel18.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="panelSstLimit.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>0, 23</value>
   </data>
-  <data name="panel18.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="panelSstLimit.Size" type="System.Drawing.Size, System.Drawing">
     <value>330, 23</value>
   </data>
-  <data name="panel18.TabIndex" type="System.Int32, mscorlib">
+  <data name="panelSstLimit.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
   </data>
-  <data name="panel18.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;panelSstLimit.Name" xml:space="preserve">
+    <value>panelSstLimit</value>
   </data>
-  <data name="&gt;&gt;panel18.Name" xml:space="preserve">
-    <value>panel18</value>
-  </data>
-  <data name="&gt;&gt;panel18.Type" xml:space="preserve">
+  <data name="&gt;&gt;panelSstLimit.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel18.Parent" xml:space="preserve">
+  <data name="&gt;&gt;panelSstLimit.Parent" xml:space="preserve">
     <value>panel9</value>
   </data>
-  <data name="&gt;&gt;panel18.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panelSstLimit.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="panel16.AutoSize" type="System.Boolean, mscorlib">

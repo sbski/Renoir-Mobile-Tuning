@@ -35,6 +35,7 @@ namespace PowerSettings
         public UInt32 SlowLimit { get; set; }
         public UInt32 FastLimit { get; set; }
         public UInt32 MaxCurrentLimit { get; set; }
+        public UInt32 SstLimit { get; set; }
         public UInt32 GfxClk { get; set; }
         public bool SmartReapply { get; set; }
 
@@ -96,7 +97,7 @@ namespace PowerSettings
             //String exe = Directory.GetCurrentDirectory() + "\\smu-tool\\smu-tool.exe";
 
             int i = 0;
-            Smu.Status[] Statuses = new Smu.Status[8];
+            Smu.Status[] Statuses = new Smu.Status[9];
             uint[] Args = new uint[6];
             uint Msg = 0x0;
 

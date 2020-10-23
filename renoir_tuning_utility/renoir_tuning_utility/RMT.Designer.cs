@@ -40,10 +40,10 @@
             this.ApplySettings = new System.Windows.Forms.Button();
             this.Tuning = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.upDownGfxClk = new System.Windows.Forms.NumericUpDown();
+            this.panelSstLimit = new System.Windows.Forms.Panel();
+            this.upDownSstLimit = new System.Windows.Forms.NumericUpDown();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.checkGfxClk = new System.Windows.Forms.CheckBox();
+            this.checkSstLimit = new System.Windows.Forms.CheckBox();
             this.panel16 = new System.Windows.Forms.Panel();
             this.upDownMaxCurrentLimit = new System.Windows.Forms.NumericUpDown();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -88,8 +88,8 @@
             this.panelBottomDock.SuspendLayout();
             this.Tuning.SuspendLayout();
             this.panel9.SuspendLayout();
-            this.panel18.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.upDownGfxClk)).BeginInit();
+            this.panelSstLimit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.upDownSstLimit)).BeginInit();
             this.panel19.SuspendLayout();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).BeginInit();
@@ -196,7 +196,7 @@
             // 
             resources.ApplyResources(this.panel9, "panel9");
             this.panel9.BackColor = System.Drawing.Color.Transparent;
-            this.panel9.Controls.Add(this.panel18);
+            this.panel9.Controls.Add(this.panelSstLimit);
             this.panel9.Controls.Add(this.panel16);
             this.panel9.Controls.Add(this.panel14);
             this.panel9.Controls.Add(this.panel10);
@@ -207,44 +207,42 @@
             this.panel9.Controls.Add(this.panel1);
             this.panel9.Name = "panel9";
             // 
-            // panel18
+            // panelSstLimit
             // 
-            resources.ApplyResources(this.panel18, "panel18");
-            this.panel18.Controls.Add(this.upDownGfxClk);
-            this.panel18.Controls.Add(this.panel19);
-            this.panel18.Name = "panel18";
+            resources.ApplyResources(this.panelSstLimit, "panelSstLimit");
+            this.panelSstLimit.Controls.Add(this.upDownSstLimit);
+            this.panelSstLimit.Controls.Add(this.panel19);
+            this.panelSstLimit.Name = "panelSstLimit";
             // 
-            // upDownGfxClk
+            // upDownSstLimit
             // 
-            resources.ApplyResources(this.upDownGfxClk, "upDownGfxClk");
-            this.upDownGfxClk.Maximum = new decimal(new int[] {
-            2500,
+            this.upDownSstLimit.DecimalPlaces = 1;
+            resources.ApplyResources(this.upDownSstLimit, "upDownSstLimit");
+            this.upDownSstLimit.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
-            this.upDownGfxClk.Minimum = new decimal(new int[] {
-            100,
+            this.upDownSstLimit.Name = "upDownSstLimit";
+            this.upDownSstLimit.Value = new decimal(new int[] {
+            15,
             0,
             0,
             0});
-            this.upDownGfxClk.Name = "upDownGfxClk";
-            this.upDownGfxClk.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
+            this.upDownSstLimit.ValueChanged += new System.EventHandler(this.upDownSstLimit_ValueChanged);
             // 
             // panel19
             // 
-            this.panel19.Controls.Add(this.checkGfxClk);
+            this.panel19.Controls.Add(this.checkSstLimit);
             resources.ApplyResources(this.panel19, "panel19");
             this.panel19.Name = "panel19";
             // 
-            // checkGfxClk
+            // checkSstLimit
             // 
-            resources.ApplyResources(this.checkGfxClk, "checkGfxClk");
-            this.checkGfxClk.Name = "checkGfxClk";
-            this.checkGfxClk.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkSstLimit, "checkSstLimit");
+            this.checkSstLimit.Name = "checkSstLimit";
+            this.checkSstLimit.UseVisualStyleBackColor = true;
+            this.checkSstLimit.CheckedChanged += new System.EventHandler(this.checkSstLimit_CheckedChanged);
             // 
             // panel16
             // 
@@ -672,8 +670,8 @@
             this.Tuning.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
-            this.panel18.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.upDownGfxClk)).EndInit();
+            this.panelSstLimit.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.upDownSstLimit)).EndInit();
             this.panel19.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).EndInit();
@@ -717,10 +715,10 @@
         private System.Windows.Forms.CheckBox checkSmartReapply;
         private System.Windows.Forms.TabPage Tuning;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Panel panel18;
-        private System.Windows.Forms.NumericUpDown upDownGfxClk;
+        private System.Windows.Forms.Panel panelSstLimit;
+        private System.Windows.Forms.NumericUpDown upDownSstLimit;
         private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.CheckBox checkGfxClk;
+        private System.Windows.Forms.CheckBox checkSstLimit;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.NumericUpDown upDownMaxCurrentLimit;
         private System.Windows.Forms.Panel panel17;

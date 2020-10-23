@@ -78,6 +78,7 @@ namespace renoir_tuning_utility
             checkTctlTemp.Checked = true;
             checkCurrentLimit.Checked = true;
             checkMaxCurrentLimit.Checked = true;
+            checkSstLimit.Checked = true;
 
 
 
@@ -111,23 +112,36 @@ namespace renoir_tuning_utility
 
                     //Dump the Power Monitoring Table
                     RyzenAccess.SendPsmu(0x65, ref Args);
+                    //Sleep so that the SMU has time to dump the PM Table properly.
                     Thread.Sleep(100);
 
                     if (DumpTable)
                     {
+                        for (int i = 0; i <= 1000 && ReadFloat(Address, 0x0) == 0f; i++)
+                        {
+                            if (i == 999)
+                                MessageBox.Show("Unable To start InpOutX64. Check the application permissions and see if anything is stopping InpOutX64 from working.");
+                            Thread.Sleep(1);
+                        }
+
+                            UInt32[] SmuVersionArgs = new UInt32[6];
                         string[] TableDump = new string[605];
                         Args[0] = 0;
                         RyzenAccess.SendMp1(0x2, ref Args);
+                        for (int i = 0; i < 6; i++)
+                        {
+                            SmuVersionArgs[i] = Args[i];
+                        }
                         Thread.Sleep(1);
 
 
                         TableDump.Initialize();
                         TableDump[0] = (labelRenoirMobileTuning.Text);
-                        String SmuVersion = $"{Args[0]:X8}".Substring(0,2) + ".";
-                        SmuVersion += $"{Args[0]:X8}".Substring(2, 2) + ".";
-                        SmuVersion += $"{Args[0]:X8}".Substring(4, 2) + ".";
-                        SmuVersion += $"{Args[0]:X8}".Substring(6, 2);
-                        TableDump[1] = ($"SMU Version: {Args[0]:X8}");
+                        String SmuVersion = "";//$"{SmuVersionArgs[0]:X8}".Substring(0,2) + ".";
+                        SmuVersion += $"{SmuVersionArgs[0]:X8}".Substring(2, 2) + ".";
+                        SmuVersion += $"{SmuVersionArgs[0]:X8}".Substring(4, 2) + ".";
+                        SmuVersion += $"{SmuVersionArgs[0]:X8}".Substring(6, 2);
+                        TableDump[1] = ($"SMU Version: {SmuVersionArgs[0]:X8}");
                         TableDump[2] = ($"SMU Version: " + SmuVersion);
                         TableDump[3] = ($"PMTableBaseAddress: 0x{Address:X8}");
                         float CurrentValue = 0.0F;
@@ -160,6 +174,7 @@ namespace renoir_tuning_utility
                     try
                     {
                         upDownStapmLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x0));
+                        upDownSstLimit.Value = upDownStapmLimit.Value;
                     }
                     catch (Exception e)
                     {
@@ -223,14 +238,24 @@ namespace renoir_tuning_utility
                     }
 
                     
-                    float TestValue = ReadFloat(Address, 0x300);
+                    float TestValue = ReadFloat(Address, 0x8C0);
+
                     if (TestValue == 0.0)
                     {
-                        PMTableVersion = 0x00370005;
+                        PMTableVersion = 0x00370004;
+                        if(EnableDebug)
+                        {
+                            MessageBox.Show("PM Table Version 0x00370004");
+                        }
+
                     }
                     else
                     {
-                        PMTableVersion = 0x00370004;
+                        PMTableVersion = 0x00370005;
+                        if (EnableDebug)
+                        {
+                            MessageBox.Show("PM Table Version 0x00370005");
+                        }
                     }
 
                     switch (PMTableVersion)
@@ -375,7 +400,7 @@ namespace renoir_tuning_utility
             //String exe = Directory.GetCurrentDirectory() + "\\smu-tool\\smu-tool.exe";
             
             int i = 0;
-            Smu.Status[] Statuses = new Smu.Status[8];
+            Smu.Status[] Statuses = new Smu.Status[9];
             Args = new uint[6];
 
             if (checkStapmLimit.Checked)
@@ -456,6 +481,14 @@ namespace renoir_tuning_utility
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
             }
+            if(checkSstLimit.Checked)
+            {
+                Msg = 0x38;
+                Args[0] = (uint)Convert.ToUInt32(upDownSstLimit.Value * 1000);
+
+                //Send msg
+                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+            }
             
 
             for(int j = 0; j < i; j++)
@@ -487,6 +520,8 @@ namespace renoir_tuning_utility
             CurrentSetting.TctlTemp = Convert.ToUInt32(upDownTctlTemp.Value);
             CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
             CurrentSetting.MaxCurrentLimit = Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
+            CurrentSetting.SstLimit = Convert.ToUInt32(upDownSstLimit.Value * 1000);
+            
             //File.Create("CurrentSettings.json
             File.WriteAllText("CurrentSettings.json", JsonConvert.SerializeObject(CurrentSetting));
         }
@@ -655,6 +690,8 @@ namespace renoir_tuning_utility
                     CurrentSetting.TctlTemp = Convert.ToUInt32(upDownTctlTemp.Value);
                     CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
                     CurrentSetting.MaxCurrentLimit = Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
+                    CurrentSetting.SstLimit = Convert.ToUInt32(upDownSstLimit.Value * 1000);
+
 
                     //Convert to string
                     string JsonString = JsonConvert.SerializeObject(CurrentSetting);
@@ -782,6 +819,19 @@ namespace renoir_tuning_utility
         private void Presets_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void upDownSstLimit_ValueChanged(object sender, EventArgs e)
+        {
+            if(upDownSstLimit.Value > upDownStapmLimit.Value)
+            {
+                upDownStapmLimit.Value = upDownSstLimit.Value;
+            }
+        }
+
+        private void checkSstLimit_CheckedChanged(object sender, EventArgs e)
+        {
+            upDownSstLimit.Enabled = checkSstLimit.Checked;
         }
     }
 }

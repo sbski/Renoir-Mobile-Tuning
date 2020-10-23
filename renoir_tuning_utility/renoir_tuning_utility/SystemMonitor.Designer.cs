@@ -36,6 +36,7 @@
             this.labelRefreshInterval = new System.Windows.Forms.Label();
             this.buttonApply = new System.Windows.Forms.Button();
             this.numericUpDownInterval = new System.Windows.Forms.NumericUpDown();
+            this.checkEnableLog = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.CpuData)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInterval)).BeginInit();
@@ -69,7 +70,7 @@
             this.CpuData.ShowCellToolTips = false;
             this.CpuData.ShowEditingIcon = false;
             this.CpuData.ShowRowErrors = false;
-            this.CpuData.Size = new System.Drawing.Size(278, 446);
+            this.CpuData.Size = new System.Drawing.Size(278, 418);
             this.CpuData.TabIndex = 0;
             this.CpuData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cpuData_CellContentClick);
             // 
@@ -118,12 +119,14 @@
             this.tableLayoutPanel1.Controls.Add(this.CpuData, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.buttonApply, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.numericUpDownInterval, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.checkEnableLog, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(284, 490);
             this.tableLayoutPanel1.TabIndex = 2;
@@ -132,7 +135,7 @@
             // 
             this.labelRefreshInterval.AutoSize = true;
             this.labelRefreshInterval.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelRefreshInterval.Location = new System.Drawing.Point(3, 454);
+            this.labelRefreshInterval.Location = new System.Drawing.Point(3, 426);
             this.labelRefreshInterval.Name = "labelRefreshInterval";
             this.labelRefreshInterval.Size = new System.Drawing.Size(86, 36);
             this.labelRefreshInterval.TabIndex = 0;
@@ -142,7 +145,7 @@
             // buttonApply
             // 
             this.buttonApply.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonApply.Location = new System.Drawing.Point(155, 458);
+            this.buttonApply.Location = new System.Drawing.Point(155, 430);
             this.buttonApply.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Size = new System.Drawing.Size(75, 28);
@@ -160,7 +163,7 @@
             0,
             0,
             0});
-            this.numericUpDownInterval.Location = new System.Drawing.Point(95, 460);
+            this.numericUpDownInterval.Location = new System.Drawing.Point(95, 432);
             this.numericUpDownInterval.Margin = new System.Windows.Forms.Padding(3, 6, 3, 4);
             this.numericUpDownInterval.Maximum = new decimal(new int[] {
             20000,
@@ -181,6 +184,17 @@
             0,
             0});
             this.numericUpDownInterval.ValueChanged += new System.EventHandler(this.numericUpDownInterval_ValueChanged);
+            // 
+            // checkEnableLog
+            // 
+            this.checkEnableLog.AutoSize = true;
+            this.checkEnableLog.Location = new System.Drawing.Point(3, 465);
+            this.checkEnableLog.Name = "checkEnableLog";
+            this.checkEnableLog.Size = new System.Drawing.Size(80, 22);
+            this.checkEnableLog.TabIndex = 3;
+            this.checkEnableLog.Text = "Enable Log";
+            this.checkEnableLog.UseVisualStyleBackColor = true;
+            this.checkEnableLog.CheckedChanged += new System.EventHandler(this.checkEnableLog_CheckedChanged);
             // 
             // SystemMonitor
             // 
@@ -214,5 +228,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Offset;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sensor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
+        private System.Windows.Forms.CheckBox checkEnableLog;
     }
 }

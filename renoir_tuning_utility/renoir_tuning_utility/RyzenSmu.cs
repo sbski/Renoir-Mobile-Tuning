@@ -436,7 +436,7 @@ namespace RyzenSmu
             bool res = false;
             ushort timeout = 1000;
             uint data = 0;
-            while ((!res || data != 1) && --timeout > 0)
+            while ((!res || data == 0) && --timeout > 0)
             {
                 res = ReadReg(SMU_ADDR_RSP, ref data);
                 Thread.Sleep(1);
