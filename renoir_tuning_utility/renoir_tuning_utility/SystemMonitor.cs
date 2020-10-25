@@ -1829,7 +1829,39 @@ namespace renoir_tuning_utility
             UInt32 CurrentValueUInt = 0;
             string LogOutput = "";
             //string TestPrint = "";
-            if(checkEnableLog.Checked)
+            if(checkLogOnly.Checked)
+            {
+                if (checkEnableLog.Checked)
+                {
+                    LogTime += LogInterval;
+                    LogOutput = $"{LogTime:F}";
+                    foreach (var item in Sensors)
+                    {
+                        CurrentValue = ReadFloat(Address, OffsetTable[Index]);
+                        //Sensors[Index].Value = $"{CurrentValue:F4}";
+
+                        LogOutput += $", {CurrentValue:F4}";
+                        //Thread.Sleep(10);
+                        //TestPrint += (Sensors[Index].Value + Environment.NewLine);
+                        Index++;
+                    }
+                    PowerLog.WriteLine(LogOutput);
+                }
+                else
+                {
+                    foreach (var item in Sensors)
+                    {
+                        CurrentValue = ReadFloat(Address, OffsetTable[Index]);
+                        //Sensors[Index].Value = $"{CurrentValue:F4}";
+                        //Thread.Sleep(10);
+                        //TestPrint += (Sensors[Index].Value + Environment.NewLine);
+                        Index++;
+                    }
+                }
+            }
+            else
+            {
+                if(checkEnableLog.Checked)
             {
                 LogTime += LogInterval;
                 LogOutput = $"{LogTime:F}";
@@ -1856,6 +1888,8 @@ namespace renoir_tuning_utility
                     Index++;
                 }
             }
+            }
+            
             
             CpuData.Refresh();
             RyzenAccess.Deinitialize();

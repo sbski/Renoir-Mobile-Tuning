@@ -237,7 +237,23 @@ namespace renoir_tuning_utility
                         upDownMaxCurrentLimit.Value = 50;
                     }
 
-                    
+                    //Skin Temperature Limit
+                    try
+                    {
+                        upDownSstLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x16));
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "SstLimit Load Error");
+                        upDownMaxCurrentLimit.Value = 50;
+                    }
+                    if(upDownSstLimit.Value == 0)
+                    {
+                        checkSstLimit.Checked = false;
+                        panelSstLimit.Hide();
+                    }
+
+
                     float TestValue = ReadFloat(Address, 0x8C0);
 
                     if (TestValue == 0.0)
@@ -393,6 +409,8 @@ namespace renoir_tuning_utility
 
         private void ApplySettings_Click_1(object sender, EventArgs e)
         {
+            labelLog.Text = "Log:\n";
+            labelLog.Update();
             RyzenAccess = new Smu(false);
 
             RyzenAccess.Initialize();
@@ -411,6 +429,9 @@ namespace renoir_tuning_utility
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                labelLog.Text += $"STAPM Power Limit: " + Statuses[i - 1].ToString() + '\n';
+                labelLog.Update();
             }
 
             if (checkFastLimit.Checked)
@@ -421,6 +442,9 @@ namespace renoir_tuning_utility
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                labelLog.Text += $"Fast Power Limit: " + Statuses[i - 1].ToString() + '\n';
+                labelLog.Update();
             }
 
             if (checkSlowLimit.Checked)
@@ -431,6 +455,9 @@ namespace renoir_tuning_utility
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                labelLog.Text += $"Slow Power Limit: " + Statuses[i - 1].ToString() + '\n';
+                labelLog.Update();
             }
 
             if (checkSlowTime.Checked)
@@ -441,6 +468,9 @@ namespace renoir_tuning_utility
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                labelLog.Text += $"Fast Boost Duration: " + Statuses[i - 1].ToString() + '\n';
+                labelLog.Update();
             }
 
             if (checkStapmTime.Checked)
@@ -451,6 +481,9 @@ namespace renoir_tuning_utility
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                labelLog.Text += $"Slow Boost Duration: " + Statuses[i - 1].ToString() + '\n';
+                labelLog.Update();
             }
 
             if (checkTctlTemp.Checked)
@@ -461,6 +494,9 @@ namespace renoir_tuning_utility
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                labelLog.Text += $"Temperature Limit: " + Statuses[i - 1].ToString() + '\n';
+                labelLog.Update();
             }
 
             if (checkCurrentLimit.Checked)
@@ -471,6 +507,9 @@ namespace renoir_tuning_utility
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                labelLog.Text += $"Current Limit: " + Statuses[i - 1].ToString() + '\n';
+                labelLog.Update();
             }
             if (checkMaxCurrentLimit.Checked)
             {
@@ -480,25 +519,40 @@ namespace renoir_tuning_utility
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                labelLog.Text += $"Maximum Current Limit: " + Statuses[i - 1].ToString() + '\n';
+                labelLog.Update();
             }
-            if(checkSstLimit.Checked)
+            if (checkSstLimit.Checked)
             {
                 Msg = 0x38;
-                Args[0] = (uint)Convert.ToUInt32(upDownSstLimit.Value * 1000);
+                Args[0] = (uint)Convert.ToUInt32(upDownSstLimit.Value * 256);
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                labelLog.Text += $"Skin Temperature Limit: " + Statuses[i-1].ToString() + '\n';
+                labelLog.Update();
             }
-            
+
+            bool ApplyError = false;
 
             for(int j = 0; j < i; j++)
             {
-                //Error checking
-                /*
+                //labelLog.Text += $"{j:D}-Status: " + Statuses[j].ToString() + '\n';
                 if (Statuses[j] != Smu.Status.OK)
                 {
-                    throw new ApplicationException($"{j:D}-Status: " + Statuses[j].ToString());
-                }*/
+                    ApplyError = true;
+                }
+            }
+
+            if(ApplyError)
+            {
+                labelLog.Text += "\nError while appling settings.\n";
+            }
+            else
+            {
+                labelLog.Text += "\nSettings applied successfully.\n";
             }
 
             //Kill off our access to the SMU so that other parts of the program may use it.
@@ -520,7 +574,7 @@ namespace renoir_tuning_utility
             CurrentSetting.TctlTemp = Convert.ToUInt32(upDownTctlTemp.Value);
             CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
             CurrentSetting.MaxCurrentLimit = Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
-            CurrentSetting.SstLimit = Convert.ToUInt32(upDownSstLimit.Value * 1000);
+            CurrentSetting.SstLimit = Convert.ToUInt32(upDownSstLimit.Value * 256);
             
             //File.Create("CurrentSettings.json
             File.WriteAllText("CurrentSettings.json", JsonConvert.SerializeObject(CurrentSetting));
@@ -690,7 +744,7 @@ namespace renoir_tuning_utility
                     CurrentSetting.TctlTemp = Convert.ToUInt32(upDownTctlTemp.Value);
                     CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
                     CurrentSetting.MaxCurrentLimit = Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
-                    CurrentSetting.SstLimit = Convert.ToUInt32(upDownSstLimit.Value * 1000);
+                    CurrentSetting.SstLimit = Convert.ToUInt32(upDownSstLimit.Value * 256);
 
 
                     //Convert to string
@@ -823,10 +877,7 @@ namespace renoir_tuning_utility
 
         private void upDownSstLimit_ValueChanged(object sender, EventArgs e)
         {
-            if(upDownSstLimit.Value > upDownStapmLimit.Value)
-            {
-                upDownStapmLimit.Value = upDownSstLimit.Value;
-            }
+            
         }
 
         private void checkSstLimit_CheckedChanged(object sender, EventArgs e)

@@ -85,6 +85,8 @@
             this.linkDiscord = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.labelLog = new System.Windows.Forms.Label();
             this.panelBottomDock.SuspendLayout();
             this.Tuning.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -117,6 +119,7 @@
             this.panel2.SuspendLayout();
             this.About.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
             // notifyIconRMT
@@ -187,6 +190,7 @@
             // 
             // Tuning
             // 
+            this.Tuning.Controls.Add(this.panel18);
             this.Tuning.Controls.Add(this.panel9);
             resources.ApplyResources(this.Tuning, "Tuning");
             this.Tuning.Name = "Tuning";
@@ -218,8 +222,8 @@
             // 
             this.upDownSstLimit.DecimalPlaces = 1;
             resources.ApplyResources(this.upDownSstLimit, "upDownSstLimit");
-            this.upDownSstLimit.Minimum = new decimal(new int[] {
-            1,
+            this.upDownSstLimit.Maximum = new decimal(new int[] {
+            105,
             0,
             0,
             0});
@@ -651,6 +655,18 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
+            // panel18
+            // 
+            resources.ApplyResources(this.panel18, "panel18");
+            this.panel18.BackColor = System.Drawing.Color.Transparent;
+            this.panel18.Controls.Add(this.labelLog);
+            this.panel18.Name = "panel18";
+            // 
+            // labelLog
+            // 
+            resources.ApplyResources(this.labelLog, "labelLog");
+            this.labelLog.Name = "labelLog";
+            // 
             // RMT
             // 
             resources.ApplyResources(this, "$this");
@@ -700,6 +716,8 @@
             this.About.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -760,6 +778,8 @@
         private System.Windows.Forms.LinkLabel linkDiscord;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Label labelLog;
     }
 }
 
