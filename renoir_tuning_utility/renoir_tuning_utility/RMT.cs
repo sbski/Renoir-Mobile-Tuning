@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using RyzenSmu;
 using PowerSettings;
+using System.Text.RegularExpressions;
 
 namespace renoir_tuning_utility
 {
@@ -63,6 +64,12 @@ namespace renoir_tuning_utility
         bool DumpTable;
         UInt32 PMTableVersion;
         Thread MonitoringThread;
+        
+        PerformanceCounter cpuCounter;
+        int CbResult;
+
+        List<float> PowerDraw;
+
         public RMT()
         {
             EnableDebug = false;
@@ -78,11 +85,12 @@ namespace renoir_tuning_utility
             checkTctlTemp.Checked = true;
             checkCurrentLimit.Checked = true;
             checkMaxCurrentLimit.Checked = true;
-            checkSstLimit.Checked = true;
-
-
+            checkSttLimit.Checked = true;
 
             PowerSetting CurrentSetting;
+            
+
+
             labelRenoirMobileTuning.Text = "RMT v1.0.0";
 
             int time = 0;
@@ -91,20 +99,20 @@ namespace renoir_tuning_utility
                 time++;
                 Thread.Sleep(1);
             }
-            if (time == 100)
+            if(time == 100)
             {
                 MessageBox.Show("Failed to load InpOutx64 driver.\nPlease check that the application is running with the right privledges");
             }
 
 
-            if (LoadValues)
+            if(LoadValues)
             {
                 Args = new uint[6];
                 RyzenAccess = new Smu(EnableDebug);
                 RyzenAccess.Initialize();
                 labelRenoirMobileTuning.Text += " - " + RyzenAccess.GetCpuName();
                 
-                if (RyzenAccess.SendPsmu(0x66, ref Args) == Smu.Status.OK)
+                if(RyzenAccess.SendPsmu(0x66, ref Args) == Smu.Status.OK)
                 {
                     //Set Address and reset Args[]
                     Address = Args[0];
@@ -115,11 +123,11 @@ namespace renoir_tuning_utility
                     //Sleep so that the SMU has time to dump the PM Table properly.
                     Thread.Sleep(100);
 
-                    if (DumpTable)
+                    if(DumpTable)
                     {
                         for (int i = 0; i <= 1000 && ReadFloat(Address, 0x0) == 0f; i++)
                         {
-                            if (i == 999)
+                            if(i == 999)
                                 MessageBox.Show("Unable To start InpOutX64. Check the application permissions and see if anything is stopping InpOutX64 from working.");
                             Thread.Sleep(1);
                         }
@@ -149,14 +157,14 @@ namespace renoir_tuning_utility
                         for (UInt32 i = 0; i <= 600; i++)
                         {
                             CurrentValue = Smu.ReadFloat(Address, i);
-                            if (OnlyZero && CurrentValue != 0.0F )
+                            if(OnlyZero && CurrentValue != 0.0F )
                             {
                                 OnlyZero = false;
                             }
                             TableDump[4+i] = $"0x{i:X4}\t{CurrentValue:F4}";
                         }
                         File.WriteAllLines("PMTableDump.log", TableDump);
-                        if (OnlyZero)
+                        if(OnlyZero)
                         {
                             MessageBox.Show("Error Dumping the PM Table\nThe PM Table only contains zeros!", "Power Monitoring Table Dump:");
 
@@ -174,7 +182,7 @@ namespace renoir_tuning_utility
                     try
                     {
                         upDownStapmLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x0));
-                        upDownSstLimit.Value = upDownStapmLimit.Value;
+                        upDownSttLimit.Value = upDownStapmLimit.Value;
                     }
                     catch (Exception e)
                     {
@@ -240,23 +248,23 @@ namespace renoir_tuning_utility
                     //Skin Temperature Limit
                     try
                     {
-                        upDownSstLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x16));
+                        upDownSttLimit.Value = (decimal)(Smu.ReadFloat(Address, 0x16));
                     }
                     catch (Exception e)
                     {
                         MessageBox.Show("Please send your PMTableDump.log to the devs!\nMost Likely a new/unsupported Power Monitoring Table version\n" + e.ToString(), "SstLimit Load Error");
                         upDownMaxCurrentLimit.Value = 50;
                     }
-                    if(upDownSstLimit.Value == 0)
+                    if(upDownSttLimit.Value == 0)
                     {
-                        checkSstLimit.Checked = false;
-                        panelSstLimit.Hide();
+                        checkSttLimit.Checked = false;
+                        upDownSttLimit.Enabled = false;
                     }
 
 
                     float TestValue = ReadFloat(Address, 0x8C0);
 
-                    if (TestValue == 0.0)
+                    if(TestValue == 0.0)
                     {
                         PMTableVersion = 0x00370004;
                         if(EnableDebug)
@@ -268,7 +276,7 @@ namespace renoir_tuning_utility
                     else
                     {
                         PMTableVersion = 0x00370005;
-                        if (EnableDebug)
+                        if(EnableDebug)
                         {
                             MessageBox.Show("PM Table Version 0x00370005");
                         }
@@ -361,7 +369,7 @@ namespace renoir_tuning_utility
             bool mcl = MaxCurrentLimit != (float)upDownMaxCurrentLimit.Value && checkMaxCurrentLimit.Checked;
 
 
-            if (fl || sl || stl || st || stt || tctl || cl || mcl)
+            if(fl || sl || stl || st || stt || tctl || cl || mcl)
             {
                 ApplySettings_Click_1(sender, e);
                 return true;
@@ -421,7 +429,7 @@ namespace renoir_tuning_utility
             Smu.Status[] Statuses = new Smu.Status[9];
             Args = new uint[6];
 
-            if (checkStapmLimit.Checked)
+            if(checkStapmLimit.Checked)
             {
                 //Set Msg and Args
                 Msg = 0x14;
@@ -434,7 +442,7 @@ namespace renoir_tuning_utility
                 labelLog.Update();
             }
 
-            if (checkFastLimit.Checked)
+            if(checkFastLimit.Checked)
             {
                 //Set Msg and Args
                 Msg = 0x15;
@@ -447,7 +455,7 @@ namespace renoir_tuning_utility
                 labelLog.Update();
             }
 
-            if (checkSlowLimit.Checked)
+            if(checkSlowLimit.Checked)
             {
                 //Set Msg and Args
                 Msg = 0x16;
@@ -460,7 +468,7 @@ namespace renoir_tuning_utility
                 labelLog.Update();
             }
 
-            if (checkSlowTime.Checked)
+            if(checkSlowTime.Checked)
             {
                 //Set Msg and Args
                 Msg = 0x17;
@@ -473,7 +481,7 @@ namespace renoir_tuning_utility
                 labelLog.Update();
             }
 
-            if (checkStapmTime.Checked)
+            if(checkStapmTime.Checked)
             {
                 //Set Msg and Args
                 Msg = 0x18;
@@ -486,7 +494,7 @@ namespace renoir_tuning_utility
                 labelLog.Update();
             }
 
-            if (checkTctlTemp.Checked)
+            if(checkTctlTemp.Checked)
             {
                 //Set Msg and Args
                 Msg = 0x19;
@@ -499,7 +507,7 @@ namespace renoir_tuning_utility
                 labelLog.Update();
             }
 
-            if (checkCurrentLimit.Checked)
+            if(checkCurrentLimit.Checked)
             {
                 //Set Msg and Args
                 Msg = 0x1A;
@@ -511,7 +519,7 @@ namespace renoir_tuning_utility
                 labelLog.Text += $"Current Limit: " + Statuses[i - 1].ToString() + '\n';
                 labelLog.Update();
             }
-            if (checkMaxCurrentLimit.Checked)
+            if(checkMaxCurrentLimit.Checked)
             {
                 //Set Msg and Args
                 Msg = 0x1C;
@@ -523,10 +531,10 @@ namespace renoir_tuning_utility
                 labelLog.Text += $"Maximum Current Limit: " + Statuses[i - 1].ToString() + '\n';
                 labelLog.Update();
             }
-            if (checkSstLimit.Checked)
+            if(checkSttLimit.Checked)
             {
                 Msg = 0x38;
-                Args[0] = (uint)Convert.ToUInt32(upDownSstLimit.Value * 256);
+                Args[0] = (uint)Convert.ToUInt32(upDownSttLimit.Value * 256);
 
                 //Send msg
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
@@ -540,7 +548,7 @@ namespace renoir_tuning_utility
             for(int j = 0; j < i; j++)
             {
                 //labelLog.Text += $"{j:D}-Status: " + Statuses[j].ToString() + '\n';
-                if (Statuses[j] != Smu.Status.OK)
+                if(Statuses[j] != Smu.Status.OK)
                 {
                     ApplyError = true;
                 }
@@ -574,7 +582,7 @@ namespace renoir_tuning_utility
             CurrentSetting.TctlTemp = Convert.ToUInt32(upDownTctlTemp.Value);
             CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
             CurrentSetting.MaxCurrentLimit = Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
-            CurrentSetting.SstLimit = Convert.ToUInt32(upDownSstLimit.Value * 256);
+            CurrentSetting.SstLimit = Convert.ToUInt32(upDownSttLimit.Value * 256);
             
             //File.Create("CurrentSettings.json
             File.WriteAllText("CurrentSettings.json", JsonConvert.SerializeObject(CurrentSetting));
@@ -587,11 +595,11 @@ namespace renoir_tuning_utility
 
         private void upDownSlowLimit_ValueChanged(object sender, EventArgs e)
         {
-            if (upDownFastLimit.Value < upDownSlowLimit.Value)
+            if(upDownFastLimit.Value < upDownSlowLimit.Value)
             {
                 upDownFastLimit.Value = upDownSlowLimit.Value;
             }
-            if (upDownSlowLimit.Value < upDownStapmLimit.Value)
+            if(upDownSlowLimit.Value < upDownStapmLimit.Value)
             {
                 upDownStapmLimit.Value = upDownSlowLimit.Value;
                 upDownStapmLimit_ValueChanged(sender, e);
@@ -600,21 +608,13 @@ namespace renoir_tuning_utility
 
         private void upDownStapmLimit_ValueChanged(object sender, EventArgs e)
         {
-            if (upDownFastLimit.Value < upDownStapmLimit.Value)
+            if(upDownFastLimit.Value < upDownStapmLimit.Value)
             {
                 upDownFastLimit.Value = upDownStapmLimit.Value;
             }
-            if (upDownSlowLimit.Value < upDownStapmLimit.Value)
+            if(upDownSlowLimit.Value < upDownStapmLimit.Value)
             {
                 upDownSlowLimit.Value = upDownStapmLimit.Value;
-            }
-            if (upDownCurrentLimit.Value < upDownStapmLimit.Value)
-            {
-                upDownCurrentLimit.Value = upDownStapmLimit.Value;
-            }
-            if (upDownMaxCurrentLimit.Value < upDownStapmLimit.Value + 15)
-            {
-                upDownMaxCurrentLimit.Value = upDownStapmLimit.Value + 15;
             }
         }
 
@@ -628,7 +628,7 @@ namespace renoir_tuning_utility
 
         private void upDownStapmTime_ValueChanged(object sender, EventArgs e)
         {
-            /*if (Math.Round(upDownSlowTime.Value * 2) > upDownStapmTime.Value)
+            /*if(Math.Round(upDownSlowTime.Value * 2) > upDownStapmTime.Value)
             {
                 upDownSlowTime.Value = Math.Round(upDownStapmTime.Value / 2);
             }*/
@@ -636,25 +636,17 @@ namespace renoir_tuning_utility
 
         private void upDownCurrentLimit_ValueChanged(object sender, EventArgs e)
         {
-            if(upDownCurrentLimit.Value + 15 > upDownMaxCurrentLimit.Value)
+            if(upDownCurrentLimit.Value > upDownMaxCurrentLimit.Value)
             {
-                upDownMaxCurrentLimit.Value = upDownCurrentLimit.Value + 15;
-            }
-            if (upDownCurrentLimit.Value < upDownStapmLimit.Value)
-            {
-                upDownStapmLimit.Value = upDownCurrentLimit.Value;
+                upDownMaxCurrentLimit.Value = upDownCurrentLimit.Value;
             }
         }
 
         private void upDownMaxCurrentLimit_ValueChanged(object sender, EventArgs e)
         {
-            if(upDownCurrentLimit.Value + 15 > upDownMaxCurrentLimit.Value)
+            if(upDownCurrentLimit.Value > upDownMaxCurrentLimit.Value)
             {
-                upDownCurrentLimit.Value = upDownMaxCurrentLimit.Value - 15;
-            }
-            if (upDownCurrentLimit.Value < upDownStapmLimit.Value)
-            {
-                upDownStapmLimit.Value = upDownCurrentLimit.Value;
+                upDownCurrentLimit.Value = upDownMaxCurrentLimit.Value;
             }
         }
 
@@ -677,6 +669,7 @@ namespace renoir_tuning_utility
 
         private void ShowSensors_Click_1(object sender, EventArgs e)
         {
+            UpdateCurrentSettings();
             new Thread(() => new SystemMonitor().ShowDialog()).Start();
         }
 
@@ -694,11 +687,11 @@ namespace renoir_tuning_utility
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            if (upDownFastLimit.Value < upDownSlowLimit.Value)
+            if(upDownFastLimit.Value < upDownSlowLimit.Value)
             {
                 upDownSlowLimit.Value = upDownFastLimit.Value;
             }
-            if (upDownFastLimit.Value < upDownStapmLimit.Value)
+            if(upDownFastLimit.Value < upDownStapmLimit.Value)
             {
                 upDownStapmLimit.Value = upDownFastLimit.Value;
                 upDownStapmLimit_ValueChanged(sender, e);
@@ -722,9 +715,9 @@ namespace renoir_tuning_utility
             saveFileDialog1.FilterIndex = 1;
             saveFileDialog1.RestoreDirectory = true;
 
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if(saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                if((myStream = saveFileDialog1.OpenFile()) != null)
                 {
                     
                     //Create new PowerSetting
@@ -744,7 +737,7 @@ namespace renoir_tuning_utility
                     CurrentSetting.TctlTemp = Convert.ToUInt32(upDownTctlTemp.Value);
                     CurrentSetting.CurrentLimit = Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
                     CurrentSetting.MaxCurrentLimit = Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
-                    CurrentSetting.SstLimit = Convert.ToUInt32(upDownSstLimit.Value * 256);
+                    CurrentSetting.SstLimit = Convert.ToUInt32(upDownSttLimit.Value * 256);
 
 
                     //Convert to string
@@ -773,7 +766,7 @@ namespace renoir_tuning_utility
                 openFileDialog.FilterIndex = 1;
                 openFileDialog.RestoreDirectory = true;
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                if(openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     //Get the path of specified file
                     FilePath = openFileDialog.FileName;
@@ -823,9 +816,9 @@ namespace renoir_tuning_utility
         private void checkSmartReapply_CheckedChanged(object sender, EventArgs e)
         {
             UpdateCurrentSettings();
-            if (checkSmartReapply.Checked)
+            if(checkSmartReapply.Checked)
             {
-                if (checkShowSensors.Checked)
+                if(checkShowSensors.Checked)
                     checkShowSensors.Enabled = false;
                 else
                 {
@@ -882,7 +875,227 @@ namespace renoir_tuning_utility
 
         private void checkSstLimit_CheckedChanged(object sender, EventArgs e)
         {
-            upDownSstLimit.Enabled = checkSstLimit.Checked;
+            upDownSttLimit.Enabled = checkSttLimit.Checked;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            StartTuning(sender, e);
+            //MessageBox.Show($"Start");
+
+
+        }
+
+        private async Task StartTuning(object sender, EventArgs e)
+        {
+            upDownFastLimit.Enabled = false;
+            upDownSlowLimit.Enabled = false;
+            upDownStapmLimit.Enabled = false;
+            upDownSlowTime.Enabled = false;
+            upDownStapmTime.Enabled = false;
+            upDownTctlTemp.Enabled = false;
+            upDownCurrentLimit.Enabled = false;
+            upDownMaxCurrentLimit.Enabled = false;
+            upDownSttLimit.Enabled = false;
+
+            checkFastLimit.Enabled = false;
+            checkSlowLimit.Enabled = false;
+            checkStapmLimit.Enabled = false;
+            checkSlowTime.Enabled = false;
+            checkStapmTime.Enabled = false;
+            checkTctlTemp.Enabled = false;
+            checkCurrentLimit.Enabled = false;
+            checkMaxCurrentLimit.Enabled = false;
+            checkSttLimit.Enabled = false;
+
+
+            ApplySettings.Enabled = false;
+            buttonSaveSettings.Enabled = false;
+            buttonLoadSettings.Enabled = false;
+            checkSmartReapply.Enabled = false;
+
+            upDownFastLimit.Value = 100;
+            upDownSlowLimit.Value = 100;
+            upDownStapmLimit.Value = 100;
+
+            UInt32 CooldownTime = 90000;
+
+            //remove power limits
+            ApplySettings_Click_1(sender, e);
+
+
+            PowerDraw = new List<float>();
+            PowerDraw.Clear();
+
+            int PowerDrawIndex = 0;
+            RyzenAccess.Initialize();
+            CbResult = 0;
+
+            labelCinebenchValues.Text = "Runing first pass.";
+            labelCinebenchValues.Update();
+
+            int PowerScore = await CB20_func();
+
+            //Set cooldown power limits
+            upDownFastLimit.Value = 10;
+            upDownFastLimit.Update();
+            upDownSlowLimit.Value = upDownFastLimit.Value;
+            upDownStapmLimit.Value = upDownFastLimit.Value;
+
+            //Update settings
+            ApplySettings_Click_1(sender, e);
+
+            for (int i = 0; i < CooldownTime; i+=1000)
+            {
+                labelCinebenchValues.Text = $"In cooldown - {i:D}\n{PowerScore:D}";
+                labelCinebenchValues.Update();
+                await Task.Delay(1000);
+
+            }
+
+            //Boost power limit calcualtion
+            upDownFastLimit.Value = (decimal)PowerDraw.Average();
+            upDownFastLimit.Update();
+            upDownSlowLimit.Value = (decimal)PowerDraw.Average();
+            upDownStapmLimit.Value = (decimal)PowerDraw.Average();
+
+            //Update settings
+            ApplySettings_Click_1(sender, e);
+            await Task.Delay(500);
+
+
+            //Reset PowerDraw list
+            PowerDraw = new List<float>();
+            PowerDraw.Clear();
+
+            labelCinebenchValues.Text = $"Runing second pass.\n{PowerScore:D}";
+            labelCinebenchValues.Update();
+
+
+            //Get TunedScore
+            int TunedScore = await CB20_func();
+            TunedScore = CbResult;
+
+            for (int i = 0; i < 2000; i += 1000)
+            {
+                await Task.Delay(1000);
+            }
+
+            labelCinebenchValues.Text = $"Done.\n{PowerScore:D}\n" + $"{TunedScore:D}";
+            labelCinebenchValues.Update();
+
+
+            //MessageBox.Show($"{PowerScore:D}\n{TunedScore:D}");
+
+            checkFastLimit_CheckedChanged(sender, e);
+            checkSlowLimit_CheckedChanged(sender, e);
+            checkStapmLimit_CheckedChanged(sender, e);
+            checkSlowTime_CheckedChanged(sender, e);
+            checkStapmTime_CheckedChanged(sender, e);
+            checkTctlTemp_CheckedChanged(sender, e);
+            checkCurrentLimit_CheckedChanged(sender, e);
+            checkMaxCurrentLimit_CheckedChanged(sender, e);
+            checkSstLimit_CheckedChanged(sender, e);
+
+            checkFastLimit.Enabled = true;
+            checkSlowLimit.Enabled = true;
+            checkStapmLimit.Enabled = true;
+            checkSlowTime.Enabled = true;
+            checkStapmTime.Enabled = true;
+            checkTctlTemp.Enabled = true;
+            checkCurrentLimit.Enabled = true;
+            checkMaxCurrentLimit.Enabled = true;
+            checkSttLimit.Enabled = true;
+
+            ApplySettings.Enabled = true;
+            buttonSaveSettings.Enabled = true;
+            buttonLoadSettings.Enabled = true;
+            checkSmartReapply.Enabled = true;
+
+
+
+        }
+
+        public string getCurrentCpuUsage()
+        {
+            return cpuCounter.NextValue() + "%";
+        }
+
+        private async Task<int> CB20_func()
+        {
+            bool token = true;
+            cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+
+
+            string str = "g_CinebenchCpuXTest=true g_logFile=\"" + Directory.GetCurrentDirectory() + "\\CBlog.log\"";
+            Process CB20process = new Process()
+            {
+                StartInfo = new ProcessStartInfo()
+                {
+                    WorkingDirectory = Directory.GetCurrentDirectory() + "\\CB20",
+                    FileName = "Cinebench.exe",
+                    Verb = "runas",
+                    Arguments = str ?? ""
+                }
+            };
+            CB20process.Start();
+            foreach (Process process in Process.GetProcessesByName("Cinebench"))
+                process.PriorityClass = ProcessPriorityClass.AboveNormal;
+            
+            await System.Threading.Tasks.Task.Delay(5000);
+            
+            do
+            {
+                Args = new UInt32[6];
+                float CpuUsage = cpuCounter.NextValue();
+                if (CpuUsage < 65.0 && ((IEnumerable<Process>)Process.GetProcesses(".")).OrderBy<Process, int>((Func<Process, int>)(proc => proc.Id)).Count<Process>((Func<Process, bool>)(p => p.ProcessName.Contains("Cinebench"))) == 0)
+                    token = false;
+                if (CpuUsage > 90f)
+                {
+                    RyzenAccess.SendPsmu(0x65, ref Args);
+                    PowerDraw.Add(Smu.ReadFloat(Address, 0x26));
+                }
+                //Test prints
+                //labelCinebenchValues.Text = PowerDraw.Last().ToString();
+                //labelCinebenchValues.Update();
+
+                await System.Threading.Tasks.Task.Delay(1000);
+            }
+            while (token);
+            await System.Threading.Tasks.Task.Delay(500);
+            string CinebenchResults = "";
+
+            labelCinebenchValues.Text = "";
+
+
+
+
+            try
+            {
+                
+                string input = File.ReadAllText("CBlog.log", Encoding.ASCII);
+                string pattern = "CB ";
+                foreach (Match match in Regex.Matches(input, pattern, RegexOptions.IgnoreCase))
+                {
+                    CbResult = (int)short.Parse(input.Substring(match.Index + pattern.Length, 4));
+                    CinebenchResults += $"{CbResult:D}"+'\n';
+                }
+                //Test messagebox
+                File.Delete("CBlog.log");
+                await Task.Delay(500);
+
+
+
+
+                return CbResult;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString(), "Cinebench result error");
+                return 0;
+            }
         }
     }
 }

@@ -39,11 +39,13 @@
             this.labelRenoirMobileTuning = new System.Windows.Forms.Label();
             this.ApplySettings = new System.Windows.Forms.Button();
             this.Tuning = new System.Windows.Forms.TabPage();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.labelLog = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panelSstLimit = new System.Windows.Forms.Panel();
-            this.upDownSstLimit = new System.Windows.Forms.NumericUpDown();
+            this.upDownSttLimit = new System.Windows.Forms.NumericUpDown();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.checkSstLimit = new System.Windows.Forms.CheckBox();
+            this.checkSttLimit = new System.Windows.Forms.CheckBox();
             this.panel16 = new System.Windows.Forms.Panel();
             this.upDownMaxCurrentLimit = new System.Windows.Forms.NumericUpDown();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -85,13 +87,17 @@
             this.linkDiscord = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.labelLog = new System.Windows.Forms.Label();
+            this.tabCinebenchTesting = new System.Windows.Forms.TabPage();
+            this.labelCinebenchValues = new System.Windows.Forms.Label();
+            this.labelCinebenchScoreHeading = new System.Windows.Forms.Label();
+            this.buttonStartCb = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panelBottomDock.SuspendLayout();
             this.Tuning.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panelSstLimit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.upDownSstLimit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upDownSttLimit)).BeginInit();
             this.panel19.SuspendLayout();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).BeginInit();
@@ -119,7 +125,7 @@
             this.panel2.SuspendLayout();
             this.About.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.panel18.SuspendLayout();
+            this.tabCinebenchTesting.SuspendLayout();
             this.SuspendLayout();
             // 
             // notifyIconRMT
@@ -196,6 +202,18 @@
             this.Tuning.Name = "Tuning";
             this.Tuning.UseVisualStyleBackColor = true;
             // 
+            // panel18
+            // 
+            resources.ApplyResources(this.panel18, "panel18");
+            this.panel18.BackColor = System.Drawing.Color.Transparent;
+            this.panel18.Controls.Add(this.labelLog);
+            this.panel18.Name = "panel18";
+            // 
+            // labelLog
+            // 
+            resources.ApplyResources(this.labelLog, "labelLog");
+            this.labelLog.Name = "labelLog";
+            // 
             // panel9
             // 
             resources.ApplyResources(this.panel9, "panel9");
@@ -214,39 +232,39 @@
             // panelSstLimit
             // 
             resources.ApplyResources(this.panelSstLimit, "panelSstLimit");
-            this.panelSstLimit.Controls.Add(this.upDownSstLimit);
+            this.panelSstLimit.Controls.Add(this.upDownSttLimit);
             this.panelSstLimit.Controls.Add(this.panel19);
             this.panelSstLimit.Name = "panelSstLimit";
             // 
-            // upDownSstLimit
+            // upDownSttLimit
             // 
-            this.upDownSstLimit.DecimalPlaces = 1;
-            resources.ApplyResources(this.upDownSstLimit, "upDownSstLimit");
-            this.upDownSstLimit.Maximum = new decimal(new int[] {
+            this.upDownSttLimit.DecimalPlaces = 1;
+            resources.ApplyResources(this.upDownSttLimit, "upDownSttLimit");
+            this.upDownSttLimit.Maximum = new decimal(new int[] {
             105,
             0,
             0,
             0});
-            this.upDownSstLimit.Name = "upDownSstLimit";
-            this.upDownSstLimit.Value = new decimal(new int[] {
+            this.upDownSttLimit.Name = "upDownSttLimit";
+            this.upDownSttLimit.Value = new decimal(new int[] {
             15,
             0,
             0,
             0});
-            this.upDownSstLimit.ValueChanged += new System.EventHandler(this.upDownSstLimit_ValueChanged);
+            this.upDownSttLimit.ValueChanged += new System.EventHandler(this.upDownSstLimit_ValueChanged);
             // 
             // panel19
             // 
-            this.panel19.Controls.Add(this.checkSstLimit);
+            this.panel19.Controls.Add(this.checkSttLimit);
             resources.ApplyResources(this.panel19, "panel19");
             this.panel19.Name = "panel19";
             // 
-            // checkSstLimit
+            // checkSttLimit
             // 
-            resources.ApplyResources(this.checkSstLimit, "checkSstLimit");
-            this.checkSstLimit.Name = "checkSstLimit";
-            this.checkSstLimit.UseVisualStyleBackColor = true;
-            this.checkSstLimit.CheckedChanged += new System.EventHandler(this.checkSstLimit_CheckedChanged);
+            resources.ApplyResources(this.checkSttLimit, "checkSttLimit");
+            this.checkSttLimit.Name = "checkSttLimit";
+            this.checkSttLimit.UseVisualStyleBackColor = true;
+            this.checkSttLimit.CheckedChanged += new System.EventHandler(this.checkSstLimit_CheckedChanged);
             // 
             // panel16
             // 
@@ -583,6 +601,7 @@
             // 
             this.About.Controls.Add(this.Tuning);
             this.About.Controls.Add(this.tabPage1);
+            this.About.Controls.Add(this.tabCinebenchTesting);
             resources.ApplyResources(this.About, "About");
             this.About.Name = "About";
             this.About.SelectedIndex = 0;
@@ -655,17 +674,31 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // panel18
+            // tabCinebenchTesting
             // 
-            resources.ApplyResources(this.panel18, "panel18");
-            this.panel18.BackColor = System.Drawing.Color.Transparent;
-            this.panel18.Controls.Add(this.labelLog);
-            this.panel18.Name = "panel18";
+            this.tabCinebenchTesting.Controls.Add(this.labelCinebenchValues);
+            this.tabCinebenchTesting.Controls.Add(this.labelCinebenchScoreHeading);
+            this.tabCinebenchTesting.Controls.Add(this.buttonStartCb);
+            resources.ApplyResources(this.tabCinebenchTesting, "tabCinebenchTesting");
+            this.tabCinebenchTesting.Name = "tabCinebenchTesting";
+            this.tabCinebenchTesting.UseVisualStyleBackColor = true;
             // 
-            // labelLog
+            // labelCinebenchValues
             // 
-            resources.ApplyResources(this.labelLog, "labelLog");
-            this.labelLog.Name = "labelLog";
+            resources.ApplyResources(this.labelCinebenchValues, "labelCinebenchValues");
+            this.labelCinebenchValues.Name = "labelCinebenchValues";
+            // 
+            // labelCinebenchScoreHeading
+            // 
+            resources.ApplyResources(this.labelCinebenchScoreHeading, "labelCinebenchScoreHeading");
+            this.labelCinebenchScoreHeading.Name = "labelCinebenchScoreHeading";
+            // 
+            // buttonStartCb
+            // 
+            resources.ApplyResources(this.buttonStartCb, "buttonStartCb");
+            this.buttonStartCb.Name = "buttonStartCb";
+            this.buttonStartCb.UseVisualStyleBackColor = true;
+            this.buttonStartCb.Click += new System.EventHandler(this.button1_Click);
             // 
             // RMT
             // 
@@ -684,10 +717,12 @@
             this.panelBottomDock.PerformLayout();
             this.Tuning.ResumeLayout(false);
             this.Tuning.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.panelSstLimit.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.upDownSstLimit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upDownSttLimit)).EndInit();
             this.panel19.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).EndInit();
@@ -716,8 +751,8 @@
             this.About.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.panel18.ResumeLayout(false);
-            this.panel18.PerformLayout();
+            this.tabCinebenchTesting.ResumeLayout(false);
+            this.tabCinebenchTesting.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -734,9 +769,9 @@
         private System.Windows.Forms.TabPage Tuning;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panelSstLimit;
-        private System.Windows.Forms.NumericUpDown upDownSstLimit;
+        private System.Windows.Forms.NumericUpDown upDownSttLimit;
         private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.CheckBox checkSstLimit;
+        private System.Windows.Forms.CheckBox checkSttLimit;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.NumericUpDown upDownMaxCurrentLimit;
         private System.Windows.Forms.Panel panel17;
@@ -780,6 +815,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Label labelLog;
+        private System.Windows.Forms.TabPage tabCinebenchTesting;
+        private System.Windows.Forms.Label labelCinebenchScoreHeading;
+        private System.Windows.Forms.Button buttonStartCb;
+        private System.Windows.Forms.Label labelCinebenchValues;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
