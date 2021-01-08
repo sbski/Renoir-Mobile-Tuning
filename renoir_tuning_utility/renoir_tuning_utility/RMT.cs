@@ -112,6 +112,11 @@ namespace renoir_tuning_utility
                 RyzenAccess.Initialize();
                 labelRenoirMobileTuning.Text += " - " + RyzenAccess.GetCpuName();
                 
+                if(RyzenAccess.SendPsmu(0x8,ref Args) == Smu.Status.OK)
+                {
+                    PMTableVersion = Args[0];
+                }
+
                 if(RyzenAccess.SendPsmu(0x66, ref Args) == Smu.Status.OK)
                 {
                     //Set Address and reset Args[]
@@ -154,7 +159,7 @@ namespace renoir_tuning_utility
                         TableDump[3] = ($"PMTableBaseAddress: 0x{Address:X8}");
                         float CurrentValue = 0.0F;
                         bool OnlyZero = true;
-                        for (UInt32 i = 0; i <= 600; i++)
+                        for (UInt32 i = 0; i <= 700; i++)
                         {
                             CurrentValue = Smu.ReadFloat(Address, i);
                             if(OnlyZero && CurrentValue != 0.0F )
@@ -261,26 +266,7 @@ namespace renoir_tuning_utility
                         upDownSttLimit.Enabled = false;
                     }
 
-
-                    float TestValue = ReadFloat(Address, 0x8C0);
-
-                    if(TestValue == 0.0)
-                    {
-                        PMTableVersion = 0x00370004;
-                        if(EnableDebug)
-                        {
-                            MessageBox.Show("PM Table Version 0x00370004");
-                        }
-
-                    }
-                    else
-                    {
-                        PMTableVersion = 0x00370005;
-                        if(EnableDebug)
-                        {
-                            MessageBox.Show("PM Table Version 0x00370005");
-                        }
-                    }
+                    MessageBox.Show($"PM Table Version 0x{PMTableVersion:H8}");
 
                     switch (PMTableVersion)
                     {

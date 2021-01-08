@@ -71,7 +71,7 @@
             this.CpuData.ShowCellToolTips = false;
             this.CpuData.ShowEditingIcon = false;
             this.CpuData.ShowRowErrors = false;
-            this.CpuData.Size = new System.Drawing.Size(328, 418);
+            this.CpuData.Size = new System.Drawing.Size(328, 421);
             this.CpuData.TabIndex = 0;
             this.CpuData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cpuData_CellContentClick);
             // 
@@ -84,7 +84,7 @@
             this.Offset.ReadOnly = true;
             this.Offset.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Offset.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Offset.Width = 45;
+            this.Offset.Width = 44;
             // 
             // Sensor
             // 
@@ -138,9 +138,9 @@
             // 
             this.labelRefreshInterval.AutoSize = true;
             this.labelRefreshInterval.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelRefreshInterval.Location = new System.Drawing.Point(3, 426);
+            this.labelRefreshInterval.Location = new System.Drawing.Point(3, 429);
             this.labelRefreshInterval.Name = "labelRefreshInterval";
-            this.labelRefreshInterval.Size = new System.Drawing.Size(86, 36);
+            this.labelRefreshInterval.Size = new System.Drawing.Size(92, 36);
             this.labelRefreshInterval.TabIndex = 0;
             this.labelRefreshInterval.Text = "Refresh Interval";
             this.labelRefreshInterval.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -148,10 +148,10 @@
             // buttonApply
             // 
             this.buttonApply.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonApply.Location = new System.Drawing.Point(155, 430);
+            this.buttonApply.Location = new System.Drawing.Point(165, 433);
             this.buttonApply.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonApply.Name = "buttonApply";
-            this.buttonApply.Size = new System.Drawing.Size(159, 28);
+            this.buttonApply.Size = new System.Drawing.Size(173, 28);
             this.buttonApply.TabIndex = 1;
             this.buttonApply.Text = "Apply";
             this.buttonApply.UseVisualStyleBackColor = true;
@@ -166,7 +166,7 @@
             0,
             0,
             0});
-            this.numericUpDownInterval.Location = new System.Drawing.Point(95, 432);
+            this.numericUpDownInterval.Location = new System.Drawing.Point(101, 435);
             this.numericUpDownInterval.Margin = new System.Windows.Forms.Padding(3, 6, 3, 4);
             this.numericUpDownInterval.Maximum = new decimal(new int[] {
             20000,
@@ -179,7 +179,7 @@
             0,
             0});
             this.numericUpDownInterval.Name = "numericUpDownInterval";
-            this.numericUpDownInterval.Size = new System.Drawing.Size(54, 21);
+            this.numericUpDownInterval.Size = new System.Drawing.Size(58, 20);
             this.numericUpDownInterval.TabIndex = 2;
             this.numericUpDownInterval.Value = new decimal(new int[] {
             2000,
@@ -191,9 +191,9 @@
             // checkEnableLog
             // 
             this.checkEnableLog.AutoSize = true;
-            this.checkEnableLog.Location = new System.Drawing.Point(3, 465);
+            this.checkEnableLog.Location = new System.Drawing.Point(3, 468);
             this.checkEnableLog.Name = "checkEnableLog";
-            this.checkEnableLog.Size = new System.Drawing.Size(80, 22);
+            this.checkEnableLog.Size = new System.Drawing.Size(89, 19);
             this.checkEnableLog.TabIndex = 3;
             this.checkEnableLog.Text = "Enable Log";
             this.checkEnableLog.UseVisualStyleBackColor = true;
@@ -202,20 +202,20 @@
             // checkLogOnly
             // 
             this.checkLogOnly.AutoSize = true;
-            this.checkLogOnly.Location = new System.Drawing.Point(155, 465);
+            this.checkLogOnly.Location = new System.Drawing.Point(165, 468);
             this.checkLogOnly.Name = "checkLogOnly";
-            this.checkLogOnly.Size = new System.Drawing.Size(159, 22);
+            this.checkLogOnly.Size = new System.Drawing.Size(173, 19);
             this.checkLogOnly.TabIndex = 4;
             this.checkLogOnly.Text = "Log and smart reapply only";
             this.checkLogOnly.UseVisualStyleBackColor = true;
             // 
             // SystemMonitor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(334, 490);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("Gill Sans MT", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MinimumSize = new System.Drawing.Size(350, 529);
             this.Name = "SystemMonitor";
