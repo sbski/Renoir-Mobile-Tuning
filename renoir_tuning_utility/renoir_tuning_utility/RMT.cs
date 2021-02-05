@@ -112,7 +112,7 @@ namespace renoir_tuning_utility
                 RyzenAccess.Initialize();
                 labelRenoirMobileTuning.Text += " - " + RyzenAccess.GetCpuName();
                 
-                if(RyzenAccess.SendPsmu(0x8,ref Args) == Smu.Status.OK)
+                if(RyzenAccess.SendPsmu(0x6,ref Args) == Smu.Status.OK)
                 {
                     PMTableVersion = Args[0];
                 }
@@ -138,7 +138,7 @@ namespace renoir_tuning_utility
                         }
 
                             UInt32[] SmuVersionArgs = new UInt32[6];
-                        string[] TableDump = new string[605];
+                        string[] TableDump = new string[705];
                         Args[0] = 0;
                         RyzenAccess.SendMp1(0x2, ref Args);
                         for (int i = 0; i < 6; i++)
@@ -266,7 +266,7 @@ namespace renoir_tuning_utility
                         upDownSttLimit.Enabled = false;
                     }
 
-                    MessageBox.Show($"PM Table Version 0x{PMTableVersion:H8}");
+                    MessageBox.Show($"PM Table Version 0x{PMTableVersion:X8}");
 
                     switch (PMTableVersion)
                     {

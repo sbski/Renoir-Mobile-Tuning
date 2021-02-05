@@ -152,8 +152,7 @@ namespace RyzenSmu
             PSMU_ADDR_MSG = 0x03B10A20;
             PSMU_ADDR_RSP = 0x03B10A80;
             PSMU_ADDR_ARG = 0x03B10A88;
-            
-            
+
 
             // Check WinRing0 status
             switch (RyzenNbAccesss.GetDllStatus())
@@ -193,7 +192,7 @@ namespace RyzenSmu
 
         public void Initialize()
         {
-            
+            amdSmuMutex = new Mutex();
             RyzenNbAccesss.InitializeOls();
 
             // Check WinRing0 status
