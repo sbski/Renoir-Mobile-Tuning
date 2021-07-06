@@ -2636,6 +2636,36 @@
   <data name="&gt;&gt;About.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="checkBoxGfx.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="checkBoxGfx.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxGfx.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="checkBoxGfx.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 19</value>
+  </data>
+  <data name="checkBoxGfx.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="checkBoxGfx.Text" xml:space="preserve">
+    <value>iGPU Clockspeed (MHz)</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGfx.Name" xml:space="preserve">
+    <value>checkBoxGfx</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGfx.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGfx.Parent" xml:space="preserve">
+    <value>panel21</value>
+  </data>
+  <data name="&gt;&gt;checkBoxGfx.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="linkCtr.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2955,36 +2985,6 @@ Tuned score:</value>
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>148, 17</value>
   </metadata>
-  <data name="checkBoxGfx.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="checkBoxGfx.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxGfx.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="checkBoxGfx.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 19</value>
-  </data>
-  <data name="checkBoxGfx.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="checkBoxGfx.Text" xml:space="preserve">
-    <value>iGPU Clockspeed (MHz)</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGfx.Name" xml:space="preserve">
-    <value>checkBoxGfx</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGfx.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGfx.Parent" xml:space="preserve">
-    <value>panel21</value>
-  </data>
-  <data name="&gt;&gt;checkBoxGfx.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

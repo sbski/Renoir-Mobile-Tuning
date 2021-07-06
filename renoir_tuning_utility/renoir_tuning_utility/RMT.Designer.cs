@@ -79,6 +79,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.checkFastLimit = new System.Windows.Forms.CheckBox();
             this.About = new System.Windows.Forms.TabControl();
+            this.tabGfx = new System.Windows.Forms.TabPage();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.upDownGfx = new System.Windows.Forms.NumericUpDown();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.checkBoxGfx = new System.Windows.Forms.CheckBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.linkCtr = new System.Windows.Forms.LinkLabel();
             this.linkTwitter = new System.Windows.Forms.LinkLabel();
@@ -92,11 +97,6 @@
             this.labelCinebenchScoreHeading = new System.Windows.Forms.Label();
             this.buttonStartCb = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.tabGfx = new System.Windows.Forms.TabPage();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.upDownGfx = new System.Windows.Forms.NumericUpDown();
-            this.panel21 = new System.Windows.Forms.Panel();
-            this.checkBoxGfx = new System.Windows.Forms.CheckBox();
             this.panelBottomDock.SuspendLayout();
             this.Tuning.SuspendLayout();
             this.panel18.SuspendLayout();
@@ -129,12 +129,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.upDownFastLimit)).BeginInit();
             this.panel2.SuspendLayout();
             this.About.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabCinebenchTesting.SuspendLayout();
             this.tabGfx.SuspendLayout();
             this.panel20.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownGfx)).BeginInit();
             this.panel21.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabCinebenchTesting.SuspendLayout();
             this.SuspendLayout();
             // 
             // notifyIconRMT
@@ -616,6 +616,59 @@
             this.About.Name = "About";
             this.About.SelectedIndex = 0;
             // 
+            // tabGfx
+            // 
+            this.tabGfx.Controls.Add(this.panel20);
+            resources.ApplyResources(this.tabGfx, "tabGfx");
+            this.tabGfx.Name = "tabGfx";
+            this.tabGfx.UseVisualStyleBackColor = true;
+            // 
+            // panel20
+            // 
+            resources.ApplyResources(this.panel20, "panel20");
+            this.panel20.Controls.Add(this.upDownGfx);
+            this.panel20.Controls.Add(this.panel21);
+            this.panel20.Name = "panel20";
+            // 
+            // upDownGfx
+            // 
+            this.upDownGfx.DecimalPlaces = 1;
+            resources.ApplyResources(this.upDownGfx, "upDownGfx");
+            this.upDownGfx.Increment = new decimal(new int[] {
+            125,
+            0,
+            0,
+            65536});
+            this.upDownGfx.Maximum = new decimal(new int[] {
+            4000,
+            0,
+            0,
+            0});
+            this.upDownGfx.Minimum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.upDownGfx.Name = "upDownGfx";
+            this.upDownGfx.Value = new decimal(new int[] {
+            1500,
+            0,
+            0,
+            0});
+            // 
+            // panel21
+            // 
+            this.panel21.Controls.Add(this.checkBoxGfx);
+            resources.ApplyResources(this.panel21, "panel21");
+            this.panel21.Name = "panel21";
+            // 
+            // checkBoxGfx
+            // 
+            resources.ApplyResources(this.checkBoxGfx, "checkBoxGfx");
+            this.checkBoxGfx.Name = "checkBoxGfx";
+            this.checkBoxGfx.UseVisualStyleBackColor = true;
+            this.checkBoxGfx.CheckedChanged += new System.EventHandler(this.checkBoxGfx_CheckedChanged);
+            // 
             // tabPage1
             // 
             resources.ApplyResources(this.tabPage1, "tabPage1");
@@ -710,59 +763,6 @@
             this.buttonStartCb.UseVisualStyleBackColor = true;
             this.buttonStartCb.Click += new System.EventHandler(this.button1_Click);
             // 
-            // tabGfx
-            // 
-            this.tabGfx.Controls.Add(this.panel20);
-            resources.ApplyResources(this.tabGfx, "tabGfx");
-            this.tabGfx.Name = "tabGfx";
-            this.tabGfx.UseVisualStyleBackColor = true;
-            // 
-            // panel20
-            // 
-            resources.ApplyResources(this.panel20, "panel20");
-            this.panel20.Controls.Add(this.upDownGfx);
-            this.panel20.Controls.Add(this.panel21);
-            this.panel20.Name = "panel20";
-            // 
-            // upDownGfx
-            // 
-            this.upDownGfx.DecimalPlaces = 1;
-            resources.ApplyResources(this.upDownGfx, "upDownGfx");
-            this.upDownGfx.Increment = new decimal(new int[] {
-            125,
-            0,
-            0,
-            65536});
-            this.upDownGfx.Maximum = new decimal(new int[] {
-            3000,
-            0,
-            0,
-            0});
-            this.upDownGfx.Minimum = new decimal(new int[] {
-            25,
-            0,
-            0,
-            0});
-            this.upDownGfx.Name = "upDownGfx";
-            this.upDownGfx.Value = new decimal(new int[] {
-            1500,
-            0,
-            0,
-            0});
-            // 
-            // panel21
-            // 
-            this.panel21.Controls.Add(this.checkBoxGfx);
-            resources.ApplyResources(this.panel21, "panel21");
-            this.panel21.Name = "panel21";
-            // 
-            // checkBoxGfx
-            // 
-            resources.ApplyResources(this.checkBoxGfx, "checkBoxGfx");
-            this.checkBoxGfx.Name = "checkBoxGfx";
-            this.checkBoxGfx.UseVisualStyleBackColor = true;
-            this.checkBoxGfx.CheckedChanged += new System.EventHandler(this.checkBoxGfx_CheckedChanged);
-            // 
             // RMT
             // 
             resources.ApplyResources(this, "$this");
@@ -812,15 +812,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.upDownFastLimit)).EndInit();
             this.panel2.ResumeLayout(false);
             this.About.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabCinebenchTesting.ResumeLayout(false);
-            this.tabCinebenchTesting.PerformLayout();
             this.tabGfx.ResumeLayout(false);
             this.tabGfx.PerformLayout();
             this.panel20.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.upDownGfx)).EndInit();
             this.panel21.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabCinebenchTesting.ResumeLayout(false);
+            this.tabCinebenchTesting.PerformLayout();
             this.ResumeLayout(false);
 
         }
