@@ -87,11 +87,14 @@ namespace renoir_tuning_utility
             checkMaxCurrentLimit.Checked = true;
             checkSttLimit.Checked = true;
 
+            checkBoxGfx.Checked = false;
+            upDownGfx.Enabled = false;
+
             PowerSetting CurrentSetting;
             
 
 
-            labelRenoirMobileTuning.Text = "RMT v1.0.0";
+            labelRenoirMobileTuning.Text = "RMT v1.1.0 (test)";
 
             int time = 0;
             while(!IsInpOutDriverOpen() && time < 100)
@@ -266,7 +269,7 @@ namespace renoir_tuning_utility
                         upDownSttLimit.Enabled = false;
                     }
 
-                    MessageBox.Show($"PM Table Version 0x{PMTableVersion:X8}");
+                    //MessageBox.Show($"PM Table Version 0x{PMTableVersion:X8}");
 
                     switch (PMTableVersion)
                     {
@@ -401,6 +404,7 @@ namespace renoir_tuning_utility
             upDownCurrentLimit.Enabled = checkCurrentLimit.Checked;
         }
 
+
         private void ApplySettings_Click_1(object sender, EventArgs e)
         {
             labelLog.Text = "Log:\n";
@@ -412,7 +416,7 @@ namespace renoir_tuning_utility
             //String exe = Directory.GetCurrentDirectory() + "\\smu-tool\\smu-tool.exe";
             
             int i = 0;
-            Smu.Status[] Statuses = new Smu.Status[9];
+            Smu.Status[] Statuses = new Smu.Status[10];
             Args = new uint[6];
 
             if(checkStapmLimit.Checked)
@@ -526,6 +530,17 @@ namespace renoir_tuning_utility
                 Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
 
                 labelLog.Text += $"Skin Temperature Limit: " + Statuses[i-1].ToString() + '\n';
+                labelLog.Update();
+            }
+            if(checkBoxGfx.Checked)
+            {
+                Msg = 0x89;
+                Args[0] = (uint)Convert.ToUInt32(upDownGfx.Value);
+
+                //Send msg
+                Statuses[i++] = RyzenAccess.SendPsmu(Msg, ref Args);
+
+                labelLog.Text += $"GFX Clockspeed: " + Statuses[i - 1].ToString() + '\n';
                 labelLog.Update();
             }
 
@@ -885,6 +900,8 @@ namespace renoir_tuning_utility
             upDownMaxCurrentLimit.Enabled = false;
             upDownSttLimit.Enabled = false;
 
+            
+
             checkFastLimit.Enabled = false;
             checkSlowLimit.Enabled = false;
             checkStapmLimit.Enabled = false;
@@ -1082,6 +1099,11 @@ namespace renoir_tuning_utility
                 MessageBox.Show(ex.ToString(), "Cinebench result error");
                 return 0;
             }
+        }
+
+        private void checkBoxGfx_CheckedChanged(object sender, EventArgs e)
+        {
+            upDownGfx.Enabled = checkBoxGfx.Checked;
         }
     }
 }
