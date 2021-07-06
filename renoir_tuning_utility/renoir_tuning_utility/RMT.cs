@@ -801,6 +801,8 @@ namespace renoir_tuning_utility
 
         private void checkShowSensors_CheckedChanged(object sender, EventArgs e)
         {
+            UpdateCurrentSettings();
+            Thread.Sleep(10);
             if(checkShowSensors.Checked)
             {
 
