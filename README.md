@@ -1,18 +1,14 @@
 # Renoir Mobile Tuning
-## Unlock your Ryzen 4000 processor
-Enables control of power and temperature limits on AMD Renoir powered laptops.
-Idea for it was as a temperary hold over untill my bigger app is done being fixed for Renoir. RyzenAdj is working now without GPU and SOC clock speeds but Renoir does a good job of managing those now. Renoir-only version of Ryzen Controller. Uses Flygoat's smu-tool found here: https://github.com/flygoat/ryzen_nb_smu
+## Pushing Ryzen 4000 laptops to their limits
+Enables control of power and temperature limits on AMD Renoir powered laptops. It also allows you to overclock the iGPU. Current goals are to add support for more processors and fix the bugs currently in the program. 
 ## Installation
 - Go to the releases tab found [here](https://github.com/sbski/Renoir-Mobile-Tuning/releases) and download the latest release
-- Extract the files and place them were you would like to.
+- Extract the files and place them where you would like to.
 - Run InstallDriver.Exe (needed to read physical memory)
 - You are good to go.
 ## Helpful tips on keeping settings applied
-- Try to change your power profile that your OEM suplies to the highest perfomance mode
+- Try to change your power profile that your OEM supplies to the highest performance mode
   - This is known to help on HP's and Asus Laptops for sure
   - Putting your computer to sleep resets most of the settings
 - Enable Smart Reapply!
   - Detects when changes are made to the power settings and reverts them if possible. 
-
-If anyone would like to help with that I would greatly appreciate any help. I think it will be a mix of c/c++ and c# for most of the code.
-Join the [Ryzen Controller Discord](https://discordapp.com/invite/EahayUv) if you want to keep up with deveolopment or talk with like-minded people!
