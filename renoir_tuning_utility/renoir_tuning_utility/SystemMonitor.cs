@@ -692,6 +692,7 @@ namespace renoir_tuning_utility
             Sensors.Clear();
             switch (PMTableVersion)
             {
+                case (uint)0x00370003:
                 case (uint)0x00370004:
                     Sensors.Add(CreatePowerMonitoringItem("STAPM LIMIT", (uint)0x0));
                     Sensors.Add(CreatePowerMonitoringItem("STAPM VALUE", (uint)0x4));

@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using RyzenSmu;
 using PowerSettings;
 using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace renoir_tuning_utility
 {
@@ -27,7 +28,7 @@ namespace renoir_tuning_utility
         [DllImport("inpoutx64.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool IsInpOutDriverOpen();
-
+        
         private static float ReadFloat(uint Address, uint Offset)
         {
             uint Data = 0;
@@ -91,10 +92,27 @@ namespace renoir_tuning_utility
             upDownGfx.Enabled = false;
 
             PowerSetting CurrentSetting;
+
+
             
+            labelRenoirMobileTuning.Text = "RMT v1.1.1";
 
 
-            labelRenoirMobileTuning.Text = "RMT v1.1.0 (test)";
+
+            /*
+            //loading inpoutx64
+            var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
+            var iconPath = Path.Combine(outPutDirectory, "inpoutx64.sys");
+            string icon_path = new Uri(iconPath).LocalPath;
+
+            MessageBox.Show(icon_path);
+            Assembly.UnsafeLoadFrom("inpoutx64.sys");
+            //Assembly.LoadFrom(icon_path);
+
+            */
+
+
+
 
             int time = 0;
             while(!IsInpOutDriverOpen() && time < 100)
@@ -301,6 +319,7 @@ namespace renoir_tuning_utility
                             }
                             break;
 
+                        case 0x00370003:
                         case 0x00370004:
 
 
