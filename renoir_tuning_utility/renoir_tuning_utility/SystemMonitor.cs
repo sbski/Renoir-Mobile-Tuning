@@ -1,4 +1,6 @@
 ﻿using Microsoft.Win32;
+using Newtonsoft.Json;
+using PowerSettings;
 using RyzenSmu;
 using System;
 using System.Collections.Generic;
@@ -6,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.PerformanceData;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
@@ -590,6 +593,10 @@ namespace renoir_tuning_utility
         private static uint Address;
         private static uint[] Args;
 
+        private static StreamWriter PowerLog;
+        private static UInt64 LogInterval;
+        private static UInt64 LogTime;
+
         readonly System.Windows.Forms.Timer UpdateTimer = new System.Windows.Forms.Timer();
 
         public BindingList<PowerMonitoringItem> Sensors = new BindingList<PowerMonitoringItem>();
@@ -611,14 +618,16 @@ namespace renoir_tuning_utility
             RyzenAccess.SendPsmu(0x66, ref Args);
             Address = Args[0];
             RyzenAccess.Deinitialize();
-            float TestValue = ReadFloat(Address, (uint)768);
-            if (TestValue == 0.0)
+            
+            
+
+            if (ReadFloat(Address, 0x8C0) == 0)
             {
-                PMTableVersion = 0x00370005;
+                PMTableVersion = 0x00370004;
             }
             else
             {
-                PMTableVersion = 0x00370004;
+                PMTableVersion = 0x00370005;
             }
 
 
@@ -657,6 +666,7 @@ namespace renoir_tuning_utility
         private void buttonApply_Click(object sender, EventArgs e)
         {
             UpdateTimer.Interval = Convert.ToInt32(numericUpDownInterval.Value);
+            LogInterval = Convert.ToUInt64(numericUpDownInterval.Value);
         }
         public PowerMonitoringItem CreatePowerMonitoringItem(string Name, uint Offset)
         {
@@ -669,7 +679,11 @@ namespace renoir_tuning_utility
         public void UptateTimer_Tick(object sender, EventArgs e)
         {
             RefreshData();
-            
+            PowerSetting CurrentSetting = JsonConvert.DeserializeObject<PowerSetting>(File.ReadLines("CurrentSettings.json").First());
+            if(CurrentSetting.SmartReapply)
+            {
+                CurrentSetting.CheckAndReapply(Address);
+            }
         }
 
         private void FillInTable()
@@ -678,6 +692,7 @@ namespace renoir_tuning_utility
             Sensors.Clear();
             switch (PMTableVersion)
             {
+                case (uint)0x00370003:
                 case (uint)0x00370004:
                     Sensors.Add(CreatePowerMonitoringItem("STAPM LIMIT", (uint)0x0));
                     Sensors.Add(CreatePowerMonitoringItem("STAPM VALUE", (uint)0x4));
@@ -1813,15 +1828,70 @@ namespace renoir_tuning_utility
             int Index = 0;
             float CurrentValue = 0.0F;
             UInt32 CurrentValueUInt = 0;
+            string LogOutput = "";
             //string TestPrint = "";
-            foreach (var item in Sensors)
+            if(checkLogOnly.Checked)
             {
-                CurrentValue = ReadFloat(Address, OffsetTable[Index]);
-                Sensors[Index].Value = $"{CurrentValue:F4}";
-                //Thread.Sleep(10);
-                //TestPrint += (Sensors[Index].Value + Environment.NewLine);
-                Index++;
+                if (checkEnableLog.Checked)
+                {
+                    LogTime += LogInterval;
+                    LogOutput = $"{LogTime:F}";
+                    foreach (var item in Sensors)
+                    {
+                        CurrentValue = ReadFloat(Address, OffsetTable[Index]);
+                        //Sensors[Index].Value = $"{CurrentValue:F4}";
+
+                        LogOutput += $", {CurrentValue:F4}";
+                        //Thread.Sleep(10);
+                        //TestPrint += (Sensors[Index].Value + Environment.NewLine);
+                        Index++;
+                    }
+                    PowerLog.WriteLine(LogOutput);
+                }
+                else
+                {
+                    foreach (var item in Sensors)
+                    {
+                        CurrentValue = ReadFloat(Address, OffsetTable[Index]);
+                        //Sensors[Index].Value = $"{CurrentValue:F4}";
+                        //Thread.Sleep(10);
+                        //TestPrint += (Sensors[Index].Value + Environment.NewLine);
+                        Index++;
+                    }
+                }
             }
+            else
+            {
+                if(checkEnableLog.Checked)
+            {
+                LogTime += LogInterval;
+                LogOutput = $"{LogTime:F}";
+                foreach (var item in Sensors)
+                {
+                    CurrentValue = ReadFloat(Address, OffsetTable[Index]);
+                    Sensors[Index].Value = $"{CurrentValue:F4}";
+
+                    LogOutput += $", {CurrentValue:F4}";
+                    //Thread.Sleep(10);
+                    //TestPrint += (Sensors[Index].Value + Environment.NewLine);
+                    Index++;
+                }
+                PowerLog.WriteLine(LogOutput);
+            }
+            else
+            {
+                foreach (var item in Sensors)
+                {
+                    CurrentValue = ReadFloat(Address, OffsetTable[Index]);
+                    Sensors[Index].Value = $"{CurrentValue:F4}";
+                    //Thread.Sleep(10);
+                    //TestPrint += (Sensors[Index].Value + Environment.NewLine);
+                    Index++;
+                }
+            }
+            }
+            
+            
             CpuData.Refresh();
             RyzenAccess.Deinitialize();
             //MessageBox.Show(TestPrint);
@@ -1837,7 +1907,42 @@ namespace renoir_tuning_utility
         {
 
         }
-        
+
+        private void checkEnableLog_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkEnableLog.Checked)
+            {
+                //Debug print
+                //MessageBox.Show(Directory.GetCurrentDirectory());
+                
+                //Create the Logs folder if it's not already there
+                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "Logs\\"));
+                string FileName = DateTime.Now.ToString("yyyy-MM-dd_hh-mm-ss")+".csv";
+                
+                //Debug print
+                //MessageBox.Show(FileName);
+                
+                //create the StreamWriter
+                PowerLog = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "Logs\\" + FileName));
+
+                switch (PMTableVersion)
+                {
+                    case (uint)0x00370004:
+                        PowerLog.WriteLine("Time, STAPM LIMIT, STAPM VALUE, PPT LIMIT FAST, PPT VALUE FAST, PPT LIMIT SLOW, PPT VALUE SLOW, PPT LIMIT APU, PPT VALUE APU, TDC LIMIT VDD, TDC VALUE VDD, TDC LIMIT SOC, TDC VALUE SOC, EDC LIMIT VDD, EDC VALUE VDD, EDC LIMIT SOC, EDC VALUE SOC, THM LIMIT CORE, THM VALUE CORE, THM LIMIT GFX, THM VALUE GFX, THM LIMIT SOC, THM VALUE SOC, STT LIMIT APU, STT VALUE APU, STT LIMIT dGPU, STT VALUE dGPU, FIT LIMIT, FIT VALUE, VID LIMIT, VID VALUE, PSI0 LIMIT VDD, PSI0 RESIDENCY VDD, PSI0 LIMIT SOC, PSI0 RESIDENCY SOC, VDDCR CPU POWER, VDDCR SOC POWER, VDDIO MEM POWER, ROC POWER, SOCKET POWER, CCLK GLOBAL FREQ, CCLK STAPM FREQ, CCLK PPT FAST FREQ, CCLK PPT SLOW FREQ, CCLK PPT APU ONLY FREQ, CCLK TDC FREQ, CCLK THM FREQ, CCLK HTFMAX FREQ, CCLK PROCHOT FREQ, CCLK VOLTAGE FREQ, CCLK CCA FREQ, GFXCLK GLOBAL FREQ, GFXCLK STAPM FREQ, GFXCLK PPT FAST FREQ, GFXCLK PPT SLOW FREQ, GFXCLK PPT APU ONLY FREQ, GFXCLK TDC FREQ, GFXCLK THM FREQ, GFXCLK HTFMAX FREQ, GFXCLK PROCHOT FREQ, GFXCLK VOLTAGE FREQ, GFXCLK CCA FREQ, FIT VOLTAGE, LATCHUP VOLTAGE, CORE SETPOINT, CORE BUSY, GFX SETPOINT, GFX DPM BUSY, FCLK CCX SETPOINT, FCLK CCX BUSY, FCLK GFX SETPOINT, FCLK GFX BUSY, FCLK IO SETPOINT, FCLK IO BUSY, FCLK DRAM SETPOINT, FCLK DRAM BUSY, LCLK SETPOINT, LCLK BUSY, FCLK RESIDENCY 0, FCLK RESIDENCY 1, FCLK RESIDENCY 2, FCLK RESIDENCY 3, FCLK FREQ TABLE 0, FCLK FREQ TABLE 1, FCLK FREQ TABLE 2, FCLK FREQ TABLE 3, UCLK FREQ TABLE 0, UCLK FREQ TABLE 1, UCLK FREQ TABLE 2, UCLK FREQ TABLE 3, MEMCLK FREQ TABLE 0, MEMCLK FREQ TABLE 1, MEMCLK FREQ TABLE 2, MEMCLK FREQ TABLE 3, FCLK VOLTAGE 0, FCLK VOLTAGE 1, FCLK VOLTAGE 2, FCLK VOLTAGE 3, CPU SET VOLTAGE, CPU TELEMETRY VOLTAGE, CPU TELEMETRY CURRENT, CPU TELEMETRY POWER, SOC SET VOLTAGE, SOC TELEMETRY VOLTAGE, SOC TELEMETRY CURRENT, SOC TELEMETRY POWER, Rail0 voltage, Rail1 voltage, Rail4 voltage, Rail5 voltage, Rail6 voltage, Rail7 voltage, Rail8 voltage, Rail9 voltage, Rail10 voltage, Rail11 voltage, Rail12 voltage, Rail13 voltage, Rail14 voltage, Rail15 voltage, Rail16 voltage, Rail17 voltage, Rail18 voltage, Rail19 voltage, Rail20 voltage, Rail21 voltage, Rail0 current, Rail1 current, Rail4 current, Rail5 current, Rail6 current, Rail7 current, Rail8 current, Rail9 current, Rail10 current, Rail11 current, Rail12 current, Rail13 current, Rail14 current, Rail15 current, Rail16 current, Rail17 current, Rail18 current, Rail19 current, Rail20 current, Rail21 current, Rail0 power, Rail1 power, Rail4 power, Rail5 power, Rail6 power, Rail7 power, Rail8 power, Rail9 power, Rail10 power, Rail11 power, Rail12 power, Rail13 power, Rail14 power, Rail15 power, Rail16 power, Rail17 power, Rail18 power, Rail19 power, Rail20 power, Rail21 power, DfBusy, VcnBusy, IohcBusy, MmhubBusy, AthubBusy, OsssysBusy, HdpBusy, SdmaBusy, ShubBusy, BifBusy, AcpBusy, Sst0Busy, Sst1Busy, Usb0Busy, Usb1Busy, CCM Reads, CCM Writes, GCM 64B Reads, GCM 64B Writes, GCM 32B ReadsWrites, MMHUB Reads, MMHUB Writes, DCE Reads, IO ReadsWrites, CS Reads, CS Writes, MaxDramBW, CORE POWER 0, CORE POWER 1, CORE POWER 2, CORE POWER 3, CORE POWER 4, CORE POWER 5, CORE POWER 6, CORE POWER 7, CORE VOLTAGE 0, CORE VOLTAGE 1, CORE VOLTAGE 2, CORE VOLTAGE 3, CORE VOLTAGE 4, CORE VOLTAGE 5, CORE VOLTAGE 6, CORE VOLTAGE 7, CORE TEMP 0, CORE TEMP 1, CORE TEMP 2, CORE TEMP 3, CORE TEMP 4, CORE TEMP 5, CORE TEMP 6, CORE TEMP 7, CORE FIT 0, CORE FIT 1, CORE FIT 2, CORE FIT 3, CORE FIT 4, CORE FIT 5, CORE FIT 6, CORE FIT 7, CORE IDDMAX 0, CORE IDDMAX 1, CORE IDDMAX 2, CORE IDDMAX 3, CORE IDDMAX 4, CORE IDDMAX 5, CORE IDDMAX 6, CORE IDDMAX 7, CORE FREQ 0, CORE FREQ 1, CORE FREQ 2, CORE FREQ 3, CORE FREQ 4, CORE FREQ 5, CORE FREQ 6, CORE FREQ 7, CORE FREQEFF 0, CORE FREQEFF 1, CORE FREQEFF 2, CORE FREQEFF 3, CORE FREQEFF 4, CORE FREQEFF 5, CORE FREQEFF 6, CORE FREQEFF 7, CORE C0 0, CORE C0 1, CORE C0 2, CORE C0 3, CORE C0 4, CORE C0 5, CORE C0 6, CORE C0 7, CORE CC1 0, CORE CC1 1, CORE CC1 2, CORE CC1 3, CORE CC1 4, CORE CC1 5, CORE CC1 6, CORE CC1 7, CORE CC6 0, CORE CC6 1, CORE CC6 2, CORE CC6 3, CORE CC6 4, CORE CC6 5, CORE CC6 6, CORE CC6 7, CORE CKS FDD 0, CORE CKS FDD 1, CORE CKS FDD 2, CORE CKS FDD 3, CORE CKS FDD 4, CORE CKS FDD 5, CORE CKS FDD 6, CORE CKS FDD 7, CORE PSTATE 0, CORE PSTATE 1, CORE PSTATE 2, CORE PSTATE 3, CORE PSTATE 4, CORE PSTATE 5, CORE PSTATE 6, CORE PSTATE 7, CORE CPPC MAX 0, CORE CPPC MAX 1, CORE CPPC MAX 2, CORE CPPC MAX 3, CORE CPPC MAX 4, CORE CPPC MAX 5, CORE CPPC MAX 6, CORE CPPC MAX 7, CORE CPPC MIN 0, CORE CPPC MIN 1, CORE CPPC MIN 2, CORE CPPC MIN 3, CORE CPPC MIN 4, CORE CPPC MIN 5, CORE CPPC MIN 6, CORE CPPC MIN 7, CORE CPPC EPP 0, CORE CPPC EPP 1, CORE CPPC EPP 2, CORE CPPC EPP 3, CORE CPPC EPP 4, CORE CPPC EPP 5, CORE CPPC EPP 6, CORE CPPC EPP 7, CORE SC LIMIT 0, CORE SC LIMIT 1, CORE SC LIMIT 2, CORE SC LIMIT 3, CORE SC LIMIT 4, CORE SC LIMIT 5, CORE SC LIMIT 6, CORE SC LIMIT 7, CORE SC CALC 0, CORE SC CALC 1, CORE SC CALC 2, CORE SC CALC 3, CORE SC CALC 4, CORE SC CALC 5, CORE SC CALC 6, CORE SC CALC 7, CORE SC RESIDENCY 0, CORE SC RESIDENCY 1, CORE SC RESIDENCY 2, CORE SC RESIDENCY 3, CORE SC RESIDENCY 4, CORE SC RESIDENCY 5, CORE SC RESIDENCY 6, CORE SC RESIDENCY 7, L3 LOGIC POWER 0, L3 LOGIC POWER 1, L3 VDDM POWER 0, L3 VDDM POWER 1, L3 TEMP 0, L3 TEMP 1, L3 FIT 0, L3 FIT 1, L3 IDDMAX 0, L3 IDDMAX 1, L3 FREQ 0, L3 FREQ 1, L3 CKS FDD 0, L3 CKS FDD 1, L3 CCA THRESHOLD 0, L3 CCA THRESHOLD 1, L3 CCA CAC 0, L3 CCA CAC 1, L3 CCA ACTIVATION 0, L3 CCA ACTIVATION 1, L3 EDC LIMIT 0, L3 EDC LIMIT 1, L3 EDC CAC 0, L3 EDC CAC 1, L3 EDC RESIDENCY 0, L3 EDC RESIDENCY 1, GFX VOLTAGE, GFX TEMP, GFX IDDMAX, GFX FREQ, GFX FREQEFF, GFX BUSY, GFX CGPG, GFX EDC LIMIT, GFX EDC RESIDENCY, FCLK FREQ, UCLK FREQ, MEMCLK FREQ, VCLK FREQ, DCLK FREQ, SOCCLK FREQ, LCLK FREQ, SHUBCLK FREQ, MP0CLK FREQ, DCFCLK FREQ, FCLK FREQEFF, UCLK FREQEFF, MEMCLK FREQEFF, VCLK FREQEFF, DCLK FREQEFF, SOCCLK FREQEFF, LCLK FREQEFF, SHUBCLK FREQEFF, MP0CLK FREQEFF, DCFCLK FREQEFF, Vclk state freq 0, Vclk state freq 1, Vclk state freq 2, Vclk state freq 3, Vclk state freq 4, Vclk state freq 5, Vclk state freq 6, Vclk state freq 7, Dclk state freq 0, Dclk state freq 1, Dclk state freq 2, Dclk state freq 3, Dclk state freq 4, Dclk state freq 5, Dclk state freq 6, Dclk state freq 7, Socclk state freq 0, Socclk state freq 1, Socclk state freq 2, Socclk state freq 3, Socclk state freq 4, Socclk state freq 5, Socclk state freq 6, Socclk state freq 7, Lclk state freq 0, Lclk state freq 1, Lclk state freq 2, Lclk state freq 3, Lclk state freq 4, Lclk state freq 5, Lclk state freq 6, Lclk state freq 7, Shubclk state freq 0, Shubclk state freq 1, Shubclk state freq 2, Shubclk state freq 3, Shubclk state freq 4, Shubclk state freq 5, Shubclk state freq 6, Shubclk state freq 7, Mp0clk state freq 0, Mp0clk state freq 1, Mp0clk state freq 2, Mp0clk state freq 3, Mp0clk state freq 4, Mp0clk state freq 5, Mp0clk state freq 6, Mp0clk state freq 7, Dcfclk state freq 0, Dcfclk state freq 1, Dcfclk state freq 2, Dcfclk state freq 3, Dcfclk state freq 4, Dcfclk state freq 5, Dcfclk state freq 6, Dcfclk state freq 7, Vcn state residency 0, Vcn state residency 1, Vcn state residency 2, Vcn state residency 3, Vcn state residency 4, Vcn state residency 5, Vcn state residency 6, Vcn state residency 7, Socclk state residency 0, Socclk state residency 1, Socclk state residency 2, Socclk state residency 3, Socclk state residency 4, Socclk state residency 5, Socclk state residency 6, Socclk state residency 7, Lclk state residency 0, Lclk state residency 1, Lclk state residency 2, Lclk state residency 3, Lclk state residency 4, Lclk state residency 5, Lclk state residency 6, Lclk state residency 7, Shubclk state residency 0, Shubclk state residency 1, Shubclk state residency 2, Shubclk state residency 3, Shubclk state residency 4, Shubclk state residency 5, Shubclk state residency 6, Shubclk state residency 7, Mp0clk state residency 0, Mp0clk state residency 1, Mp0clk state residency 2, Mp0clk state residency 3, Mp0clk state residency 4, Mp0clk state residency 5, Mp0clk state residency 6, Mp0clk state residency 7, Dcfclk state residency 0, Dcfclk state residency 1, Dcfclk state residency 2, Dcfclk state residency 3, Dcfclk state residency 4, Dcfclk state residency 5, Dcfclk state residency 6, Dcfclk state residency 7, VddcrSoc voltage 0, VddcrSoc voltage 1, VddcrSoc voltage 2, VddcrSoc voltage 3, VddcrSoc voltage 4, VddcrSoc voltage 5, VddcrSoc voltage 6, VddcrSoc voltage 7, CPUOFF, CPUOFF count, GFXOFF, GFXOFF count, VDDOFF, VDDOFF count, ULV, ULV count, S0i2, S0i2 count, WhisperMode, WhisperMode count, SelfRefresh0, SelfRefresh1, Pll power down 0, Pll power down 1, Pll power down 2, Pll power down 3, Pll power down 4, UINT8 T POWER SOURCE(4), dGPU POWER, dGPU GFX BUSY, dGPU FREQ TARGET, V VDDM, V VDDP, DDR PHY POWER, IO VDDIO MEM POWER, IO VDD18 POWER, IO DISPLAY POWER, IO USB POWER, ULV VOLTAGE, PEAK TEMP, PEAK VOLTAGE, AVG CORE COUNT, MAX VOLTAGE, DC BTC, CSTATE BOOST, PROCHOT, PWM, FPS, DISPLAY COUNT, StapmTimeConstant, SlowPPTTimeConstant, MP1CLK, MP2CLK, SMNCLK, ACLK, DISPCLK, DPREFCLK, DPPCLK, SMU BUSY, SMU SKIP COUNTER");
+                        break;
+                    case (UInt32)0x00370005:
+                        PowerLog.WriteLine("Time, STAPM LIMIT, STAPM VALUE, PPT LIMIT FAST, PPT VALUE FAST, PPT LIMIT SLOW, PPT VALUE SLOW, PPT LIMIT APU, PPT VALUE APU, TDC LIMIT VDD, TDC VALUE VDD, TDC LIMIT SOC, TDC VALUE SOC, EDC LIMIT VDD, EDC VALUE VDD, EDC LIMIT SOC, EDC VALUE SOC, THM LIMIT CORE, THM VALUE CORE, THM LIMIT GFX, THM VALUE GFX, THM LIMIT SOC, THM VALUE SOC, STT LIMIT APU, STT VALUE APU, STT LIMIT dGPU, STT VALUE dGPU, FIT LIMIT, FIT VALUE, VID LIMIT, VID VALUE, PSI0 LIMIT VDD, PSI0 RESIDENCY VDD, PSI0 LIMIT SOC, PSI0 RESIDENCY SOC, VDDCR CPU POWER, VDDCR SOC POWER, VDDIO MEM POWER, ROC POWER, SOCKET POWER, CCLK GLOBAL FREQ, CCLK STAPM FREQ, CCLK PPT FAST FREQ, CCLK PPT SLOW FREQ, CCLK PPT APU ONLY FREQ, CCLK TDC FREQ, CCLK THM FREQ, CCLK HTFMAX FREQ, CCLK PROCHOT FREQ, CCLK VOLTAGE FREQ, CCLK CCA FREQ, GFXCLK GLOBAL FREQ, GFXCLK STAPM FREQ, GFXCLK PPT FAST FREQ, GFXCLK PPT SLOW FREQ, GFXCLK PPT APU ONLY FREQ, GFXCLK TDC FREQ, GFXCLK THM FREQ, GFXCLK HTFMAX FREQ, GFXCLK PROCHOT FREQ, GFXCLK VOLTAGE FREQ, GFXCLK CCA FREQ, FIT VOLTAGE, LATCHUP VOLTAGE, CORE SETPOINT, CORE BUSY, GFX SETPOINT, GFX DPM BUSY, FCLK CCX SETPOINT, FCLK CCX BUSY, FCLK GFX SETPOINT, FCLK GFX BUSY, FCLK IO SETPOINT, FCLK IO BUSY, FCLK DRAM SETPOINT, FCLK DRAM BUSY, LCLK SETPOINT, LCLK BUSY, FCLK RESIDENCY 0, FCLK RESIDENCY 1, FCLK RESIDENCY 2, FCLK RESIDENCY 3, FCLK FREQ TABLE 0, FCLK FREQ TABLE 1, FCLK FREQ TABLE 2, FCLK FREQ TABLE 3, UCLK FREQ TABLE 0, UCLK FREQ TABLE 1, UCLK FREQ TABLE 2, UCLK FREQ TABLE 3, MEMCLK FREQ TABLE 0, MEMCLK FREQ TABLE 1, MEMCLK FREQ TABLE 2, MEMCLK FREQ TABLE 3, FCLK VOLTAGE 0, FCLK VOLTAGE 1, FCLK VOLTAGE 2, FCLK VOLTAGE 3, CPU SET VOLTAGE, CPU TELEMETRY VOLTAGE, CPU TELEMETRY CURRENT, CPU TELEMETRY POWER, SOC SET VOLTAGE, SOC TELEMETRY VOLTAGE, SOC TELEMETRY CURRENT, SOC TELEMETRY POWER, Rail0 voltage, Rail1 voltage, Rail4 voltage, Rail5 voltage, Rail6 voltage, Rail7 voltage, Rail8 voltage, Rail9 voltage, Rail10 voltage, Rail11 voltage, Rail12 voltage, Rail13 voltage, Rail14 voltage, Rail15 voltage, Rail16 voltage, Rail17 voltage, Rail18 voltage, Rail19 voltage, Rail20 voltage, Rail21 voltage, Rail0 current, Rail1 current, Rail4 current, Rail5 current, Rail6 current, Rail7 current, Rail8 current, Rail9 current, Rail10 current, Rail11 current, Rail12 current, Rail13 current, Rail14 current, Rail15 current, Rail16 current, Rail17 current, Rail18 current, Rail19 current, Rail20 current, Rail21 current, Rail0 power, Rail1 power, Rail4 power, Rail5 power, Rail6 power, Rail7 power, Rail8 power, Rail9 power, Rail10 power, Rail11 power, Rail12 power, Rail13 power, Rail14 power, Rail15 power, Rail16 power, Rail17 power, Rail18 power, Rail19 power, Rail20 power, Rail21 power, DfBusy, VcnBusy, IohcBusy, MmhubBusy, AthubBusy, OsssysBusy, HdpBusy, SdmaBusy, ShubBusy, BifBusy, AcpBusy, Sst0Busy, Sst1Busy, Usb0Busy, Usb1Busy, CCM Reads, CCM Writes, GCM 64B Reads, GCM 64B Writes, GCM 32B ReadsWrites, MMHUB Reads, MMHUB Writes, DCE Reads, IO ReadsWrites, CS Reads, CS Writes, MaxDramBW, VCN Busy, VCN Decode, VCN Encode Gen, VCN Encode Low, VCN Encode Real, VCN PG, VCN JPEG, CORE POWER 0, CORE POWER 1, CORE POWER 2, CORE POWER 3, CORE POWER 4, CORE POWER 5, CORE POWER 6, CORE POWER 7, CORE VOLTAGE 0, CORE VOLTAGE 1, CORE VOLTAGE 2, CORE VOLTAGE 3, CORE VOLTAGE 4, CORE VOLTAGE 5, CORE VOLTAGE 6, CORE VOLTAGE 7, CORE TEMP 0, CORE TEMP 1, CORE TEMP 2, CORE TEMP 3, CORE TEMP 4, CORE TEMP 5, CORE TEMP 6, CORE TEMP 7, CORE FIT 0, CORE FIT 1, CORE FIT 2, CORE FIT 3, CORE FIT 4, CORE FIT 5, CORE FIT 6, CORE FIT 7, CORE IDDMAX 0, CORE IDDMAX 1, CORE IDDMAX 2, CORE IDDMAX 3, CORE IDDMAX 4, CORE IDDMAX 5, CORE IDDMAX 6, CORE IDDMAX 7, CORE FREQ 0, CORE FREQ 1, CORE FREQ 2, CORE FREQ 3, CORE FREQ 4, CORE FREQ 5, CORE FREQ 6, CORE FREQ 7, CORE FREQEFF 0, CORE FREQEFF 1, CORE FREQEFF 2, CORE FREQEFF 3, CORE FREQEFF 4, CORE FREQEFF 5, CORE FREQEFF 6, CORE FREQEFF 7, CORE C0 0, CORE C0 1, CORE C0 2, CORE C0 3, CORE C0 4, CORE C0 5, CORE C0 6, CORE C0 7, CORE CC1 0, CORE CC1 1, CORE CC1 2, CORE CC1 3, CORE CC1 4, CORE CC1 5, CORE CC1 6, CORE CC1 7, CORE CC6 0, CORE CC6 1, CORE CC6 2, CORE CC6 3, CORE CC6 4, CORE CC6 5, CORE CC6 6, CORE CC6 7, CORE CKS FDD 0, CORE CKS FDD 1, CORE CKS FDD 2, CORE CKS FDD 3, CORE CKS FDD 4, CORE CKS FDD 5, CORE CKS FDD 6, CORE CKS FDD 7, CORE PSTATE 0, CORE PSTATE 1, CORE PSTATE 2, CORE PSTATE 3, CORE PSTATE 4, CORE PSTATE 5, CORE PSTATE 6, CORE PSTATE 7, CORE CPPC MAX 0, CORE CPPC MAX 1, CORE CPPC MAX 2, CORE CPPC MAX 3, CORE CPPC MAX 4, CORE CPPC MAX 5, CORE CPPC MAX 6, CORE CPPC MAX 7, CORE CPPC MIN 0, CORE CPPC MIN 1, CORE CPPC MIN 2, CORE CPPC MIN 3, CORE CPPC MIN 4, CORE CPPC MIN 5, CORE CPPC MIN 6, CORE CPPC MIN 7, CORE CPPC EPP 0, CORE CPPC EPP 1, CORE CPPC EPP 2, CORE CPPC EPP 3, CORE CPPC EPP 4, CORE CPPC EPP 5, CORE CPPC EPP 6, CORE CPPC EPP 7, CORE SC LIMIT 0, CORE SC LIMIT 1, CORE SC LIMIT 2, CORE SC LIMIT 3, CORE SC LIMIT 4, CORE SC LIMIT 5, CORE SC LIMIT 6, CORE SC LIMIT 7, CORE SC CALC 0, CORE SC CALC 1, CORE SC CALC 2, CORE SC CALC 3, CORE SC CALC 4, CORE SC CALC 5, CORE SC CALC 6, CORE SC CALC 7, CORE SC RESIDENCY 0, CORE SC RESIDENCY 1, CORE SC RESIDENCY 2, CORE SC RESIDENCY 3, CORE SC RESIDENCY 4, CORE SC RESIDENCY 5, CORE SC RESIDENCY 6, CORE SC RESIDENCY 7, L3 LOGIC POWER 0, L3 LOGIC POWER 1, L3 VDDM POWER 0, L3 VDDM POWER 1, L3 TEMP 0, L3 TEMP 1, L3 FIT 0, L3 FIT 1, L3 IDDMAX 0, L3 IDDMAX 1, L3 FREQ 0, L3 FREQ 1, L3 CKS FDD 0, L3 CKS FDD 1, L3 CCA THRESHOLD 0, L3 CCA THRESHOLD 1, L3 CCA CAC 0, L3 CCA CAC 1, L3 CCA ACTIVATION 0, L3 CCA ACTIVATION 1, L3 EDC LIMIT 0, L3 EDC LIMIT 1, L3 EDC CAC 0, L3 EDC CAC 1, L3 EDC RESIDENCY 0, L3 EDC RESIDENCY 1, GFX VOLTAGE, GFX TEMP, GFX IDDMAX, GFX FREQ, GFX FREQEFF, GFX BUSY, GFX CGPG, GFX EDC LIMIT, GFX EDC RESIDENCY, FCLK FREQ, UCLK FREQ, MEMCLK FREQ, VCLK FREQ, DCLK FREQ, SOCCLK FREQ, LCLK FREQ, SHUBCLK FREQ, MP0CLK FREQ, DCFCLK FREQ, FCLK FREQEFF, UCLK FREQEFF, MEMCLK FREQEFF, VCLK FREQEFF, DCLK FREQEFF, SOCCLK FREQEFF, LCLK FREQEFF, SHUBCLK FREQEFF, MP0CLK FREQEFF, DCFCLK FREQEFF, Vclk state freq 0, Vclk state freq 1, Vclk state freq 2, Vclk state freq 3, Vclk state freq 4, Vclk state freq 5, Vclk state freq 6, Vclk state freq 7, Dclk state freq 0, Dclk state freq 1, Dclk state freq 2, Dclk state freq 3, Dclk state freq 4, Dclk state freq 5, Dclk state freq 6, Dclk state freq 7, Socclk state freq 0, Socclk state freq 1, Socclk state freq 2, Socclk state freq 3, Socclk state freq 4, Socclk state freq 5, Socclk state freq 6, Socclk state freq 7, Lclk state freq 0, Lclk state freq 1, Lclk state freq 2, Lclk state freq 3, Lclk state freq 4, Lclk state freq 5, Lclk state freq 6, Lclk state freq 7, Shubclk state freq 0, Shubclk state freq 1, Shubclk state freq 2, Shubclk state freq 3, Shubclk state freq 4, Shubclk state freq 5, Shubclk state freq 6, Shubclk state freq 7, Mp0clk state freq 0, Mp0clk state freq 1, Mp0clk state freq 2, Mp0clk state freq 3, Mp0clk state freq 4, Mp0clk state freq 5, Mp0clk state freq 6, Mp0clk state freq 7, Dcfclk state freq 0, Dcfclk state freq 1, Dcfclk state freq 2, Dcfclk state freq 3, Dcfclk state freq 4, Dcfclk state freq 5, Dcfclk state freq 6, Dcfclk state freq 7, Vcn state residency 0, Vcn state residency 1, Vcn state residency 2, Vcn state residency 3, Vcn state residency 4, Vcn state residency 5, Vcn state residency 6, Vcn state residency 7, Socclk state residency 0, Socclk state residency 1, Socclk state residency 2, Socclk state residency 3, Socclk state residency 4, Socclk state residency 5, Socclk state residency 6, Socclk state residency 7, Lclk state residency 0, Lclk state residency 1, Lclk state residency 2, Lclk state residency 3, Lclk state residency 4, Lclk state residency 5, Lclk state residency 6, Lclk state residency 7, Shubclk state residency 0, Shubclk state residency 1, Shubclk state residency 2, Shubclk state residency 3, Shubclk state residency 4, Shubclk state residency 5, Shubclk state residency 6, Shubclk state residency 7, Mp0clk state residency 0, Mp0clk state residency 1, Mp0clk state residency 2, Mp0clk state residency 3, Mp0clk state residency 4, Mp0clk state residency 5, Mp0clk state residency 6, Mp0clk state residency 7, Dcfclk state residency 0, Dcfclk state residency 1, Dcfclk state residency 2, Dcfclk state residency 3, Dcfclk state residency 4, Dcfclk state residency 5, Dcfclk state residency 6, Dcfclk state residency 7, VddcrSoc voltage 0, VddcrSoc voltage 1, VddcrSoc voltage 2, VddcrSoc voltage 3, VddcrSoc voltage 4, VddcrSoc voltage 5, VddcrSoc voltage 6, VddcrSoc voltage 7, CPUOFF, CPUOFF count, GFXOFF, GFXOFF count, VDDOFF, VDDOFF count, ULV, ULV count, S0i2, S0i2 count, WhisperMode, WhisperMode count, SelfRefresh0, SelfRefresh1, Pll power down 0, Pll power down 1, Pll power down 2, Pll power down 3, Pll power down 4, UINT8 T POWER SOURCE (4), dGPU POWER, dGPU GFX BUSY, dGPU FREQ TARGET, V VDDM, V VDDP, DDR PHY POWER, IO VDDIO MEM POWER, IO VDD18 POWER, IO DISPLAY POWER, IO USB POWER, ULV VOLTAGE, PEAK TEMP, PEAK VOLTAGE, AVG CORE COUNT, MAX VOLTAGE, DC BTC, CSTATE BOOST, PROCHOT, PWM, FPS, DISPLAY COUNT, StapmTimeConstant, SlowPPTTimeConstant, MP1CLK, MP2CLK, SMNCLK, ACLK, DISPCLK, DPREFCLK, DPPCLK, SMU BUSY, SMU SKIP COUNTER");
+                        break;
+
+                }
+                LogInterval = Convert.ToUInt64(numericUpDownInterval.Value);
+                LogTime = 0;
+            }
+            else
+            {
+                PowerLog.Close();
+            }
+        }
     }
 
 

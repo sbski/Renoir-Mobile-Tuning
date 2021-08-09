@@ -30,8 +30,22 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RMT));
+            this.notifyIconRMT = new System.Windows.Forms.NotifyIcon(this.components);
+            this.panelBottomDock = new System.Windows.Forms.Panel();
+            this.checkSmartReapply = new System.Windows.Forms.CheckBox();
+            this.checkShowSensors = new System.Windows.Forms.CheckBox();
+            this.buttonLoadSettings = new System.Windows.Forms.Button();
+            this.buttonSaveSettings = new System.Windows.Forms.Button();
+            this.labelRenoirMobileTuning = new System.Windows.Forms.Label();
+            this.ApplySettings = new System.Windows.Forms.Button();
+            this.Tuning = new System.Windows.Forms.TabPage();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.labelLog = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.ShowSensors = new System.Windows.Forms.Button();
+            this.panelSstLimit = new System.Windows.Forms.Panel();
+            this.upDownSttLimit = new System.Windows.Forms.NumericUpDown();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.checkSttLimit = new System.Windows.Forms.CheckBox();
             this.panel16 = new System.Windows.Forms.Panel();
             this.upDownMaxCurrentLimit = new System.Windows.Forms.NumericUpDown();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -64,10 +78,32 @@
             this.upDownFastLimit = new System.Windows.Forms.NumericUpDown();
             this.panel2 = new System.Windows.Forms.Panel();
             this.checkFastLimit = new System.Windows.Forms.CheckBox();
-            this.ApplySettings = new System.Windows.Forms.Button();
-            this.labelRenoirMobileTuning = new System.Windows.Forms.Label();
-            this.notifyIconRMT = new System.Windows.Forms.NotifyIcon(this.components);
+            this.About = new System.Windows.Forms.TabControl();
+            this.tabGfx = new System.Windows.Forms.TabPage();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.upDownGfx = new System.Windows.Forms.NumericUpDown();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.checkBoxGfx = new System.Windows.Forms.CheckBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.linkCtr = new System.Windows.Forms.LinkLabel();
+            this.linkTwitter = new System.Windows.Forms.LinkLabel();
+            this.linkGitHub = new System.Windows.Forms.LinkLabel();
+            this.linkPayPal = new System.Windows.Forms.LinkLabel();
+            this.linkDiscord = new System.Windows.Forms.LinkLabel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tabCinebenchTesting = new System.Windows.Forms.TabPage();
+            this.labelCinebenchValues = new System.Windows.Forms.Label();
+            this.labelCinebenchScoreHeading = new System.Windows.Forms.Label();
+            this.buttonStartCb = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.panelBottomDock.SuspendLayout();
+            this.Tuning.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.panel9.SuspendLayout();
+            this.panelSstLimit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.upDownSttLimit)).BeginInit();
+            this.panel19.SuspendLayout();
             this.panel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).BeginInit();
             this.panel17.SuspendLayout();
@@ -92,13 +128,106 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownFastLimit)).BeginInit();
             this.panel2.SuspendLayout();
+            this.About.SuspendLayout();
+            this.tabGfx.SuspendLayout();
+            this.panel20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.upDownGfx)).BeginInit();
+            this.panel21.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabCinebenchTesting.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // notifyIconRMT
+            // 
+            resources.ApplyResources(this.notifyIconRMT, "notifyIconRMT");
+            this.notifyIconRMT.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIconRMT_MouseDoubleClick);
+            // 
+            // panelBottomDock
+            // 
+            this.panelBottomDock.Controls.Add(this.checkSmartReapply);
+            this.panelBottomDock.Controls.Add(this.checkShowSensors);
+            this.panelBottomDock.Controls.Add(this.buttonLoadSettings);
+            this.panelBottomDock.Controls.Add(this.buttonSaveSettings);
+            this.panelBottomDock.Controls.Add(this.labelRenoirMobileTuning);
+            this.panelBottomDock.Controls.Add(this.ApplySettings);
+            resources.ApplyResources(this.panelBottomDock, "panelBottomDock");
+            this.panelBottomDock.Name = "panelBottomDock";
+            // 
+            // checkSmartReapply
+            // 
+            resources.ApplyResources(this.checkSmartReapply, "checkSmartReapply");
+            this.checkSmartReapply.Name = "checkSmartReapply";
+            this.checkSmartReapply.UseVisualStyleBackColor = true;
+            this.checkSmartReapply.CheckedChanged += new System.EventHandler(this.checkSmartReapply_CheckedChanged);
+            // 
+            // checkShowSensors
+            // 
+            resources.ApplyResources(this.checkShowSensors, "checkShowSensors");
+            this.checkShowSensors.Name = "checkShowSensors";
+            this.checkShowSensors.UseVisualStyleBackColor = true;
+            this.checkShowSensors.CheckedChanged += new System.EventHandler(this.checkShowSensors_CheckedChanged);
+            // 
+            // buttonLoadSettings
+            // 
+            this.buttonLoadSettings.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonLoadSettings.Cursor = System.Windows.Forms.Cursors.Arrow;
+            resources.ApplyResources(this.buttonLoadSettings, "buttonLoadSettings");
+            this.buttonLoadSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.buttonLoadSettings.Name = "buttonLoadSettings";
+            this.buttonLoadSettings.UseVisualStyleBackColor = false;
+            this.buttonLoadSettings.Click += new System.EventHandler(this.buttonLoadSettings_Click);
+            // 
+            // buttonSaveSettings
+            // 
+            this.buttonSaveSettings.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonSaveSettings.Cursor = System.Windows.Forms.Cursors.Arrow;
+            resources.ApplyResources(this.buttonSaveSettings, "buttonSaveSettings");
+            this.buttonSaveSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.buttonSaveSettings.Name = "buttonSaveSettings";
+            this.buttonSaveSettings.UseVisualStyleBackColor = false;
+            this.buttonSaveSettings.Click += new System.EventHandler(this.buttonSaveSettings_Click);
+            // 
+            // labelRenoirMobileTuning
+            // 
+            resources.ApplyResources(this.labelRenoirMobileTuning, "labelRenoirMobileTuning");
+            this.labelRenoirMobileTuning.ForeColor = System.Drawing.Color.Gray;
+            this.labelRenoirMobileTuning.Name = "labelRenoirMobileTuning";
+            // 
+            // ApplySettings
+            // 
+            this.ApplySettings.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ApplySettings.Cursor = System.Windows.Forms.Cursors.Arrow;
+            resources.ApplyResources(this.ApplySettings, "ApplySettings");
+            this.ApplySettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.ApplySettings.Name = "ApplySettings";
+            this.ApplySettings.UseVisualStyleBackColor = false;
+            this.ApplySettings.Click += new System.EventHandler(this.ApplySettings_Click_1);
+            // 
+            // Tuning
+            // 
+            this.Tuning.Controls.Add(this.panel18);
+            this.Tuning.Controls.Add(this.panel9);
+            resources.ApplyResources(this.Tuning, "Tuning");
+            this.Tuning.Name = "Tuning";
+            this.Tuning.UseVisualStyleBackColor = true;
+            // 
+            // panel18
+            // 
+            resources.ApplyResources(this.panel18, "panel18");
+            this.panel18.BackColor = System.Drawing.Color.Transparent;
+            this.panel18.Controls.Add(this.labelLog);
+            this.panel18.Name = "panel18";
+            // 
+            // labelLog
+            // 
+            resources.ApplyResources(this.labelLog, "labelLog");
+            this.labelLog.Name = "labelLog";
             // 
             // panel9
             // 
             resources.ApplyResources(this.panel9, "panel9");
             this.panel9.BackColor = System.Drawing.Color.Transparent;
-            this.panel9.Controls.Add(this.ShowSensors);
+            this.panel9.Controls.Add(this.panelSstLimit);
             this.panel9.Controls.Add(this.panel16);
             this.panel9.Controls.Add(this.panel14);
             this.panel9.Controls.Add(this.panel10);
@@ -107,16 +236,44 @@
             this.panel9.Controls.Add(this.panel7);
             this.panel9.Controls.Add(this.panel3);
             this.panel9.Controls.Add(this.panel1);
-            this.panel9.Controls.Add(this.ApplySettings);
-            this.panel9.Controls.Add(this.labelRenoirMobileTuning);
             this.panel9.Name = "panel9";
             // 
-            // ShowSensors
+            // panelSstLimit
             // 
-            resources.ApplyResources(this.ShowSensors, "ShowSensors");
-            this.ShowSensors.Name = "ShowSensors";
-            this.ShowSensors.UseVisualStyleBackColor = true;
-            this.ShowSensors.Click += new System.EventHandler(this.ShowSensors_Click);
+            resources.ApplyResources(this.panelSstLimit, "panelSstLimit");
+            this.panelSstLimit.Controls.Add(this.upDownSttLimit);
+            this.panelSstLimit.Controls.Add(this.panel19);
+            this.panelSstLimit.Name = "panelSstLimit";
+            // 
+            // upDownSttLimit
+            // 
+            this.upDownSttLimit.DecimalPlaces = 1;
+            resources.ApplyResources(this.upDownSttLimit, "upDownSttLimit");
+            this.upDownSttLimit.Maximum = new decimal(new int[] {
+            105,
+            0,
+            0,
+            0});
+            this.upDownSttLimit.Name = "upDownSttLimit";
+            this.upDownSttLimit.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.upDownSttLimit.ValueChanged += new System.EventHandler(this.upDownSstLimit_ValueChanged);
+            // 
+            // panel19
+            // 
+            this.panel19.Controls.Add(this.checkSttLimit);
+            resources.ApplyResources(this.panel19, "panel19");
+            this.panel19.Name = "panel19";
+            // 
+            // checkSttLimit
+            // 
+            resources.ApplyResources(this.checkSttLimit, "checkSttLimit");
+            this.checkSttLimit.Name = "checkSttLimit";
+            this.checkSttLimit.UseVisualStyleBackColor = true;
+            this.checkSttLimit.CheckedChanged += new System.EventHandler(this.checkSstLimit_CheckedChanged);
             // 
             // panel16
             // 
@@ -251,7 +408,12 @@
             // 
             resources.ApplyResources(this.upDownStapmTime, "upDownStapmTime");
             this.upDownStapmTime.Maximum = new decimal(new int[] {
-            100000,
+            1200,
+            0,
+            0,
+            0});
+            this.upDownStapmTime.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
@@ -286,6 +448,11 @@
             // upDownSlowTime
             // 
             resources.ApplyResources(this.upDownSlowTime, "upDownSlowTime");
+            this.upDownSlowTime.Maximum = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
             this.upDownSlowTime.Minimum = new decimal(new int[] {
             1,
             0,
@@ -321,9 +488,15 @@
             // 
             // upDownStapmLimit
             // 
+            this.upDownStapmLimit.DecimalPlaces = 1;
             resources.ApplyResources(this.upDownStapmLimit, "upDownStapmLimit");
+            this.upDownStapmLimit.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.upDownStapmLimit.Minimum = new decimal(new int[] {
-            5,
+            1,
             0,
             0,
             0});
@@ -357,9 +530,15 @@
             // 
             // upDownSlowLimit
             // 
+            this.upDownSlowLimit.DecimalPlaces = 1;
             resources.ApplyResources(this.upDownSlowLimit, "upDownSlowLimit");
+            this.upDownSlowLimit.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.upDownSlowLimit.Minimum = new decimal(new int[] {
-            5,
+            1,
             0,
             0,
             0});
@@ -393,9 +572,15 @@
             // 
             // upDownFastLimit
             // 
+            this.upDownFastLimit.DecimalPlaces = 1;
             resources.ApplyResources(this.upDownFastLimit, "upDownFastLimit");
+            this.upDownFastLimit.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.upDownFastLimit.Minimum = new decimal(new int[] {
-            5,
+            1,
             0,
             0,
             0});
@@ -421,26 +606,162 @@
             this.checkFastLimit.UseVisualStyleBackColor = true;
             this.checkFastLimit.CheckedChanged += new System.EventHandler(this.checkFastLimit_CheckedChanged);
             // 
-            // ApplySettings
+            // About
             // 
-            this.ApplySettings.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ApplySettings.Cursor = System.Windows.Forms.Cursors.Arrow;
-            resources.ApplyResources(this.ApplySettings, "ApplySettings");
-            this.ApplySettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.ApplySettings.Name = "ApplySettings";
-            this.ApplySettings.UseVisualStyleBackColor = false;
-            this.ApplySettings.Click += new System.EventHandler(this.ApplySettings_Click);
+            this.About.Controls.Add(this.Tuning);
+            this.About.Controls.Add(this.tabGfx);
+            this.About.Controls.Add(this.tabPage1);
+            this.About.Controls.Add(this.tabCinebenchTesting);
+            resources.ApplyResources(this.About, "About");
+            this.About.Name = "About";
+            this.About.SelectedIndex = 0;
             // 
-            // labelRenoirMobileTuning
+            // tabGfx
             // 
-            resources.ApplyResources(this.labelRenoirMobileTuning, "labelRenoirMobileTuning");
-            this.labelRenoirMobileTuning.ForeColor = System.Drawing.Color.Gray;
-            this.labelRenoirMobileTuning.Name = "labelRenoirMobileTuning";
+            this.tabGfx.Controls.Add(this.panel20);
+            resources.ApplyResources(this.tabGfx, "tabGfx");
+            this.tabGfx.Name = "tabGfx";
+            this.tabGfx.UseVisualStyleBackColor = true;
             // 
-            // notifyIconRMT
+            // panel20
             // 
-            resources.ApplyResources(this.notifyIconRMT, "notifyIconRMT");
-            this.notifyIconRMT.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIconRMT_MouseDoubleClick);
+            resources.ApplyResources(this.panel20, "panel20");
+            this.panel20.Controls.Add(this.upDownGfx);
+            this.panel20.Controls.Add(this.panel21);
+            this.panel20.Name = "panel20";
+            // 
+            // upDownGfx
+            // 
+            this.upDownGfx.DecimalPlaces = 1;
+            resources.ApplyResources(this.upDownGfx, "upDownGfx");
+            this.upDownGfx.Increment = new decimal(new int[] {
+            125,
+            0,
+            0,
+            65536});
+            this.upDownGfx.Maximum = new decimal(new int[] {
+            4000,
+            0,
+            0,
+            0});
+            this.upDownGfx.Minimum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.upDownGfx.Name = "upDownGfx";
+            this.upDownGfx.Value = new decimal(new int[] {
+            1500,
+            0,
+            0,
+            0});
+            // 
+            // panel21
+            // 
+            this.panel21.Controls.Add(this.checkBoxGfx);
+            resources.ApplyResources(this.panel21, "panel21");
+            this.panel21.Name = "panel21";
+            // 
+            // checkBoxGfx
+            // 
+            resources.ApplyResources(this.checkBoxGfx, "checkBoxGfx");
+            this.checkBoxGfx.Name = "checkBoxGfx";
+            this.checkBoxGfx.UseVisualStyleBackColor = true;
+            this.checkBoxGfx.CheckedChanged += new System.EventHandler(this.checkBoxGfx_CheckedChanged);
+            // 
+            // tabPage1
+            // 
+            resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Controls.Add(this.linkCtr);
+            this.tabPage1.Controls.Add(this.linkTwitter);
+            this.tabPage1.Controls.Add(this.linkGitHub);
+            this.tabPage1.Controls.Add(this.linkPayPal);
+            this.tabPage1.Controls.Add(this.linkDiscord);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // linkCtr
+            // 
+            resources.ApplyResources(this.linkCtr, "linkCtr");
+            this.linkCtr.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkCtr.Name = "linkCtr";
+            this.linkCtr.TabStop = true;
+            this.linkCtr.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkCtr.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkCtr_LinkClicked);
+            // 
+            // linkTwitter
+            // 
+            resources.ApplyResources(this.linkTwitter, "linkTwitter");
+            this.linkTwitter.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkTwitter.Name = "linkTwitter";
+            this.linkTwitter.TabStop = true;
+            this.linkTwitter.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkTwitter.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkTwitter_LinkClicked);
+            // 
+            // linkGitHub
+            // 
+            resources.ApplyResources(this.linkGitHub, "linkGitHub");
+            this.linkGitHub.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkGitHub.Name = "linkGitHub";
+            this.linkGitHub.TabStop = true;
+            this.linkGitHub.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkGitHub_LinkClicked);
+            // 
+            // linkPayPal
+            // 
+            resources.ApplyResources(this.linkPayPal, "linkPayPal");
+            this.linkPayPal.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkPayPal.Name = "linkPayPal";
+            this.linkPayPal.TabStop = true;
+            this.linkPayPal.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkPayPal.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkPayPal_LinkClicked);
+            // 
+            // linkDiscord
+            // 
+            resources.ApplyResources(this.linkDiscord, "linkDiscord");
+            this.linkDiscord.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.linkDiscord.Name = "linkDiscord";
+            this.linkDiscord.TabStop = true;
+            this.linkDiscord.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.linkDiscord.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDiscord_LinkClicked);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // tabCinebenchTesting
+            // 
+            this.tabCinebenchTesting.Controls.Add(this.labelCinebenchValues);
+            this.tabCinebenchTesting.Controls.Add(this.labelCinebenchScoreHeading);
+            this.tabCinebenchTesting.Controls.Add(this.buttonStartCb);
+            resources.ApplyResources(this.tabCinebenchTesting, "tabCinebenchTesting");
+            this.tabCinebenchTesting.Name = "tabCinebenchTesting";
+            this.tabCinebenchTesting.UseVisualStyleBackColor = true;
+            // 
+            // labelCinebenchValues
+            // 
+            resources.ApplyResources(this.labelCinebenchValues, "labelCinebenchValues");
+            this.labelCinebenchValues.Name = "labelCinebenchValues";
+            // 
+            // labelCinebenchScoreHeading
+            // 
+            resources.ApplyResources(this.labelCinebenchScoreHeading, "labelCinebenchScoreHeading");
+            this.labelCinebenchScoreHeading.Name = "labelCinebenchScoreHeading";
+            // 
+            // buttonStartCb
+            // 
+            resources.ApplyResources(this.buttonStartCb, "buttonStartCb");
+            this.buttonStartCb.Name = "buttonStartCb";
+            this.buttonStartCb.UseVisualStyleBackColor = true;
+            this.buttonStartCb.Click += new System.EventHandler(this.button1_Click);
             // 
             // RMT
             // 
@@ -448,14 +769,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.CausesValidation = false;
-            this.Controls.Add(this.panel9);
+            this.Controls.Add(this.About);
+            this.Controls.Add(this.panelBottomDock);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Name = "RMT";
             this.Opacity = 0.95D;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.panelBottomDock.ResumeLayout(false);
+            this.panelBottomDock.PerformLayout();
+            this.Tuning.ResumeLayout(false);
+            this.Tuning.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            this.panelSstLimit.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.upDownSttLimit)).EndInit();
+            this.panel19.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.upDownMaxCurrentLimit)).EndInit();
             this.panel17.ResumeLayout(false);
@@ -480,23 +811,39 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.upDownFastLimit)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.About.ResumeLayout(false);
+            this.tabGfx.ResumeLayout(false);
+            this.tabGfx.PerformLayout();
+            this.panel20.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.upDownGfx)).EndInit();
+            this.panel21.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabCinebenchTesting.ResumeLayout(false);
+            this.tabCinebenchTesting.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel9;
+        internal System.Windows.Forms.NotifyIcon notifyIconRMT;
+        private System.Windows.Forms.Panel panelBottomDock;
+        private System.Windows.Forms.Label labelRenoirMobileTuning;
         private System.Windows.Forms.Button ApplySettings;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.NumericUpDown upDownFastLimit;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.NumericUpDown upDownSlowLimit;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.CheckBox checkSlowLimit;
-        private System.Windows.Forms.CheckBox checkFastLimit;
+        private System.Windows.Forms.Button buttonSaveSettings;
+        private System.Windows.Forms.Button buttonLoadSettings;
+        private System.Windows.Forms.CheckBox checkShowSensors;
+        private System.Windows.Forms.CheckBox checkSmartReapply;
+        private System.Windows.Forms.TabPage Tuning;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panelSstLimit;
+        private System.Windows.Forms.NumericUpDown upDownSttLimit;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.CheckBox checkSttLimit;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.NumericUpDown upDownMaxCurrentLimit;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.CheckBox checkMaxCurrentLimit;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.NumericUpDown upDownCurrentLimit;
         private System.Windows.Forms.Panel panel15;
@@ -517,13 +864,35 @@
         private System.Windows.Forms.NumericUpDown upDownStapmLimit;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.CheckBox checkStapmLimit;
-        private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.NumericUpDown upDownMaxCurrentLimit;
-        private System.Windows.Forms.Panel panel17;
-        private System.Windows.Forms.CheckBox checkMaxCurrentLimit;
-        internal System.Windows.Forms.NotifyIcon notifyIconRMT;
-        private System.Windows.Forms.Label labelRenoirMobileTuning;
-        private System.Windows.Forms.Button ShowSensors;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.NumericUpDown upDownSlowLimit;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.CheckBox checkSlowLimit;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.NumericUpDown upDownFastLimit;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.CheckBox checkFastLimit;
+        private System.Windows.Forms.TabControl About;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.LinkLabel linkCtr;
+        private System.Windows.Forms.LinkLabel linkTwitter;
+        private System.Windows.Forms.LinkLabel linkGitHub;
+        private System.Windows.Forms.LinkLabel linkPayPal;
+        private System.Windows.Forms.LinkLabel linkDiscord;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Label labelLog;
+        private System.Windows.Forms.TabPage tabCinebenchTesting;
+        private System.Windows.Forms.Label labelCinebenchScoreHeading;
+        private System.Windows.Forms.Button buttonStartCb;
+        private System.Windows.Forms.Label labelCinebenchValues;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.TabPage tabGfx;
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.NumericUpDown upDownGfx;
+        private System.Windows.Forms.Panel panel21;
+        private System.Windows.Forms.CheckBox checkBoxGfx;
     }
 }
 
