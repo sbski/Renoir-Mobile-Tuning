@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using OpenLibSys;
 using System.Reflection;
-using System.Windows.Forms;
+using RyzenSMUBackend;
 
 [assembly: CLSCompliant(false)]
 
@@ -98,7 +98,7 @@ namespace RyzenSmu
             catch(Exception e)
             {
                 String ExeptionMSG = $"Error Reading Address 0x{Address:X8} + 0x{Offset:X4}";
-                MessageBox.Show(ExeptionMSG);
+                //MessageBox.Show(ExeptionMSG);
             }
 
             byte[] bytes = new byte[4];
@@ -139,20 +139,6 @@ namespace RyzenSmu
         {
             ShowDebug = EnableDebug;
             RyzenNbAccesss = new Ols();
-            //RyzenNbAccesss.InitializeOls();
-
-            SMU_PCI_ADDR = 0x00000000;
-            SMU_OFFSET_ADDR = 0xB8;
-            SMU_OFFSET_DATA = 0xBC;
-
-            MP1_ADDR_MSG = 0x03B10528;
-            MP1_ADDR_RSP = 0x03B10564;
-            MP1_ADDR_ARG = 0x03B10998;
-
-            PSMU_ADDR_MSG = 0x03B10A20;
-            PSMU_ADDR_RSP = 0x03B10A80;
-            PSMU_ADDR_ARG = 0x03B10A88;
-
 
             // Check WinRing0 status
             switch (RyzenNbAccesss.GetDllStatus())
@@ -160,31 +146,31 @@ namespace RyzenSmu
                 case (uint)Ols.OlsDllStatus.OLS_DLL_NO_ERROR:
                     if (ShowDebug)
                     {
-                        MessageBox.Show("Ols Dll is OK.", "Ols.OlsDllStatus:");
+                        //MessageBox.Show("Ols Dll is OK.", "Ols.OlsDllStatus:");
                     }
                     break;
                 case (uint)Ols.OlsDllStatus.OLS_DLL_DRIVER_NOT_LOADED:
-                    MessageBox.Show("WinRing OLS_DRIVER_NOT_LOADED", "Ols.OlsDllStatus:");
+                    //MessageBox.Show("WinRing OLS_DRIVER_NOT_LOADED", "Ols.OlsDllStatus:");
                     throw new ApplicationException("WinRing OLS_DRIVER_NOT_LOADED");
 
                 case (uint)Ols.OlsDllStatus.OLS_DLL_UNSUPPORTED_PLATFORM:
-                    MessageBox.Show("WinRing OLS_UNSUPPORTED_PLATFORM", "Ols.OlsDllStatus:");
+                    //MessageBox.Show("WinRing OLS_UNSUPPORTED_PLATFORM", "Ols.OlsDllStatus:");
                     throw new ApplicationException("WinRing OLS_UNSUPPORTED_PLATFORM");
 
                 case (uint)Ols.OlsDllStatus.OLS_DLL_DRIVER_NOT_FOUND:
-                    MessageBox.Show("WinRing OLS_DLL_DRIVER_NOT_FOUND", "Ols.OlsDllStatus:");
+                    //MessageBox.Show("WinRing OLS_DLL_DRIVER_NOT_FOUND", "Ols.OlsDllStatus:");
                     throw new ApplicationException("WinRing OLS_DLL_DRIVER_NOT_FOUND");
 
                 case (uint)Ols.OlsDllStatus.OLS_DLL_DRIVER_UNLOADED:
-                    MessageBox.Show("WinRing OLS_DLL_DRIVER_UNLOADED", "Ols.OlsDllStatus:");
+                    //MessageBox.Show("WinRing OLS_DLL_DRIVER_UNLOADED", "Ols.OlsDllStatus:");
                     throw new ApplicationException("WinRing OLS_DLL_DRIVER_UNLOADED");
 
                 case (uint)Ols.OlsDllStatus.OLS_DLL_DRIVER_NOT_LOADED_ON_NETWORK:
-                    MessageBox.Show("WinRing DRIVER_NOT_LOADED_ON_NETWORK", "Ols.OlsDllStatus:");
+                    //MessageBox.Show("WinRing DRIVER_NOT_LOADED_ON_NETWORK", "Ols.OlsDllStatus:");
                     throw new ApplicationException("WinRing DRIVER_NOT_LOADED_ON_NETWORK");
 
                 case (uint)Ols.OlsDllStatus.OLS_DLL_UNKNOWN_ERROR:
-                    MessageBox.Show("WinRing OLS_DLL_UNKNOWN_ERROR", "Ols.OlsDllStatus:");
+                    //MessageBox.Show("WinRing OLS_DLL_UNKNOWN_ERROR", "Ols.OlsDllStatus:");
                     throw new ApplicationException("WinRing OLS_DLL_UNKNOWN_ERROR");
             }
             
@@ -201,20 +187,20 @@ namespace RyzenSmu
                 case (uint)Ols.Status.NO_ERROR:
                     if (ShowDebug)
                     {
-                        MessageBox.Show("Ols is OK.", "Ols.Status:");
+                        //MessageBox.Show("Ols is OK.", "Ols.Status:");
                         ShowDebug = false;
                     }
                     break;
                 case (uint)Ols.Status.DLL_NOT_FOUND:
-                    MessageBox.Show("WinRing Status: DLL_NOT_FOUND", "Ols.Status:");
+                    //MessageBox.Show("WinRing Status: DLL_NOT_FOUND", "Ols.Status:");
                     throw new ApplicationException("WinRing DLL_NOT_FOUND");
                     break;
                 case (uint)Ols.Status.DLL_INCORRECT_VERSION:
-                    MessageBox.Show("WinRing Status: DLL_INCORRECT_VERSION", "Ols.Status:");
+                    //MessageBox.Show("WinRing Status: DLL_INCORRECT_VERSION", "Ols.Status:");
                     throw new ApplicationException("WinRing DLL_INCORRECT_VERSION");
                     break;
                 case (uint)Ols.Status.DLL_INITIALIZE_ERROR:
-                    MessageBox.Show("WinRing Status: DLL_INITIALIZE_ERROR", "Ols.Status:");
+                    //MessageBox.Show("WinRing Status: DLL_INITIALIZE_ERROR", "Ols.Status:");
                     throw new ApplicationException("WinRing DLL_INITIALIZE_ERROR");
                     break;
                 default:
@@ -240,18 +226,18 @@ namespace RyzenSmu
 
 
 
-        public uint SMU_PCI_ADDR { get; protected set; }
-        public uint SMU_OFFSET_ADDR { get; protected set; }
-        public uint SMU_OFFSET_DATA { get; protected set; }
+        public static uint SMU_PCI_ADDR { get; set; }
+        public static uint SMU_OFFSET_ADDR { get; set; }
+        public static uint SMU_OFFSET_DATA { get; set; }
 
-        public uint MP1_ADDR_MSG { get; protected set; }
-        public uint MP1_ADDR_RSP { get; protected set; }
-        public uint MP1_ADDR_ARG { get; protected set; }
+        public static uint MP1_ADDR_MSG { get; set; }
+        public static uint MP1_ADDR_RSP { get; set; }
+        public static uint MP1_ADDR_ARG { get; set; }
 
-        public uint PSMU_ADDR_MSG { get; protected set; }
-        public uint PSMU_ADDR_RSP { get; protected set; }
-        public uint PSMU_ADDR_ARG { get; protected set; }
-        public uint[] args { get; set; }
+        public static uint PSMU_ADDR_MSG { get; set; }
+        public static uint PSMU_ADDR_RSP { get; set; }
+        public static uint PSMU_ADDR_ARG { get; set; }
+        public static uint[] args { get; set; }
 
         public bool ShowDebug { get; set; }
 
