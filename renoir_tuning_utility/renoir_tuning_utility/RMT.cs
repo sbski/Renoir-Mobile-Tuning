@@ -567,7 +567,7 @@ namespace renoir_tuning_utility
                 ////Send msg
                 //Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
 
-                SendCommand.set_sst_limit((uint)Convert.ToUInt32(upDownSttLimit.Value * 256));
+                SendCommand.set_apu_skin_temp_limit((uint)Convert.ToUInt32(upDownSttLimit.Value * 256));
 
                 //labelLog.Text += $"Skin Temperature Limit: " + Statuses[i-1].ToString() + '\n';
                 labelLog.Update();

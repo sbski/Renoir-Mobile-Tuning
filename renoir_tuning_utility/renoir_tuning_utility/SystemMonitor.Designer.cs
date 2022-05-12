@@ -66,12 +66,13 @@
             this.CpuData.ReadOnly = true;
             this.CpuData.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.CpuData.RowHeadersVisible = false;
+            this.CpuData.RowHeadersWidth = 51;
             this.CpuData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.CpuData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CpuData.ShowCellToolTips = false;
             this.CpuData.ShowEditingIcon = false;
             this.CpuData.ShowRowErrors = false;
-            this.CpuData.Size = new System.Drawing.Size(328, 421);
+            this.CpuData.Size = new System.Drawing.Size(328, 418);
             this.CpuData.TabIndex = 0;
             this.CpuData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cpuData_CellContentClick);
             // 
@@ -80,11 +81,12 @@
             this.Offset.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Offset.DataPropertyName = "Offset";
             this.Offset.HeaderText = "Offset";
+            this.Offset.MinimumWidth = 6;
             this.Offset.Name = "Offset";
             this.Offset.ReadOnly = true;
             this.Offset.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Offset.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Offset.Width = 44;
+            this.Offset.Width = 54;
             // 
             // Sensor
             // 
@@ -108,6 +110,7 @@
             this.Value.ReadOnly = true;
             this.Value.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Value.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Value.Width = 125;
             // 
             // tableLayoutPanel1
             // 
@@ -138,9 +141,9 @@
             // 
             this.labelRefreshInterval.AutoSize = true;
             this.labelRefreshInterval.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelRefreshInterval.Location = new System.Drawing.Point(3, 429);
+            this.labelRefreshInterval.Location = new System.Drawing.Point(3, 426);
             this.labelRefreshInterval.Name = "labelRefreshInterval";
-            this.labelRefreshInterval.Size = new System.Drawing.Size(92, 36);
+            this.labelRefreshInterval.Size = new System.Drawing.Size(110, 36);
             this.labelRefreshInterval.TabIndex = 0;
             this.labelRefreshInterval.Text = "Refresh Interval";
             this.labelRefreshInterval.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -148,10 +151,10 @@
             // buttonApply
             // 
             this.buttonApply.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonApply.Location = new System.Drawing.Point(165, 433);
+            this.buttonApply.Location = new System.Drawing.Point(193, 430);
             this.buttonApply.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonApply.Name = "buttonApply";
-            this.buttonApply.Size = new System.Drawing.Size(173, 28);
+            this.buttonApply.Size = new System.Drawing.Size(207, 28);
             this.buttonApply.TabIndex = 1;
             this.buttonApply.Text = "Apply";
             this.buttonApply.UseVisualStyleBackColor = true;
@@ -166,7 +169,7 @@
             0,
             0,
             0});
-            this.numericUpDownInterval.Location = new System.Drawing.Point(101, 435);
+            this.numericUpDownInterval.Location = new System.Drawing.Point(119, 432);
             this.numericUpDownInterval.Margin = new System.Windows.Forms.Padding(3, 6, 3, 4);
             this.numericUpDownInterval.Maximum = new decimal(new int[] {
             20000,
@@ -179,7 +182,7 @@
             0,
             0});
             this.numericUpDownInterval.Name = "numericUpDownInterval";
-            this.numericUpDownInterval.Size = new System.Drawing.Size(58, 20);
+            this.numericUpDownInterval.Size = new System.Drawing.Size(68, 24);
             this.numericUpDownInterval.TabIndex = 2;
             this.numericUpDownInterval.Value = new decimal(new int[] {
             2000,
@@ -191,9 +194,9 @@
             // checkEnableLog
             // 
             this.checkEnableLog.AutoSize = true;
-            this.checkEnableLog.Location = new System.Drawing.Point(3, 468);
+            this.checkEnableLog.Location = new System.Drawing.Point(3, 465);
             this.checkEnableLog.Name = "checkEnableLog";
-            this.checkEnableLog.Size = new System.Drawing.Size(89, 19);
+            this.checkEnableLog.Size = new System.Drawing.Size(104, 22);
             this.checkEnableLog.TabIndex = 3;
             this.checkEnableLog.Text = "Enable Log";
             this.checkEnableLog.UseVisualStyleBackColor = true;
@@ -202,16 +205,16 @@
             // checkLogOnly
             // 
             this.checkLogOnly.AutoSize = true;
-            this.checkLogOnly.Location = new System.Drawing.Point(165, 468);
+            this.checkLogOnly.Location = new System.Drawing.Point(193, 465);
             this.checkLogOnly.Name = "checkLogOnly";
-            this.checkLogOnly.Size = new System.Drawing.Size(173, 19);
+            this.checkLogOnly.Size = new System.Drawing.Size(207, 22);
             this.checkLogOnly.TabIndex = 4;
             this.checkLogOnly.Text = "Log and smart reapply only";
             this.checkLogOnly.UseVisualStyleBackColor = true;
             // 
             // SystemMonitor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(334, 490);
             this.Controls.Add(this.tableLayoutPanel1);

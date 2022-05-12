@@ -13,14 +13,14 @@ namespace RyzenSMUBackend
         //RAVEN - 0
         //PICASSO - 1
         //DALI - 2
-        //RENOIR - 3
+        //RENOIR/LUCIENNE - 3
         //MATISSE - 4
         //VANGOGH - 5
         //VERMEER - 6
-        //CEZANNE - 7
+        //CEZANNE/BARCELO - 7
         //REMBRANDT - 8
         //PHEONIX - 9
-        //RAPHAEL - 10
+        //RAPHAEL/DRAGON RANGE - 10
 
         public static Smu RyzenAccess = new Smu(false);
         public static int FAMID = Families.FAMID;
@@ -33,14 +33,22 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x1a, ref Args);
-            }
-            else if (FAMID != 4 && FAMID != 6 && FAMID != 99999)
-            {
-                RyzenAccess.SendMp1(0x14, ref Args);
-                RyzenAccess.SendPsmu(0x31, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x1a, ref Args);
+                    break;
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                    RyzenAccess.SendMp1(0x14, ref Args);
+                    RyzenAccess.SendPsmu(0x31, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -50,14 +58,21 @@ namespace RyzenSMUBackend
             RyzenAccess.Initialize();
             uint[] Args = new uint[6];
             Args[0] = value;
-
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x1b, ref Args);
-            }
-            else if (FAMID != 4 && FAMID != 6 && FAMID != 99999)
-            {
-                RyzenAccess.SendMp1(0x15, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x1b, ref Args);
+                    break;
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                    RyzenAccess.SendMp1(0x15, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -68,13 +83,21 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x1c, ref Args);
-            }
-            else if (FAMID != 4 && FAMID != 6 && FAMID != 99999)
-            {
-                RyzenAccess.SendMp1(0x16, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x1c, ref Args);
+                    break;
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                    RyzenAccess.SendMp1(0x16, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -85,13 +108,21 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x1d, ref Args);
-            }
-            else if (FAMID != 4 && FAMID != 6 && FAMID != 99999)
-            {
-                RyzenAccess.SendMp1(0x17, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x1d, ref Args);
+                    break;
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                    RyzenAccess.SendMp1(0x17, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -102,13 +133,21 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x1e, ref Args);
-            }
-            else if (FAMID != 4 && FAMID != 6 && FAMID != 99999)
-            {
-                RyzenAccess.SendMp1(0x18, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x1e, ref Args);
+                    break;
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                    RyzenAccess.SendMp1(0x18, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -119,30 +158,43 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x1f, ref Args);
-            }
-            else if (FAMID != 4 || FAMID != 6 || FAMID != 99999)
-            {
-                RyzenAccess.SendMp1(0x19, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x1f, ref Args);
+                    break;
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                    RyzenAccess.SendMp1(0x19, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
-        //Skim Temp limit
+        //Skin Temp limit
         public static void set_apu_skin_temp_limit(uint value)
         {
             RyzenAccess.Initialize();
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID == 5 || FAMID == 8)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x33, ref Args);
-            }
-            else if (FAMID != 4 || FAMID != 6 || FAMID != 99999)
-            {
-                RyzenAccess.SendMp1(0x38, ref Args);
+                case 5:
+                case 8:
+                    RyzenAccess.SendMp1(0x33, ref Args);
+                    break;
+                case 3:
+                case 7:
+                    RyzenAccess.SendMp1(0x38, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -153,13 +205,21 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x20, ref Args);
-            }
-            else if (FAMID != 4 || FAMID != 6 || FAMID != 99999)
-            {
-                RyzenAccess.SendMp1(0x1a, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x20, ref Args);
+                    break;
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                    RyzenAccess.SendMp1(0x1a, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -170,13 +230,21 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x21, ref Args);
-            }
-            else if (FAMID != 4 || FAMID != 6 || FAMID != 99999)
-            {
-                RyzenAccess.SendMp1(0x1b, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x21, ref Args);
+                    break;
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                    RyzenAccess.SendMp1(0x1b, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -187,9 +255,13 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID == 5)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x1c, ref Args);
+                case 5:
+                    RyzenAccess.SendMp1(0x1c, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -200,9 +272,13 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID == 5)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x1d, ref Args);
+                case 5:
+                    RyzenAccess.SendMp1(0x1d, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -213,18 +289,25 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x22, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x22, ref Args);
+                    break;
+                case 5:
+                    RyzenAccess.SendMp1(0x1e, ref Args);
+                    break;
+                case 3:
+                case 7:
+                case 8:
+                    RyzenAccess.SendMp1(0x1c, ref Args);
+                    break;
+                default:
+                    break;
             }
-            else if (FAMID == 5)
-            {
-                RyzenAccess.SendMp1(0x1e, ref Args);
-            }
-            else if (FAMID != 4 || FAMID != 5 || FAMID != 6 || FAMID != 99999)
-            {
-                RyzenAccess.SendMp1(0x1c, ref Args);
-            }
+
         }
 
         //VRM GFX Max Current
@@ -234,9 +317,13 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID == 5)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x1f, ref Args);
+                case 5:
+                    RyzenAccess.SendMp1(0x1f, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -247,13 +334,21 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x23, ref Args);
-            }
-            else if (FAMID != 4 || FAMID != 6 || FAMID != 99999)
-            {
-                RyzenAccess.SendMp1(0x1d, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x23, ref Args);
+                    break;
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                    RyzenAccess.SendMp1(0x1d, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -264,9 +359,15 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x46, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x46, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -277,9 +378,15 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x47, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x47, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -290,9 +397,15 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x48, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x48, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -303,9 +416,15 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x49, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x49, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -316,9 +435,15 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x4a, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x4a, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -329,9 +454,15 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x4b, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x4b, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -342,9 +473,15 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x4c, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x4c, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -355,9 +492,15 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x4d, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x4d, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -368,9 +511,15 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x4e, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x4e, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -381,9 +530,13 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x4f, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x4f, ref Args);
+                    break;
             }
         }
 
@@ -394,21 +547,25 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID < 3)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x26, ref Args);
-            }
-            else if (FAMID == 5)
-            {
-                RyzenAccess.SendMp1(0x22, ref Args);
-            }
-            else if (FAMID == 8)
-            {
-                RyzenAccess.SendMp1(0x1f, ref Args);
-            }
-            else if (FAMID != 4 || FAMID != 6 || FAMID != 99999)
-            {
-                RyzenAccess.SendMp1(0x20, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x26, ref Args);
+                    break;
+                case 5:
+                    RyzenAccess.SendMp1(0x22, ref Args);
+                    break;
+                case 3:
+                case 7:
+                    RyzenAccess.SendMp1(0x20, ref Args);
+                    break;
+                case 8:
+                    RyzenAccess.SendMp1(0x1f, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -419,26 +576,328 @@ namespace RyzenSMUBackend
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID == 8)
+            switch (FAMID)
             {
-                RyzenAccess.SendPsmu(0x1c, ref Args);
-            }
-            else if (FAMID == 3)
-            {
-                RyzenAccess.SendPsmu(0x89, ref Args);
+                case 3:
+                case 7:
+                    RyzenAccess.SendPsmu(0x89, ref Args);
+                    break;
+                case 8:
+                    RyzenAccess.SendPsmu(0x1c, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
 
-        //SttLimit
-        public static void set_sst_limit(uint value)
+        //Power Saving
+        public static void set_power_saving(uint value)
         {
             RyzenAccess.Initialize();
             uint[] Args = new uint[6];
             Args[0] = value;
 
-            if (FAMID !< 3 && FAMID != 4 && FAMID != 6 && FAMID != 99999)
+            switch (FAMID)
             {
-                RyzenAccess.SendMp1(0x38, ref Args);
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x19, ref Args);
+                    break;
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                    RyzenAccess.SendMp1(0x12, ref Args);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        //Max Performance
+        public static void set_max_performance(uint value)
+        {
+            RyzenAccess.Initialize();
+            uint[] Args = new uint[6];
+            Args[0] = value;
+
+            switch (FAMID)
+            {
+                case 0:
+                case 1:
+                case 2:
+                    RyzenAccess.SendMp1(0x18, ref Args);
+                    break;
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                    RyzenAccess.SendMp1(0x11, ref Args);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        //Set All Core OC
+        public static void set_oc_clk(uint value)
+        {
+            RyzenAccess.Initialize();
+            uint[] Args = new uint[6];
+            Args[0] = value;
+
+            switch (FAMID)
+            {
+                case 3:
+                case 7:
+                    RyzenAccess.SendMp1(0x31, ref Args);
+                    RyzenAccess.SendPsmu(0x19, ref Args);
+                    break;
+                case 4:
+                case 6:
+                    RyzenAccess.SendMp1(0x26, ref Args);
+                    RyzenAccess.SendPsmu(0x5c, ref Args);
+                    break;
+                case 8:
+                    RyzenAccess.SendPsmu(0x19, ref Args);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        //Set Per Core OC
+        public static void set_per_core_oc_clk(uint value)
+        {
+            RyzenAccess.Initialize();
+            uint[] Args = new uint[6];
+            Args[0] = value;
+
+            switch (FAMID)
+            {
+                case 3:
+                case 7:
+                    RyzenAccess.SendMp1(0x32, ref Args);
+                    RyzenAccess.SendPsmu(0x1a, ref Args);
+                    break;
+                case 4:
+                case 6:
+                    RyzenAccess.SendMp1(0x27, ref Args);
+                    RyzenAccess.SendPsmu(0x5d, ref Args);
+                    break;
+                case 8:
+                    RyzenAccess.SendPsmu(0x1a, ref Args);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        //Set Per Core OC
+        public static void set_oc_volt(uint value)
+        {
+            RyzenAccess.Initialize();
+            uint[] Args = new uint[6];
+            Args[0] = value;
+
+            switch (FAMID)
+            {
+                case 3:
+                case 7:
+                    RyzenAccess.SendMp1(0x33, ref Args);
+                    RyzenAccess.SendPsmu(0x1b, ref Args);
+                    break;
+                case 4:
+                case 6:
+                    RyzenAccess.SendMp1(0x28, ref Args);
+                    RyzenAccess.SendPsmu(0x61, ref Args);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        //Set All Core Curve Optimiser
+        public static void set_coall(uint value)
+        {
+            RyzenAccess.Initialize();
+            uint[] Args = new uint[6];
+            Args[0] = value;
+
+            switch (FAMID)
+            {
+                case 3:
+                case 7:
+                    RyzenAccess.SendMp1(0x55, ref Args);
+                    break;
+                case 4:
+                case 6:
+                    RyzenAccess.SendMp1(0x36, ref Args);
+                    break;
+                case 8:
+                    RyzenAccess.SendMp1(0x4c, ref Args);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        //Set Per Core Curve Optimiser
+        public static void set_coper(uint value)
+        {
+            RyzenAccess.Initialize();
+            uint[] Args = new uint[6];
+            Args[0] = value;
+
+            switch (FAMID)
+            {
+                case 3:
+                case 7:
+                    RyzenAccess.SendMp1(0x54, ref Args);
+                    break;
+                case 4:
+                case 6:
+                    RyzenAccess.SendMp1(0x35, ref Args);
+                    break;
+                case 8:
+                    RyzenAccess.SendMp1(0x4b, ref Args);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        //Set iGPU Curve Optimiser
+        public static void set_cogfx(uint value)
+        {
+            RyzenAccess.Initialize();
+            uint[] Args = new uint[6];
+            Args[0] = value;
+
+            switch (FAMID)
+            {
+                case 3:
+                case 7:
+                    RyzenAccess.SendMp1(0x64, ref Args);
+                    break;
+                case 8:
+                    RyzenAccess.SendPsmu(0xb7, ref Args);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        //Disable OC
+        public static void set_disable_oc()
+        {
+            uint value = 0x0;
+            RyzenAccess.Initialize();
+            uint[] Args = new uint[6];
+            Args[0] = value;
+
+            switch (FAMID)
+            {
+                case 3:
+                case 7:
+                    RyzenAccess.SendMp1(0x30, ref Args);
+                    RyzenAccess.SendPsmu(0x1d, ref Args);
+                    break;
+                case 4:
+                case 6:
+                    RyzenAccess.SendMp1(0x25, ref Args);
+                    RyzenAccess.SendPsmu(0x5b, ref Args);
+                    break;
+                case 8:
+                    RyzenAccess.SendPsmu(0x18, ref Args);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        //Enable OC
+        public static void set_enable_oc()
+        {
+            uint value = 0x0;
+            RyzenAccess.Initialize();
+            uint[] Args = new uint[6];
+            Args[0] = value;
+
+            switch (FAMID)
+            {
+                case 3:
+                case 7:
+                    RyzenAccess.SendMp1(0x2f, ref Args);
+                    RyzenAccess.SendPsmu(0x1d, ref Args);
+                    break;
+                case 4:
+                case 6:
+                    RyzenAccess.SendMp1(0x24, ref Args);
+                    RyzenAccess.SendPsmu(0x5a, ref Args);
+                    break;
+                case 8:
+                    RyzenAccess.SendPsmu(0x17, ref Args);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+        //Set PPT
+        public static void set_ppt(uint value)
+        {
+            RyzenAccess.Initialize();
+            uint[] Args = new uint[6];
+            Args[0] = value;
+
+            switch (FAMID)
+            {
+                case 4:
+                case 6:
+                    RyzenAccess.SendPsmu(0x53, ref Args);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+        //Set TDC
+        public static void set_tdc(uint value)
+        {
+            RyzenAccess.Initialize();
+            uint[] Args = new uint[6];
+            Args[0] = value;
+
+            switch (FAMID)
+            {
+                case 4:
+                case 6:
+                    RyzenAccess.SendPsmu(0x54, ref Args);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        //Set TDC
+        public static void set_edc(uint value)
+        {
+            RyzenAccess.Initialize();
+            uint[] Args = new uint[6];
+            Args[0] = value;
+
+            switch (FAMID)
+            {
+                case 4:
+                case 6:
+                    RyzenAccess.SendPsmu(0x55, ref Args);
+                    break;
+                default:
+                    break;
             }
         }
     }

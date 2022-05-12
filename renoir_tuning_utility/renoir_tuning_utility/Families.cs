@@ -9,21 +9,22 @@ namespace RyzenSMUBackend
 {
     internal class Families
     {
-        public static string[] FAM = { "RAVEN", "PICASSO", "DALI", "RENOIR/LUCIENNE", "MATISSE", "VANGOGH", "VERMEER", "CEZANNE/BARCELO", "REMBRANDT", "PHOENIX", "RAPHAEL" };
+        public static string[] FAM = { "RAVEN", "PICASSO", "DALI", "RENOIR/LUCIENNE", "MATISSE", "VANGOGH", "VERMEER", "CEZANNE/BARCELO", "REMBRANDT", "PHOENIX", "RAPHAEL/DRAGON RANGE" };
         public static int FAMID { get; protected set; }
 
         public static string CPUModel = "";
+
         //RAVEN - 0
         //PICASSO - 1
         //DALI - 2
-        //RENOIR - 3
+        //RENOIR/LUCIENNE - 3
         //MATISSE - 4
         //VANGOGH - 5
         //VERMEER - 6
-        //CEZANNE - 7
+        //CEZANNE/BARCELO - 7
         //REMBRANDT - 8
         //PHEONIX - 9
-        //RAPHAEL - 10
+        //RAPHAEL/DRAGON RANGE - 10
 
         public static void SetFam()
         {
@@ -58,7 +59,7 @@ namespace RyzenSMUBackend
 
             if (CPUModel.Contains("Model " + Convert.ToString(96)) || CPUModel.Contains("Model " + Convert.ToString(104)))
             {
-                FAMID = 3; //RENOIR
+                FAMID = 3; //RENOIR/LUCIENNE
             }
 
             if (CPUModel.Contains("Model " + Convert.ToString(144)))
@@ -68,7 +69,7 @@ namespace RyzenSMUBackend
 
             if (CPUModel.Contains("Model " + Convert.ToString(80)))
             {
-                FAMID = 7; //CEZANNE
+                FAMID = 7; //CEZANNE/BARCELO
             }
 
             if (CPUModel.Contains("Model " + Convert.ToString(64)) || CPUModel.Contains("Model " + Convert.ToString(68)))
