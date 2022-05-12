@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using RyzenSmu;
+using RyzenSMUBackend;
+
 namespace PowerSettings
 {
     public class PmTableVersion
@@ -97,88 +99,55 @@ namespace PowerSettings
             //String exe = Directory.GetCurrentDirectory() + "\\smu-tool\\smu-tool.exe";
 
             int i = 0;
-            Smu.Status[] Statuses = new Smu.Status[9];
             uint[] Args = new uint[6];
             uint Msg = 0x0;
 
             if (Convert.ToUInt32((float)Smu.ReadFloat(Address, TableInfo.StapmLimitOffset)) != StapmLimit)
             {
-                //Set Msg and Args
-                Msg = 0x14;
-                Args[0] = StapmLimit;
-
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                SendCommand.set_stapm_limit(StapmLimit);
+                i++;
             }
 
             if (Convert.ToUInt32((float)Smu.ReadFloat(Address, TableInfo.FastLimitOffset)) != FastLimit)
             {
-                //Set Msg and Args
-                Msg = 0x15;
-                Args[0] = FastLimit;
-
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                SendCommand.set_fast_limit(FastLimit);
+                i++;
             }
 
             if (Convert.ToUInt32((float)Smu.ReadFloat(Address, TableInfo.SlowLimitOffset)) != SlowLimit)
             {
-                //Set Msg and Args
-                Msg = 0x16;
-                Args[0] = SlowLimit;
-
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                SendCommand.set_slow_limit(SlowLimit);
+                i++;
             }
 
             if (Convert.ToUInt32((float)Smu.ReadFloat(Address, TableInfo.SlowTimeOffset)) != SlowTime)
             {
-                //Set Msg and Args
-                Msg = 0x17;
-                Args[0] = SlowTime;
-
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                SendCommand.set_slow_time(SlowTime);
+                i++;
             }
 
             if (Convert.ToUInt32((float)Smu.ReadFloat(Address, TableInfo.StapmTimeOffset)) != StapmTime)
             {
-                //Set Msg and Args
-                Msg = 0x18;
-                Args[0] = StapmTime;
-
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                SendCommand.set_stapm_time(StapmTime);
+                i++;
             }
 
             if (Convert.ToUInt32((float)Smu.ReadFloat(Address, TableInfo.TctlTempOffset)) != TctlTemp)
             {
-                //Set Msg and Args
-                Msg = 0x19;
-                Args[0] = TctlTemp;
-
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                SendCommand.set_tctl_temp(TctlTemp);
+                i++;
             }
 
             if (Convert.ToUInt32((float)Smu.ReadFloat(Address, TableInfo.CurrentLimitOffset)) != CurrentLimit)
             {
-                //Set Msg and Args
-                Msg = 0x1A;
-                Args[0] = CurrentLimit;
-
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                SendCommand.set_vrm_current(CurrentLimit);
+                i++;
             }
 
             if (Convert.ToUInt32((float)Smu.ReadFloat(Address, TableInfo.MaxCurrentLimitOffset)) != MaxCurrentLimit)
             {
-                //Set Msg and Args
-                Msg = 0x1C;
-                Args[0] = MaxCurrentLimit;
-
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                SendCommand.set_vrmmax_current(MaxCurrentLimit);
+                i++;
             }
             /*
              * IF "%Stapm%" NEQ "" smu-tool.exe -m --message=0x14 --arg0=%Stapm%000
@@ -192,21 +161,16 @@ namespace PowerSettings
              */
             if (i != 0)
             {
-
-                //Set Msg and Args
-                Msg = 0xB9;
-                Args[0] = GfxClk;
-
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendPsmu(Msg, ref Args);
+                SendCommand.set_gfx_clk(GfxClk);
+                i++;
             }
-            for (int j = 0; j < i; j++)
-            {
-                if (Statuses[j] != Smu.Status.OK)
-                {
-                    //MessageBox.Show($"{j:D}-Status: " + Statuses[j].ToString());
-                }
-            }
+            //for (int j = 0; j < i; j++)
+            //{
+            //    if (Statuses[j] != Smu.Status.OK)
+            //    {
+            //        //MessageBox.Show($"{j:D}-Status: " + Statuses[j].ToString());
+            //    }
+            //}
             return true;
         }
         public bool ApplySettings()
@@ -219,87 +183,45 @@ namespace PowerSettings
 
             int i = 0;
             Smu.Status[] Statuses = new Smu.Status[8];
-            uint[] Args = new uint[6];
-            uint Msg = 0x0;
 
             if (0 != StapmLimit)
             {
-                //Set Msg and Args
-                Msg = 0x14;
-                Args[0] = StapmLimit;
-
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                SendCommand.set_stapm_limit(StapmLimit);
             }
 
             if (0 != FastLimit)
             {
-                //Set Msg and Args
-                Msg = 0x15;
-                Args[0] = FastLimit;
-
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                SendCommand.set_fast_limit(FastLimit);
             }
 
             if (0 != SlowLimit)
             {
-                //Set Msg and Args
-                Msg = 0x16;
-                Args[0] = SlowLimit;
-
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                SendCommand.set_slow_limit(SlowLimit);
             }
 
             if (0 != SlowTime)
             {
-                //Set Msg and Args
-                Msg = 0x17;
-                Args[0] = SlowTime;
-
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                SendCommand.set_slow_time(SlowTime);
             }
 
             if (0 != StapmTime)
             {
-                //Set Msg and Args
-                Msg = 0x18;
-                Args[0] = StapmTime;
-
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                SendCommand.set_stapm_time(StapmTime);
             }
 
             if (0 != TctlTemp)
             {
-                //Set Msg and Args
-                Msg = 0x19;
-                Args[0] = TctlTemp;
-
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                SendCommand.set_tctl_temp(TctlTemp);
             }
 
             if (0 != CurrentLimit)
             {
-                //Set Msg and Args
-                Msg = 0x1A;
-                Args[0] = CurrentLimit;
-
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                SendCommand.set_vrm_current(CurrentLimit);
             }
 
             if (0 != MaxCurrentLimit)
             {
-                //Set Msg and Args
-                Msg = 0x1C;
-                Args[0] = MaxCurrentLimit;
-
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                SendCommand.set_vrmmax_current(MaxCurrentLimit);
             }
             
             for (int j = 0; j < i; j++)

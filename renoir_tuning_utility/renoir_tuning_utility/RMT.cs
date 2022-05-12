@@ -16,6 +16,7 @@ using RyzenSmu;
 using PowerSettings;
 using System.Text.RegularExpressions;
 using System.Reflection;
+using RyzenSMUBackend;
 
 namespace renoir_tuning_utility
 {
@@ -93,9 +94,10 @@ namespace renoir_tuning_utility
 
             PowerSetting CurrentSetting;
 
+            Families.SetFam();
 
             
-            labelRenoirMobileTuning.Text = "RMT v1.1.1";
+            labelRenoirMobileTuning.Text = "RMT v1.2.0 Beta";
 
 
 
@@ -131,7 +133,7 @@ namespace renoir_tuning_utility
                 Args = new uint[6];
                 RyzenAccess = new Smu(EnableDebug);
                 RyzenAccess.Initialize();
-                labelRenoirMobileTuning.Text += " - " + RyzenAccess.GetCpuName();
+                //labelRenoirMobileTuning.Text += " - " + RyzenAccess.GetCpuName();
                 
                 if(RyzenAccess.SendPsmu(0x6,ref Args) == Smu.Status.OK)
                 {
@@ -444,10 +446,12 @@ namespace renoir_tuning_utility
                 Msg = 0x14;
                 Args[0] = (uint)Convert.ToUInt32(upDownStapmLimit.Value * 1000);
 
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                SendCommand.set_stapm_limit((uint)Convert.ToUInt32(upDownStapmLimit.Value * 1000));
 
-                labelLog.Text += $"STAPM Power Limit: " + Statuses[i - 1].ToString() + '\n';
+                ////Send msg
+                //Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+
+                //labelLog.Text += $"STAPM Power Limit: " + Statuses[i - 1].ToString() + '\n';
                 labelLog.Update();
             }
 
@@ -457,10 +461,13 @@ namespace renoir_tuning_utility
                 Msg = 0x15;
                 Args[0] = (uint)Convert.ToUInt32(upDownFastLimit.Value * 1000);
 
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                ////Send msg
+                //Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
 
-                labelLog.Text += $"Fast Power Limit: " + Statuses[i - 1].ToString() + '\n';
+                SendCommand.set_fast_limit((uint)Convert.ToUInt32(upDownFastLimit.Value * 1000));
+
+
+                //labelLog.Text += $"Fast Power Limit: " + Statuses[i - 1].ToString() + '\n';
                 labelLog.Update();
             }
 
@@ -470,10 +477,12 @@ namespace renoir_tuning_utility
                 Msg = 0x16;
                 Args[0] = (uint)Convert.ToUInt32(upDownSlowLimit.Value * 1000);
 
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                ////Send msg
+                //Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
 
-                labelLog.Text += $"Slow Power Limit: " + Statuses[i - 1].ToString() + '\n';
+                SendCommand.set_slow_limit((uint)Convert.ToUInt32(upDownSlowLimit.Value * 1000));
+
+                //labelLog.Text += $"Slow Power Limit: " + Statuses[i - 1].ToString() + '\n';
                 labelLog.Update();
             }
 
@@ -483,10 +492,12 @@ namespace renoir_tuning_utility
                 Msg = 0x17;
                 Args[0] = (uint)Convert.ToUInt32(upDownSlowTime.Value);
 
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                ////Send msg
+                //Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
 
-                labelLog.Text += $"Fast Boost Duration: " + Statuses[i - 1].ToString() + '\n';
+                SendCommand.set_slow_time((uint)Convert.ToUInt32(upDownSlowTime.Value * 1000));
+
+                //labelLog.Text += $"Fast Boost Duration: " + Statuses[i - 1].ToString() + '\n';
                 labelLog.Update();
             }
 
@@ -496,10 +507,12 @@ namespace renoir_tuning_utility
                 Msg = 0x18;
                 Args[0] = (uint)Convert.ToUInt32(upDownStapmTime.Value);
 
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                ////Send msg
+                //Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
 
-                labelLog.Text += $"Slow Boost Duration: " + Statuses[i - 1].ToString() + '\n';
+                SendCommand.set_stapm_time((uint)Convert.ToUInt32(upDownStapmTime.Value * 1000));
+
+                //labelLog.Text += $"Slow Boost Duration: " + Statuses[i - 1].ToString() + '\n';
                 labelLog.Update();
             }
 
@@ -509,10 +522,12 @@ namespace renoir_tuning_utility
                 Msg = 0x19;
                 Args[0] = (uint)Convert.ToUInt32(upDownTctlTemp.Value);
 
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                ////Send msg
+                //Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
 
-                labelLog.Text += $"Temperature Limit: " + Statuses[i - 1].ToString() + '\n';
+                SendCommand.set_tctl_temp((uint)Convert.ToUInt32(upDownTctlTemp.Value * 1000));
+
+                //labelLog.Text += $"Temperature Limit: " + Statuses[i - 1].ToString() + '\n';
                 labelLog.Update();
             }
 
@@ -522,10 +537,12 @@ namespace renoir_tuning_utility
                 Msg = 0x1A;
                 Args[0] = (uint)Convert.ToUInt32(upDownCurrentLimit.Value * 1000);
 
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                ////Send msg
+                //Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
 
-                labelLog.Text += $"Current Limit: " + Statuses[i - 1].ToString() + '\n';
+                SendCommand.set_vrm_current((uint)Convert.ToUInt32(upDownCurrentLimit.Value * 1000));
+
+                //labelLog.Text += $"Current Limit: " + Statuses[i - 1].ToString() + '\n';
                 labelLog.Update();
             }
             if(checkMaxCurrentLimit.Checked)
@@ -534,10 +551,12 @@ namespace renoir_tuning_utility
                 Msg = 0x1C;
                 Args[0] = (uint)Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000);
 
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                ////Send msg
+                //Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
 
-                labelLog.Text += $"Maximum Current Limit: " + Statuses[i - 1].ToString() + '\n';
+                SendCommand.set_vrmmax_current((uint)Convert.ToUInt32(upDownMaxCurrentLimit.Value * 1000));
+
+                //labelLog.Text += $"Maximum Current Limit: " + Statuses[i - 1].ToString() + '\n';
                 labelLog.Update();
             }
             if(checkSttLimit.Checked)
@@ -545,10 +564,12 @@ namespace renoir_tuning_utility
                 Msg = 0x38;
                 Args[0] = (uint)Convert.ToUInt32(upDownSttLimit.Value * 256);
 
-                //Send msg
-                Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
+                ////Send msg
+                //Statuses[i++] = RyzenAccess.SendMp1(Msg, ref Args);
 
-                labelLog.Text += $"Skin Temperature Limit: " + Statuses[i-1].ToString() + '\n';
+                SendCommand.set_apu_skin_temp_limit((uint)Convert.ToUInt32(upDownSttLimit.Value * 256));
+
+                //labelLog.Text += $"Skin Temperature Limit: " + Statuses[i-1].ToString() + '\n';
                 labelLog.Update();
             }
             if(checkBoxGfx.Checked)
@@ -557,22 +578,24 @@ namespace renoir_tuning_utility
                 Args[0] = (uint)Convert.ToUInt32(upDownGfx.Value);
 
                 //Send msg
-                Statuses[i++] = RyzenAccess.SendPsmu(Msg, ref Args);
+                //Statuses[i++] = RyzenAccess.SendPsmu(Msg, ref Args);
 
-                labelLog.Text += $"GFX Clockspeed: " + Statuses[i - 1].ToString() + '\n';
+                SendCommand.set_gfx_clk((uint)Convert.ToUInt32(upDownGfx.Value));
+
+                //labelLog.Text += $"GFX Clockspeed: " + Statuses[i - 1].ToString() + '\n';
                 labelLog.Update();
             }
 
             bool ApplyError = false;
 
-            for(int j = 0; j < i; j++)
-            {
-                //labelLog.Text += $"{j:D}-Status: " + Statuses[j].ToString() + '\n';
-                if(Statuses[j] != Smu.Status.OK)
-                {
-                    ApplyError = true;
-                }
-            }
+            //for(int j = 0; j < i; j++)
+            //{
+            //    //labelLog.Text += $"{j:D}-Status: " + Statuses[j].ToString() + '\n';
+            //    if(Statuses[j] != Smu.Status.OK)
+            //    {
+            //        ApplyError = true;
+            //    }
+            //}
 
             if(ApplyError)
             {
