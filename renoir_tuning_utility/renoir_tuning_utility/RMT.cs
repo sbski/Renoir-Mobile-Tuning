@@ -26,6 +26,8 @@ namespace renoir_tuning_utility
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool GetPhysLong(UIntPtr memAddress, out uint Data);
 
+
+
         [DllImport("inpoutx64.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool IsInpOutDriverOpen();
@@ -1148,6 +1150,29 @@ namespace renoir_tuning_utility
         private void checkBoxGfx_CheckedChanged(object sender, EventArgs e)
         {
             upDownGfx.Enabled = checkBoxGfx.Checked;
+        }
+
+        private void labelBclk_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericBclk_ValueChanged(object sender, EventArgs e)
+        {
+            RwMmioAmd MMIO = new RwMmioAmd();
+            MMIO.SetBclk(Convert.ToDouble(numericBclk.Value));
+            labelCDS.Text = Convert.ToDouble(numericBclk.Value).ToString() + "MHz";
+            labelCurBclk.Text = MMIO.GetBclk().ToString() + "MHz";
+        }
+
+        private void numericUpDownCDS_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void upDownGfx_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

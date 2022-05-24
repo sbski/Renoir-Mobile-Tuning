@@ -7,7 +7,7 @@
     <ProjectGuid>{FCB15803-E7FB-456A-9509-0E73AD868173}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>renoir_tuning_utility</RootNamespace>
-    <AssemblyName>ryzen_tuning_utility</AssemblyName>
+    <AssemblyName>Ryzen Mobile Tuning</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -74,7 +74,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Renoir Mobile Tuning Icon.ico</ApplicationIcon>
+    <ApplicationIcon>Renoir-Mobile-Tuning-Icon-UA.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>D3A899F45CD96C8C1E713C9892984816AF8B0013</ManifestCertificateThumbprint>
@@ -129,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Addresses.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Families.cs" />
     <Compile Include="PowerMonitoringItem.cs" />
     <Compile Include="PowerSettings.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="OpenLibSys.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RwMmioAmd.cs" />
     <Compile Include="RyzenSmu.cs" />
     <Compile Include="SendCommand.cs" />
     <Compile Include="SystemMonitor.cs">
@@ -183,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Renoir Mobile Tuning Icon.ico" />
+    <Content Include="Renoir-Mobile-Tuning-Icon-UA.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

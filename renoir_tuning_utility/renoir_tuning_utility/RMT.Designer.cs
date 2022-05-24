@@ -80,6 +80,20 @@
             this.checkFastLimit = new System.Windows.Forms.CheckBox();
             this.About = new System.Windows.Forms.TabControl();
             this.tabGfx = new System.Windows.Forms.TabPage();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.labelCDS = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.numericUpDownCDS = new System.Windows.Forms.NumericUpDown();
+            this.panel25 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panelBclk = new System.Windows.Forms.Panel();
+            this.panelCurrentBclk = new System.Windows.Forms.Panel();
+            this.labelCurBclk = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericBclk = new System.Windows.Forms.NumericUpDown();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.labelBclk = new System.Windows.Forms.Label();
             this.panel20 = new System.Windows.Forms.Panel();
             this.upDownGfx = new System.Windows.Forms.NumericUpDown();
             this.panel21 = new System.Windows.Forms.Panel();
@@ -130,6 +144,14 @@
             this.panel2.SuspendLayout();
             this.About.SuspendLayout();
             this.tabGfx.SuspendLayout();
+            this.panel22.SuspendLayout();
+            this.panel24.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCDS)).BeginInit();
+            this.panel25.SuspendLayout();
+            this.panelBclk.SuspendLayout();
+            this.panelCurrentBclk.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericBclk)).BeginInit();
+            this.panel23.SuspendLayout();
             this.panel20.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownGfx)).BeginInit();
             this.panel21.SuspendLayout();
@@ -618,10 +640,133 @@
             // 
             // tabGfx
             // 
+            this.tabGfx.Controls.Add(this.panel22);
+            this.tabGfx.Controls.Add(this.panelBclk);
             this.tabGfx.Controls.Add(this.panel20);
             resources.ApplyResources(this.tabGfx, "tabGfx");
             this.tabGfx.Name = "tabGfx";
             this.tabGfx.UseVisualStyleBackColor = true;
+            // 
+            // panel22
+            // 
+            resources.ApplyResources(this.panel22, "panel22");
+            this.panel22.Controls.Add(this.panel24);
+            this.panel22.Controls.Add(this.numericUpDownCDS);
+            this.panel22.Controls.Add(this.panel25);
+            this.panel22.Name = "panel22";
+            // 
+            // panel24
+            // 
+            this.panel24.Controls.Add(this.labelCDS);
+            this.panel24.Controls.Add(this.label5);
+            resources.ApplyResources(this.panel24, "panel24");
+            this.panel24.Name = "panel24";
+            // 
+            // labelCDS
+            // 
+            resources.ApplyResources(this.labelCDS, "labelCDS");
+            this.labelCDS.Name = "labelCDS";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // numericUpDownCDS
+            // 
+            resources.ApplyResources(this.numericUpDownCDS, "numericUpDownCDS");
+            this.numericUpDownCDS.Maximum = new decimal(new int[] {
+            150,
+            0,
+            0,
+            0});
+            this.numericUpDownCDS.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericUpDownCDS.Name = "numericUpDownCDS";
+            this.numericUpDownCDS.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericUpDownCDS.ValueChanged += new System.EventHandler(this.numericUpDownCDS_ValueChanged);
+            // 
+            // panel25
+            // 
+            this.panel25.Controls.Add(this.label6);
+            resources.ApplyResources(this.panel25, "panel25");
+            this.panel25.Name = "panel25";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // panelBclk
+            // 
+            resources.ApplyResources(this.panelBclk, "panelBclk");
+            this.panelBclk.Controls.Add(this.panelCurrentBclk);
+            this.panelBclk.Controls.Add(this.numericBclk);
+            this.panelBclk.Controls.Add(this.panel23);
+            this.panelBclk.Name = "panelBclk";
+            // 
+            // panelCurrentBclk
+            // 
+            this.panelCurrentBclk.Controls.Add(this.labelCurBclk);
+            this.panelCurrentBclk.Controls.Add(this.label2);
+            resources.ApplyResources(this.panelCurrentBclk, "panelCurrentBclk");
+            this.panelCurrentBclk.Name = "panelCurrentBclk";
+            // 
+            // labelCurBclk
+            // 
+            resources.ApplyResources(this.labelCurBclk, "labelCurBclk");
+            this.labelCurBclk.Name = "labelCurBclk";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // numericBclk
+            // 
+            this.numericBclk.DecimalPlaces = 2;
+            resources.ApplyResources(this.numericBclk, "numericBclk");
+            this.numericBclk.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericBclk.Maximum = new decimal(new int[] {
+            151,
+            0,
+            0,
+            0});
+            this.numericBclk.Minimum = new decimal(new int[] {
+            96,
+            0,
+            0,
+            0});
+            this.numericBclk.Name = "numericBclk";
+            this.numericBclk.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericBclk.ValueChanged += new System.EventHandler(this.numericBclk_ValueChanged);
+            // 
+            // panel23
+            // 
+            this.panel23.Controls.Add(this.labelBclk);
+            resources.ApplyResources(this.panel23, "panel23");
+            this.panel23.Name = "panel23";
+            // 
+            // labelBclk
+            // 
+            resources.ApplyResources(this.labelBclk, "labelBclk");
+            this.labelBclk.Name = "labelBclk";
+            this.labelBclk.Click += new System.EventHandler(this.labelBclk_Click);
             // 
             // panel20
             // 
@@ -655,6 +800,7 @@
             0,
             0,
             0});
+            this.upDownGfx.ValueChanged += new System.EventHandler(this.upDownGfx_ValueChanged);
             // 
             // panel21
             // 
@@ -814,6 +960,18 @@
             this.About.ResumeLayout(false);
             this.tabGfx.ResumeLayout(false);
             this.tabGfx.PerformLayout();
+            this.panel22.ResumeLayout(false);
+            this.panel24.ResumeLayout(false);
+            this.panel24.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCDS)).EndInit();
+            this.panel25.ResumeLayout(false);
+            this.panel25.PerformLayout();
+            this.panelBclk.ResumeLayout(false);
+            this.panelCurrentBclk.ResumeLayout(false);
+            this.panelCurrentBclk.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericBclk)).EndInit();
+            this.panel23.ResumeLayout(false);
+            this.panel23.PerformLayout();
             this.panel20.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.upDownGfx)).EndInit();
             this.panel21.ResumeLayout(false);
@@ -893,6 +1051,20 @@
         private System.Windows.Forms.NumericUpDown upDownGfx;
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.CheckBox checkBoxGfx;
+        private System.Windows.Forms.Panel panelBclk;
+        private System.Windows.Forms.NumericUpDown numericBclk;
+        private System.Windows.Forms.Panel panel23;
+        private System.Windows.Forms.Label labelBclk;
+        private System.Windows.Forms.Panel panelCurrentBclk;
+        private System.Windows.Forms.Label labelCurBclk;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel22;
+        private System.Windows.Forms.Panel panel24;
+        private System.Windows.Forms.Label labelCDS;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown numericUpDownCDS;
+        private System.Windows.Forms.Panel panel25;
+        private System.Windows.Forms.Label label6;
     }
 }
 
