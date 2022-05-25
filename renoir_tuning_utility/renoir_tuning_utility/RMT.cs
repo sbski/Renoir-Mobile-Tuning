@@ -98,8 +98,8 @@ namespace renoir_tuning_utility
 
             Families.SetFam();
 
-            
-            labelRenoirMobileTuning.Text = "RMT v1.2.0 Beta";
+
+            labelRenoirMobileTuning.Text = "RMT v1.3.0 Beta | " + (new Smu(false)).GetCpuName();
 
 
 
@@ -1162,7 +1162,7 @@ namespace renoir_tuning_utility
             RwMmioAmd MMIO = new RwMmioAmd();
             MMIO.SetBclk(Convert.ToDouble(numericBclk.Value));
             labelCDS.Text = Convert.ToDouble(numericBclk.Value).ToString() + "MHz";
-            labelCurBclk.Text = MMIO.GetBclk().ToString() + "MHz";
+            //labelCurBclk.Text = MMIO.GetBclk().ToString() + "MHz";
         }
 
         private void numericUpDownCDS_ValueChanged(object sender, EventArgs e)
